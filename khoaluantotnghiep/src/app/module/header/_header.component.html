@@ -9,11 +9,11 @@
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                         <li class="order-check"><a href="kiem-tra-don-hang.html"><i class="fa fa-pencil-square-o"></i>
                                 Kiểm tra đơn hàng</a></li>
-                        <li class="order-cart"><a href="gio-hang.html"><i class="fa fa-shopping-cart"></i> Giỏ
+                        <li class="order-cart"><a [routerLink]="['/gio-hang']"><i class="fa fa-shopping-cart"></i> Giỏ
                                 hàng</a></li>
-                        <li class="account-login"><a href="dang-nhap.html"><i class="fa fa-sign-in"></i> Đăng
+                        <li class="account-login"><a [routerLink]="['/dang-nhap']"><i class="fa fa-sign-in"></i> Đăng
                                 nhập </a></li>
-                        <li class="account-register"><a href="dang-ky.html"><i class="fa fa-key"></i> Đăng ký
+                        <li class="account-register"><a [routerLink]="['/dang-ky']"><i class="fa fa-key"></i> Đăng ký
                             </a></li>
                     </ul>
                     <div class="show-mobile hidden-lg hidden-md">
@@ -24,10 +24,10 @@
                             <div class="inner-toggle">
                                 <ul class="login links">
                                     <li>
-                                        <a href="dang-ky.html"><i class="fa fa-sign-in"></i> Đăng ký</a>
+                                        <a [routerLink]="['/dang-ky']"><i class="fa fa-sign-in"></i> Đăng ký</a>
                                     </li>
                                     <li>
-                                        <a href="dang-nhap.html"><i class="fa fa-key"></i> Đăng nhập</a>
+                                        <a [routerLink]="['/dang-nhap']"><i class="fa fa-key"></i> Đăng nhập</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,12 +96,12 @@
                             <ul class='menu nav navbar-nav'>
                                 <li class="level0"><a class='' [routerLink]="['/trang-chu']"><span>Trang chủ</span></a></li>
                                 <li class="level0"><a class='' [routerLink]="['/gioi-thieu']"><span>Giới thiệu</span></a></li>
-                                <li class="level0"><a class='' href='du-an.html'><span>Dự án</span></a></li>
-                                <li class="level0"><a class='' href='dich-vu.html'><span>Dịch vụ</span></a></li>
-                                <li class="level0"><a class='' href='tin-tuc.html'><span>Tin tức</span></a></li>
-                                <li class="level0"><a class='' href='san-giao-dich.html'><span>Sàn giao dịch</span></a></li>
-                                <li class="level0"><a class='' href='thu-vien-anh.html'><span>Thư viện ảnh</span></a></li>
-                                <li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/du-an']"><span>Dự án</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/dich-vu']"><span>Dịch vụ</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/tin-tuc']"><span>Tin tức</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/san-giao-dich']"><span>Sàn giao dịch</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/thu-vien-anh']"><span>Thư viện ảnh</span></a></li>
+                                <li class="level0"><a class='' [routerLink]="['/lien-he']"><span>Liên hệ</span></a></li>
                             </ul>
                         </nav>
                     </nav>
