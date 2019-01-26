@@ -41,6 +41,14 @@ import { NoiDungThuVienAnhComponent } from './pages/thu-vien-anh/noi-dung-thu-vi
 import { ThongTinCongTyComponent } from './module/thong-tin-cong-ty/_thongtincongty.component';
 import { BanDoComponent } from './module/ban-do/_bando.component';
 import { FormLienHeComponent } from './pages/lien-he/form-lien-he/_formlienhe.component';
+import { SanGiaoDichChiTietModuleComponent } from './module/san-giao-dich-chi-tiet/_san-giao-dich-chi-tiet.component';
+import { KhungChiTietModuleComponent } from './module/san-giao-dich-chi-tiet/khung-chi-tiet/_khung-chi-tiet.component';
+import { KhungThongTinNguoiDangModuleComponent } from './module/san-giao-dich-chi-tiet/khung-thong-tin-nguoi-dang/_khung-thong-tin-nguoi-dang.component';
+import { SanGiaoDichChiTietComponent } from './pages/san-giao-dich-chi-tiet/_sangiaodichchitiet.component';
+import { FormLayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/content-right/_form-laylaimatkhau.component';
+import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
+import { NoiDungTimThayComponent } from './pages/ket-qua-tim-kiem/noi-dung-tim-thay/_noi-dung-tim-thay.component';
+import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 
 
 @NgModule({
@@ -56,7 +64,9 @@ import { FormLienHeComponent } from './pages/lien-he/form-lien-he/_formlienhe.co
     DuAnGridComponent, DuAnListComponent, SanGiaoDichModuleComponent, SanGiaoDichListComponent, SanGiaoDichGridComponent
     , DanhMucTinTucComponent, NoiDungTinTucComponent,
     TinTucNoiBatComponent, NoiDungThuVienAnhComponent, ThongTinCongTyComponent,
-    BanDoComponent, FormLienHeComponent
+    BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
+    KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
+    NoiDungTimThayComponent, KetQuaTimKiemComponent
   ],
   imports: [
     BrowserModule, routing
