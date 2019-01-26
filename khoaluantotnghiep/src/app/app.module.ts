@@ -31,6 +31,9 @@ import { NoiDungGioiThieuComponent } from './pages/gioi-thieu/content-right/_noi
 import { DuAnNoiBatComponent } from './module/du-an-noi-bat/_duannoibat.component';
 import { DuAnGridComponent } from './module/du-an/du-an-grid/_duangrid.component';
 import { DuAnListComponent } from './module/du-an/du-an-list/_duanlist.component';
+import { SanGiaoDichModuleComponent } from './module/san-giao-dich/_san-giao-dich.component';
+import { SanGiaoDichListComponent } from './module/san-giao-dich/san-giao-dich-list/_san-giao-dich-list.component';
+import { SanGiaoDichGridComponent } from './module/san-giao-dich/san-giao-dich-grid/_san-giao-dich-grid.component';
 
 
 @NgModule({
@@ -43,7 +46,7 @@ import { DuAnListComponent } from './module/du-an/du-an-list/_duanlist.component
     LienHeComponent, DangNhapComponent, DangKyComponent, GioHangComponent,
     TaiKhoanComponent, FormDangKiComponent, FormDangNhapComponent,
     DanhMucGioiThieuComponent, NoiDungGioiThieuComponent, DuAnNoiBatComponent,
-    DuAnGridComponent, DuAnListComponent
+    DuAnGridComponent, DuAnListComponent, SanGiaoDichModuleComponent, SanGiaoDichListComponent, SanGiaoDichGridComponent
   ],
   imports: [
     BrowserModule, routing

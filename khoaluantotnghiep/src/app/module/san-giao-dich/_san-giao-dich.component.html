@@ -1,0 +1,65 @@
+<section class="project-content clearfix">
+    <nav class="navbar navbar-default project-filter">
+        <ul class="display">
+            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus(modeView.list)">
+                <a [routerLink]="['/'+pageCurrent]"><i class="glyphicon glyphicon-th-list"></i></a></li>
+            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus(modeView.grid)">
+                <a [routerLink]="['/'+pageCurrent+'/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
+        </ul>
+        <div class="limit hidden-xs">
+            <span>Sàn giao dịch/trang</span>
+            <select id="lblimit" name="lblimit" onchange="window.location.href = this.options[this.selectedIndex].value">
+                <option value="?limit=10">10</option>
+                <option selected="selected" value="?limit=12">12</option>
+                <option value="?limit=20">20</option>
+                <option value="?limit=50">50</option>
+                <option value="?limit=100">100</option>
+                <option value="?limit=250">250</option>
+                <option value="?limit=500">500</option>
+            </select>
+        </div>
+        <div class="sort hidden-xs">
+            <span>Sắp xếp</span>
+            <select id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
+                <option selected="selected" value="?sort=index&amp;order=asc">Mặc định</option>
+                <option value="?sort=price&amp;order=asc">Gi&#225; tăng dần</option>
+                <option value="?sort=price&amp;order=desc">Gi&#225; giảm dần</option>
+                <option value="?sort=name&amp;order=asc">T&#234;n dự &#225;n: A to Z</option>
+                <option value="?sort=name&amp;order=desc">T&#234;n dự &#225;n: Z to A</option>
+            </select>
+        </div>
+    </nav>
+    <!--Hien thi sàn giao dịch dạng grid hoặc list-->
+    <!--<du-an-list></du-an-list> <du-an-grid></du-an-grid>-->
+
+    <div class="property-tabs">
+        <ul class="nav nav-tabs">
+            <li class="active" role="presentation"><a [routerLink]="['/'+pageCurrent]">Mua b&#225;n</a></li>
+            <li role="presentation"><a [routerLink]="['/'+pageCurrent]">Cho thu&#234;</a></li>
+        </ul>
+        <div class="property-block property-list clearfix">
+            <div class="row">
+                <div class="property-resize property-item-box clearfix">
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+    <!--phân trang-->
+    <div class="navigation">
+        <ul class="pagination">
+            <li>
+                <a href="index2679.html?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="active"><a href="index2679.html?page=1">1</a></li>
+            <li><a href="index4658.html?page=2">2</a></li>
+            <li>
+                <a href="index4658.html?page=2" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

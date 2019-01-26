@@ -12,6 +12,8 @@ import { DangKyComponent } from './pages/dang-ky/_dang-ky.component';
 import { GioHangComponent } from './pages/gio-hang/_giohang.component';
 import { DuAnListComponent } from './module/du-an/du-an-list/_duanlist.component';
 import { DuAnGridComponent } from './module/du-an/du-an-grid/_duangrid.component';
+import { SanGiaoDichListComponent } from './module/san-giao-dich/san-giao-dich-list/_san-giao-dich-list.component';
+import { SanGiaoDichGridComponent } from './module/san-giao-dich/san-giao-dich-grid/_san-giao-dich-grid.component';
 
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
@@ -30,7 +32,12 @@ const routes: Routes = [
     },
     { path: 'dich-vu', component: DichVuComponent },
     { path: 'tin-tuc', component: TinTucComponent },
-    { path: 'san-giao-dich', component: SanGiaoDichComponent },
+    {
+        path: 'san-giao-dich', component: SanGiaoDichComponent,
+        children: [
+            { path: '', component: SanGiaoDichListComponent },
+            { path: 'grid', component: SanGiaoDichGridComponent }]
+    },
     { path: 'thu-vien-anh', component: ThuVienAnhPageComponent },
     { path: 'lien-he', component: LienHeComponent },
     { path: 'dang-nhap', component: DangNhapComponent },
