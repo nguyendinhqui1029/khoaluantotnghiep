@@ -34,6 +34,13 @@ import { DuAnListComponent } from './module/du-an/du-an-list/_duanlist.component
 import { SanGiaoDichModuleComponent } from './module/san-giao-dich/_san-giao-dich.component';
 import { SanGiaoDichListComponent } from './module/san-giao-dich/san-giao-dich-list/_san-giao-dich-list.component';
 import { SanGiaoDichGridComponent } from './module/san-giao-dich/san-giao-dich-grid/_san-giao-dich-grid.component';
+import { DanhMucTinTucComponent } from './pages/tin-tuc/danh-muc-tin-tuc/_danhmuctintuc.component';
+import { NoiDungTinTucComponent } from './pages/tin-tuc/noi-dung-tin-tuc/_noidungtintuc.component';
+import { TinTucNoiBatComponent } from './pages/tin-tuc/tin-tuc-noi-bat/_tintucnoibat.component';
+import { NoiDungThuVienAnhComponent } from './pages/thu-vien-anh/noi-dung-thu-vien-anh/_noidungthuvienanh.component';
+import { ThongTinCongTyComponent } from './module/thong-tin-cong-ty/_thongtincongty.component';
+import { BanDoComponent } from './module/ban-do/_bando.component';
+import { FormLienHeComponent } from './pages/lien-he/form-lien-he/_formlienhe.component';
 
 
 @NgModule({
@@ -47,6 +54,9 @@ import { SanGiaoDichGridComponent } from './module/san-giao-dich/san-giao-dich-g
     TaiKhoanComponent, FormDangKiComponent, FormDangNhapComponent,
     DanhMucGioiThieuComponent, NoiDungGioiThieuComponent, DuAnNoiBatComponent,
     DuAnGridComponent, DuAnListComponent, SanGiaoDichModuleComponent, SanGiaoDichListComponent, SanGiaoDichGridComponent
+    , DanhMucTinTucComponent, NoiDungTinTucComponent,
+    TinTucNoiBatComponent, NoiDungThuVienAnhComponent, ThongTinCongTyComponent,
+    BanDoComponent, FormLienHeComponent
   ],
   imports: [
     BrowserModule, routing

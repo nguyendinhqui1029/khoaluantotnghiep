@@ -1,30 +1,27 @@
-<header-component></header-component>
-<div class="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <!-- Chen tin tuc noi bat -->
+<div class="wrapper">
+    <!--component header-->
+    <header-component></header-component>
+    <!--component header-->
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!--danh mục tin tức-->
+                    <danh-muc-tin-tuc></danh-muc-tin-tuc>
+                    <!--danh mục tin tức-->
+
+                    <!--tin tức nổi bật-->
+                    <tin-tuc-noi-bat></tin-tuc-noi-bat>
+                    <!--tin tức nổi bật-->
                 </div>
-                <div class="col-md-8">
-                    <div class="breadcrumb clearfix">
-                        <ul>
-                            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-                                <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
-                                        chủ</span></a>
-                            </li>
-                            <li class="icon-li"><strong>Tin tức</strong> </li>
-                        </ul>
-                    </div>
-                    <h1 class="title clearfix">
-                        <i class="fa fa-list"></i>
-                        <span>Tin tức</span>
-                    </h1>
-                    <!-- ngFor cac tin tuc can ho -->
+                <div class="col-md-9">
+                    <!--nội dung trang tinh tức-->
+                    <noi-dung-tin-tuc></noi-dung-tin-tuc>
+                    <!--nội dung trang tinh tức-->
                 </div>
             </div>
         </div>
     </div>
+    <doi-tac></doi-tac>
+    <footer-component></footer-component>
 </div>
-<doi-tac></doi-tac>
-<footer-component></footer-component>
