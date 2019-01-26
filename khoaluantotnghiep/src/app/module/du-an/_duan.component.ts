@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 export type EditorType = true | false;
 @Component({
     selector: 'du-an',
@@ -8,14 +9,18 @@ export type EditorType = true | false;
 export class DuAnComponent implements OnInit {
 
     status: EditorType = true;
-    constructor() { }
+    pageCurrent: string = '';
+    modeView: any = { "grid": "grid", "list": "list" };
+    constructor(private route: ActivatedRoute) {
+        this.pageCurrent = this.route.snapshot.routeConfig.path;
+    }
 
     ngOnInit(): void { }
 
-    changeStatus() {
-        if (this.status) {
+    changeStatus(e) {
+        if (e === this.modeView.grid) {
             this.status = false;
-        } else {
+        } else if (e === this.modeView.list) {
             this.status = true;
         }
     }

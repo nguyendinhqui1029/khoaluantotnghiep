@@ -15,7 +15,12 @@ import { DuAnGridComponent } from './module/du-an/du-an-grid/_duangrid.component
 
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
-    { path: 'trang-chu', component: TrangChuComponent },
+    {
+        path: 'trang-chu', component: TrangChuComponent,
+        children: [
+            { path: '', component: DuAnListComponent },
+            { path: 'grid', component: DuAnGridComponent }]
+    },
     { path: 'gioi-thieu', component: GioiThieuComponent },
     {
         path: 'du-an', component: DuAnPageComponent,

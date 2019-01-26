@@ -5,10 +5,10 @@
     </h1>
     <nav class="navbar navbar-default project-filter">
         <ul class="display">
-            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus()">
-                <a [routerLink]="['/du-an']"><i class="glyphicon glyphicon-th-list"></i></a></li>
-            <li id="list" [ngClass]="{'list':true,'active':!status}" (click)="changeStatus()">
-                <a [routerLink]="['/du-an/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
+            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus(modeView.list)">
+                <a [routerLink]="['/'+pageCurrent]"><i class="glyphicon glyphicon-th-list"></i></a></li>
+            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus(modeView.grid)">
+                <a [routerLink]="['/'+pageCurrent+'/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
         </ul>
         <div class="limit hidden-xs">
             <span>Dự án/trang</span>
