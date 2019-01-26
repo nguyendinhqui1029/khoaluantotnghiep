@@ -1,31 +1,28 @@
-<header-component></header-component>
-<div class="main">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <!-- Chen noi dung left -->
-                </div>
-                <div class="col-md-8">
-                    <div class="breadcrumb clearfix">
-                        <ul>
-                            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-                                <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
-                                        chủ</span></a>
-                            </li>
-                            <li class="icon-li"><strong>Đăng ký tài khoản</strong> </li>
-                        </ul>
-                    </div>
-                    <h1 class="title clearfix">
-                        <i class="fa fa-list"></i>
-                        <span>Đăng ký tài khoản</span>
-                    </h1>
-
-                    <!-- Chen noi dung right -->
+<div class="wrapper">
+    <header-component></header-component>
+    <div class="adv">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--panner top-->
+                    <panner-top></panner-top>
+                    <!--panner top-->
                 </div>
             </div>
         </div>
     </div>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <!--content left trang dang kí-->
+                <tai-khoan></tai-khoan>
+                <!--content left trang dang kí-->
+                <!-- content right form dang kí-->
+                <form-dang-ki></form-dang-ki>
+                <!-- content right form dang kí-->
+            </div>
+        </div>
+    </div>
+    <doi-tac></doi-tac>
+    <footer-component></footer-component>
 </div>
-<doi-tac></doi-tac>
-<footer-component></footer-component>
