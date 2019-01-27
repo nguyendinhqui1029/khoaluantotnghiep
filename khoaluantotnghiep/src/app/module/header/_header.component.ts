@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MENU } from 'src/app/model/menu';
-import { ds_menu } from 'src/app/model/mock_menu';
+import { MENU } from '../../model/menu';
+import { ds_menu } from '../../model/mock_menu';
 import { ActivatedRoute } from '@angular/router';
+import { CONGTY } from '../../model/congty';
+import { congTy } from '../../model/mock_congty';
 
 @Component({
     selector: 'header-component',
@@ -9,6 +11,9 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./_header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+    //dữ liệu áp cứng
+    congty: CONGTY = congTy;
+
     ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
     menu_bottom: MENU[] = [];
