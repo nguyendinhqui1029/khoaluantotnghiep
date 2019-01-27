@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
     ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
     menu_bottom: MENU[] = [];
-    modeMenu: any = { "MENU_TOP": 0, "MENU_BOTTOM": 1 };
+    modeMenu: any = { "MENU_TOP": 2, "MENU_BOTTOM": 1 };
     constructor(private route: ActivatedRoute) {
         this.ds_menu.forEach(menu => {
             if (menu.typeMenu === this.modeMenu.MENU_TOP) {

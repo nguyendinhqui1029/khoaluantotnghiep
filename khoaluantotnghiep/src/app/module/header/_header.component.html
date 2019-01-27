@@ -7,17 +7,12 @@
                         <li><i class="fa fa-phone"></i> <span>Hotline:0268 78 78 78</span></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                        <li class="order-check"><a href="kiem-tra-don-hang.html"><i class="fa fa-pencil-square-o"></i>
-                                Kiểm tra đơn hàng</a></li>
-                        <li class="order-cart"><a [routerLink]="['/gio-hang']"><i class="fa fa-shopping-cart"></i> Giỏ
-                                hàng</a></li>
-                        <li class="account-login"><a [routerLink]="['/dang-nhap']"><i class="fa fa-sign-in"></i> Đăng
-                                nhập </a></li>
-                        <li class="account-register"><a [routerLink]="['/dang-ky']"><i class="fa fa-key"></i> Đăng ký
-                            </a></li>
+                        <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}">
+                            <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
+                                {{menu.nameMenu}}</a></li>
                     </ul>
                     <div class="show-mobile hidden-lg hidden-md">
-                        <div class="quick-user">
+                        <!-- <div class="quick-user">
                             <div class="quickaccess-toggle">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -31,17 +26,16 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="quick-access">
                             <div class="quickaccess-toggle">
                                 <i class="fa fa-list"></i>
                             </div>
                             <div class="inner-toggle">
                                 <ul class="links">
-                                    <li><a id="mobile-wishlist-total" href="kiem-tra-don-hang.html" class="wishlist"><i
-                                                class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
-                                    <li><a href="gio-hang.html" class="shoppingcart"><i class="fa fa-shopping-cart"></i>
-                                            Giỏ hàng</a></li>
+                                    <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}">
+                                        <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
+                                            {{menu.nameMenu}}</a></li>
                                 </ul>
                             </div>
                         </div>
