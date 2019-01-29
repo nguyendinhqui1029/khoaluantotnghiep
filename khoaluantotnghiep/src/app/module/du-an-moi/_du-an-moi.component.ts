@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DUAN } from 'src/app/model/duan';
+import { DuAnService } from 'src/app/service/duan.service';
 
 @Component({
     selector: 'du-an-moi',
@@ -6,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_du-an-moi.component.scss']
 })
 export class DuAnMoiComponent implements OnInit {
-    constructor() { }
+    //du liệu từ mock
+    ds_duAnMoi: DUAN[] = [];
+    constructor(private serviceDuAn: DuAnService) {
+        this.ds_duAnMoi = serviceDuAn.layDanhSachDuAnTheoTrangThai(serviceDuAn.modeTrangThai.DUANMOI);
+    }
 
     ngOnInit(): void {
+
+    }
+    ngAfterViewInit() {
         const $ = window["$"];
         $(document).ready(function () {
             var owlproductslide2 = $("#project-slide");

@@ -54,6 +54,7 @@ import { NoiDungTinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/noidung-
 import { NoiDungGioiThieuLinhVucComponent } from './module/gioi-thieu/gioithieu-linhvuc/_noidung-gioithieu-linhvuc.component';
 import { NoiDungGioiThieuVeChungToiComponent } from './module/gioi-thieu/gioithieu-vechungtoi/_noidung-gioithieu-vechungtoi.component';
 import { NoiDungGioiThieuModuleComponent } from './module/gioi-thieu/_noidung-gioithieu.component';
+import { DuAnService } from './service/duan.service';
 
 
 @NgModule({
@@ -77,7 +78,7 @@ import { NoiDungGioiThieuModuleComponent } from './module/gioi-thieu/_noidung-gi
   imports: [
     BrowserModule, routing
   ],
-  providers: [],
+  providers: [DuAnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

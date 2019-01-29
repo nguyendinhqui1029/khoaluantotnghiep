@@ -23,7 +23,12 @@ import { NoiDungGioiThieuVeChungToiComponent } from './module/gioi-thieu/gioithi
 import { NoiDungGioiThieuLinhVucComponent } from './module/gioi-thieu/gioithieu-linhvuc/_noidung-gioithieu-linhvuc.component';
 
 const routes: Routes = [
-    { path: '', component: TrangChuComponent },
+    {
+        path: '', component: TrangChuComponent,
+        children: [
+            { path: '', component: DuAnListComponent },
+            { path: 'grid', component: DuAnGridComponent }]
+    },
     {
         path: 'trang-chu', component: TrangChuComponent,
         children: [
@@ -43,6 +48,10 @@ const routes: Routes = [
         children: [
             { path: '', component: DuAnListComponent },
             { path: 'grid', component: DuAnGridComponent }]
+    },
+    {
+        //doi lai component chi tiet du an
+        path: 'chi-tiet-du-an/:id', component: SanGiaoDichChiTietComponent
     },
     { path: 'dich-vu', component: DichVuComponent },
     { path: 'tin-tuc', component: TinTucComponent },
