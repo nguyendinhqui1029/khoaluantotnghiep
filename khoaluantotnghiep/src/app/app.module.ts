@@ -55,6 +55,8 @@ import { NoiDungGioiThieuLinhVucComponent } from './module/gioi-thieu/gioithieu-
 import { NoiDungGioiThieuVeChungToiComponent } from './module/gioi-thieu/gioithieu-vechungtoi/_noidung-gioithieu-vechungtoi.component';
 import { NoiDungGioiThieuModuleComponent } from './module/gioi-thieu/_noidung-gioithieu.component';
 import { DuAnService } from './service/duan.service';
+import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
+import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
 
 
 @NgModule({
@@ -73,7 +75,8 @@ import { DuAnService } from './service/duan.service';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent,
-    NoiDungGioiThieuLinhVucComponent, NoiDungGioiThieuVeChungToiComponent, NoiDungGioiThieuModuleComponent
+    NoiDungGioiThieuLinhVucComponent, NoiDungGioiThieuVeChungToiComponent, NoiDungGioiThieuModuleComponent,
+    DuAnChiTietComponent, DuAnChiTietModuleComponent
   ],
   imports: [
     BrowserModule, routing

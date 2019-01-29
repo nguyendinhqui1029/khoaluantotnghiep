@@ -6,7 +6,8 @@ export const ds_duan: DUAN[] = [
         "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
         "noiDungChiTiet": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
         "mangHinh": [{ "tenhinh": "15.png", "alt": "hình dự án mã DA001" }, { "tenhinh": "", "alt": "hình dự án mã DA001" }],
-        "ngayDang": "28/01/2019", "doiTac": {
+        "ngayDang": "28/01/2019",
+        "doiTac": {
             "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
             "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
             "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
