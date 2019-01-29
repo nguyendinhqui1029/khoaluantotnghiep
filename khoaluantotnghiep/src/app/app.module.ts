@@ -51,6 +51,9 @@ import { NoiDungTimThayComponent } from './pages/ket-qua-tim-kiem/noi-dung-tim-t
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 import { NoiDungTinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/noidung-tin-tuc-chi-tiet/_noidung-tin-tuc-chi-tiet.component';
+import { NoiDungGioiThieuLinhVucComponent } from './module/gioi-thieu/gioithieu-linhvuc/_noidung-gioithieu-linhvuc.component';
+import { NoiDungGioiThieuVeChungToiComponent } from './module/gioi-thieu/gioithieu-vechungtoi/_noidung-gioithieu-vechungtoi.component';
+import { NoiDungGioiThieuModuleComponent } from './module/gioi-thieu/_noidung-gioithieu.component';
 
 
 @NgModule({
@@ -69,7 +72,7 @@ import { NoiDungTinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/noidung-
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent,
-
+    NoiDungGioiThieuLinhVucComponent, NoiDungGioiThieuVeChungToiComponent, NoiDungGioiThieuModuleComponent
   ],
   imports: [
     BrowserModule, routing

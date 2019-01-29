@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SLIDER } from 'src/app/model/slider';
+import { ds_slider } from 'src/app/model/mock_slider';
 
 @Component({
     selector: 'doi-tac',
@@ -6,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_doitac.component.scss']
 })
 export class DoiTacComponent implements OnInit {
+    ds_logoDoiTac: SLIDER = ds_slider[2];
     constructor() { }
 
     ngOnInit(): void {
+
+    }
+    ngAfterViewInit() {
         const $ = window["$"];
         $(document).ready(function () {
             var owl = $(".partner-block");

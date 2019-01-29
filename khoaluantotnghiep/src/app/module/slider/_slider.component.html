@@ -1,21 +1,10 @@
 <div class="slideshow">
-
     <!--Begin-->
     <div class="flexslider slideshow-content" id="slider" #slider>
         <ul class="slides">
-            <li>
-                <a href="#">
-                    <img src="../assets/images/slider/banner4.jpg" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="../assets/images/slider/banner5.jpg" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="../assets/images/slider/bathroom.jpg" />
+            <li *ngFor="let img of ob_slider.mangHinh">
+                <a href="javascript:void()">
+                    <img src="../assets/images/slider/{{img.tenhinh}}" alt="{{img.alt}}" />
                 </a>
             </li>
         </ul>

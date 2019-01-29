@@ -18,6 +18,9 @@ import { SanGiaoDichChiTietComponent } from './pages/san-giao-dich-chi-tiet/_san
 import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
+import { NoiDungGioiThieuComponent } from './pages/gioi-thieu/content-right/_noi-dung.component';
+import { NoiDungGioiThieuVeChungToiComponent } from './module/gioi-thieu/gioithieu-vechungtoi/_noidung-gioithieu-vechungtoi.component';
+import { NoiDungGioiThieuLinhVucComponent } from './module/gioi-thieu/gioithieu-linhvuc/_noidung-gioithieu-linhvuc.component';
 
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
@@ -27,7 +30,14 @@ const routes: Routes = [
             { path: '', component: DuAnListComponent },
             { path: 'grid', component: DuAnGridComponent }]
     },
-    { path: 'gioi-thieu', component: GioiThieuComponent },
+    {
+        path: 'gioi-thieu', component: GioiThieuComponent,
+        children: [
+            { path: '', component: NoiDungGioiThieuVeChungToiComponent },
+            { path: 'linhvuc', component: NoiDungGioiThieuLinhVucComponent }]
+    },
+    //{ path: 'gioi-thieu/:id', component: NoiDungGioiThieuComponent },
+
     {
         path: 'du-an', component: DuAnPageComponent,
         children: [

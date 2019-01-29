@@ -11,34 +11,9 @@
                         </span>
                     </h3>
                     <div class="partner-block">
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner01.png" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner02.png" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner03.png" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner04.png" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner05.png" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="partner-item">
-                            <a href="#">
-                                <img src="..\assets\images\logo-doitac\partner06.png" class="img-responsive" />
+                        <div class="partner-item" *ngFor="let logo of ds_logoDoiTac.mangHinh">
+                            <a href="javascript:void()">
+                                <img src="..\assets\images\logo-doitac\{{logo.tenhinh}}" class="img-responsive" alt="{{logo.alt}}" />
                             </a>
                         </div>
                     </div>

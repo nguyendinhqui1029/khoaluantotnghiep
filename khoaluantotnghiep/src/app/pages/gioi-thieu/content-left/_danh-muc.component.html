@@ -6,8 +6,12 @@
             </span>
         </h3>
         <ul>
-            <li><a href="gioi-thieu/ve-chung-toi.html">Về ch&#250;ng t&#244;i</a></li>
-            <li><a href="gioi-thieu/linh-vuc-hoat-dong.html">Lĩnh vực hoạt động</a></li>
+            <!--doi thanh routerLink vao app.routing.ts them link giong trong grid list
+                them router-outlet trong cho right-->
+            <li id="linhvuc" [ngClass]="{'active':status, 'linhvuc':true}" (click)="changeStatus(modeView.vechungtoi)"><a
+                    [routerLink]="['/'+pageCurrent]">Về chúng tôi</a></li>
+            <li id="vechungtoi" [ngClass]="{'active':!status, 'vechungtoi':true}" (click)="changeStatus(modeView.linhvuc)"><a
+                    [routerLink]="['/'+pageCurrent+'/linhvuc']">Lĩnh vực hoạt động</a></li>
         </ul>
     </div>
 </div>
