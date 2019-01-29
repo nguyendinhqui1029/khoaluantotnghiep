@@ -1,17 +1,8 @@
 <div class="adv-content row">
     <div class="owl-carousel">
         <ul id="adv-content">
-            <li>
-                <a href="#"><img src="..\assets\images\panner-top\panner-top1.jpg" class="img-responsive" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="..\assets\images\panner-top\panner-top2.jpg" class="img-responsive" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="..\assets\images\panner-top\panner-top3.jpg" class="img-responsive" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="..\assets\images\panner-top\panner-top4.jpg" class="img-responsive" /></a>
+            <li *ngFor="let banner of ds_banner.mangHinh">
+                <a href="#"><img src="..\assets\images\panner-top\{{banner.tenhinh}}" class="img-responsive" alt="{{banner.alt}}" /></a>
             </li>
         </ul>
         <div class="controls boxprevnext">
