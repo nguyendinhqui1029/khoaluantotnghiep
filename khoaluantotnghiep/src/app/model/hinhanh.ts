@@ -1,10 +1,10 @@
 export class HINHANH {
     tenhinh: any;
-    url: any;
-    constructor(tenhinh, url) {
+    alt: any;
+    constructor(tenhinh, alt) {
 
         this.tenhinh = tenhinh;
-        this.url = url;
+        this.alt = alt;
 
     }
 }

@@ -15,25 +15,24 @@
     <h1 class="title clearfix"><i class="fa fa-newspaper-o"></i><span>Tin tức</span></h1>
     <div class="news-block clearfix">
         <!--Item 1-->
-        <div class="news-item clearfix">
-            <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="tin-tuc/can-hotopaz-garden-tan-phu.html">
-                    <img src="../../../../assets/images/product/3.png" class="img-responsive" alt="CĂN HỘTOPAZ GARDEN-T&#194;N PH&#218; " /></a></div>
-            <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
-                <h2 class="name"><a href="tin-tuc/can-hotopaz-garden-tan-phu.html">CĂN HỘTOPAZ
-                        GARDEN-T&#194;N PH&#218; </a></h2>
-                <p class="date">14/04/2015</p>
-                <div class="desc">
-                    <p>
-                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Sở
-                            hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung
-                            tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường
-                            học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình,
-                            Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15</span></p>
+        <div *ngFor="let tin of noidungtintuc">
+            <div class="news-item clearfix">
+                <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/tin-tuc-chi-tiet',tin.matintuc]">
+                        <img src="../../../../assets/images/product/{{tin.hinhanh[0].tenhinh}}" class="img-responsive"
+                            alt="{{tin.hinhanh[0].alt}}" /></a></div>
+                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+                    <h2 class="name"><a [routerLink]="['/tin-tuc-chi-tiet',tin.matintuc]">{{tin.tentintuc}}</a></h2>
+                    <p class="date">{{tin.ngaydang}}</p>
+                    <div class="desc">
+                        <p>
+                            <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">{{tin.noidungtomtat}}</span></p>
+                    </div>
                 </div>
             </div>
         </div>
+
         <!--Item 2-->
-        <div class="news-item clearfix">
+        <!-- <div class="news-item clearfix">
             <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="tin-tuc/lai-nong-doi-tuong-cho-vay-goi-30000-ty-dong.html"><img
                         src="../../../../assets/images/product/4.jpg" class="img-responsive" alt="LẠI N&#211;NG ĐỐI TƯỢNG CHO VAY G&#211;I 30.000 TỶ ĐỒNG " /></a></div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
@@ -47,9 +46,9 @@
                             rộng đối tượng vay của gói 30.000 tỷ nhằm đẩy nhanh việc giải ngân.</span></p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--Item 3-->
-        <div class="news-item clearfix">
+        <!-- <div class="news-item clearfix">
             <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="tin-tuc/gan-1000-ty-da-duoc-giai-ngan-trong-goi-30000-ty-dong.html"><img
                         src="../../../../assets/images/product/5.jpg" class="img-responsive" alt="GẦN 1.000 TỶ Đ&#195; ĐƯỢC GIẢI NG&#194;N TRONG G&#211;I 30.000 TỶ ĐỒNG " /></a></div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
@@ -67,9 +66,9 @@
                             tỷ đồng)</span></p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--Item 4-->
-        <div class="news-item clearfix">
+        <!-- <div class="news-item clearfix">
             <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="tin-tuc/thu-pham-lam-gia-bat-dong-san-tang-cao.html"><img
                         src="../../../../assets/images/product/6.jpg" class="img-responsive" alt="THỦ PHẠM L&#192;M GI&#193; BẤT ĐỘNG SẢN TĂNG CAO" /></a></div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
@@ -85,6 +84,6 @@
                             sử dụng đất hiện nay.</span></p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

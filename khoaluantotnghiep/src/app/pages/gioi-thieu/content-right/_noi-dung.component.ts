@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_noi-dung.component.scss']
 })
 export class NoiDungGioiThieuComponent implements OnInit {
+
+
     constructor() { }
 
     ngOnInit(): void { }

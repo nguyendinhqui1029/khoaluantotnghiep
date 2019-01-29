@@ -3,11 +3,11 @@ import { TINTUC } from 'src/app/model/tintuc';
 import { ds_tintuc } from 'src/app/model/mock_tintuc';
 
 @Component({
-    selector: 'noi-dung-tin-tuc',
-    templateUrl: './_noidungtintuc.component.html',
-    styleUrls: ['./_noidungtintuc.component.scss']
+    selector: 'tin-tuc-chi-tiet',
+    templateUrl: './_tintucchitiet.component.html',
+    styleUrls: ['./_tintucchitiet.component.scss']
 })
-export class NoiDungTinTucComponent implements OnInit {
+export class TinTucChiTietComponent implements OnInit {
 
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = ds_tintuc;

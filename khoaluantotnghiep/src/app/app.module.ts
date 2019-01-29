@@ -49,6 +49,8 @@ import { FormLayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/content-rig
 import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
 import { NoiDungTimThayComponent } from './pages/ket-qua-tim-kiem/noi-dung-tim-thay/_noi-dung-tim-thay.component';
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
+import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
+import { NoiDungTinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/noidung-tin-tuc-chi-tiet/_noidung-tin-tuc-chi-tiet.component';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.
     TinTucNoiBatComponent, NoiDungThuVienAnhComponent, ThongTinCongTyComponent,
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
-    NoiDungTimThayComponent, KetQuaTimKiemComponent
+    NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent,
+
   ],
   imports: [
     BrowserModule, routing

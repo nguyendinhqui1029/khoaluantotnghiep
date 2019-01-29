@@ -17,6 +17,7 @@ import { SanGiaoDichGridComponent } from './module/san-giao-dich/san-giao-dich-g
 import { SanGiaoDichChiTietComponent } from './pages/san-giao-dich-chi-tiet/_sangiaodichchitiet.component';
 import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
+import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
     },
     { path: 'dich-vu', component: DichVuComponent },
     { path: 'tin-tuc', component: TinTucComponent },
+    { path: 'tin-tuc-chi-tiet/:id', component: TinTucChiTietComponent },
     {
         path: 'san-giao-dich', component: SanGiaoDichComponent,
         children: [
@@ -49,6 +51,7 @@ const routes: Routes = [
     { path: 'gio-hang', component: GioHangComponent },
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
+
 ];
 
 export const routing = RouterModule.forRoot(routes);
