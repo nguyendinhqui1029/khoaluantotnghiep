@@ -19,19 +19,30 @@ import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 
 const routes: Routes = [
-    { path: '', component: TrangChuComponent },
+    {
+        path: '', component: TrangChuComponent,
+        children: [
+            { path: '', component: DuAnListComponent },
+            { path: 'grid', component: DuAnGridComponent }]
+    },
     {
         path: 'trang-chu', component: TrangChuComponent,
         children: [
             { path: '', component: DuAnListComponent },
             { path: 'grid', component: DuAnGridComponent }]
     },
-    { path: 'gioi-thieu', component: GioiThieuComponent },
+    {
+        path: 'gioi-thieu', component: GioiThieuComponent
+    },
     {
         path: 'du-an', component: DuAnPageComponent,
         children: [
             { path: '', component: DuAnListComponent },
             { path: 'grid', component: DuAnGridComponent }]
+    },
+    {
+        //doi lai component chi tiet du an
+        path: 'chi-tiet-du-an/:id', component: SanGiaoDichChiTietComponent
     },
     { path: 'dich-vu', component: DichVuComponent },
     { path: 'tin-tuc', component: TinTucComponent },

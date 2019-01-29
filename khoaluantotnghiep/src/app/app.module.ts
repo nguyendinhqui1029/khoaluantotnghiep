@@ -49,6 +49,7 @@ import { FormLayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/content-rig
 import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
 import { NoiDungTimThayComponent } from './pages/ket-qua-tim-kiem/noi-dung-tim-thay/_noi-dung-tim-thay.component';
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
+import { DuAnService } from './service/duan.service';
 
 
 @NgModule({
@@ -71,7 +72,7 @@ import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.
   imports: [
     BrowserModule, routing
   ],
-  providers: [],
+  providers: [DuAnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
