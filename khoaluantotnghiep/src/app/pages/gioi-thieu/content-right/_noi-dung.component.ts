@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GioiThieuService } from 'src/app/service/gioithieu.service';
 import { GIOITHIEU } from 'src/app/model/gioithieu';
 import { ds_gioithieu } from 'src/app/model/mock_gioithieu';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'noi-dung-gioi-thieu',
@@ -9,20 +9,20 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./_noi-dung.component.scss']
 })
 export class NoiDungGioiThieuComponent implements OnInit {
+    gioiThieu: GIOITHIEU;
 
-    noidunggioithieu: GIOITHIEU[] = ds_gioithieu;
-    gioithieu: GIOITHIEU;
-    id: any = "";
+    constructor(private serviceGioiThieu: GioiThieuService) {
+        this.gioiThieu = ds_gioithieu[0];
+    }
+    ngDoCheck(): void {
+        if (this.serviceGioiThieu.getGioiThieu()) {
+            this.gioiThieu = this.serviceGioiThieu.getGioiThieu();
+        }
 
-    constructor(private router: ActivatedRoute) {
-        this.id = this.router.snapshot.params["id"];
-        alert(this.id);
-        this.noidunggioithieu.forEach(element => {
-            if (Number(element.magioithieu) === Number(this.id)) {
-                this.gioithieu = element;
-            }
-        });
+
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+
+    }
 }

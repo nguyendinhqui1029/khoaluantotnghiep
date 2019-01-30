@@ -9,9 +9,17 @@
             <li class="icon-li"><strong>Giới thiệu</strong> </li>
         </ul>
     </div>
-    <script type="text/javascript">
-        $(".link-site-more").hover(function () { $(this).find(".s-c-n").show(); }, function () { $(this).find(".s-c-n").hide(); });
-    </script>
+
     <!-- noi dung gioi thiêu -->
-    <noi-dung-gioi-thieu-module></noi-dung-gioi-thieu-module>
+    <div class="about-detail">
+        <h1 class="title clearfix"> <i class="{{gioiThieu.icon}}"></i>
+            <span>{{gioiThieu.tieude}}</span>
+        </h1>
+        <div class="about-block">
+            <div class="content" [innerHTML]="gioiThieu.noidung">
+            </div>
+            <div class="social-group">
+            </div>
+        </div>
+    </div>
 </div>

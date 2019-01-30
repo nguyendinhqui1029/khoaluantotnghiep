@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GIOITHIEU } from 'src/app/model/gioithieu';
-import { EditorType } from 'src/app/module/du-an/_duan.component';
-import { ActivatedRoute } from '@angular/router';
+import { ds_gioithieu } from 'src/app/model/mock_gioithieu';
+import { GioiThieuService } from 'src/app/service/gioithieu.service';
+
 
 @Component({
     selector: 'danh-muc-gioi-thieu',
@@ -9,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./_danh-muc.component.scss']
 })
 export class DanhMucGioiThieuComponent implements OnInit {
-    status: EditorType = true;
-    pageCurrent: string = '';
-    modeView: any = { "linhvuc": "linhvuc", "vechungtoi": "vechungtoi" };
-    constructor(private route: ActivatedRoute) {
-        this.pageCurrent = this.route.snapshot.routeConfig.path;
-    }
+    //dữ liệu từ mock
+    ds_gioithieu: GIOITHIEU[] = ds_gioithieu;
+    constructor(private serviceGioiThieu: GioiThieuService) {
 
+    }
+    setGioiThieu(value) {
+        this.serviceGioiThieu.setGioiThieu(value);
+    }
     ngOnInit(): void { }
 
 }

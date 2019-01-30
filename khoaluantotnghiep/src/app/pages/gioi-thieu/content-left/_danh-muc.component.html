@@ -8,10 +8,11 @@
         <ul>
             <!--doi thanh routerLink vao app.routing.ts them link giong trong grid list
                 them router-outlet trong cho right-->
-            <li id="linhvuc" [ngClass]="{'active':status, 'linhvuc':true}" (click)="changeStatus(modeView.vechungtoi)"><a
-                    [routerLink]="['/'+pageCurrent]">Về chúng tôi</a></li>
-            <li id="vechungtoi" [ngClass]="{'active':!status, 'vechungtoi':true}" (click)="changeStatus(modeView.linhvuc)"><a
-                    [routerLink]="['/'+pageCurrent+'/linhvuc']">Lĩnh vực hoạt động</a></li>
+            <li id="linhvuc" *ngFor="let gioithieu of ds_gioithieu">
+                <a href="javascript:Void()" (click)="setGioiThieu(gioithieu)">
+                    {{gioithieu.tieude}}
+                </a>
+            </li>
         </ul>
     </div>
 </div>
