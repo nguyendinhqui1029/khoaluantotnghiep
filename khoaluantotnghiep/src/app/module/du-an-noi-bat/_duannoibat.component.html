@@ -3,11 +3,11 @@
         <span>Dự án nổi bật</span>
     </h3>
 
-    <div class="box-project-block">
+    <div class="box-project-block" *ngFor="let duannoibat of dsDuAN">
         <div class="item">
             <div class="image image-resize">
-                <a href="du-an/opal-riverside.html" title="OPAL RIVERSIDE">
-                    <img src="../../../assets/images/product/1.png" class="img-responsive" />
+                <a href="du-an/opal-riverside.html" title="{{duannoibat.tenDuAn}}">
+                    <img src="../../../assets/images/product/{{duannoibat.mangHinh[0].tenhinh}}" class="img-responsive" />
                 </a>
                 <span class="new">New</span>
                 <div class="thumbnail">
@@ -18,83 +18,12 @@
             </div>
             <div class="right-block">
                 <h2 class="name">
-                    <a href="du-an/opal-riverside.html" title="OPAL RIVERSIDE">OPAL RIVERSIDE</a>
+                    <a href="du-an/opal-riverside.html" title="{{duannoibat.tenDuAn}}">{{duannoibat.tenDuAn}}</a>
                 </h2>
             </div>
         </div>
 
-        <div class="item">
-            <div class="image image-resize">
-                <a href="du-an/sunview-town.html" title="SUNVIEW TOWN">
-                    <img src="../../../assets/images/product/10.jpg" class="img-responsive" />
-                </a>
-                <span class="new">New</span>
-                <div class="thumbnail">
-                    <a href="du-an/sunview-town.html" class="zoom">
-                        <i class="glyphicon glyphicon-link"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="right-block">
-                <h2 class="name">
-                    <a href="du-an/sunview-town.html" title="SUNVIEW TOWN">SUNVIEW TOWN</a>
-                </h2>
-            </div>
-        </div>
 
-        <div class="item">
-            <div class="image image-resize">
-                <a href="du-an/topaz-city.html" title="TOPAZ CITY">
-                    <img src="../../../assets/images/product/11.jpg" class="img-responsive" />
-                </a>
-                <span class="new">New</span>
-                <div class="thumbnail">
-                    <a href="du-an/topaz-city.html" class="zoom">
-                        <i class="glyphicon glyphicon-link"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="right-block">
-                <h2 class="name">
-                    <a href="du-an/topaz-city.html" title="TOPAZ CITY">TOPAZ CITY</a>
-                </h2>
-            </div>
-        </div>
 
-        <div class="item">
-            <div class="image image-resize">
-                <a href="du-an/my-son-tower.html" title="MỸ SƠN TOWER">
-                    <img src="../../../assets/images/product/13.jpg" class="img-responsive" />
-                </a>
-                <div class="thumbnail">
-                    <a href="du-an/my-son-tower.html" class="zoom">
-                        <i class="glyphicon glyphicon-link"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="right-block">
-                <h2 class="name">
-                    <a href="du-an/my-son-tower.html" title="MỸ SƠN TOWER">MỸ SƠN TOWER</a>
-                </h2>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="image image-resize">
-                <a href="du-an/topaz-city02.html" title="TOPAZ CITY02">
-                    <img src="../../../assets/images/product/15.png" class="img-responsive" />
-                </a>
-                <div class="thumbnail">
-                    <a href="du-an/topaz-city02.html" class="zoom">
-                        <i class="glyphicon glyphicon-link"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="right-block">
-                <h2 class="name">
-                    <a href="du-an/topaz-city02.html" title="TOPAZ CITY02">TOPAZ CITY02</a>
-                </h2>
-            </div>
-        </div>
     </div>
 </div>

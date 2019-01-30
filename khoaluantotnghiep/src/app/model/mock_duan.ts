@@ -5,7 +5,7 @@ export const ds_duan: DUAN[] = [
         "maDuAn": "DA001", "tenDuAn": "CĂN HỘTOPAZ GARDEN-TÂN PHÚ",
         "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
         "noiDungChiTiet": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
-        "mangHinh": [{ "tenhinh": "15.png", "alt": "hình dự án mã DA001" }, { "tenhinh": "", "alt": "hình dự án mã DA001" }],
+        "mangHinh": [{ "tenhinh": "DA013.png", "alt": "hình dự án mã DA001" }, { "tenhinh": "", "alt": "hình dự án mã DA001" }],
         "ngayDang": "28/01/2019",
         "doiTac": {
             "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
@@ -16,7 +16,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA002", "tenDuAn": "LẠI NÓNG ĐỐI TƯỢNG CHO VAY GÓI 30.000 TỶ ĐỒNG",
@@ -32,7 +33,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA003", "tenDuAn": "GẦN 1.000 TỶ ĐÃ ĐƯỢC GIẢI NGÂN TRONG GÓI 30.000 TỶ ĐỒNG",
@@ -48,7 +50,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA004", "tenDuAn": "THỦ PHẠM LÀM GIÁ BẤT ĐỘNG SẢN TĂNG CAO",
@@ -64,7 +67,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA005", "tenDuAn": "CĂN HỘ SUNVIEW TOWN-THỦ ĐỨC",
@@ -83,7 +87,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA006", "tenDuAn": "GOLD HILL CENTER",
@@ -103,7 +108,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA007", "tenDuAn": "CĂN HỘ EMERALD-THỦ ĐỨC",
@@ -123,7 +129,8 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1,
+        "loaiDuAn": "bình thường"
     },
     {
         "maDuAn": "DA008", "tenDuAn": "CHO THUÊ NHÀ XƯỞNG, 6000M2 MẶT TIỀN TRẦN ĐẠI NGHĨA, GIÁ 270 TRIỆU/THÁNG",
@@ -141,5 +148,103 @@ export const ds_duan: DUAN[] = [
         },
         "giaTien": "25.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
-        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1
-    }];
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1,
+        "loaiDuAn": "bình thường"
+    },
+    //Dự án nổi bật
+    {
+        "maDuAn": "DA009", "tenDuAn": "OPAL RIVERSIDE",
+        "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
+        "noiDungChiTiet": "Cho thuê nhà xưởng.- Thuận tiện giao thông, đầy đủ tiện nghi, đạt chứng nhận môi trường, PCCC.- Mặt tiền đường Trần Đại Nghĩa, xã Tân Nhựt, Bình Chánh.- Gần đường dẫn cao tốc Trung Lương – TP. HCM.- Tổng diện tích khuôn viên đất 6.000m2.- Diện tích giao thông, cây xanh 1.800m2. - Diện tich sử dụng nhà xưởng - nhà kho: 5.500m2.Trạm điện 630 KVA.",
+        "mangHinh": [
+            { "tenhinh": "DA009.png", "alt": "hình dự án mã DA009" }
+        ],
+        "ngayDang": "28/01/2019", "doiTac": {
+            "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
+            "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
+            "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
+            "moTa": "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "tenTaiKhoan": "nguyendinhqui",
+            "email": "nguyendinhqui1029@gmail.com", "matKhau": "123", "loaiTaiKhoan": "Đối tác"
+        },
+        "giaTien": "50.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
+        "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "nổi bật"
+    },
+    {
+        "maDuAn": "DA010", "tenDuAn": "SUNVIEW TOWN",
+        "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
+        "noiDungChiTiet": "Cho thuê nhà xưởng.- Thuận tiện giao thông, đầy đủ tiện nghi, đạt chứng nhận môi trường, PCCC.- Mặt tiền đường Trần Đại Nghĩa, xã Tân Nhựt, Bình Chánh.- Gần đường dẫn cao tốc Trung Lương – TP. HCM.- Tổng diện tích khuôn viên đất 6.000m2.- Diện tích giao thông, cây xanh 1.800m2. - Diện tich sử dụng nhà xưởng - nhà kho: 5.500m2.Trạm điện 630 KVA.",
+        "mangHinh": [
+            { "tenhinh": "DA010.jpg", "alt": "hình dự án mã DA010" }
+        ],
+        "ngayDang": "28/01/2019", "doiTac": {
+            "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
+            "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
+            "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
+            "moTa": "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "tenTaiKhoan": "nguyendinhqui",
+            "email": "nguyendinhqui1029@gmail.com", "matKhau": "123", "loaiTaiKhoan": "Đối tác"
+        },
+        "giaTien": "30.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
+        "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "nổi bật"
+    },
+    {
+        "maDuAn": "DA011", "tenDuAn": "TOPAZ CITY",
+        "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
+        "noiDungChiTiet": "Cho thuê nhà xưởng.- Thuận tiện giao thông, đầy đủ tiện nghi, đạt chứng nhận môi trường, PCCC.- Mặt tiền đường Trần Đại Nghĩa, xã Tân Nhựt, Bình Chánh.- Gần đường dẫn cao tốc Trung Lương – TP. HCM.- Tổng diện tích khuôn viên đất 6.000m2.- Diện tích giao thông, cây xanh 1.800m2. - Diện tich sử dụng nhà xưởng - nhà kho: 5.500m2.Trạm điện 630 KVA.",
+        "mangHinh": [
+            { "tenhinh": "DA011.jpg", "alt": "hình dự án mã DA011" }
+        ],
+        "ngayDang": "28/01/2019", "doiTac": {
+            "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
+            "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
+            "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
+            "moTa": "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "tenTaiKhoan": "nguyendinhqui",
+            "email": "nguyendinhqui1029@gmail.com", "matKhau": "123", "loaiTaiKhoan": "Đối tác"
+        },
+        "giaTien": "38.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
+        "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "nổi bật"
+    },
+    {
+        "maDuAn": "DA012", "tenDuAn": "MỸ SƠN TOWER",
+        "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
+        "noiDungChiTiet": "Cho thuê nhà xưởng.- Thuận tiện giao thông, đầy đủ tiện nghi, đạt chứng nhận môi trường, PCCC.- Mặt tiền đường Trần Đại Nghĩa, xã Tân Nhựt, Bình Chánh.- Gần đường dẫn cao tốc Trung Lương – TP. HCM.- Tổng diện tích khuôn viên đất 6.000m2.- Diện tích giao thông, cây xanh 1.800m2. - Diện tich sử dụng nhà xưởng - nhà kho: 5.500m2.Trạm điện 630 KVA.",
+        "mangHinh": [
+            { "tenhinh": "DA012.jpg", "alt": "hình dự án mã DA012" }
+        ],
+        "ngayDang": "28/01/2019", "doiTac": {
+            "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
+            "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
+            "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
+            "moTa": "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "tenTaiKhoan": "nguyendinhqui",
+            "email": "nguyendinhqui1029@gmail.com", "matKhau": "123", "loaiTaiKhoan": "Đối tác"
+        },
+        "giaTien": "38.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
+        "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "nổi bật"
+    },
+    {
+        "maDuAn": "DA013", "tenDuAn": "TOPAZ CITY02",
+        "noiDungTomTat": "Sở hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay: 0914.66.88.15",
+        "noiDungChiTiet": "Cho thuê nhà xưởng.- Thuận tiện giao thông, đầy đủ tiện nghi, đạt chứng nhận môi trường, PCCC.- Mặt tiền đường Trần Đại Nghĩa, xã Tân Nhựt, Bình Chánh.- Gần đường dẫn cao tốc Trung Lương – TP. HCM.- Tổng diện tích khuôn viên đất 6.000m2.- Diện tích giao thông, cây xanh 1.800m2. - Diện tich sử dụng nhà xưởng - nhà kho: 5.500m2.Trạm điện 630 KVA.",
+        "mangHinh": [
+            { "tenhinh": "DA013.png", "alt": "hình dự án mã DA013" }
+        ],
+        "ngayDang": "28/01/2019", "doiTac": {
+            "maTaiKhoan": "TK001", "hoTen": "Nguyễn Văn A", "soDienThoai": "0777 203 042", "tinhThanhPho": "An Giang",
+            "diaChi": "50/2 Bình Tân, Bình Mỹ", "quanHuyen": "Châu Phú", "gioiTinh": "Nam",
+            "ngaySinh": "10/01/1997", "logo": { "tenhinh": "partner01.png", "alt": "logo đối tác" },
+            "moTa": "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "tenTaiKhoan": "nguyendinhqui",
+            "email": "nguyendinhqui1029@gmail.com", "matKhau": "123", "loaiTaiKhoan": "Đối tác"
+        },
+        "giaTien": "38.000.000", "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
+        "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1 }, "quanHuyen": "Quận 5",
+        "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
+        "loaiDuAn": "nổi bật"
+    },
+];

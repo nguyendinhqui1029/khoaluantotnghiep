@@ -2,37 +2,33 @@
     <div class="property-block clearfix ">
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 clearfix property-image">
-                <div id="property-slider" class="flexslider property-slider">
-                    <ul class="slides">
-                        <li class="image">
-                            <img src="..\assets\images\project\property-small-5-270x200.png" class="img-responsive" />
-                        </li>
-                    </ul>
-                </div>
+                <div class="col-md-12 col-sm-8 col-xs-12 image">
+                    <img src="../../../../assets/images/product/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
+                        alt="{{duan.tenDuAn}}" /></div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 property-info">
-                <h1 class="name">HELIOS 75 TAM TRINH _ CHIẾT KHẤU 2% GI&#193; CHỈ TỪ 1,4 TỶ _ LI&#202;N HỆ 094 706 4444</h1>
+                <h1 class="name">{{duan.tenDuAn}}</h1>
                 <ul>
                     <li>
                         MS:<label> </label>
                     </li>
                     <li>
-                        Giá:<label class="price">0đ</label>
+                        Giá:<label class="price">{{duan.giaTien}}</label>
                     </li>
                     <li>
-                        Ngày đăng:<label class="price"> 15/04/2015 08:41</label>
+                        Ngày đăng:<label class="price">{{duan.ngayDang}}</label>
                     </li>
                     <li>
-                        Địa chỉ:<label>5/12A Quang Trung, P.14, Q.G&#242; Vấp, Tp.HCM</label>
+                        Địa chỉ:<label>{{duan.quanHuyen}} - {{duan.tinhThanhPho}}</label>
                     </li>
                     <li>
-                        Khu vực:<label>Hồ Ch&#237; Minh</label>
+                        Khu vực:<label>{{duan.tinhThanhPho}}</label>
                     </li>
                     <li>
-                        Loại:<label>Mua b&#225;n</label>
+                        Loại:<label>{{duan.danhMuc.tenDanhMuc}}</label>
                     </li>
                     <li>
-                        Danh mục bất động sản:<label>Đất thổ cư</label>
+                        Danh mục bất động sản:<label>{{duan.loaiGiaoDich.tenLoai}}</label>
                     </li>
                 </ul>
             </div>

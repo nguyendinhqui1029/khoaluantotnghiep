@@ -1,81 +1,21 @@
 <div class="news-content">
     <div class="news-block clearfix">
         <!--Item 1-->
-        <div class="news-item clearfix">
-            <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/san-giao-dich-chi-tiet']">
-                    <img src="../../../../assets/images/product/15.png" class="img-responsive" alt="CĂN HỘTOPAZ GARDEN-T&#194;N PH&#218; " /></a></div>
+        <div class="news-item clearfix" *ngFor="let duan of dsDuAN">
+            <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">
+                    <img src="../../../../assets/images/product/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
+                        alt="{{duan.tenDuAn}}" /></a></div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
-                <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet']">CĂN HỘTOPAZ GARDEN-T&#194;N
-                        PH&#218; </a></h2>
-                <p class="date">Ngày đăng: 14/04/2015</p>
+                <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">{{duan.tenDuAn}}</a></h2>
+                <p class="date">Ngày đăng: {{duan.ngayDang}}</p>
                 <div class="desc">
                     <p>
-                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Sở
-                            hữu căn hộ Tân Phú - Topaz garden giá chỉ 12.8 triệu/m2. Vị trí trung tâm chỉ cách Đầm
-                            Sen 1km. Diện tích từ 64m2, gần chợ, bệnh viện, trường học. Tiện ích cao cấp, thuận
-                            tiện đi lại với các quận như Tân Bình, Quận 10, 11, quận 1... Liên hệ ngay:
-                            0914.66.88.15</span></p>
-                    <span><i class="fa fa-map-marker"></i> Hồ Chí Minh</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>300.000.000đ</span>
+                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">{{duan.noiDungTomTat}}</span></p>
+                    <span><i class="fa fa-map-marker"></i>{{duan.tinhThanhPho}}</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>{{duan.giaTien}}</span>
                 </div>
 
             </div>
         </div>
-        <!--Item 2-->
-        <div class="news-item clearfix">
-            <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/san-giao-dich-chi-tiet']">
-                    <img src="../../../../assets/images/product/16.png" class="img-responsive" alt="LẠI N&#211;NG ĐỐI TƯỢNG CHO VAY G&#211;I 30.000 TỶ ĐỒNG " /></a></div>
-            <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
-                <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet']">LẠI N&#211;NG
-                        ĐỐI TƯỢNG CHO VAY G&#211;I 30.000 TỶ ĐỒNG </a></h2>
-                <p class="date">Ngày đăng: 14/04/2015</p>
-                <div class="desc">
-                    <p>
-                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Phó
-                            thủ tướng Hoàng Trung Hải vừa có ý kiến về đề xuất của Bộ Xây dựng mở rộng đối tượng
-                            vay của gói 30.000 tỷ nhằm đẩy nhanh việc giải ngân.</span></p>
-                    <span><i class="fa fa-map-marker"></i> Hồ Chí Minh</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>300.000.000đ</span>
-                </div>
-            </div>
-        </div>
-        <!--Item 3-->
-        <div class="news-item clearfix">
-            <div class="col-md-3 col-sm-4 col-xs-12 image">
-                <a [routerLink]="['/san-giao-dich-chi-tiet']">
-                    <img src="../../../../assets/images/product/17.png" class="img-responsive" alt="GẦN 1.000 TỶ Đ&#195; ĐƯỢC GIẢI NG&#194;N TRONG G&#211;I 30.000 TỶ ĐỒNG " /></a></div>
-            <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
-                <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet']">GẦN
-                        1.000 TỶ Đ&#195; ĐƯỢC GIẢI NG&#194;N TRONG G&#211;I 30.000 TỶ ĐỒNG </a></h2>
-                <p class="date">Ngày đăng: 14/04/2015</p>
-                <div class="desc">
-                    <p>
-                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Theo
-                            báo cáo mới nhất của Bộ Xây dựng, tính đến ngày 15-4-2014, tổng số tiền các bên đã cam
-                            kết là 3.365,9 tỷ đồng, tổng dư nợ là 1.699,4 tỷ đồng. Trong đó, các ngân hàng đã ký
-                            hợp đồng cam kết cho vay 3.962 hộ với số tiền là 1.504 tỷ đồng (vay mua nhà ở xã hội là
-                            2.297 hộ với số tiền là 711 tỷ đồng; vay để mua nhà ở thương mại là 1.665 hộ với số
-                            tiền là 793 tỷ đồng)</span></p>
-                    <span><i class="fa fa-map-marker"></i> Hồ Chí Minh</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>300.000.000đ</span>
-                </div>
-            </div>
-        </div>
-        <!--Item 4-->
-        <div class="news-item clearfix">
-            <div class="col-md-3 col-sm-4 col-xs-12 image">
-                <a [routerLink]="['/san-giao-dich-chi-tiet']">
-                    <img src="../../../../assets/images/product/19.jpg" class="img-responsive" alt="THỦ PHẠM L&#192;M GI&#193; BẤT ĐỘNG SẢN TĂNG CAO" /></a></div>
-            <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
-                <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet']">THỦ PHẠM L&#192;M
-                        GI&#193; BẤT ĐỘNG SẢN TĂNG CAO</a></h2>
-                <p class="date">Ngày đăng: 14/04/2015</p>
-                <div class="desc">
-                    <p>
-                        <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Ông
-                            Nguyễn Quốc Hiệp - Chủ tịch Hội đồng quản trị Công ty Cổ phần Đầu Tư Dầu Khí Toàn Cầu
-                            (GP.INVEST) cho biết, trong cơ cấu giá thành bất động sản, nguyên nhân làm giá thành
-                            cao chính là cách tính giá chuyển quyền sử dụng đất hiện nay.</span></p>
-                    <span><i class="fa fa-map-marker"></i> Hồ Chí Minh</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>300.000.000đ</span>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>

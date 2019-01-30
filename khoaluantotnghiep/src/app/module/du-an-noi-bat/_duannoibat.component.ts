@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DUAN } from 'src/app/model/duan';
+import { ds_duan } from 'src/app/model/mock_duan';
+import { DuAnService } from 'src/app/service/duan.service';
 
 @Component({
     selector: 'du-an-noi-bat',
@@ -6,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_duannoibat.component.scss']
 })
 export class DuAnNoiBatComponent implements OnInit {
-    constructor() { }
+    //Du liệu từ mock
+    dsDuAN: DUAN[] = [];
+    loai = "nổi bật";
+    constructor(private serviceDuAn: DuAnService) {
+        this.dsDuAN = serviceDuAn.layDanhSachDuAnTheoLoaiDuAn(this.loai);
+    }
 
     ngOnInit(): void { }
 }

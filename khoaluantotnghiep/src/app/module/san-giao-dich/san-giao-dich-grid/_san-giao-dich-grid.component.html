@@ -1,11 +1,11 @@
 <div class="project-block project-grid clearfix">
     <div class="row">
         <!--du an 1-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box" *ngFor="let duan of dsDuAN">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
-                    <a href="du-an/opal-riverside.html" title="OPAL RIVERSIDE">
-                        <img src="..\assets\images\product\3.png" class="img-responsive" />
+                    <a href="du-an/opal-riverside.html" title="{{duan.tenDuAn}}">
+                        <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}" class="img-responsive" />
                     </a>
                     <span class="new">New</span>
                     <div class="thumbnail">
@@ -16,14 +16,13 @@
                 </div>
                 <div class="right-block">
                     <h2 class="name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        <a href="du-an/opal-riverside.html" title="OPAL RIVERSIDE">OPAL
-                            RIVERSIDE</a>
+                        <a href="du-an/opal-riverside.html" title="{{duan.tenDuAn}}">{{duan.tenDuAn}}</a>
                     </h2>
                 </div>
             </div>
         </div>
         <!--du an 2-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/sunview-town.html" title="SUNVIEW TOWN">
@@ -42,9 +41,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 3-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/gold-hill-center.html" title="GOLD HILL CENTER">
@@ -63,9 +62,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 4-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/saigonres-plaza.html" title="SAIGONRES PLAZA">
@@ -84,9 +83,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 5-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/topaz-city.html" title="TOPAZ CITY">
@@ -105,9 +104,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 6-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/golden-west.html" title="GOLDEN WEST">
@@ -126,9 +125,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 7-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/my-son-tower.html" title="MỸ SƠN TOWER">
@@ -146,9 +145,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 8-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/phu-gia-hung-apartment.html" title="PH&#218; GIA HƯNG APARTMENT">
@@ -168,9 +167,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 9-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/sunview-1-2.html" title="SUNVIEW 1&amp;2">
@@ -189,9 +188,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 10-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/the-morning-star.html" title="THE MORNING STAR">
@@ -210,9 +209,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 11-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/khu-do-thi-five-star.html" title="KHU Đ&#212; THỊ FIVE STAR">
@@ -231,9 +230,9 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--du an 12-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
+        <!-- <div class="col-md-3 col-sm-3 col-xs-12 project-item-box">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a href="du-an/khu-do-thi-hung-phuoc.html" title="KHU Đ&#212; THỊ HƯNG PHƯỚC">
@@ -252,6 +251,6 @@
                     </h2>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

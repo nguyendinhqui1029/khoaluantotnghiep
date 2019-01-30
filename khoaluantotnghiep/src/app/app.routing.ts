@@ -57,7 +57,7 @@ const routes: Routes = [
             { path: '', component: SanGiaoDichListComponent },
             { path: 'grid', component: SanGiaoDichGridComponent }]
     },
-    { path: 'san-giao-dich-chi-tiet', component: SanGiaoDichChiTietComponent },
+    { path: 'san-giao-dich-chi-tiet/:id', component: SanGiaoDichChiTietComponent },
     { path: 'thu-vien-anh', component: ThuVienAnhPageComponent },
     { path: 'lien-he', component: LienHeComponent },
     { path: 'dang-nhap', component: DangNhapComponent },
