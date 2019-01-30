@@ -18,6 +18,7 @@ import { SanGiaoDichChiTietComponent } from './pages/san-giao-dich-chi-tiet/_san
 import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.component';
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
+import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 
 const routes: Routes = [
     {
@@ -45,7 +46,7 @@ const routes: Routes = [
     },
     {
         //doi lai component chi tiet du an
-        path: 'chi-tiet-du-an/:id', component: SanGiaoDichChiTietComponent
+        path: 'chi-tiet-du-an/:id', component: DuAnChiTietComponent
     },
     { path: 'dich-vu', component: DichVuComponent },
     { path: 'tin-tuc', component: TinTucComponent },

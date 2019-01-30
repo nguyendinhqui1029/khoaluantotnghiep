@@ -53,6 +53,7 @@ import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.
 import { NoiDungTinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/noidung-tin-tuc-chi-tiet/_noidung-tin-tuc-chi-tiet.component';
 import { DuAnService } from './service/duan.service';
 import { GioiThieuService } from './service/gioithieu.service';
+import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import { GioiThieuService } from './service/gioithieu.service';
     TinTucNoiBatComponent, NoiDungThuVienAnhComponent, ThongTinCongTyComponent,
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
-    NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent,
+    NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent
   ],
   imports: [
     BrowserModule, routing
