@@ -15,7 +15,7 @@ export class DuAnChiTietModuleComponent implements OnInit {
     id: any = "";
     constructor(private router: ActivatedRoute) {
         this.id = this.router.snapshot.params["id"];
-
+        alert(this.id)
         this.noidungduan.forEach(element => {
             if (element.maDuAn === this.id) {
                 alert(element.maDuAn)
