@@ -55,6 +55,7 @@ import { DuAnService } from './service/duan.service';
 import { GioiThieuService } from './service/gioithieu.service';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-t
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent,
+    DuAnChiTietModuleComponent, AdminComponent
 
 
 

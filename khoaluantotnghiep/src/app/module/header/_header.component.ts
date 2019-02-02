@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MENU } from '../../model/menu';
 import { ds_menu } from '../../model/mock_menu';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
 
