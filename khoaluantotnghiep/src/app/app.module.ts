@@ -56,6 +56,18 @@ import { GioiThieuService } from './service/gioithieu.service';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
 import { AdminComponent } from './admin/admin.component';
+import { HeaderAdminComponent } from './admin/module-admin/header-admin/_header-admin.component';
+import { FooterAdminComponent } from './admin/module-admin/footer-admin/_footer-admin.component';
+import { SlideBarComponent } from './admin/module-admin/slidebar/_slidebar.component';
+import { MainContentComponent } from './admin/module-admin/main-content/_main-content.component';
+import { SmallBoxComponent } from './admin/module-admin/main-content/small-box/_small-box.component';
+import { ChartViewComponent } from './admin/module-admin/main-content/chart-view/_chart-view.component';
+import { ChatBoxComponent } from './admin/module-admin/main-content/chat-box/_chat-box.component';
+import { ToDoListComponent } from './admin/module-admin/main-content/todo-list/_todo-list.component';
+import { QuickMailComponent } from './admin/module-admin/main-content/quick-mail/_quick-mail.component';
+import { MapBoxComponent } from './admin/module-admin/main-content/map-box/_map-box.component';
+import { SaleGraphComponent } from './admin/module-admin/main-content/sale-graph/_sale-graph.component';
+import { CalendarViewComponent } from './admin/module-admin/main-content/calendar-view/_calendar-view.component';
 
 
 
@@ -75,11 +87,13 @@ import { AdminComponent } from './admin/admin.component';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent, AdminComponent
+    DuAnChiTietModuleComponent, AdminComponent,
 
 
-
-
+    // Page admin
+    HeaderAdminComponent, FooterAdminComponent, SlideBarComponent, MainContentComponent,
+    SmallBoxComponent, ChartViewComponent, ChatBoxComponent, ToDoListComponent, QuickMailComponent, MapBoxComponent,
+    SaleGraphComponent, CalendarViewComponent
   ],
   imports: [
     BrowserModule, routing
