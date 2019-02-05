@@ -68,6 +68,7 @@ import { QuickMailComponent } from './admin/module-admin/main-content/quick-mail
 import { MapBoxComponent } from './admin/module-admin/main-content/map-box/_map-box.component';
 import { SaleGraphComponent } from './admin/module-admin/main-content/sale-graph/_sale-graph.component';
 import { CalendarViewComponent } from './admin/module-admin/main-content/calendar-view/_calendar-view.component';
+import { SanGiaoDichService } from './service/sangiaodich.service';
 
 
 
@@ -98,7 +99,7 @@ import { CalendarViewComponent } from './admin/module-admin/main-content/calenda
   imports: [
     BrowserModule, routing
   ],
-  providers: [DuAnService, GioiThieuService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

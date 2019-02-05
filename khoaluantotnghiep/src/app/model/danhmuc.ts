@@ -2,9 +2,11 @@ export class DANHMUC {
     maDanhMuc: any;
     tenDanhMuc: any;
     trangThai: any;
-    constructor(maDanhMuc, tenDanhMuc, trangThai) {
+    isActive: boolean;
+    constructor(maDanhMuc, tenDanhMuc, trangThai, isAcitve) {
         this.maDanhMuc = maDanhMuc;
         this.tenDanhMuc = tenDanhMuc;
         this.trangThai = trangThai;
+        this.isActive = isAcitve;
     }
 }

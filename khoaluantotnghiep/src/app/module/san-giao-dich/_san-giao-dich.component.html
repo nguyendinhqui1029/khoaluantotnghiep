@@ -34,8 +34,9 @@
 
     <div class="property-tabs">
         <ul class="nav nav-tabs">
-            <li class="active" role="presentation"><a [routerLink]="['/'+pageCurrent]">Mua b&#225;n</a></li>
-            <li role="presentation"><a [routerLink]="['/'+pageCurrent]">Cho thu&#234;</a></li>
+            <li role="presentation" *ngFor="let danhmuc of ds_danhmuc" [ngClass]="{'active':danhmuc.isActive}" (click)="buttonChoThueClick(danhmuc.maDanhMuc)">
+                <a [routerLink]="[pagethue]">{{danhmuc.tenDanhMuc}}</a>
+            </li>
         </ul>
         <div class="property-block property-list clearfix">
             <div class="row">
@@ -45,6 +46,7 @@
         </div>
     </div>
     <router-outlet></router-outlet>
+
     <!--phân trang-->
     <div class="navigation">
         <ul class="pagination">
