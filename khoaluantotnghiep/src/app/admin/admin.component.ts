@@ -12,10 +12,13 @@ import { Component, OnInit } from '@angular/core';
         '../../assets/admin/bower_components/morris.js/morris.css',
         '../../assets/admin/bower_components/jvectormap/jquery-jvectormap.css',
         '../../assets/admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
-        "../../assets/admin/bower_components/bootstrap-daterangepicker/daterangepicker.css"]
+        "../../assets/admin/bower_components/bootstrap-daterangepicker/daterangepicker.css",
+    ]
 })
 export class AdminComponent implements OnInit {
     constructor() { }
 
+
     ngOnInit(): void { }
+
 }

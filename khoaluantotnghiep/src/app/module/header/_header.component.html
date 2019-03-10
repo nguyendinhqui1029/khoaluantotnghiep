@@ -9,24 +9,10 @@
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                         <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}">
                             <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
-                                {{menu.nameMenu}}</a></li>
+                                {{menu.nameMenu}}</a>
+                        </li>
                     </ul>
                     <div class="show-mobile hidden-lg hidden-md">
-                        <!-- <div class="quick-user">
-                            <div class="quickaccess-toggle">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="inner-toggle">
-                                <ul class="login links">
-                                    <li>
-                                        <a [routerLink]="['/dang-ky']"><i class="fa fa-sign-in"></i> Đăng ký</a>
-                                    </li>
-                                    <li>
-                                        <a [routerLink]="['/dang-nhap']"><i class="fa fa-key"></i> Đăng nhập</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="quick-access">
                             <div class="quickaccess-toggle">
                                 <i class="fa fa-list"></i>
@@ -52,7 +38,8 @@
                 <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
                     <div class="logo">
                         <a [routerLink]="['/trang-chu']" title="{{congty.tenCongTy}}">
-                            <img alt="{{congty.tenCongTy}}" src="../assets/images/icon/{{congty.logoCongTy}}" class="img-responsive" />
+                            <img alt="{{congty.tenCongTy}}" src="../assets/images/icon/{{congty.logoCongTy}}"
+                                class="img-responsive" />
                         </a>
                     </div>
                 </div>
@@ -79,8 +66,9 @@
                 <div class="col-md-12 clearfix">
                     <nav class="navbar nav-menu">
                         <div class="navbar-header">
-                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#mobile-menu"
-                                aria-controls="mobile-menu" aria-expanded="true" (click)="toggleMenu()">
+                            <button class="navbar-toggle" type="button" data-toggle="collapse"
+                                data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="true"
+                                (click)="toggleMenu()">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -88,7 +76,8 @@
                         </div>
                         <nav id="mobile-menu" class="mobile-menu navbar-collapse collapse" aria-expanded="false">
                             <ul class="menu nav navbar-nav">
-                                <li *ngFor="let menu of menu_bottom;" [ngClass]="{'level0':true,'active':menu.statusMenu}">
+                                <li *ngFor="let menu of menu_bottom;"
+                                    [ngClass]="{'level0':true,'active':menu.statusMenu}">
                                     <a class="" [routerLink]="[menu.codeMenu]"><span>{{menu.nameMenu}}</span></a></li>
                             </ul>
                         </nav>

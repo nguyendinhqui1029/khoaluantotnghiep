@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeNuService } from 'src/app/service/menu.service';
 
 @Component({
     selector: 'header-admin-component',
@@ -15,10 +16,23 @@ import { Component, OnInit } from '@angular/core';
         "../../../../assets/admin/bower_components/bootstrap-daterangepicker/daterangepicker.css"]
 })
 export class HeaderAdminComponent implements OnInit {
-
-    constructor() {
+    trangthai: boolean = true;
+    constructor(private MenuService: MeNuService) {
 
     }
+    showslidebar() {
+        if (this.trangthai === true) {
+            this.MenuService.setTrangThaiSlideBar(false);
+            this.trangthai = false;
+
+        }
+        else {
+            this.MenuService.setTrangThaiSlideBar(true);
+            this.trangthai = true;
+        }
+
+    }
+
 
     ngOnInit(): void {
 

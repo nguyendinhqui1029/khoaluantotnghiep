@@ -69,6 +69,10 @@ import { MapBoxComponent } from './admin/module-admin/main-content/map-box/_map-
 import { SaleGraphComponent } from './admin/module-admin/main-content/sale-graph/_sale-graph.component';
 import { CalendarViewComponent } from './admin/module-admin/main-content/calendar-view/_calendar-view.component';
 import { SanGiaoDichService } from './service/sangiaodich.service';
+import { QuanLyDuAnComponent } from '../app/admin/module-admin/pages/quan-ly-du-an/_quanly-duan.component';
+import { ContentRightQuanLyDuAnComponent } from './admin/module-admin/pages/quan-ly-du-an/content-right/_content-right-quanly-duan.component';
+import { ContentLeftQuanLyDuAnComponent } from './admin/module-admin/pages/quan-ly-du-an/content-left/_content-left-quanly-duan.component';
+import { MeNuService } from './service/menu.service';
 
 
 
@@ -94,12 +98,14 @@ import { SanGiaoDichService } from './service/sangiaodich.service';
     // Page admin
     HeaderAdminComponent, FooterAdminComponent, SlideBarComponent, MainContentComponent,
     SmallBoxComponent, ChartViewComponent, ChatBoxComponent, ToDoListComponent, QuickMailComponent, MapBoxComponent,
-    SaleGraphComponent, CalendarViewComponent
+    SaleGraphComponent, CalendarViewComponent,
+    //Module trong admin
+    QuanLyDuAnComponent, ContentRightQuanLyDuAnComponent, ContentLeftQuanLyDuAnComponent
   ],
   imports: [
     BrowserModule, routing
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MeNuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

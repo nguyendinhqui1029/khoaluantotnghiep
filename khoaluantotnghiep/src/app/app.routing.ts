@@ -20,6 +20,7 @@ import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 import { AdminComponent } from './admin/admin.component';
+import { QuanLyDuAnComponent } from './admin/module-admin/pages/quan-ly-du-an/_quanly-duan.component';
 
 const routes: Routes = [
     {
@@ -28,9 +29,7 @@ const routes: Routes = [
             { path: '', component: DuAnListComponent },
             { path: 'grid', component: DuAnGridComponent }]
     },
-    {
-        path: 'admin', component: AdminComponent
-    },
+
     {
         path: 'trang-chu', component: TrangChuComponent,
         children: [
@@ -69,6 +68,11 @@ const routes: Routes = [
     { path: 'gio-hang', component: GioHangComponent },
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
+    // Phần router admin
+    {
+        path: 'admin', component: AdminComponent
+    },
+    { path: 'admin/quanlyduan', component: QuanLyDuAnComponent },
 
 ];
 
