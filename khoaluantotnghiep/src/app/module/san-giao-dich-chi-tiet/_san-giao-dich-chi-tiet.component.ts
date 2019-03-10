@@ -13,16 +13,19 @@ export class SanGiaoDichChiTietModuleComponent implements OnInit {
     noidungduan: DUAN[] = ds_duan;
     duan: DUAN;
     id: any = "";
+    status: boolean;
+    tenHinh: String = "";
     constructor(private router: ActivatedRoute) {
         this.id = this.router.snapshot.params["id"];
-        //alert(this.id)
         this.noidungduan.forEach(element => {
             if (element.maDuAn === this.id) {
-                //alert(element.maDuAn)
                 this.duan = element;
             }
         });
+        this.tenHinh = this.duan.mangHinh[0].tenhinh;
     }
-
+    thayDoiHinh(value) {
+        this.tenHinh = value;
+    }
     ngOnInit(): void { }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SLIDER } from 'src/app/model/slider';
 import { ds_slider } from 'src/app/model/mock_slider';
-import { HINHANH } from 'src/app/model/hinhanh';
 @Component({
     selector: 'slider-component',
     templateUrl: './_slider.component.html',
