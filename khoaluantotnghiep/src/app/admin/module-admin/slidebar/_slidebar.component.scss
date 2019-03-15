@@ -1,5 +1,23 @@
-#toggle1{
-    width: 200px;
-    height: 100%;
-    min-width: 50px;
+.toggle{
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .responsive1column {
+        width: 8.33333%;
+        float: left;
+    }
+    .responsive2column {
+        width: 16.666667%;
+        float: left;
+    }
+    .responsive10column {
+        width: 83.33333%;
+        float: left;
+    }
+    .responsive11column {
+        width: 91.666663%;
+        float: left;
+    }
   }
