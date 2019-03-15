@@ -1,40 +1,60 @@
 var express = require('express');
 var app = express();
+var navigator = require('web-midi-api');
 
 var mongoose = require('mongoose');
 var user = 'KHOALUAN2019';
 var pass = 'khoaluan2019';
-var url = 'mongodb://' + user + ':' + pass + '@mongodb-1051-0.cloudclusters.net/KHOALUAN2019?authSource=admin';
-
+var databasename = 'KHOALUAN2019';
+var url = 'mongodb://' + user + ':' + pass + '@mongodb-1051-0.cloudclusters.net/' + databasename + '?authSource=admin';
+var urlLocal = 'mongodb://localhost/' + databasename;
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-mongoose.connect(url, { useNewUrlParser: true });
-var User = mongoose.model('User', { name: String, roles: Number, age: Number });
-app.get('/get-user', function (req, res) {
+// if (navigator.onLine) {
+//     mongoose.connect(url, { useNewUrlParser: true });
+// } else {
+//     mongoose.connect(urlLocal, { useNewUrlParser: true });
+// }
+//mongoose.connect('mongodb://localhost/KHOALUAN2019', { useNewUrlParser: true });
 
-    User.find({}, function (err, users) {
-        var userMap = {};
 
-        users.forEach(function (user) {
-            userMap[user._id] = user;
-        });
+app.get('/get-danh-muc', function (req, res) {
+    var DanhMuc = require('../model/danhmuc.js');
 
-        res.send(userMap);
-    });
+    mongoose.connect('mongodb://localhost:27017/KHOALUAN2019', { useNewUrlParser: true });
+    DanhMuc.find({}, {}, function (err, users) {
+        mongoose.connection.close();
+        if (err) {
+            res.send({ "error": err });
+        } else {
+            var dsDanhMuc = [];
+            users.forEach(function (user) {
+                dsDanhMuc.push(user);
+            })
+            res.send(dsDanhMuc);
+        }
+
+        //doSomethingHere 
+    })
 })
-app.post('/add-user', function (req, res) {
-    var name = req.body.name;
-    var age = req.body.age;
-    var role = req.body.roles;
-    var user1 = new User({ name: name, age: age, roles: role });
-    console.log(user1);
-    // user1.save(function (err, userObj) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log('saved successfully:', userObj);
-    //     }
-    // });
+
+app.post('/add-danh-muc', function (req, res) {
+    var madanhMuc = req.body.maDanhMuc;
+    var tendanhMuc = req.body.tenDanhMuc;
+    var trangthai = req.body.trangThai;
+    var activedanhMuc = req.body.active;
+
+    mongoose.connect('mongodb://localhost:27017/KHOALUAN2019', { useNewUrlParser: true });
+    const DanhMuc = require("../model/danhmuc.js");
+    const danhmuc = new DanhMuc({ maDanhMuc: madanhMuc, tenDanhMuc: tendanhMuc, trangThai: trangthai, isActive: activedanhMuc });
+    danhmuc.save(function (err) {
+        if (err) {
+            res.send({ "error": err });
+        }
+        else {
+            res.send(JSON.stringify(danhmuc));
+        }
+    });
 });
 
 var server = app.listen(8081, function () {
