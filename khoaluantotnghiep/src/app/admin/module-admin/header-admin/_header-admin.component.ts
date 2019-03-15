@@ -21,15 +21,15 @@ export class HeaderAdminComponent implements OnInit {
 
     }
     showslidebar() {
-        if (this.trangthai === true) {
-            this.MenuService.setTrangThaiSlideBar(false);
-            this.trangthai = false;
+        // if (this.trangthai === true) {
+        //     this.MenuService.setTrangThaiSlideBar(false);
+        //     this.trangthai = false;
 
-        }
-        else {
-            this.MenuService.setTrangThaiSlideBar(true);
-            this.trangthai = true;
-        }
+        // }
+        // else {
+        //     this.MenuService.setTrangThaiSlideBar(true);
+        //     this.trangthai = true;
+        // }
 
     }
 
