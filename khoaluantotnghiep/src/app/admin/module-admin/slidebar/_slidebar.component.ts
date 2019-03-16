@@ -24,18 +24,13 @@ export class SlideBarComponent implements OnInit {
 
     ds_menu_admin: MENU[] = ds_menu_admin;
     slide_bar: MENU[] = [];
-    show: boolean;
     constructor(private route: ActivatedRoute, private MenuService: MeNuService) {
-        this.ds_menu_admin.forEach(menuadmin => {
-            if (menuadmin.typeMenu === 3) {
-                this.slide_bar.push(menuadmin);
-            }
-        })
+
     }
 
 
     ngDoCheck() {
-        this.show = this.MenuService.getTrangThaiSlideBar();
+
 
 
     }
