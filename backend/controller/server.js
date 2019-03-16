@@ -11,43 +11,64 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //Require model
-// var M_DanhMuc = require('../model/m_danhmuc.js/index.js');
-// var M_CongTay = require('../model/m_danhmuc.js/index.js');
-// var M_DoiTac = require('../model/m_danhmuc.js/index.js');
-// var M_GioiThieu = require('../model/m_danhmuc.js/index.js');
-// var M_HinhAnh = require('../model/m_danhmuc.js/index.js');
-// var M_LoaiGiaoDich = require('../model/m_danhmuc.js/index.js');
-// var M_LoaiTinTuc = require('../model/m_danhmuc.js/index.js');
-// var M_Menu = require('../model/m_danhmuc.js/index.js');
-// var M_Slider = require('../model/m_danhmuc.js/index.js');
-// var M_TaiKhoan = require('../model/m_danhmuc.js/index.js');
-// var M_TinTuc = require('../model/m_danhmuc.js/index.js');
+var M_CongTay = require('../model/m_congty.js');
+//var M_DoiTac = require('../model/m_doitac.js');
+var M_GioiThieu = require('../model/m_gioithieu.js');
+var M_HinhAnh = require('../model/m_hinhanh.js');
+var M_LoaiGiaoDich = require('../model/m_loaigiaodich.js');
+//var M_LoaiTinTuc = require('../model/m_loaitintuc.js');
+var M_Menu = require('../model/m_menu.js');
+var M_Slider = require('../model/m_slider.js');
+var M_TaiKhoan = require('../model/m_taikhoan.js');
+var M_TinTuc = require('../model/m_tintuc.js');
+var M_DanhMuc = require('../model/m_danhmuc.js');
 //End Require model
 
 //Mongodb online
-mongoose.connect(urlLocal, { useNewUrlParser: true });
+mongoose.connect(url, { useNewUrlParser: true });
 //Mongodb offline
 //mongoose.connect(urlLocal, { useNewUrlParser: true });
 
 //danh muc
 // Lấy tất cả danh mục
 app.get('/get-all-danh-muc', function (req, res) {
-    console.log(req.ip);
+
 })
 
 //Lấy danh mục trong khoản nào đó
 app.get('/get-limit-danh-muc/:vtbd/:sl', function (req, res) {
-
+    var vtbd = req.params.vtbd;
+    var sl = req.params.sl;
+})
+//Lấy danh mục theo id
+app.get('/get-limit-danh-muc/:id', function (req, res) {
+    var idDanhMuc = req.params.id;
 })
 //Thêm danh mục
 app.post('/add-danh-muc', function (req, res) {
-    var madanhMuc = req.body.maDanhMuc;
-    var tendanhMuc = req.body.tenDanhMuc;
-    var trangthai = req.body.trangThai;
-    var activedanhMuc = req.body.active;
-
+    var maDanhMuc = req.body.maDanhMuc;
+    var tenDanhMuc = req.body.tenDanhMuc;
+    var trangThai = req.body.trangThai;
+    var activeDanhMuc = req.body.active;
+    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
 });
-
+//Sữa danh mục
+app.put('/update-danh-muc', function (req, res) {
+    var maDanhMuc = req.body.maDanhMuc;
+    var tenDanhMuc = req.body.tenDanhMuc;
+    var trangThai = req.body.trangThai;
+    var activeDanhMuc = req.body.active;
+    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
+    res.send(DanhMuc);
+});
+//Xóa danh mục
+app.delete('/delete-danh-muc', function (req, res) {
+    var maDanhMuc = req.body.maDanhMuc;
+    var tenDanhMuc = req.body.tenDanhMuc;
+    var trangThai = req.body.trangThai;
+    var activeDanhMuc = req.body.active;
+    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
+});
 //end danh muc
 
 //Cong ty
