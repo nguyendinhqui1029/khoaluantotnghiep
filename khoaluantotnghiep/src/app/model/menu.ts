@@ -5,7 +5,7 @@ export class MENU {
     statusMenu: boolean;
     iconMenu: any;
     classMenu: any;
-    typeMenu: any;
+    typeMenu: any;// 1: menu chinh, 2: menu con , 3: menu admin
     constructor(idMenu, nameMenu, codeMenu, statusMenu, iconMenu, classMenu, typeMenu) {
         this.idMenu = idMenu;
         this.nameMenu = nameMenu;
