@@ -25,13 +25,13 @@ app.get('/get-danh-muc', function (req, res) {
     DanhMuc.find({}, {}, function (err, users) {
         mongoose.connection.close();
         if (err) {
-            res.send({ "error": err });
+            res.send({ "error": err, "code": 500 });
         } else {
             var dsDanhMuc = [];
             users.forEach(function (user) {
                 dsDanhMuc.push(user);
             })
-            res.send(dsDanhMuc);
+            res.send({ "data": dsDanhMuc, "code": 200 });
         }
 
         //doSomethingHere 
@@ -49,10 +49,10 @@ app.post('/add-danh-muc', function (req, res) {
     const danhmuc = new DanhMuc({ maDanhMuc: madanhMuc, tenDanhMuc: tendanhMuc, trangThai: trangthai, isActive: activedanhMuc });
     danhmuc.save(function (err) {
         if (err) {
-            res.send({ "error": err });
+            res.send({ "error": err, "code": 500 });
         }
         else {
-            res.send(JSON.stringify(danhmuc));
+            res.send(res.send({ "data": danhmuc, "code": 200 }));
         }
     });
 });
