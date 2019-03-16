@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ds_menu_admin } from 'src/app/model/mock_menu_admin';
 import { MENU } from 'src/app/model/menu';
 import { ActivatedRoute } from '@angular/router';
 import { MeNuService } from 'src/app/service/menu.service';
@@ -22,7 +21,7 @@ export class SlideBarComponent implements OnInit {
 
 
 
-    ds_menu_admin: MENU[] = ds_menu_admin;
+    //ds_menu_admin: MENU[] = ds_menu_admin;
     slide_bar: MENU[] = [];
     constructor(private route: ActivatedRoute, private MenuService: MeNuService) {
 

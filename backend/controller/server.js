@@ -13,18 +13,25 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //Require model
-var M_CongTay = require('../model/m_congty.js');
-//var M_DoiTac = require('../model/m_doitac.js');
+var M_CongTy = require('../model/m_congty.js');
+var M_DoiTac = require('../model/m_doitac.js');
 var M_GioiThieu = require('../model/m_gioithieu.js');
 var M_HinhAnh = require('../model/m_hinhanh.js');
 var M_LoaiGiaoDich = require('../model/m_loaigiaodich.js');
-//var M_LoaiTinTuc = require('../model/m_loaitintuc.js');
+var M_LoaiTinTuc = require('../model/m_loaitintuc.js');
 var M_Menu = require('../model/m_menu.js');
 var M_Slider = require('../model/m_slider.js');
 var M_TaiKhoan = require('../model/m_taikhoan.js');
 var M_TinTuc = require('../model/m_tintuc.js');
 var M_DanhMuc = require('../model/m_danhmuc.js');
 //End Require model
+
+//require controller 
+var C_DanhMuc = require('./c_danhmuc.js');
+var C_GioiThieu = require('./c_gioithieu.js');
+//end require controller
+
+
 
 //Mongodb online
 mongoose.connect(url, { useNewUrlParser: true });
@@ -53,6 +60,7 @@ app.post('/add-danh-muc', function (req, res) {
     var trangThai = req.body.trangThai;
     var activeDanhMuc = req.body.active;
     var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
+
 });
 //Sữa danh mục
 app.put('/update-danh-muc', function (req, res) {
