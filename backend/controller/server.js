@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //Require model
-var M_CongTay = require('../model/m_congty.js');
+var M_CongTy = require('../model/m_congty.js');
 //var M_DoiTac = require('../model/m_doitac.js');
 var M_GioiThieu = require('../model/m_gioithieu.js');
 var M_HinhAnh = require('../model/m_hinhanh.js');
@@ -68,15 +68,185 @@ app.delete('/delete-danh-muc', function (req, res) {
     var trangThai = req.body.trangThai;
     var activeDanhMuc = req.body.active;
     var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
+    res.send(DanhMuc);
 });
 //end danh muc
 
-//Cong ty
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Công ty
+// Lấy tất cả Công ty
+app.get('/get-all-cong-ty', function (req, res) {
+
+})
+
+//Lấy Công ty trong khoản nào đó
+app.get('/get-limit-cong-ty/:vtbd/:sl', function (req, res) {
+    var vtbd = req.params.vtbd;
+    var sl = req.params.sl;
+})
+//Lấy Công ty theo id
+app.get('/get-limit-cong-ty/:id', function (req, res) {
+    var idCongTy = req.params.id;
+})
+//Thêm Công ty
+app.post('/add-cong-ty', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var CongTy = new M_CongTy({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
+//Sữa Công ty
+app.put('/update-cong-ty', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var CongTy = new M_CongTy({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
+
+//Xóa Công ty
+app.delete('/delete-danh-muc', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var CongTy = new M_CongTy({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
 //End cong ty
 
-//Doi tac
-//Doi tac
+//Đối tác
+// Lấy tất cả Đối tác
+app.get('/get-all-doi-tac', function (req, res) {
+
+})
+
+//Lấy Đối tác trong khoản nào đó
+app.get('/get-limit-doi-tac/:vtbd/:sl', function (req, res) {
+    var vtbd = req.params.vtbd;
+    var sl = req.params.sl;
+})
+//Lấy Đối tác theo id
+app.get('/get-limit-doi-tac/:id', function (req, res) {
+    var idDoiTac = req.params.id;
+})
+//Thêm Đối tác
+app.post('/add-doi-tac', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var DoiTac = new M_DanhMuc({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
+//Sữa Đối tác
+app.put('/update-doi-tac', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var CongTy = new M_CongTy({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
+
+//Xóa Đối tác
+app.delete('/delete-doi-tac', function (req, res) {
+    var tenCongTy = req.body.tenCongTy;
+    var logoCongTy = req.body.logoCongTy;
+    var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
+    var emailCongTy = req.body.emailCongTy;
+    var diaChiCongTy = req.body.diaChiCongTy;
+    var kinhDoCongTy = req.body.kinhDoCongTy;
+    var viDoCongTy = req.body.viDoCongTy;
+    var faxCongTy = req.body.faxCongTy;
+    var hotlineCongTy = req.body.hotlineCongTy;
+    var CongTy = new M_CongTy({
+        tenCongTy: tenCongTy,
+        logoCongTy: logoCongTy,
+        soDienThoaiCongTy: soDienThoaiCongTy,
+        emailCongTy: emailCongTy,
+        diaChiCongTy: diaChiCongTy,
+        kinhDoCongTy: kinhDoCongTy,
+        viDoCongTy: viDoCongTy,
+        faxCongTy: faxCongTy,
+        hotlineCongTy: hotlineCongTy
+    });
+});
+//End Đối tác
 
 //Du an
 //End du an
