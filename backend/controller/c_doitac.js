@@ -72,29 +72,29 @@ module.exports = function (mongoose, res) {
     }
     this.updateDoiTac = function (ObDoiTac) {
         var DoiTac = require('../model/m_doitac.js');
-        DoiTac.update({
-            maDoiTac: ObDoiTac.maDoiTac,
-            hoTen: ObDoiTac.tenDoiTac,
-            diaChi: ObDoiTac.diaChi,
-            sdt: ObDoiTac.sdt,
-            tinhThanhPho: ObDoiTac.tinhThanhPho,
-            quanHuyen: ObDoiTac.quanHuyen,
-            ngaySinh: ObDoiTac.ngaySinh,
-            loGo: ObDoiTac.loGo,
-            moTa: ObDoiTac.moTa,
-            user: ObDoiTac.user,
-            pass: ObDoiTac.pass,
-            loaiTaiKhoan: ObDoiTac.loaiTaiKhoan,
-            email: ObDoiTac.email,
-        }, function (err, data) {
-            mongoose.connection.close();
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+        DoiTac.update({ maDoiTac: ObDoiTac.maDoiTac },
+            {
+                hoTen: ObDoiTac.tenDoiTac,
+                diaChi: ObDoiTac.diaChi,
+                sdt: ObDoiTac.sdt,
+                tinhThanhPho: ObDoiTac.tinhThanhPho,
+                quanHuyen: ObDoiTac.quanHuyen,
+                ngaySinh: ObDoiTac.ngaySinh,
+                loGo: ObDoiTac.loGo,
+                moTa: ObDoiTac.moTa,
+                user: ObDoiTac.user,
+                pass: ObDoiTac.pass,
+                loaiTaiKhoan: ObDoiTac.loaiTaiKhoan,
+                email: ObDoiTac.email,
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
 
 }

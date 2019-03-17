@@ -75,30 +75,31 @@ module.exports = function (mongoose, res) {
     }
     this.updateTaiKhoan = function (ObTaiKhoan) {
         var TaiKhoan = require('../model/m_taikhoan.js');
-        TaiKhoan.update({
-            maTaiKhoan: ObTaiKhoan.maTaiKhoan,
-            hoTen: ObTaiKhoan.hoTen,
-            soDienThoai: ObTaiKhoan.soDienThoai,
-            tinhThanhPho: ObTaiKhoan.tinhThanhPho,
-            diaChi: ObTaiKhoan.diaChi,
-            quanHuyen: ObTaiKhoan.quanHuyen,
-            gioiTinh: ObTaiKhoan.gioiTinh,
-            ngaySinh: ObTaiKhoan.ngaySinh,
-            logo: ObTaiKhoan.logo,
-            moTa: ObTaiKhoan.moTa,
-            tenTaiKhoan: ObTaiKhoan.tenTaiKhoan,
-            email: ObTaiKhoan.email,
-            matKhau: ObTaiKhoan.matKhau,
-            loaiTaiKhoan: ObTaiKhoan.loaiTaiKhoan
-        }, function (err, data) {
-            mongoose.connection.close();
+        TaiKhoan.update(
+            { maTaiKhoan: ObTaiKhoan.maTaiKhoan },
+            {
+                hoTen: ObTaiKhoan.hoTen,
+                soDienThoai: ObTaiKhoan.soDienThoai,
+                tinhThanhPho: ObTaiKhoan.tinhThanhPho,
+                diaChi: ObTaiKhoan.diaChi,
+                quanHuyen: ObTaiKhoan.quanHuyen,
+                gioiTinh: ObTaiKhoan.gioiTinh,
+                ngaySinh: ObTaiKhoan.ngaySinh,
+                logo: ObTaiKhoan.logo,
+                moTa: ObTaiKhoan.moTa,
+                tenTaiKhoan: ObTaiKhoan.tenTaiKhoan,
+                email: ObTaiKhoan.email,
+                matKhau: ObTaiKhoan.matKhau,
+                loaiTaiKhoan: ObTaiKhoan.loaiTaiKhoan
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
 
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
 }

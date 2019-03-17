@@ -51,7 +51,7 @@ module.exports = function (mongoose, res) {
     }
     this.updateCongTy = function (ObCongTy) {
         var CongTy = require('../model/m_congty.js');
-        CongTy.update({ id: ObCongTy.id, tenCongTy: ObCongTy.tenCongTy, logoCongTy: ObCongTy.logoCongTy, soDienThoaiCongTy: ObCongTy.soDienThoaiCongTy, emailCongTy: ObCongTy.emailCongTy, diaChiCongTy: ObCongTy.diaChiCongTy, kinhDoCongTy: ObCongTy.kinhDoCongTy, viDoCongTy: ObCongTy.viDoCongTy, faxCongTy: ObCongTy.faxCongTy, hotlineCongTy: ObCongTy.hotlineCongTy }, function (err, data) {
+        CongTy.update({ id: ObCongTy.id }, { tenCongTy: ObCongTy.tenCongTy, logoCongTy: ObCongTy.logoCongTy, soDienThoaiCongTy: ObCongTy.soDienThoaiCongTy, emailCongTy: ObCongTy.emailCongTy, diaChiCongTy: ObCongTy.diaChiCongTy, kinhDoCongTy: ObCongTy.kinhDoCongTy, viDoCongTy: ObCongTy.viDoCongTy, faxCongTy: ObCongTy.faxCongTy, hotlineCongTy: ObCongTy.hotlineCongTy }, { multi: true }, function (err, data) {
             mongoose.connection.close();
 
             if (err) {

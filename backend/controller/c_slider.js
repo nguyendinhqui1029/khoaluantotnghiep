@@ -11,12 +11,12 @@ module.exports = function (mongoose, res) {
         Slider.find({}, {}, function (err, slider) {
             let mangSlider = [];
             mongoose.connection.close();
-            if (taikhoan.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+            if (slider.length > ((Number(vtbd) + Number(sluong)) - 1)) {
                 for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
                     mangSlider.push(slider[i]);
                 }
             } else {
-                for (var i = vtbd; i <= taikhoan.length - 1; i++) {
+                for (var i = vtbd; i <= slider.length - 1; i++) {
                     mangSlider.push(slider[i]);
                 }
             }
@@ -65,21 +65,22 @@ module.exports = function (mongoose, res) {
     }
     this.updateSlider = function (ObSlider) {
         var Slider = require('../model/m_slider.js');
-        Slider.update({
-            maSlider: ObSlider.maSlider,
-            mangHinh: ObSlider.mangHinh,
-            trangThai: ObSlider.trangThai,
-            loaiSlider: ObSlider.loaiSlider
-        }, function (err, data) {
-            mongoose.connection.close();
+        Slider.update(
+            { maSlider: ObSlider.maSlider },
+            {
+                mangHinh: ObSlider.mangHinh,
+                trangThai: ObSlider.trangThai,
+                loaiSlider: ObSlider.loaiSlider
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
 
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
 
 }

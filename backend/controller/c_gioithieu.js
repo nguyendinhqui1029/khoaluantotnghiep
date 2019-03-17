@@ -45,20 +45,21 @@ module.exports = function (mongoose, res) {
     }
     this.updateGioiThieu = function (ObGioiThieu) {
         var GioiThieu = require('../model/m_gioithieu.js');
-        GioiThieu.update({
-            magioithieu: ObGioiThieu.magioithieu,
-            tieude: ObGioiThieu.tieude,
-            noidung: ObGioiThieu.noidung,
-            icon: ObGioiThieu.icon
-        }, function (err, data) {
-            mongoose.connection.close();
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+        GioiThieu.update(
+            { magioithieu: ObGioiThieu.magioithieu },
+            {
+                tieude: ObGioiThieu.tieude,
+                noidung: ObGioiThieu.noidung,
+                icon: ObGioiThieu.icon
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
     this.getLimitDSGioiThieu = function (vtbd, sluong) {
         var GioiThieu = require('../model/m_gioithieu.js');
