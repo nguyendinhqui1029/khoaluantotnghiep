@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var congTySchema = new Schema({
+    id: String,
     tenCongTy: String,
     logoCongTy: String,
     soDienThoaiCongTy: String,

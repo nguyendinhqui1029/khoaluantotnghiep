@@ -1,21 +1,28 @@
-module.exports = function (mongoose, res, req) {
-    this.getDSGioiThieu = function () {
-        var GioiThieu = require('../model/gioithieu.js');
-        mongoose.connect('mongodb://localhost:27017/KHOALUAN2019', { useNewUrlParser: true });
-        GioiThieu.find({}, {}, function (err, gioithieu) {
+module.exports = function (mongoose, res) {
+    this.getAllDSGioiThieu = function () {
+        var GioiThieu = require('../model/m_gioithieu.js');
+        GioiThieu.find({}, function (err, gioithieu) {
             mongoose.connection.close();
             res.send(gioithieu);
         })
     }
+    this.getGioiThieubyID = function (magioithieu) {
+        var GioiThieu = require('../model/m_gioithieu.js');
+        GioiThieu.find({ magioithieu: magioithieu }, {}, function (err, gioithieu) {
+            mongoose.connection.close();
+            res.send({ 'data': gioithieu, 'code': 200 });
+        })
+    }
     this.addGioiThieu = function (ObGioiThieu) {
-        var GioiThieu = require('../model/gioithieu.js');
+        var GioiThieu = require('../model/m_gioithieu.js');
         const gioithieu = new GioiThieu({
-            maGioiThieu: ObGioiThieu.maGioiThieu,
-            tieuDe: ObGioiThieu.tieuDe,
-            noiDung: ObGioiThieu.noiDung,
+            magioithieu: ObGioiThieu.magioithieu,
+            tieude: ObGioiThieu.tieude,
+            noidung: ObGioiThieu.noidung,
             icon: ObGioiThieu.icon
         });
         gioithieu.save(function (err) {
+            mongoose.connection.close();
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
             }
@@ -24,46 +31,50 @@ module.exports = function (mongoose, res, req) {
             }
         });
     }
+    this.removeGioiThieu = function (magioithieu) {
+        var GioiThieu = require('../model/m_gioithieu.js');
+        GioiThieu.remove({ magioithieu: magioithieu }, function (err) {
+            mongoose.connection.close();
+            if (err) {
+                res.send({ 'error': err, 'code': 500 })
+            }
+            else {
+                res.send({ 'data': 'Remove successly', 'code': 200 });
+            }
+        });
+    }
+    this.updateGioiThieu = function (ObGioiThieu) {
+        var GioiThieu = require('../model/m_gioithieu.js');
+        GioiThieu.update({
+            magioithieu: ObGioiThieu.magioithieu,
+            tieude: ObGioiThieu.tieude,
+            noidung: ObGioiThieu.noidung,
+            icon: ObGioiThieu.icon
+        }, function (err, data) {
+            mongoose.connection.close();
+            if (err) {
+                res.send({ 'error': err, 'code': 500 })
+            }
+            else {
+                res.send({ 'data': data, 'code': 200 });
+            }
+        })
+    }
+    this.getLimitDSGioiThieu = function (vtbd, sluong) {
+        var GioiThieu = require('../model/m_gioithieu.js');
+        GioiThieu.find({}, {}, function (err, gioithieu) {
+            let mangGioiThieu = [];
+            mongoose.connection.close();
+            if (gioithieu.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+                for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
+                    mangGioiThieu.push(gioithieu[i]);
+                }
+            } else {
+                for (var i = vtbd; i <= gioithieu.length - 1; i++) {
+                    mangGioiThieu.push(gioithieu[i]);
+                }
+            }
+            res.send({ 'data': mangGioiThieu, 'code': 200 });
+        })
+    }
 }
-
-
-
-
-
-/*
-
-app.post('/add-gioi-thieu', function (req, res) {
-    var maGioiThieu = req.body.maGioiThieu;
-    var tieuDe = req.body.tieuDe;
-    var noiDung = req.body.noiDung;
-    var icon = req.body.icon;
-
-    mongoose.connect('mongodb://localhost:27017/KHOALUAN2019', { useNewUrlParser: true });
-    const GioiThieu = require("../model/gioithieu.js");
-    const gioithieu = new GioiThieu({ maGioiThieu: maGioiThieu, tieuDe: tieuDe, noiDung: noiDung, icon: icon });
-    gioithieu.save(function (err) {
-        if (err) console.log(err);
-    });
-});
-
-app.get('/get-gioi-thieu', function (req, res) {
-    var GioiThieu = require('../model/gioithieu.js');
-
-    mongoose.connect('mongodb://localhost:27017/KHOALUAN2019', { useNewUrlParser: true });
-    GioiThieu.find({}, {}, function (err, users) {
-        mongoose.connection.close();
-        console.log("Username supplied");
-        res.send(users);
-        //doSomethingHere
-    })
-})
-
-
-
-var server = app.listen(8081, function () {
-    var host = server.address().address
-    var port = server.address().port
-
-    console.log("Example app listening at http://%s:%s", host, port)
-})
-*/

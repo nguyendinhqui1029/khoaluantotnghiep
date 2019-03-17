@@ -30,6 +30,9 @@ var M_DuAn = require('../model/m_duan');
 //require controller 
 var C_DanhMuc = require('./c_danhmuc.js');
 var C_GioiThieu = require('./c_gioithieu.js');
+var C_CongTy = require('./c_congty.js');
+var C_DoiTac = require('./c_doitac.js');
+
 //end require controller
 
 //danh muc
@@ -98,7 +101,6 @@ app.put('/update-danh-muc', function (req, res) {
     var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: isActive });
     var c_danhmuc = new C_DanhMuc(mongoose, res);
     c_danhmuc.updateDanhMuc(DanhMuc);
-    //res.send(DanhMuc);
 });
 //Xóa danh mục
 app.delete('/delete-danh-muc', function (req, res) {
@@ -123,6 +125,8 @@ app.get('/get-all-cong-ty', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
+    var c_congty = new C_CongTy(mongoose, res);
+    c_congty.getAllDSCongTy();
 })
 
 //Lấy Công ty trong khoản nào đó
@@ -142,7 +146,9 @@ app.get('/get-cong-ty/:id', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var idCongTy = req.params.id;
+    var id = req.params.id;
+    var c_congty = new C_CongTy(mongoose, res);
+    c_congty.getCongTybyID(id);
 })
 //Thêm Công ty
 app.post('/add-cong-ty', function (req, res) {
@@ -151,6 +157,7 @@ app.post('/add-cong-ty', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
+    var id = req.body.id;
     var tenCongTy = req.body.tenCongTy;
     var logoCongTy = req.body.logoCongTy;
     var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
@@ -161,6 +168,7 @@ app.post('/add-cong-ty', function (req, res) {
     var faxCongTy = req.body.faxCongTy;
     var hotlineCongTy = req.body.hotlineCongTy;
     var CongTy = new M_CongTy({
+        id: id,
         tenCongTy: tenCongTy,
         logoCongTy: logoCongTy,
         soDienThoaiCongTy: soDienThoaiCongTy,
@@ -171,6 +179,9 @@ app.post('/add-cong-ty', function (req, res) {
         faxCongTy: faxCongTy,
         hotlineCongTy: hotlineCongTy
     });
+    var c_congty = new C_CongTy(mongoose, res);
+    c_congty.addCongTy(CongTy);
+
 });
 //Sữa Công ty
 app.put('/update-cong-ty', function (req, res) {
@@ -179,6 +190,7 @@ app.put('/update-cong-ty', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
+    var id = req.body.id;
     var tenCongTy = req.body.tenCongTy;
     var logoCongTy = req.body.logoCongTy;
     var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
@@ -189,6 +201,7 @@ app.put('/update-cong-ty', function (req, res) {
     var faxCongTy = req.body.faxCongTy;
     var hotlineCongTy = req.body.hotlineCongTy;
     var CongTy = new M_CongTy({
+        id: id,
         tenCongTy: tenCongTy,
         logoCongTy: logoCongTy,
         soDienThoaiCongTy: soDienThoaiCongTy,
@@ -199,6 +212,8 @@ app.put('/update-cong-ty', function (req, res) {
         faxCongTy: faxCongTy,
         hotlineCongTy: hotlineCongTy
     });
+    var c_congty = new C_CongTy(mongoose, res);
+    c_congty.updateCongTy(CongTy);
 });
 
 //Xóa Công ty
@@ -208,7 +223,9 @@ app.delete('/delete-cong-ty', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var tenCongTy = req.body.tenCongTy;
+    var id = req.body.id;
+    var c_congty = new C_CongTy(mongoose, res);
+    c_congty.removeCongTy(id);
 });
 //End cong ty
 
@@ -220,7 +237,8 @@ app.get('/get-all-doi-tac', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.getAllDSDoiTac();
 })
 
 //Lấy Đối tác trong khoản nào đó
@@ -232,6 +250,8 @@ app.get('/get-limit-doi-tac/:vtbd/:sl', function (req, res) {
     }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.getLimitDSDoiTac(vtbd, sl);
 })
 //Lấy Đối tác theo id
 app.get('/get-doi-tac/:id', function (req, res) {
@@ -241,6 +261,8 @@ app.get('/get-doi-tac/:id', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var idDoiTac = req.params.id;
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.getDoiTacbyID(idDoiTac);
 })
 //Thêm Đối tác
 app.post('/add-doi-tac', function (req, res) {
@@ -257,6 +279,7 @@ app.post('/add-doi-tac', function (req, res) {
     var quanHuyen = req.body.quanHuyen;
     var ngaySinh = req.body.ngaySinh;
     var loGo = req.body.loGo;
+    var moTa = req.body.moTa;
     var user = req.body.user;
     var pass = req.body.pass;
     var loaiTaiKhoan = req.body.loaiTaiKhoan;
@@ -276,6 +299,8 @@ app.post('/add-doi-tac', function (req, res) {
         loaiTaiKhoan: loaiTaiKhoan,
         email: email,
     });
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.addDoiTac(DoiTac);
 });
 //Sữa Đối tác
 app.put('/update-doi-tac', function (req, res) {
@@ -311,6 +336,8 @@ app.put('/update-doi-tac', function (req, res) {
         loaiTaiKhoan: loaiTaiKhoan,
         email: email,
     });
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.updateDoiTac(DoiTac);
 });
 
 //Xóa Đối tác
@@ -321,6 +348,8 @@ app.delete('/delete-doi-tac', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var maDoiTac = req.body.maDoiTac;
+    var c_doitac = new C_DoiTac(mongoose, res);
+    c_doitac.removeDoiTac(maDoiTac);
 });
 //End Đối tác
 
@@ -452,6 +481,8 @@ app.get('/get-all-gioi-thieu', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.getAllDSGioiThieu();
 
 })
 
@@ -464,6 +495,9 @@ app.get('/get-limit-gioi-thieu/:vtbd/:sl', function (req, res) {
     }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.getLimitDSGioiThieu(vtbd, sl);
+
 })
 //Lấy Gioi thieu theo id
 app.get('/get-gioi-thieu/:id', function (req, res) {
@@ -473,6 +507,8 @@ app.get('/get-gioi-thieu/:id', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var idGioiThieu = req.params.id;
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.getGioiThieubyID(idGioiThieu);
 })
 //Thêm Gioi thieu
 app.post('/add-gioi-thieu', function (req, res) {
@@ -485,14 +521,9 @@ app.post('/add-gioi-thieu', function (req, res) {
     var tieude = req.body.tieude;
     var noidung = req.body.noidung;
     var icon = req.body.icon;
-
-
-    var GioiThieu = new M_GioiThieu({
-        magioithieu: magioithieu,
-        tieude: tieude,
-        noidung: noidung,
-        icon: icon
-    });
+    var GioiThieu = new M_GioiThieu({ magioithieu: magioithieu, tieude: tieude, noidung: noidung, icon: icon });
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.addGioiThieu(GioiThieu);
 });
 //Sữa Gioi thieu
 app.put('/update-gioi-thieu', function (req, res) {
@@ -513,6 +544,8 @@ app.put('/update-gioi-thieu', function (req, res) {
         noidung: noidung,
         icon: icon
     });
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.updateGioiThieu(GioiThieu);
 });
 
 //Xóa Gioi thieu
@@ -522,7 +555,9 @@ app.delete('/delete-gioi-thieu', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var maGioiThieu = req.body.maGioiThieu;
+    var magioithieu = req.body.magioithieu;
+    var c_gioithieu = new C_GioiThieu(mongoose, res);
+    c_gioithieu.removeGioiThieu(magioithieu);
 });
 //End gioi thieu
 
