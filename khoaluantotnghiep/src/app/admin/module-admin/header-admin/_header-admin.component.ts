@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MeNuService } from 'src/app/service/menu.service';
+import { $ } from 'protractor';
 
 @Component({
     selector: 'header-admin-component',
@@ -21,15 +22,23 @@ export class HeaderAdminComponent implements OnInit {
 
     }
     showslidebar() {
-        // if (this.trangthai === true) {
-        //     this.MenuService.setTrangThaiSlideBar(false);
-        //     this.trangthai = false;
+        if (this.trangthai === true) { //Thu nhỏ
+            // this.MenuService.setTrangThaiSlideBar(false);
+            // this.trangthai = false;
+            const $ = window["$"];
+            if ($('body').hasClass('sidebar-mini')) {
+                $('body').removeClass('sidebar-mini');
+            }
+            else {
+                $('body').addClass('sidebar-mini');
+            }
+        }
+        else {
+            // this.MenuService.setTrangThaiSlideBar(true); //Gian ra
+            // this.trangthai = true;
+            // const $ = window["$"];
 
-        // }
-        // else {
-        //     this.MenuService.setTrangThaiSlideBar(true);
-        //     this.trangthai = true;
-        // }
+        }
 
     }
 

@@ -18,6 +18,6 @@ var doiTacSchema = new Schema({
     quanHuyen: String,
     tinhThanhPho: String,
     trangThai: Number,
-    loaiDuAn: String,
+    loaiDuAn: String
 });
 module.exports = mongoose.model('doitac', doiTacSchema);
