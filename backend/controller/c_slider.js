@@ -65,21 +65,22 @@ module.exports = function (mongoose, res) {
     }
     this.updateSlider = function (ObSlider) {
         var Slider = require('../model/m_slider.js');
-        Slider.update({
-            maSlider: ObSlider.maSlider,
-            mangHinh: ObSlider.mangHinh,
-            trangThai: ObSlider.trangThai,
-            loaiSlider: ObSlider.loaiSlider
-        }, function (err, data) {
-            mongoose.connection.close();
+        Slider.update(
+            { maSlider: ObSlider.maSlider },
+            {
+                mangHinh: ObSlider.mangHinh,
+                trangThai: ObSlider.trangThai,
+                loaiSlider: ObSlider.loaiSlider
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
 
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
 
 }

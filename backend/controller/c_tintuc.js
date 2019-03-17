@@ -69,25 +69,28 @@ module.exports = function (mongoose, res) {
     }
     this.updateTinTuc = function (ObTinTuc) {
         var TinTuc = require('../model/m_tintuc.js');
-        TinTuc.update({
-            matintuc: ObTinTuc.matintuc,
-            tentintuc: ObTinTuc.tentintuc,
-            trangthai: ObTinTuc.trangthai,
-            noidungchitiet: ObTinTuc.noidungchitiet,
-            noidungtomtat: ObTinTuc.noidungtomtat,
-            ngaydang: ObTinTuc.ngaydang,
-            hinhanh: ObTinTuc.hinhanh,
-            loaitintuc: ObTinTuc.loaitintuc
-        }, function (err, data) {
-            mongoose.connection.close();
+        TinTuc.update(
+            {
+                matintuc: ObTinTuc.matintuc,
+            },
+            {
+                tentintuc: ObTinTuc.tentintuc,
+                trangthai: ObTinTuc.trangthai,
+                noidungchitiet: ObTinTuc.noidungchitiet,
+                noidungtomtat: ObTinTuc.noidungtomtat,
+                ngaydang: ObTinTuc.ngaydang,
+                hinhanh: ObTinTuc.hinhanh,
+                loaitintuc: ObTinTuc.loaitintuc
+            }, { multi: true }, function (err, data) {
+                mongoose.connection.close();
 
-            if (err) {
-                res.send({ 'error': err, 'code': 500 })
-            }
-            else {
-                res.send({ 'data': data, 'code': 200 });
-            }
-        })
+                if (err) {
+                    res.send({ 'error': err, 'code': 500 })
+                }
+                else {
+                    res.send({ 'data': data, 'code': 200 });
+                }
+            })
     }
 
 }
