@@ -23,12 +23,21 @@ var M_Slider = require('../model/m_slider.js');
 var M_TaiKhoan = require('../model/m_taikhoan.js');
 var M_TinTuc = require('../model/m_tintuc.js');
 var M_DanhMuc = require('../model/m_danhmuc.js');
-var M_DuAn = require('../model/m_duan');
+var M_DuAn = require('../model/m_duan.js');
 //End Require model
 
 //require controller 
 var C_DanhMuc = require('./c_danhmuc.js');
-var C_GioiThieu = require('./c_gioithieu.js');
+//var C_GioiThieu = require('./c_gioithieu.js');
+//var C_CongTy = require('./c_congty.js');
+//var C_GioiThieu = require('./c_gioithieu.js');
+//var C_LoaiGiaoDich = require('./c_loaigiaodich.js');
+//var C_LoaiTinTuc = require('./c_loaitintuc.js');
+//var C_Menu = require('./c_menu.js');
+var C_Slider = require('./c_slider.js');
+var C_TaiKhoan = require('./c_taikhoan.js');
+var C_TinTuc = require('./c_tintuc.js');
+//var C_DuAn = require('./c_duan.js');
 //end require controller
 
 //danh muc
@@ -50,8 +59,8 @@ app.get('/get-limit-danh-muc/:vtbd/:sl', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var vtbd = req.params.vtbd;
-    var sl = req.params.sl;
+    var vtbd = Number(req.params.vtbd);
+    var sl = Number(req.params.sl);
 })
 //Lấy danh mục theo id
 app.get('/get-danh-muc/:id', function (req, res) {
@@ -680,6 +689,8 @@ app.get('/get-all-tin-tuc', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.getAllDSTinTuc();
 
 })
 
@@ -692,6 +703,8 @@ app.get('/get-limit-tin-tuc/:vtbd/:sl', function (req, res) {
     }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.getLimitDSTinTuc(vtbd, sl);
 })
 //Lấy tin tuc theo id
 app.get('/get-tin-tuc/:id', function (req, res) {
@@ -701,6 +714,8 @@ app.get('/get-tin-tuc/:id', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var matintuc = req.params.id;
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.getTinTucbyID(matintuc);
 })
 //Thêm tin tuc
 app.post('/add-tin-tuc', function (req, res) {
@@ -711,7 +726,7 @@ app.post('/add-tin-tuc', function (req, res) {
     }
     var matintuc = req.body.matintuc;
     var tentintuc = req.body.tentintuc;
-    var trangthai = req.body.trangThai;
+    var trangthai = req.body.trangthai;
     var noidungchitiet = req.body.noidungchitiet;
     var noidungtomtat = req.body.noidungtomtat;
     var ngaydang = req.body.ngaydang;
@@ -727,6 +742,8 @@ app.post('/add-tin-tuc', function (req, res) {
         hinhanh: hinhanh,
         loaitintuc: loaitintuc
     });
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.addTinTuc(TinTuc);
 });
 //Sữa Tin tuc
 app.put('/update-tin-tuc', function (req, res) {
@@ -737,7 +754,7 @@ app.put('/update-tin-tuc', function (req, res) {
     }
     var matintuc = req.body.matintuc;
     var tentintuc = req.body.tentintuc;
-    var trangthai = req.body.trangThai;
+    var trangthai = req.body.trangthai;
     var noidungchitiet = req.body.noidungchitiet;
     var noidungtomtat = req.body.noidungtomtat;
     var ngaydang = req.body.ngaydang;
@@ -753,6 +770,8 @@ app.put('/update-tin-tuc', function (req, res) {
         hinhanh: hinhanh,
         loaitintuc: loaitintuc
     });
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.updateTinTuc(TinTuc);
 });
 
 //Xóa Tin tuc
@@ -763,6 +782,8 @@ app.delete('/delete-tin-tuc', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var matintuc = req.body.matintuc;
+    var c_tintuc = new C_TinTuc(mongoose, res);
+    c_tintuc.removeTinTuc(matintuc);
 });
 //End tin tuc
 
@@ -865,7 +886,8 @@ app.get('/get-all-slider', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.getAllDSSlider();
 })
 
 //Lấy Slider trong khoản nào đó
@@ -877,6 +899,8 @@ app.get('/get-limit-slider/:vtbd/:sl', function (req, res) {
     }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.getLimitDSSlider(vtbd, sl);
 })
 //Lấy Slider theo id
 app.get('/get-slider/:id', function (req, res) {
@@ -886,6 +910,8 @@ app.get('/get-slider/:id', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var maSlider = req.params.maSlider;
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.getSliderbyID(maSlider);
 })
 //Thêm Slider
 app.post('/add-slider', function (req, res) {
@@ -899,12 +925,14 @@ app.post('/add-slider', function (req, res) {
     var trangThai = req.body.trangThai;
     var loaiSlider = req.body.loaiSlider;
 
-    var Menu = new M_Menu({
+    var Slider = new M_Slider({
         maSlider: maSlider,
         mangHinh: mangHinh,
         trangThai: trangThai,
         loaiSlider: loaiSlider
     });
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.addSlider(Slider);
 });
 //Sữa Slider
 app.put('/update-slider', function (req, res) {
@@ -918,12 +946,14 @@ app.put('/update-slider', function (req, res) {
     var trangThai = req.body.trangThai;
     var loaiSlider = req.body.loaiSlider;
 
-    var Menu = new M_Menu({
+    var Slider = new M_Slider({
         maSlider: maSlider,
         mangHinh: mangHinh,
         trangThai: trangThai,
         loaiSlider: loaiSlider
     });
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.updateSlider(Slider);
 });
 
 //Xóa Slider
@@ -934,6 +964,8 @@ app.delete('/delete-slider', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var maSlider = req.body.maSlider;
+    var c_slider = new C_Slider(mongoose, res);
+    c_slider.removeSlider(maSlider);
 });
 //End slider
 
@@ -946,7 +978,8 @@ app.get('/get-all-tai-khoan', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.getAllDSTaiKhoan();
 })
 
 //Lấy Tai khoan  trong khoản nào đó
@@ -958,6 +991,8 @@ app.get('/get-limit-tai-khoan/:vtbd/:sl', function (req, res) {
     }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.getLimitDSTaiKhoan(vtbd, sl);
 })
 //Lấy Tai khoan  theo id
 app.get('/get-tai-khoan/:id', function (req, res) {
@@ -966,7 +1001,9 @@ app.get('/get-tai-khoan/:id', function (req, res) {
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var maSlider = req.params.maSlider;
+    var maTaiKhoan = req.params.maSlider;
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.getTaiKhoanbyID(maTaiKhoan);
 })
 //Thêm Tai khoan 
 app.post('/add-tai-khoan', function (req, res) {
@@ -1006,6 +1043,8 @@ app.post('/add-tai-khoan', function (req, res) {
         matKhau: matKhau,
         loaiTaiKhoan: loaiTaiKhoan
     });
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.addTaiKhoan(TaiKhoan);
 });
 //Sữa Tai khoan 
 app.put('/update-tai-khoan', function (req, res) {
@@ -1045,6 +1084,8 @@ app.put('/update-tai-khoan', function (req, res) {
         matKhau: matKhau,
         loaiTaiKhoan: loaiTaiKhoan
     });
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.updateTaiKhoan(TaiKhoan);
 });
 
 //Xóa Tai khoan 
@@ -1055,6 +1096,8 @@ app.delete('/delete-tai-khoan', function (req, res) {
         mongoose.connect(url, { useNewUrlParser: true });
     }
     var maTaiKhoan = req.body.maTaiKhoan;
+    var c_taikhoan = new C_TaiKhoan(mongoose, res);
+    c_taikhoan.removeTaiKhoan(maTaiKhoan);
 });
 //End tai khoan
 

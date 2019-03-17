@@ -11,9 +11,16 @@ module.exports = function (mongoose, res) {
         DanhMuc.find({}, {}, function (err, danhmuc) {
             let mangDanhMuc = [];
             mongoose.connection.close();
-            for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
-                mangDanhMuc.push(danhmuc[i]);
+            if (taikhoan.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+                for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
+                    mangDanhMuc.push(danhmuc[i]);
+                }
+            } else {
+                for (var i = vtbd; i <= taikhoan.length - 1; i++) {
+                    mangDanhMuc.push(danhmuc[i]);
+                }
             }
+
             res.send({ 'data': mangDanhMuc, 'code': 200 });
         })
     }
@@ -60,14 +67,14 @@ module.exports = function (mongoose, res) {
     }
     this.updateDanhMuc = function (ObDanhMuc) {
         var DanhMuc = require('../model/m_danhmuc.js');
-        DanhMuc.update({ maDanhMuc: ObDanhMuc.maDanhMuc, tenDanhMuc: ObDanhMuc.tenDanhMuc, trangThai: ObDanhMuc.trangThai, isActive: ObDanhMuc.isActive }, function (err) {
+        DanhMuc.update({ maDanhMuc: ObDanhMuc.maDanhMuc, tenDanhMuc: ObDanhMuc.tenDanhMuc, trangThai: ObDanhMuc.trangThai, isActive: ObDanhMuc.isActive }, function (err, data) {
             mongoose.connection.close();
 
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
             }
             else {
-                res.send({ 'data': DanhMuc, 'code': 200 });
+                res.send({ 'data': data, 'code': 200 });
             }
         })
     }

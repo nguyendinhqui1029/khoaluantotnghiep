@@ -1,16 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var doiTacSchema = new Schema({
+var duAnSchema = new Schema({
     maDuAn: String,
     tenDuAn: String,
     noiDungTomTat: String,
     noiDungChiTiet: String,
     mangHinh: Object,
-    ngayDang: {
-        type: Date,
-        default: Date.now
-    },
+    ngayDang: Date,
     doiTac: Object,
     giaTien: Number,
     loaiGiaoDich: Object,
@@ -20,4 +17,4 @@ var doiTacSchema = new Schema({
     trangThai: Number,
     loaiDuAn: String
 });
-module.exports = mongoose.model('duan', doiTacSchema);
+module.exports = mongoose.model('duan', duAnSchema);
