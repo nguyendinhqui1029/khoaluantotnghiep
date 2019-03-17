@@ -26,7 +26,7 @@ module.exports = function (mongoose, res) {
     }
     this.getLoaiTinTucbyID = function (maLoaiTinTuc) {
         var LoaiTinTuc = require('../model/m_loaitintuc.js');
-        LoaiTinTuc.find({ maLoaiTinTuc: maLoaiTinTuc }, {}, function (err, loaitintuc) {
+        LoaiTinTuc.find({ maloai: maLoaiTinTuc }, {}, function (err, loaitintuc) {
             mongoose.connection.close();
 
             res.send({ 'data': loaitintuc, 'code': 200 });
@@ -35,13 +35,9 @@ module.exports = function (mongoose, res) {
     this.addLoaiTinTuc = function (ObLoaiTinTuc) {
         var LoaiTinTuc = require('../model/m_loaitintuc.js');
         const loaitintuc = new LoaiTinTuc({
-            idLoaiTinTuc: ObLoaiTinTuc.idLoaiTinTuc,
-            nameLoaiTinTuc: ObLoaiTinTuc.nameLoaiTinTuc,
-            codeLoaiTinTuc: ObLoaiTinTuc.codeLoaiTinTuc,
-            statusLoaiTinTuc: ObLoaiTinTuc.statusLoaiTinTuc,
-            iconLoaiTinTuc: ObLoaiTinTuc.iconLoaiTinTuc,
-            classLoaiTinTuc: ObLoaiTinTuc.classLoaiTinTuc,
-            typeLoaiTinTuc: ObLoaiTinTuc.typeLoaiTinTuc
+            maloai: ObLoaiTinTuc.maloai,
+            tenloai: ObLoaiTinTuc.tenloai,
+            trangThai: ObLoaiTinTuc.trangThai
         });
 
         loaitintuc.save(function (err) {
@@ -58,7 +54,7 @@ module.exports = function (mongoose, res) {
     }
     this.removeLoaiTinTuc = function (maLoaiTinTuc) {
         var LoaiTinTuc = require('../model/m_loaitintuc.js');
-        LoaiTinTuc.remove({ idLoaiTinTuc: maLoaiTinTuc }, function (err) {
+        LoaiTinTuc.remove({ maloai: maLoaiTinTuc }, function (err) {
             mongoose.connection.close();
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
@@ -70,13 +66,9 @@ module.exports = function (mongoose, res) {
     }
     this.updateLoaiTinTuc = function (ObLoaiTinTuc) {
         var LoaiTinTuc = require('../model/m_loaitintuc.js');
-        LoaiTinTuc.update({ idLoaiTinTuc: ObLoaiTinTuc.idLoaiTinTuc }, {
-            nameLoaiTinTuc: ObLoaiTinTuc.nameLoaiTinTuc,
-            codeLoaiTinTuc: ObLoaiTinTuc.codeLoaiTinTuc,
-            statusLoaiTinTuc: ObLoaiTinTuc.statusLoaiTinTuc,
-            iconLoaiTinTuc: ObLoaiTinTuc.iconLoaiTinTuc,
-            classLoaiTinTuc: ObLoaiTinTuc.classLoaiTinTuc,
-            typeLoaiTinTuc: ObLoaiTinTuc.typeLoaiTinTuc
+        LoaiTinTuc.update({ maloai: ObLoaiTinTuc.maloai }, {
+            tenloai: ObLoaiTinTuc.tenloai,
+            trangThai: ObLoaiTinTuc.trangThai
         }, { multi: true }, function (err, data) {
             mongoose.connection.close();
 
