@@ -11,12 +11,12 @@ module.exports = function (mongoose, res) {
         Slider.find({}, {}, function (err, slider) {
             let mangSlider = [];
             mongoose.connection.close();
-            if (taikhoan.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+            if (slider.length > ((Number(vtbd) + Number(sluong)) - 1)) {
                 for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
                     mangSlider.push(slider[i]);
                 }
             } else {
-                for (var i = vtbd; i <= taikhoan.length - 1; i++) {
+                for (var i = vtbd; i <= slider.length - 1; i++) {
                     mangSlider.push(slider[i]);
                 }
             }

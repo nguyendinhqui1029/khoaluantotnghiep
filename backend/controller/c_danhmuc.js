@@ -11,12 +11,12 @@ module.exports = function (mongoose, res) {
         DanhMuc.find({}, {}, function (err, danhmuc) {
             let mangDanhMuc = [];
             mongoose.connection.close();
-            if (taikhoan.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+            if (danhmuc.length > ((Number(vtbd) + Number(sluong)) - 1)) {
                 for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
                     mangDanhMuc.push(danhmuc[i]);
                 }
             } else {
-                for (var i = vtbd; i <= taikhoan.length - 1; i++) {
+                for (var i = vtbd; i <= danhmuc.length - 1; i++) {
                     mangDanhMuc.push(danhmuc[i]);
                 }
             }

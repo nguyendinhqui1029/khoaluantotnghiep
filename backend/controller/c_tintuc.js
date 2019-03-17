@@ -11,12 +11,12 @@ module.exports = function (mongoose, res) {
         TinTuc.find({}, {}, function (err, tintuc) {
             let mangTinTuc = [];
             mongoose.connection.close();
-            if (taikhoan.length > ((Number(vtbd) + Number(sluong)) - 1)) {
+            if (tintuc.length > ((Number(vtbd) + Number(sluong)) - 1)) {
                 for (var i = vtbd; i <= (Number(vtbd) + Number(sluong)) - 1; i++) {
                     mangTinTuc.push(tintuc[i]);
                 }
             } else {
-                for (var i = vtbd; i <= taikhoan.length - 1; i++) {
+                for (var i = vtbd; i <= tintuc.length - 1; i++) {
                     mangTinTuc.push(tintuc[i]);
                 }
             }
