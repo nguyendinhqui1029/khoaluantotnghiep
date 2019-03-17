@@ -1,13 +1,13 @@
 module.exports = function (mongoose, res) {
     this.getAllDSDanhMuc = function () {
-        var DanhMuc = require('../model/danhmuc.js');
-        DanhMuc.find({}, {}, function (err, danhmuc) {
+        var DanhMuc = require('../model/m_danhmuc.js');
+        DanhMuc.find({}, function (err, danhmuc) {
             mongoose.connection.close();
             res.send(danhmuc);
         })
     }
     this.getLimitDSDanhMuc = function (vtbd, sluong) {
-        var DanhMuc = require('../model/danhmuc.js');
+        var DanhMuc = require('../model/m_danhmuc.js');
         DanhMuc.find({}, {}, function (err, danhmuc) {
             let mangDanhMuc = [];
             mongoose.connection.close();
@@ -17,8 +17,16 @@ module.exports = function (mongoose, res) {
             res.send({ 'data': mangDanhMuc, 'code': 200 });
         })
     }
+    this.getDanhMucbyID = function (maDanhMuc) {
+        var DanhMuc = require('../model/m_danhmuc.js');
+        DanhMuc.find({ maDanhMuc: maDanhMuc }, {}, function (err, danhmuc) {
+            mongoose.connection.close();
+
+            res.send({ 'data': danhmuc, 'code': 200 });
+        })
+    }
     this.addDanhMuc = function (ObDanhMuc) {
-        var DanhMuc = require('../model/danhmuc.js');
+        var DanhMuc = require('../model/m_danhmuc.js');
         const danhmuc = new DanhMuc({
             maDanhMuc: ObDanhMuc.maDanhMuc,
             tenDanhMuc: ObDanhMuc.tenDanhMuc,
@@ -34,4 +42,27 @@ module.exports = function (mongoose, res) {
             }
         });
     }
+    this.removeDanhMuc = function (maDanhMuc) {
+        var DanhMuc = require('../model/m_danhmuc.js');
+        DanhMuc.remove({ maDanhMuc: maDanhMuc }, function (err) {
+            if (err) {
+                res.send({ 'error': err, 'code': 500 })
+            }
+            else {
+                res.send({ 'data': 'Remove successly', 'code': 200 });
+            }
+        });
+    }
+    this.updateDanhMuc = function (ObDanhMuc) {
+        var DanhMuc = require('../model/m_danhmuc.js');
+        DanhMuc.update({ maDanhMuc: ObDanhMuc.maDanhMuc, tenDanhMuc: ObDanhMuc.tenDanhMuc, trangThai: ObDanhMuc.trangThai, isActive: ObDanhMuc.isActive }, function (err) {
+            if (err) {
+                res.send({ 'error': err, 'code': 500 })
+            }
+            else {
+                res.send({ 'data': DanhMuc, 'code': 200 });
+            }
+        })
+    }
+
 }

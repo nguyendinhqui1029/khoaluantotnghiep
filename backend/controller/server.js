@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var navigator = require('web-midi-api');
 
 var mongoose = require('mongoose');
 var user = 'KHOALUAN2019';
@@ -34,14 +33,15 @@ var C_GioiThieu = require('./c_gioithieu.js');
 
 
 //Mongodb online
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect(urlLocal, { useNewUrlParser: true });
 //Mongodb offline
 //mongoose.connect(urlLocal, { useNewUrlParser: true });
 
 //danh muc
 // Lấy tất cả danh mục
 app.get('/get-all-danh-muc', function (req, res) {
-
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.getAllDSDanhMuc();
 })
 
 //Lấy danh mục trong khoản nào đó
@@ -50,34 +50,39 @@ app.get('/get-limit-danh-muc/:vtbd/:sl', function (req, res) {
     var sl = req.params.sl;
 })
 //Lấy danh mục theo id
-app.get('/get-limit-danh-muc/:id', function (req, res) {
+app.get('/get-danh-muc/:id', function (req, res) {
     var idDanhMuc = req.params.id;
+
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.getDanhMucbyID(idDanhMuc);
+
 })
 //Thêm danh mục
 app.post('/add-danh-muc', function (req, res) {
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
-    var activeDanhMuc = req.body.active;
+    var activeDanhMuc = req.body.isActive;
     var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
-
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.addDanhMuc(DanhMuc);
 });
 //Sữa danh mục
 app.put('/update-danh-muc', function (req, res) {
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
-    var activeDanhMuc = req.body.active;
-    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
-    res.send(DanhMuc);
+    var isActive = req.body.isActive;
+    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: isActive });
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.updateDanhMuc(DanhMuc);
+    //res.send(DanhMuc);
 });
 //Xóa danh mục
 app.delete('/delete-danh-muc', function (req, res) {
     var maDanhMuc = req.body.maDanhMuc;
-    var tenDanhMuc = req.body.tenDanhMuc;
-    var trangThai = req.body.trangThai;
-    var activeDanhMuc = req.body.active;
-    var DanhMuc = new M_DanhMuc({ maDanhMuc: maDanhMuc, tenDanhMuc: tenDanhMuc, trangThai: trangThai, isActive: activeDanhMuc });
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.removeDanhMuc(maDanhMuc);
 });
 //end danh muc
 
