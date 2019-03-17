@@ -1,6 +1,6 @@
 module.exports = function (mongoose, res) {
     this.getAllDSDoiTac = function () {
-        var DoiTac = require('../model/m_doitac');
+        var DoiTac = require('../model/m_doitac.js');
         DoiTac.find({}, function (err, doitac) {
             mongoose.connection.close();
             res.send(doitac);
@@ -24,7 +24,7 @@ module.exports = function (mongoose, res) {
         })
     }
     this.getDoiTacbyID = function (maDoiTac) {
-        var DoiTac = require('../model/m_doitac');
+        var DoiTac = require('../model/m_doitac.js');
         DoiTac.find({ maDoiTac: maDoiTac }, {}, function (err, doitac) {
             mongoose.connection.close();
 
@@ -35,7 +35,7 @@ module.exports = function (mongoose, res) {
         var DoiTac = require('../model/m_doitac.js');
         const doitac = new DoiTac({
             maDoiTac: ObDoiTac.maDoiTac,
-            hoTen: ObDoiTac.tenDoiTac,
+            hoTen: ObDoiTac.hoTen,
             diaChi: ObDoiTac.diaChi,
             sdt: ObDoiTac.sdt,
             tinhThanhPho: ObDoiTac.tinhThanhPho,
@@ -59,7 +59,7 @@ module.exports = function (mongoose, res) {
         });
     }
     this.removeDoiTac = function (maDoiTac) {
-        var DoiTac = require('../model/m_doitac');
+        var DoiTac = require('../model/m_doitac.js');
         DoiTac.remove({ maDoiTac: maDoiTac }, function (err) {
             mongoose.connection.close();
             if (err) {
