@@ -20,6 +20,7 @@ module.exports = function (mongoose, res) {
                     mangDanhMuc.push(danhmuc[i]);
                 }
             }
+
             res.send({ 'data': mangDanhMuc, 'code': 200 });
         })
     }

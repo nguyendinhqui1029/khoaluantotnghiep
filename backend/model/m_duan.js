@@ -7,10 +7,7 @@ var duAnSchema = new Schema({
     noiDungTomTat: String,
     noiDungChiTiet: String,
     mangHinh: Object,
-    ngayDang: {
-        type: Date,
-        default: Date.now
-    },
+    ngayDang: Date,
     doiTac: Object,
     giaTien: Number,
     loaiGiaoDich: Object,

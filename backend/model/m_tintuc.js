@@ -7,10 +7,7 @@ var tinTucSchema = new Schema({
     trangthai: String,
     noidungchitiet: String,
     noidungtomtat: String,
-    ngaydang: {
-        type: Date,
-        default: Date.now
-    },
+    ngaydang: Date,
     hinhanh: Array,
     loaitintuc: Object
 });
