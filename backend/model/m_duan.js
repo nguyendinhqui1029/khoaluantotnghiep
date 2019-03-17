@@ -20,4 +20,4 @@ var doiTacSchema = new Schema({
     trangThai: Number,
     loaiDuAn: String
 });
-module.exports = mongoose.model('doitac', doiTacSchema);
+module.exports = mongoose.model('duan', doiTacSchema);

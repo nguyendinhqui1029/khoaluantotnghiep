@@ -33,7 +33,10 @@ module.exports = function (mongoose, res) {
             trangThai: ObDanhMuc.trangThai,
             isActive: ObDanhMuc.isActive
         });
+
         danhmuc.save(function (err) {
+            mongoose.connection.close();
+
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
             }
@@ -41,10 +44,12 @@ module.exports = function (mongoose, res) {
                 res.send({ 'data': danhmuc, 'code': 200 });
             }
         });
+
     }
     this.removeDanhMuc = function (maDanhMuc) {
         var DanhMuc = require('../model/m_danhmuc.js');
         DanhMuc.remove({ maDanhMuc: maDanhMuc }, function (err) {
+            mongoose.connection.close();
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
             }
@@ -56,6 +61,8 @@ module.exports = function (mongoose, res) {
     this.updateDanhMuc = function (ObDanhMuc) {
         var DanhMuc = require('../model/m_danhmuc.js');
         DanhMuc.update({ maDanhMuc: ObDanhMuc.maDanhMuc, tenDanhMuc: ObDanhMuc.tenDanhMuc, trangThai: ObDanhMuc.trangThai, isActive: ObDanhMuc.isActive }, function (err) {
+            mongoose.connection.close();
+
             if (err) {
                 res.send({ 'error': err, 'code': 500 })
             }
