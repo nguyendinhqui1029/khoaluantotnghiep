@@ -11,6 +11,8 @@ var urlLocal = 'mongodb://localhost/' + databasename;
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+var loaiKetNoi = 1; //loai ket noi localhost
+
 //Require model
 var M_CongTy = require('../model/m_congty.js');
 var M_DoiTac = require('../model/m_doitac.js');
@@ -34,24 +36,42 @@ var C_GioiThieu = require('./c_gioithieu.js');
 
 
 //Mongodb online
-mongoose.connect(urlLocal, { useNewUrlParser: true });
+//mongoose.connect(urlLocal, { useNewUrlParser: true });
 //Mongodb offline
 //mongoose.connect(urlLocal, { useNewUrlParser: true });
 
 //danh muc
 // Lấy tất cả danh mục
 app.get('/get-all-danh-muc', function (req, res) {
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
+
     var c_danhmuc = new C_DanhMuc(mongoose, res);
     c_danhmuc.getAllDSDanhMuc();
 })
 
 //Lấy danh mục trong khoản nào đó
 app.get('/get-limit-danh-muc/:vtbd/:sl', function (req, res) {
-    var vtbd = req.params.vtbd;
-    var sl = req.params.sl;
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
+    var vtbd = Number(req.params.vtbd);
+    var sl = Number(req.params.sl);
+    var c_danhmuc = new C_DanhMuc(mongoose, res);
+    c_danhmuc.getLimitDSDanhMuc(vtbd, sl);
 })
 //Lấy danh mục theo id
 app.get('/get-danh-muc/:id', function (req, res) {
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idDanhMuc = req.params.id;
 
     var c_danhmuc = new C_DanhMuc(mongoose, res);
@@ -60,6 +80,11 @@ app.get('/get-danh-muc/:id', function (req, res) {
 })
 //Thêm danh mục
 app.post('/add-danh-muc', function (req, res) {
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
@@ -70,6 +95,11 @@ app.post('/add-danh-muc', function (req, res) {
 });
 //Sữa danh mục
 app.put('/update-danh-muc', function (req, res) {
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
@@ -81,6 +111,11 @@ app.put('/update-danh-muc', function (req, res) {
 });
 //Xóa danh mục
 app.delete('/delete-danh-muc', function (req, res) {
+    if (loaiKetNoi === 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var c_danhmuc = new C_DanhMuc(mongoose, res);
     c_danhmuc.removeDanhMuc(maDanhMuc);
