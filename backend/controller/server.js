@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var user = 'KHOALUAN2019';
 var pass = 'khoaluan2019';
 var databasename = 'KHOALUAN2019';
+var loaiKetNoi = 1;// connect localhost
 var url = 'mongodb://' + user + ':' + pass + '@mongodb-1051-0.cloudclusters.net/' + databasename + '?authSource=admin';
-
 var urlLocal = 'mongodb://localhost/' + databasename;
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -31,27 +31,35 @@ var C_DanhMuc = require('./c_danhmuc.js');
 var C_GioiThieu = require('./c_gioithieu.js');
 //end require controller
 
-
-
-//Mongodb online
-mongoose.connect(urlLocal, { useNewUrlParser: true });
-//Mongodb offline
-//mongoose.connect(urlLocal, { useNewUrlParser: true });
-
 //danh muc
 // Lấy tất cả danh mục
 app.get('/get-all-danh-muc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var c_danhmuc = new C_DanhMuc(mongoose, res);
     c_danhmuc.getAllDSDanhMuc();
 })
 
 //Lấy danh mục trong khoản nào đó
 app.get('/get-limit-danh-muc/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy danh mục theo id
 app.get('/get-danh-muc/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idDanhMuc = req.params.id;
 
     var c_danhmuc = new C_DanhMuc(mongoose, res);
@@ -60,6 +68,11 @@ app.get('/get-danh-muc/:id', function (req, res) {
 })
 //Thêm danh mục
 app.post('/add-danh-muc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
@@ -70,6 +83,11 @@ app.post('/add-danh-muc', function (req, res) {
 });
 //Sữa danh mục
 app.put('/update-danh-muc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var tenDanhMuc = req.body.tenDanhMuc;
     var trangThai = req.body.trangThai;
@@ -81,6 +99,11 @@ app.put('/update-danh-muc', function (req, res) {
 });
 //Xóa danh mục
 app.delete('/delete-danh-muc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDanhMuc = req.body.maDanhMuc;
     var c_danhmuc = new C_DanhMuc(mongoose, res);
     c_danhmuc.removeDanhMuc(maDanhMuc);
@@ -92,20 +115,39 @@ app.delete('/delete-danh-muc', function (req, res) {
 //Công ty
 // Lấy tất cả Công ty
 app.get('/get-all-cong-ty', function (req, res) {
-
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 })
 
 //Lấy Công ty trong khoản nào đó
 app.get('/get-limit-cong-ty/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy Công ty theo id
 app.get('/get-cong-ty/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idCongTy = req.params.id;
 })
 //Thêm Công ty
 app.post('/add-cong-ty', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var tenCongTy = req.body.tenCongTy;
     var logoCongTy = req.body.logoCongTy;
     var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
@@ -129,6 +171,11 @@ app.post('/add-cong-ty', function (req, res) {
 });
 //Sữa Công ty
 app.put('/update-cong-ty', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var tenCongTy = req.body.tenCongTy;
     var logoCongTy = req.body.logoCongTy;
     var soDienThoaiCongTy = req.body.soDienThoaiCongTy;
@@ -153,6 +200,11 @@ app.put('/update-cong-ty', function (req, res) {
 
 //Xóa Công ty
 app.delete('/delete-cong-ty', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var tenCongTy = req.body.tenCongTy;
 });
 //End cong ty
@@ -160,20 +212,40 @@ app.delete('/delete-cong-ty', function (req, res) {
 //Đối tác
 // Lấy tất cả Đối tác
 app.get('/get-all-doi-tac', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Đối tác trong khoản nào đó
 app.get('/get-limit-doi-tac/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy Đối tác theo id
 app.get('/get-doi-tac/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idDoiTac = req.params.id;
 })
 //Thêm Đối tác
 app.post('/add-doi-tac', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDoiTac = req.body.maDoiTac;
     var hoTen = req.body.hoTen;
     var diaChi = req.body.diaChi;
@@ -204,6 +276,11 @@ app.post('/add-doi-tac', function (req, res) {
 });
 //Sữa Đối tác
 app.put('/update-doi-tac', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDoiTac = req.body.maDoiTac;
     var hoTen = req.body.hoTen;
     var diaChi = req.body.diaChi;
@@ -235,6 +312,11 @@ app.put('/update-doi-tac', function (req, res) {
 
 //Xóa Đối tác
 app.delete('/delete-doi-tac', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDoiTac = req.body.maDoiTac;
 });
 //End Đối tác
@@ -242,20 +324,40 @@ app.delete('/delete-doi-tac', function (req, res) {
 //Du an
 // Lấy tất cả Dự Án
 app.get('/get-all-du-an', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Dự Án trong khoản nào đó
 app.get('/get-limit-du-an/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy Dự Án theo id
 app.get('/get-du-an/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idDuAn = req.params.id;
 })
 //Thêm Dự Án
 app.post('/add-du-an', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDuAn = req.body.maDuAn;
     var tenDuAn = req.body.tenDuAn;
     var noiDungTomTat = req.body.noiDungTomTat;
@@ -290,6 +392,11 @@ app.post('/add-du-an', function (req, res) {
 });
 //Sữa Dự Án
 app.put('/update-du-an', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDuAn = req.body.maDuAn;
     var tenDuAn = req.body.tenDuAn;
     var noiDungTomTat = req.body.noiDungTomTat;
@@ -325,6 +432,11 @@ app.put('/update-du-an', function (req, res) {
 
 //Xóa Dự án
 app.delete('/delete-du-an', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maDuAn = req.body.maDuAn;
 });
 //End du an
@@ -332,20 +444,40 @@ app.delete('/delete-du-an', function (req, res) {
 //Gioi thieu
 // Lấy tất cả Gioi thieu
 app.get('/get-all-gioi-thieu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Gioi thieu trong khoản nào đó
 app.get('/get-limit-gioi-thieu/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy Gioi thieu theo id
 app.get('/get-gioi-thieu/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idGioiThieu = req.params.id;
 })
 //Thêm Gioi thieu
 app.post('/add-gioi-thieu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var magioithieu = req.body.magioithieu;
     var tieude = req.body.tieude;
     var noidung = req.body.noidung;
@@ -361,6 +493,11 @@ app.post('/add-gioi-thieu', function (req, res) {
 });
 //Sữa Gioi thieu
 app.put('/update-gioi-thieu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var magioithieu = req.body.magioithieu;
     var tieude = req.body.tieude;
     var noidung = req.body.noidung;
@@ -377,6 +514,11 @@ app.put('/update-gioi-thieu', function (req, res) {
 
 //Xóa Gioi thieu
 app.delete('/delete-gioi-thieu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maGioiThieu = req.body.maGioiThieu;
 });
 //End gioi thieu
@@ -385,20 +527,40 @@ app.delete('/delete-gioi-thieu', function (req, res) {
 //Hinh anh
 // Lấy tất cả hinh anh
 app.get('/get-all-hinh-anh', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy hinh anh trong khoản nào đó
 app.get('/get-limit-hinh-anh/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy hinh anh theo id
 app.get('/get-hinh-anh/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idHinhAnh = req.params.id;
 })
 //Thêm hinh anh
 app.post('/add-hinh-anh', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var mahinh = req.body.mahinh;
     var tenhinh = req.body.tenhinh;
     var alt = req.body.alt;
@@ -410,6 +572,11 @@ app.post('/add-hinh-anh', function (req, res) {
 });
 //Sữa hinh anh
 app.put('/update-hinh-anh', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var mahinh = req.body.mahinh;
     var tenhinh = req.body.tenhinh;
     var alt = req.body.alt;
@@ -422,6 +589,11 @@ app.put('/update-hinh-anh', function (req, res) {
 
 //Xóa hinh anh
 app.delete('/delete-hinh-anh', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maHinh = req.body.maHinh;
 });
 //End hinh anh
@@ -429,20 +601,40 @@ app.delete('/delete-hinh-anh', function (req, res) {
 // Loai giao dich
 // Lấy tất cả Loai giao dich
 app.get('/get-all-loai-giao-dich', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Loai giao dich trong khoản nào đó
 app.get('/get-limit-loai-giao-dich/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy Loai giao dich theo id
 app.get('/get-loai-giao-dich/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idLoai = req.params.id;
 })
 //Thêm Loai giao dich
 app.post('/add-loai-giao-dich', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maLoai = req.body.maLoai;
     var tenLoai = req.body.tenLoai;
     var trangThai = req.body.trangThai;
@@ -454,6 +646,11 @@ app.post('/add-loai-giao-dich', function (req, res) {
 });
 //Sữa Loai giao dich
 app.put('/update-loai-giao-dich', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maLoai = req.body.maLoai;
     var tenLoai = req.body.tenLoai;
     var trangThai = req.body.trangThai;
@@ -466,6 +663,11 @@ app.put('/update-loai-giao-dich', function (req, res) {
 
 //Xóa Loai giao dich
 app.delete('/delete-loai-giao-dich', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maLoai = req.body.maLoai;
 });
 //End loai giao dich
@@ -473,20 +675,40 @@ app.delete('/delete-loai-giao-dich', function (req, res) {
 // tin tuc
 // Lấy tất cả tin tuc
 app.get('/get-all-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy tin tuc trong khoản nào đó
 app.get('/get-limit-tin-tuc/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = req.params.vtbd;
     var sl = req.params.sl;
 })
 //Lấy tin tuc theo id
 app.get('/get-tin-tuc/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var matintuc = req.params.id;
 })
 //Thêm tin tuc
 app.post('/add-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var matintuc = req.body.matintuc;
     var tentintuc = req.body.tentintuc;
     var trangthai = req.body.trangThai;
@@ -508,6 +730,11 @@ app.post('/add-tin-tuc', function (req, res) {
 });
 //Sữa Tin tuc
 app.put('/update-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var matintuc = req.body.matintuc;
     var tentintuc = req.body.tentintuc;
     var trangthai = req.body.trangThai;
@@ -530,6 +757,11 @@ app.put('/update-tin-tuc', function (req, res) {
 
 //Xóa Tin tuc
 app.delete('/delete-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var matintuc = req.body.matintuc;
 });
 //End tin tuc
@@ -539,20 +771,39 @@ app.delete('/delete-tin-tuc', function (req, res) {
 // Menu
 // Lấy tất cả Menu
 app.get('/get-all-menu', function (req, res) {
-
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 })
 
 //Lấy Menu trong khoản nào đó
 app.get('/get-limit-menu/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
 })
 //Lấy Menu theo id
 app.get('/get-menu/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maIDMenu = req.params.idMenu;
 })
 //Thêm Menu
 app.post('/add-menu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idMenu = req.body.idMenu;
     var nameMenu = req.body.nameMenu;
     var codeMenu = req.body.codeMenu;
@@ -572,6 +823,11 @@ app.post('/add-menu', function (req, res) {
 });
 //Sữa Menu
 app.put('/update-menu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var idMenu = req.body.idMenu;
     var nameMenu = req.body.nameMenu;
     var codeMenu = req.body.codeMenu;
@@ -592,6 +848,11 @@ app.put('/update-menu', function (req, res) {
 
 //Xóa Menu
 app.delete('/delete-menu', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maMenu = Number(req.body.idMenu);
 });
 //End menu
@@ -599,20 +860,40 @@ app.delete('/delete-menu', function (req, res) {
 //Slider
 // Lấy tất cả Slider
 app.get('/get-all-slider', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Slider trong khoản nào đó
 app.get('/get-limit-slider/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
 })
 //Lấy Slider theo id
 app.get('/get-slider/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maSlider = req.params.maSlider;
 })
 //Thêm Slider
 app.post('/add-slider', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maSlider = req.body.maSlider;
     var mangHinh = req.body.mangHinh;
     var trangThai = req.body.trangThai;
@@ -627,6 +908,11 @@ app.post('/add-slider', function (req, res) {
 });
 //Sữa Slider
 app.put('/update-slider', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maSlider = req.body.maSlider;
     var mangHinh = req.body.mangHinh;
     var trangThai = req.body.trangThai;
@@ -642,6 +928,11 @@ app.put('/update-slider', function (req, res) {
 
 //Xóa Slider
 app.delete('/delete-slider', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maSlider = req.body.maSlider;
 });
 //End slider
@@ -650,20 +941,40 @@ app.delete('/delete-slider', function (req, res) {
 //Tai khoan 
 // Lấy tất cả Tai khoan 
 app.get('/get-all-tai-khoan', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Tai khoan  trong khoản nào đó
 app.get('/get-limit-tai-khoan/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
 })
 //Lấy Tai khoan  theo id
 app.get('/get-tai-khoan/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maSlider = req.params.maSlider;
 })
 //Thêm Tai khoan 
 app.post('/add-tai-khoan', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maTaiKhoan = req.body.maTaiKhoan;
     var hoTen = req.body.hoTen;
     var soDienThoai = req.body.soDienThoai;
@@ -698,6 +1009,11 @@ app.post('/add-tai-khoan', function (req, res) {
 });
 //Sữa Tai khoan 
 app.put('/update-tai-khoan', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maTaiKhoan = req.body.maTaiKhoan;
     var hoTen = req.body.hoTen;
     var soDienThoai = req.body.soDienThoai;
@@ -733,6 +1049,11 @@ app.put('/update-tai-khoan', function (req, res) {
 
 //Xóa Tai khoan 
 app.delete('/delete-tai-khoan', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maTaiKhoan = req.body.maTaiKhoan;
 });
 //End tai khoan
@@ -742,20 +1063,40 @@ app.delete('/delete-tai-khoan', function (req, res) {
 //Loai Tin tuc
 // Lấy tất cả Loai Tin tuc 
 app.get('/get-all-loai-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
 
 })
 
 //Lấy Loai Tin tuc  trong khoản nào đó
 app.get('/get-limit-loai-tin-tuc/:vtbd/:sl', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var vtbd = Number(req.params.vtbd);
     var sl = Number(req.params.sl);
 })
 //Lấy Loai Tin tuc  theo id
 app.get('/get-loai-tin-tuc/:id', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maloai = req.params.maloai;
 })
 //Thêm Loai Tin tuc
 app.post('/add-loai-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maloai = req.body.maloai;
     var tenloai = req.body.tenloai;
     var trangThai = req.body.trangThai;
@@ -768,6 +1109,11 @@ app.post('/add-loai-tin-tuc', function (req, res) {
 });
 //Sữa Loai Tin tuc
 app.put('/update-loai-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maloai = req.body.maloai;
     var tenloai = req.body.tenloai;
     var trangThai = req.body.trangThai;
@@ -781,6 +1127,11 @@ app.put('/update-loai-tin-tuc', function (req, res) {
 
 //Xóa Loại tin tức
 app.delete('/delete-loai-tin-tuc', function (req, res) {
+    if (loaiKetNoi == 1) {
+        mongoose.connect(urlLocal, { useNewUrlParser: true });
+    } else {
+        mongoose.connect(url, { useNewUrlParser: true });
+    }
     var maloai = req.body.maloai;
 });
 //End Loai tin tuc
