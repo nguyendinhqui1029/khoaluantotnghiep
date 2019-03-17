@@ -32,13 +32,14 @@ var C_DanhMuc = require('./c_danhmuc.js');
 var C_GioiThieu = require('./c_gioithieu.js');
 var C_CongTy = require('./c_congty.js');
 var C_GioiThieu = require('./c_gioithieu.js');
-var C_LoaiGiaoDich = require('./c_loaigiaodich.js');
-var C_LoaiTinTuc = require('./c_loaitintuc.js');
-var C_Menu = require('./c_menu.js');
+var C_DoiTac = require('./c_doitac.js');
+//var C_LoaiGiaoDich = require('./c_loaigiaodich.js');
+//var C_LoaiTinTuc = require('./c_loaitintuc.js');
+//var C_Menu = require('./c_menu.js');
 var C_Slider = require('./c_slider.js');
 var C_TaiKhoan = require('./c_taikhoan.js');
 var C_TinTuc = require('./c_tintuc.js');
-var C_DuAn = require('./c_duan.js');
+//var C_DuAn = require('./c_duan.js');
 //end require controller
 
 //danh muc
