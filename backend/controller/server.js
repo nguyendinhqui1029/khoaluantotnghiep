@@ -325,6 +325,7 @@ app.put('/update-doi-tac', function (req, res) {
     var quanHuyen = req.body.quanHuyen;
     var ngaySinh = req.body.ngaySinh;
     var loGo = req.body.loGo;
+    var moTa = req.body.moTa;
     var user = req.body.user;
     var pass = req.body.pass;
     var loaiTaiKhoan = req.body.loaiTaiKhoan;
@@ -985,7 +986,7 @@ app.get('/get-limit-slider/:vtbd/:sl', function (req, res) {
     c_slider.getLimitDSSlider(vtbd, sl);
 })
 //Lấy Slider theo id
-app.get('/get-slider/:id', function (req, res) {
+app.get('/get-slider/:maSlider', function (req, res) {
     if (loaiKetNoi === 1) {
         mongoose.connect(urlLocal, { useNewUrlParser: true });
     } else {
