@@ -19,8 +19,7 @@ import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
-import { AdminComponent } from './admin/admin.component';
-import { QuanLyDuAnComponent } from './admin/module-admin/pages/quan-ly-du-an/_quanly-duan.component';
+
 
 const routes: Routes = [
     {
@@ -69,10 +68,7 @@ const routes: Routes = [
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
     // Phần router admin
-    {
-        path: 'admin', component: AdminComponent
-    },
-    { path: 'admin/quanlyduan', component: QuanLyDuAnComponent },
+
 
 ];
 
