@@ -6,7 +6,7 @@ var duAnSchema = new Schema({
     tenDuAn: String,
     noiDungTomTat: String,
     noiDungChiTiet: String,
-    mangHinh: Object,
+    mangHinh: Array,
     ngayDang: Date,
     doiTac: Object,
     giaTien: Number,
