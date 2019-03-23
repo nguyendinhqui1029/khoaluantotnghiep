@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { TrangChuComponent } from './pages/trang-chu/_trangchu.component';
 import { FooterComponent } from './module/footer/_footer.component';
@@ -57,8 +57,10 @@ import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.com
 import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
 
 import { SanGiaoDichService } from './service/sangiaodich.service';
-import { MeNuService } from './service/menu.service';
+import { MenuService } from './service/menu.service';
 import { AdminComponent } from './pages/admin/_admin.component';
+import { LoaiGiaoDichService } from './service/loaigiaodich.service';
+
 
 
 
@@ -84,9 +86,9 @@ import { AdminComponent } from './pages/admin/_admin.component';
     AdminComponent
   ],
   imports: [
-    BrowserModule, routing
+    BrowserModule, routing, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MeNuService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, LoaiGiaoDichService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

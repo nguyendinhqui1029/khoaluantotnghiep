@@ -9,104 +9,49 @@
                             <i class="fa fa-search"></i><span>Tìm kiếm</span>
                         </div>
                         <div class="form-search clearfix">
-                            <div class=col-md-10>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <select class="form-control" id="lbExchangeGroup" name="ExchangeGroupId">
-                                            <option selected="selected" value="0">--Chọn danh mục--</option>
-                                            <option value="21">Đất nền</option>
-                                            <option value="22">Đất thổ cư</option>
-                                            <option value="23">Chung cư</option>
-                                            <option value="24">Nh&#224; phố</option>
-                                        </select>
+                            <div class=col-md-12>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <select class="form-control">
+                                                <option selected="selected">--Chọn danh mục--</option>
+                                                <option *ngFor="let dm of dsDanhMuc" value="{{dm.maDanhMuc}}">
+                                                    {{dm.tenDanhMuc}}</option>
+                                            </select>
+                                            <!--Chọn tỉnh thanh phố-->
+                                            <select class="form-control">
+                                                <option selected="selected" value="0">--Chọn Tỉnh/Thành Phố--</option>
+                                                <option *ngFor="let obTinhThanhPho of dsTinhThanhPho"
+                                                    value="{{obTinhThanhPho.tinhThanhPho}}">
+                                                    {{obTinhThanhPho.tinhThanhPho}}</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control">
+                                                <option selected="selected" value="0">--Chọn loại giao dịch--</option>
+                                                <option *ngFor="let loaigiaodich of dsLoaiGiaoDich"
+                                                    value="{{loaigiaodich.maLoaiGiaoDich}}">
+                                                    {{loaigiaodich.tenLoaiGiaoDich}}</option>
+                                            </select>
+
+                                            <select class="form-control">
+                                                <option selected="selected" value="0">-- Mức giá --</option>
+                                                <option *ngFor="let obMucGia of dsMucGia" value="{{obMucGia.giaTien}}">
+                                                    {{obMucGia.giaTien}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control">
+                                                <option selected="selected" value="0">--Chọn Quận/Huyện--</option>
+                                                <option *ngFor="let obQuanHuyen of dsQuanHuyen"
+                                                    value="{{obQuanHuyen.quanhuyen}}">
+                                                    {{obQuanHuyen.quanhuyen}}</option>
+                                            </select>
+                                            <input type="button" class="btn btn-default" value="TÌM KIẾM" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <select class="form-control" id="lbExchangeType" name="ExchangeTypeId">
-                                            <option selected="selected" value="0">--Chọn loại giao dịch--</option>
-                                            <option value="1">Mua b&#225;n</option>
-                                            <option value="2">Cho thu&#234;</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select class="form-control" id="lbProvince" name="ProvinceId">
-                                            <option selected="selected" value="0">--Chọn khu vực--</option>
-                                            <option value="1">Hồ Ch&#237; Minh</option>
-                                            <option value="2">H&#224; Nội</option>
-                                            <option value="3">Đ&#224; Nẵng</option>
-                                            <option value="4">Cần Thơ</option>
-                                            <option value="5"> Thừa Thi&#234;n - Huế</option>
-                                            <option value="6">An Giang</option>
-                                            <option value="7">B&#224; Rịa-Vũng T&#224;u</option>
-                                            <option value="8">Bạc Li&#234;u</option>
-                                            <option value="9">Bắc Kạn</option>
-                                            <option value="10">Bắc Giang</option>
-                                            <option value="11">Bắc Ninh</option>
-                                            <option value="12">Bến Tre</option>
-                                            <option value="13">B&#236;nh Dương</option>
-                                            <option value="14">B&#236;nh Định</option>
-                                            <option value="15">B&#236;nh Phước</option>
-                                            <option value="16">B&#236;nh Thuận</option>
-                                            <option value="17">C&#224; Mau</option>
-                                            <option value="18">Cao Bằng</option>
-                                            <option value="19">Đắk Lắk</option>
-                                            <option value="20">Đắk N&#244;ng</option>
-                                            <option value="21">Điện Bi&#234;n</option>
-                                            <option value="22">Đồng Nai</option>
-                                            <option value="23">Đồng Th&#225;p</option>
-                                            <option value="24">Gia Lai</option>
-                                            <option value="25">H&#224; Giang</option>
-                                            <option value="26">H&#224; Nam</option>
-                                            <option value="27">H&#224; T&#226;y</option>
-                                            <option value="28">H&#224; Tĩnh</option>
-                                            <option value="29">Hải Dương</option>
-                                            <option value="30">Hải Ph&#242;ng</option>
-                                            <option value="31">H&#242;a B&#236;nh</option>
-                                            <option value="32">Hậu Giang</option>
-                                            <option value="33">Hưng Y&#234;n</option>
-                                            <option value="34">Kh&#225;nh H&#242;a</option>
-                                            <option value="35">Ki&#234;n Giang</option>
-                                            <option value="36">Kon Tum</option>
-                                            <option value="37">Lai Ch&#226;u</option>
-                                            <option value="38">L&#224;o Cai</option>
-                                            <option value="39">Lạng Sơn</option>
-                                            <option value="40">L&#226;m Đồng</option>
-                                            <option value="41">Long An</option>
-                                            <option value="42">Nam Định</option>
-                                            <option value="43">Nghệ An</option>
-                                            <option value="44">Ninh B&#236;nh</option>
-                                            <option value="45">Ninh Thuận</option>
-                                            <option value="46">Ph&#250; Thọ</option>
-                                            <option value="47">Ph&#250; Y&#234;n</option>
-                                            <option value="48">Quảng B&#236;nh</option>
-                                            <option value="49">Quảng Nam</option>
-                                            <option value="50">Quảng Ng&#227;i</option>
-                                            <option value="51">Quảng Ninh</option>
-                                            <option value="52">Quảng Trị</option>
-                                            <option value="53">S&#243;c Trăng</option>
-                                            <option value="54">Sơn La</option>
-                                            <option value="55">T&#226;y Ninh</option>
-                                            <option value="56">Th&#225;i B&#236;nh</option>
-                                            <option value="57">Th&#225;i Nguy&#234;n</option>
-                                            <option value="58">Thanh H&#243;a</option>
-                                            <option value="59">Thừa Thi&#234;n - Huế</option>
-                                            <option value="60">Tiền Giang</option>
-                                            <option value="61">Tr&#224; Vinh</option>
-                                            <option value="62">Tuy&#234;n Quang</option>
-                                            <option value="63">Vĩnh Long</option>
-                                            <option value="64">Vĩnh Ph&#250;c</option>
-                                            <option value="65">Y&#234;n B&#225;i</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select class="form-control" id="lbPrice" name="Price">
-                                            <option selected="selected" value="0">-- Mức gi&#225; --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="button" class="btn btn-default" name="btnSearchExchange" id="btnSearchExchange"
-                                    value="TÌM KIẾM" />
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -126,22 +71,27 @@
                 <li>
                     <select class="form-control" id="lbExchangeGroup" name="ExchangeGroupId">
                         <option selected="selected" value="0">--Chọn loại bất động sản--</option>
-                        <option value="21">Đất nền</option>
-                        <option value="22">Đất thổ cư</option>
-                        <option value="23">Chung cư</option>
-                        <option value="24">Nh&#224; phố</option>
+                        <option *ngFor="let dm of dsDanhMuc" value="{{dm.maDanhMuc}}">
+                            {{dm.tenDanhMuc}}</option>
                     </select>
                 </li>
                 <li>
                     <select class="form-control" id="lbExchangeType" name="ExchangeTypeId">
                         <option selected="selected" value="0">--Chọn loại giao dịch--</option>
-                        <option value="1">Mua b&#225;n</option>
-                        <option value="2">Cho thu&#234;</option>
+                        <option *ngFor="let loaigiaodich of dsLoaiGiaoDich" value="{{loaigiaodich.maLoaiGiaoDich}}">
+                            {{loaigiaodich.tenLoaiGiaoDich}}</option>
+                    </select>
+                </li>
+                <li>
+                    <select class="form-control" id="lbExchangeType" name="ExchangeTypeId">
+                        <option selected="selected" value="0">--Chọn Quận/Huyện--</option>
+                        <option value="1">Gò vấp</option>
+                        <option value="2">Bình thạnh</option>
                     </select>
                 </li>
                 <li>
                     <select class="form-control" id="lbProvince" name="ProvinceId">
-                        <option selected="selected" value="0">--Chọn khu vực--</option>
+                        <option selected="selected" value="0">--Chọn Tỉnh/Thành Phố--</option>
                         <option value="1">Hồ Ch&#237; Minh</option>
                         <option value="2">H&#224; Nội</option>
                         <option value="3">Đ&#224; Nẵng</option>

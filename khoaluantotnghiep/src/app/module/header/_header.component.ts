@@ -29,15 +29,15 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.route.snapshot.routeConfig.path !== '') {
-            this.menu_bottom.forEach(element => {
-                if (element.codeMenu.indexOf(this.route.snapshot.routeConfig.path) > -1) {
-                    element.statusMenu = true;
-                } else {
-                    element.statusMenu = false;
-                }
-            });
-        }
+        // if (this.route.snapshot.routeConfig.path !== '') {
+        //     this.menu_bottom.forEach(element => {
+        //         if (element.codeMenu.indexOf(this.route.snapshot.routeConfig.path) > -1) {
+        //             element.statusMenu = true;
+        //         } else {
+        //             element.statusMenu = false;
+        //         }
+        //     });
+        // }
 
     }
 
@@ -56,5 +56,22 @@ export class HeaderComponent implements OnInit {
             mobileMenu.removeClass("in");
             mobileMenu.removeClass("collapsed");
         }
+    }
+
+    ngAfterViewInit(): void {
+        window.onscroll = function () { myFunction() };
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        function myFunction() {
+            if (window.innerWidth >= 992) {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky-menu");
+                } else {
+                    header.classList.remove("sticky-menu");
+                }
+            }
+
+        }
+
     }
 }

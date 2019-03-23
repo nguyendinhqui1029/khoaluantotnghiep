@@ -7,7 +7,7 @@
                         <li><i class="fa fa-phone"></i> <span>Hotline:{{congty.hotlineCongTy}}</span></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                        <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}">
+                        <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}" routerLinkActive="active">
                             <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
                                 {{menu.nameMenu}}</a>
                         </li>
@@ -19,7 +19,8 @@
                             </div>
                             <div class="inner-toggle">
                                 <ul class="links">
-                                    <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}">
+                                    <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}"
+                                        routerLinkActive="active">
                                         <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
                                             {{menu.nameMenu}}</a></li>
                                 </ul>
@@ -60,7 +61,7 @@
     </section>
 
 
-    <section class="navigation-menu clearfix">
+    <section class="navigation-menu clearfix header-menu" id="myHeader">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 clearfix">
@@ -76,8 +77,8 @@
                         </div>
                         <nav id="mobile-menu" class="mobile-menu navbar-collapse collapse" aria-expanded="false">
                             <ul class="menu nav navbar-nav">
-                                <li *ngFor="let menu of menu_bottom;"
-                                    [ngClass]="{'level0':true,'active':menu.statusMenu}">
+                                <li *ngFor="let menu of menu_bottom;" [ngClass]="{'level0':true}"
+                                    routerLinkActive="active">
                                     <a class="" [routerLink]="[menu.codeMenu]"><span>{{menu.nameMenu}}</span></a></li>
                             </ul>
                         </nav>
