@@ -24,9 +24,9 @@ module.exports = function (mongoose, res) {
             res.send({ 'data': mangMenu, 'code': 200 });
         })
     }
-    this.getMenubyID = function (maMenu) {
+    this.getMenubyID = function (idMenu) {
         var Menu = require('../model/m_menu.js');
-        Menu.find({ maMenu: maMenu }, {}, function (err, menu) {
+        Menu.find({ idMenu: idMenu }, {}, function (err, menu) {
             mongoose.connection.close();
 
             res.send({ 'data': menu, 'code': 200 });

@@ -24,9 +24,9 @@ module.exports = function (mongoose, res) {
             res.send({ 'data': mangHinhAnh, 'code': 200 });
         })
     }
-    this.getHinhAnhbyID = function (maHinhAnh) {
+    this.getHinhAnhbyID = function (mahinh) {
         var HinhAnh = require('../model/m_hinhanh.js');
-        HinhAnh.find({ mahinh: maHinhAnh }, {}, function (err, hinhanh) {
+        HinhAnh.find({ mahinh: mahinh }, {}, function (err, hinhanh) {
             mongoose.connection.close();
 
             res.send({ 'data': hinhanh, 'code': 200 });

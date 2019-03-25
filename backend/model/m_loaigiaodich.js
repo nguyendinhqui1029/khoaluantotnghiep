@@ -4,6 +4,6 @@ var Schema = mongoose.Schema;
 var loaiGiaoDichSchema = new Schema({
     maLoai: String,
     tenLoai: String,
-    trangThai: Number
+    trangthai: Number
 });
 module.exports = mongoose.model('loaigiaodich', loaiGiaoDichSchema);

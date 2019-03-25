@@ -67,9 +67,6 @@ const routes: Routes = [
     { path: 'gio-hang', component: GioHangComponent },
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
-    // Phần router admin
-
-
 ];
 
 export const routing = RouterModule.forRoot(routes);

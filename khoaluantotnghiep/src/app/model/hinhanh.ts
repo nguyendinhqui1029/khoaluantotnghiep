@@ -1,8 +1,9 @@
 export class HINHANH {
+    mahinh: any;
     tenhinh: any;
     alt: any;
-    constructor(tenhinh, alt) {
-
+    constructor(mahinh, tenhinh, alt) {
+        this.mahinh = mahinh;
         this.tenhinh = tenhinh;
         this.alt = alt;
 

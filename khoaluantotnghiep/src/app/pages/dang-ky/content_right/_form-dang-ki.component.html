@@ -14,73 +14,98 @@
     <div class="register-content clearfix">
         <h1 class="title clearfix"><span>Đăng ký tài khoản</span></h1>
         <!--thong bao loi-->
-        <div ng-if="IsError" class="alert alert-danger fade in">
-            <button data-dismiss="alert" class="close"></button>
-            <i class="fa-fw fa fa-times"></i>
-            <strong>Error!</strong>
-            <span ng-bind-html="Message"></span>
-        </div>
-        <div ng-if="IsSuccess" class="alert alert-success fade in">
+        <div *ngIf="submitted && !f.taikhoan.errors" class="alert alert-success fade in">
             <button data-dismiss="alert" class="close"></button>
             <i class="fa-fw fa fa-check"></i>
             <strong>Success!</strong> Đăng ký thành công.
         </div>
-        <div ng-if="InValid" class="alert alert-danger fade in">
+        <!--
+        <div *ngIf="submitted && f.taikhoan.errors" class="alert alert-danger fade in">
             <button data-dismiss="alert" class="close"></button>
             <i class="fa-fw fa fa-times"></i>
-            <strong>Error!</strong>
+            <strong *ngIf="f.taikhoan.errors.required">Error! Vui lòng nhập Tài Khoản</strong>
             <span ng-bind-html="Message"></span>
-        </div>
+        </div> -->
         <!--thong bao loi-->
         <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
-            <form class="form-horizontal" ng-submit="register()">
+            <form class="form-horizontal" ng-submit="register()" [formGroup]="formDangKy">
                 <h2><span>Thông tin tài khoản</span></h2>
                 <div class="form-group">
                     <label for="Code" class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" ng-model="Code" required="true" />
+                        <input type="text" class="form-control" ng-model="Code" required="true"
+                            formControlName="taikhoan" [ngClass]="{ 'is-invalid': submitted && f.taikhoan.errors }" />
+                        <div *ngIf="submitted && f.taikhoan.errors" class="invalid-feedback">
+                            <div *ngIf="f.taikhoan.errors.required">Vui lòng nhập Tài Khoản</div>
+                            <div *ngIf="f.taikhoan.errors.pattern">Tài Khoản không hợp lệ</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Email" class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" ng-model="Email" required="true" />
+                        <input type="email" class="form-control" ng-model="Email" required="true"
+                            formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Vui lòng nhập Email</div>
+                            <div *ngIf="f.email.errors.pattern">Email không hợp lệ</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Password" class="col-sm-3 control-label">Mật khẩu<span class="warning">(*)</span></label>
+                    <label for="Password" class="col-sm-3 control-label">Mật khẩu<span
+                            class="warning">(*)</span></label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" ng-model="Password" required="true" />
+                        <input type="password" class="form-control" ng-model="Password" required="true"
+                            formControlName="pass" [ngClass]="{ 'is-invalid': submitted && f.pass.errors }" />
+                        <div *ngIf="submitted && f.pass.errors" class="invalid-feedback">
+                            <div *ngIf="f.pass.errors.required">Vui lòng nhập Mật khẩu</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="RePassword" class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning">(*)</span></label>
+                    <label for="RePassword" class="col-sm-3 control-label">Nhập lại mật khẩu<span
+                            class="warning">(*)</span></label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" ng-model="RePassword" />
+                        <input type="password" class="form-control" ng-model="RePassword" formControlName="confirmpass"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmpass.errors }" />
+                        <div *ngIf="submitted && f.confirmpass.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmpass.errors.required">Vui lòng nhập Mật khẩu xác nhận</div>
+                            <div *ngIf="f.confirmpass.errors.mustMatch">Không khớp với mật khẩu</div>
+                        </div>
                     </div>
                 </div>
                 <h2>Thông tin cá nhân</h2>
                 <div class="form-group">
                     <label for="Name" class="col-sm-3 control-label">Họ tên<span class="warning">(*)</span></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" ng-model="Name" required="true" />
+                        <input type="text" class="form-control" ng-model="Name" required="true" formControlName="hoten"
+                            [ngClass]="{ 'is-invalid': submitted && f.hoten.errors }" />
+                        <div *ngIf="submitted && f.hoten.errors" class="invalid-feedback">
+                            <div *ngIf="f.hoten.errors.required">Vui lòng nhập Họ tên</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Giới tính</label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="GenderId" ng-options="item.Id as item.Name for item in Genders"></select>
+                        <select class="form-control" ng-model="GenderId"
+                            ng-options="item.Id as item.Name for item in Genders">
+                            <option *ngFor="let gt of dsgioitinh" value="{{gt}}">{{gt}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-sm-3 control-label">Ngày sinh</label>
                     <div class="col-sm-9">
-                        <select class="col-md-4 form-control" ng-model="SelectedDay" ng-options="label for label in Days | limitTo:NumberOfDays"
-                            placeholder="Ngày"></select>
-                        <select class="col-md-4 form-control" ng-model="SelectedMonth" ng-options="label for label in Months"
-                            ng-change="UpdateNumberOfDays()" placeholder="Tháng"></select>
-                        <select class="col-md-4 form-control" ng-model="SelectedYear" ng-options="label for label in Years"
-                            ng-change="UpdateNumberOfDays()" placeholder="Năm"></select>
+                        <div>
+                            <div class="input-group date" data-date-format="dd.mm.yyyy">
+                                <input id="filterDate2" type="text" class="form-control" placeholder="dd.mm.yyyy">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,19 +124,24 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Tỉnh/TP</label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="ProvinceId" ng-options="item.Id as item.Name for item in Provinces"
-                            ng-change="getDistricts(ProvinceId)"></select>
+                        <select class="form-control" ng-model="ProvinceId"
+                            ng-options="item.Id as item.Name for item in Provinces"
+                            ng-change="getDistricts(ProvinceId)">
+                            <option *ngFor="let tinhthanhpho of dstinhtam" value="{{tinhthanhpho.tenkhongdau}}">
+                                {{tinhthanhpho.tencodau}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Quận/Huyện</label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="DistrictId" ng-options="item.Id as item.Name for item in Districts"></select>
+                        <select class="form-control" ng-model="DistrictId"
+                            ng-options="item.Id as item.Name for item in Districts"></select>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <button type="submit" class="btn btn-default">Đăng ký</button>
+                        <button type="submit" class="btn btn-default" (click)="register()">Đăng ký</button>
                     </div>
                 </div>
             </form>

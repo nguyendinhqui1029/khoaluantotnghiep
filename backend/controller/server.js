@@ -408,6 +408,7 @@ app.post('/add-du-an', function (req, res) {
     var tenDuAn = req.body.tenDuAn;
     var noiDungTomTat = req.body.noiDungTomTat;
     var noiDungChiTiet = req.body.noiDungChiTiet;
+    var mangHinh = req.body.mangHinh;
     var tinhThanhPho = req.body.tinhThanhPho;
     var quanHuyen = req.body.quanHuyen;
     var ngayDang = req.body.ngayDang;
@@ -449,6 +450,7 @@ app.put('/update-du-an', function (req, res) {
     var tenDuAn = req.body.tenDuAn;
     var noiDungTomTat = req.body.noiDungTomTat;
     var noiDungChiTiet = req.body.noiDungChiTiet;
+    var mangHinh = req.body.mangHinh;
     var tinhThanhPho = req.body.tinhThanhPho;
     var quanHuyen = req.body.quanHuyen;
     var ngayDang = req.body.ngayDang;
@@ -607,15 +609,15 @@ app.get('/get-limit-hinh-anh/:vtbd/:sl', function (req, res) {
     c_hinhanh.getLimitDSHinhAnh(vtbd, sl);
 })
 //Lấy hinh anh theo id
-app.get('/get-hinh-anh/:id', function (req, res) {
+app.get('/get-hinh-anh/:mahinh', function (req, res) {
     if (loaiKetNoi === 1) {
         mongoose.connect(urlLocal, { useNewUrlParser: true });
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var idHinhAnh = req.params.id;
+    var mahinh = req.params.mahinh;
     var c_hinhanh = new C_HinhAnh(mongoose, res);
-    c_hinhanh.getDuAnbyID(idHinhAnh);
+    c_hinhanh.getHinhAnhbyID(mahinh);
 })
 //Thêm hinh anh
 app.post('/add-hinh-anh', function (req, res) {
@@ -885,15 +887,15 @@ app.get('/get-limit-menu/:vtbd/:sl', function (req, res) {
     c_menu.getLimitDSMenu(vtbd, sl);
 })
 //Lấy Menu theo id
-app.get('/get-menu/:id', function (req, res) {
+app.get('/get-menu/:idMenu', function (req, res) {
     if (loaiKetNoi === 1) {
         mongoose.connect(urlLocal, { useNewUrlParser: true });
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var maMenu = req.params.idMenu;
+    var idMenu = req.params.idMenu;
     var c_menu = new C_Menu(mongoose, res);
-    c_menu.getMenubyID(maMenu);
+    c_menu.getMenubyID(idMenu);
 })
 //Thêm Menu
 app.post('/add-menu', function (req, res) {
@@ -1078,13 +1080,13 @@ app.get('/get-limit-tai-khoan/:vtbd/:sl', function (req, res) {
     c_taikhoan.getLimitDSTaiKhoan(vtbd, sl);
 })
 //Lấy Tai khoan  theo id
-app.get('/get-tai-khoan/:id', function (req, res) {
+app.get('/get-tai-khoan/:maTaiKhoan', function (req, res) {
     if (loaiKetNoi === 1) {
         mongoose.connect(urlLocal, { useNewUrlParser: true });
     } else {
         mongoose.connect(url, { useNewUrlParser: true });
     }
-    var maTaiKhoan = req.params.maSlider;
+    var maTaiKhoan = req.params.maTaiKhoan;
     var c_taikhoan = new C_TaiKhoan(mongoose, res);
     c_taikhoan.getTaiKhoanbyID(maTaiKhoan);
 })

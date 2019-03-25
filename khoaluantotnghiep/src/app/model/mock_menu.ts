@@ -22,11 +22,11 @@ export const ds_menu: MENU[] = [
     { "idMenu": 19, "nameMenu": "Cài Đặt", "codeMenu": "/cai-dat", "statusMenu": true, "iconMenu": "fa fa-wrench", "classMenu": "level0", "typeMenu": 3 },
     { "idMenu": 20, "nameMenu": "Biểu Đồ", "codeMenu": "/bieu-do", "statusMenu": true, "iconMenu": "fa fa-pie-chart", "classMenu": "level0", "typeMenu": 3 },
     { "idMenu": 21, "nameMenu": "Bảng Số Liệu", "codeMenu": "/bang-so-lieu", "statusMenu": true, "iconMenu": "fa fa-table", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 21, "nameMenu": "Calendar", "codeMenu": "/calendar", "statusMenu": true, "iconMenu": "fa fa-calendar", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 22, "nameMenu": "Hộp Thư", "codeMenu": "/hop-thu", "statusMenu": true, "iconMenu": "fa fa-envelope", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 23, "nameMenu": "Tài Liệu", "codeMenu": "/tai-lieu", "statusMenu": true, "iconMenu": "fa fa-book", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 24, "nameMenu": "Quan Trọng", "codeMenu": "/quan-trong", "statusMenu": true, "iconMenu": "fa fa-circle-o text-red", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 25, "nameMenu": "Cảnh Báo", "codeMenu": "/canh-bao", "statusMenu": true, "iconMenu": "fa fa-circle-o text-yellow", "classMenu": "level0", "typeMenu": 3 },
-    { "idMenu": 26, "nameMenu": "Thông Tin", "codeMenu": "/thong-tin", "statusMenu": true, "iconMenu": "fa fa-circle-o text-aqua", "classMenu": "level0", "typeMenu": 3 }
+    { "idMenu": 22, "nameMenu": "Calendar", "codeMenu": "/calendar", "statusMenu": true, "iconMenu": "fa fa-calendar", "classMenu": "level0", "typeMenu": 3 },
+    { "idMenu": 23, "nameMenu": "Hộp Thư", "codeMenu": "/hop-thu", "statusMenu": true, "iconMenu": "fa fa-envelope", "classMenu": "level0", "typeMenu": 3 },
+    { "idMenu": 24, "nameMenu": "Tài Liệu", "codeMenu": "/tai-lieu", "statusMenu": true, "iconMenu": "fa fa-book", "classMenu": "level0", "typeMenu": 3 },
+    { "idMenu": 25, "nameMenu": "Quan Trọng", "codeMenu": "/quan-trong", "statusMenu": true, "iconMenu": "fa fa-circle-o text-red", "classMenu": "level0", "typeMenu": 3 },
+    { "idMenu": 26, "nameMenu": "Cảnh Báo", "codeMenu": "/canh-bao", "statusMenu": true, "iconMenu": "fa fa-circle-o text-yellow", "classMenu": "level0", "typeMenu": 3 },
+    { "idMenu": 27, "nameMenu": "Thông Tin", "codeMenu": "/thong-tin", "statusMenu": true, "iconMenu": "fa fa-circle-o text-aqua", "classMenu": "level0", "typeMenu": 3 }
 ];
 

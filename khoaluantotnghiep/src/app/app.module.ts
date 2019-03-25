@@ -55,8 +55,14 @@ import { DuAnService } from './service/duan.service';
 import { GioiThieuService } from './service/gioithieu.service';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
 import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
-import { MeNuService } from './service/menu.service';
+
 import { SanGiaoDichService } from './service/sangiaodich.service';
+import { MeNuService } from './service/menu.service';
+import { AdminComponent } from './pages/admin/_admin.component';
+import { ThemMenuComponent } from './module/admin/menu/them-menu/_them-menu.component';
+import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -76,12 +82,14 @@ import { SanGiaoDichService } from './service/sangiaodich.service';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent
+    DuAnChiTietModuleComponent,
+    //Admin
+    AdminComponent, ThemMenuComponent
   ],
   imports: [
-    BrowserModule, routing
+    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MeNuService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MeNuService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 module.exports = function (mongoose, res) {
     this.getAllDSDuAn = function () {
-        var DuAn = require('../model/m_duan');
+        var DuAn = require('../model/m_duan.js');
         DuAn.find({}, function (err, duan) {
             mongoose.connection.close();
             res.send(duan);
@@ -24,7 +24,7 @@ module.exports = function (mongoose, res) {
         })
     }
     this.getDuAnbyID = function (maDuAn) {
-        var DuAn = require('../model/m_duan');
+        var DuAn = require('../model/m_duan.js');
         DuAn.find({ maDuAn: maDuAn }, {}, function (err, duan) {
             mongoose.connection.close();
 
@@ -60,7 +60,7 @@ module.exports = function (mongoose, res) {
         });
     }
     this.removeDuAn = function (maDuAn) {
-        var DuAn = require('../model/m_duan');
+        var DuAn = require('../model/m_duan.js');
         DuAn.remove({ maDuAn: maDuAn }, function (err) {
             mongoose.connection.close();
             if (err) {
