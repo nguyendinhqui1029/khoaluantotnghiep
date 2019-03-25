@@ -9,7 +9,8 @@ export class DuAnService {
     dsDuAn: DUAN[] = ds_duan;
     modeTrangThai: any = { "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
     modeGiaoDich: any = {};
-    URL: String = "https://serverkhoaluan2019.herokuapp.com/";
+    URL: String = "https://serverkhoaluan2019.herokuapp.com/"
+    // URL: String = "http://localhost:8081/";
     constructor(private http: HttpClient) {
 
     }

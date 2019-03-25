@@ -60,6 +60,7 @@ import { SanGiaoDichService } from './service/sangiaodich.service';
 import { MenuService } from './service/menu.service';
 import { AdminComponent } from './pages/admin/_admin.component';
 import { LoaiGiaoDichService } from './service/loaigiaodich.service';
+import { TinTucNoiBatTrangChuComponent } from './pages/trang-chu/tin-tuc-noi-bat/_tin_tuc_noi_bat_trang_chu.component';
 
 
 
@@ -81,7 +82,7 @@ import { LoaiGiaoDichService } from './service/loaigiaodich.service';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent,
+    DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent,
     //Admin
     AdminComponent
   ],

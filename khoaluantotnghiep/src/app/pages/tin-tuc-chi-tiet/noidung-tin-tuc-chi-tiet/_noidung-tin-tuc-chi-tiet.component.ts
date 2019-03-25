@@ -19,9 +19,11 @@ export class NoiDungTinTucChiTietComponent implements OnInit {
         this.id = this.router.snapshot.params["id"];// day la trang noi dung chi tiet
 
         this.noidungtintuc.forEach(element => {
-            if (Number(element.matintuc) === Number(this.id)) {
+            if (element.matintuc === this.id) {
                 this.tintuc = element;
+                console.log(element)
             }
+
         });
 
     }
