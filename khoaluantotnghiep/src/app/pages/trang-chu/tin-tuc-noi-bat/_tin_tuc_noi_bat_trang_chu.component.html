@@ -1,0 +1,46 @@
+<div class="project-content owl-carousel">
+    <h1 class="title clearfix">
+        <i class="fa fa-list"></i>
+        <span>Tin tức mới</span>
+    </h1>
+    <div>
+        <div class="row">
+            <div class="controls boxprevnext">
+                <a class="prev prevlogo1"><i class="fa fa-angle-left"></i></a>
+                <a class="next nextlogo1"><i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="project-block project-grid clearfix" id="tin-tuc-noi-bat-slider">
+                <!--new 1-->
+                <div class="project-item-box fixheight" *ngFor="let tintucnoibat of dsTinTucNoiBat">
+                    <div class="project-item project-slide-resize">
+                        <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
+                            <a [routerLink]="['/tin-tuc-chi-tiet',tintucnoibat.matintuc]"
+                                title="{{tintucnoibat.hinhanh[0].alt}}">
+                                <img src="..\assets\images\product\{{tintucnoibat.hinhanh[0].tenhinh}}"
+                                    class="img-responsive" />
+                            </a>
+                            <span class="new">New</span>
+                            <div class="thumbnail">
+                                <a class="zoom" [routerLink]="['/tin-tuc-chi-tiet',tintucnoibat.matintuc]">
+                                    <i class="glyphicon glyphicon-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <h2 class="name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                <a
+                                    [routerLink]="['/tin-tuc-chi-tiet',tintucnoibat.matintuc]">{{tintucnoibat.tentintuc}}</a>
+                            </h2>
+                            <div class="rating">
+                                <div class="rating-1">
+                                    <span class="rating-img">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,58 +1,79 @@
-<div class="row">
-    <form>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+<div class="row" style=" margin-top: -8px">
+    <form id="form-add-menu" ng-submit="add()" [formGroup]="formthemMenu">
+        <div class=" col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
         </div>
         <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
-            <div class="form-group">
-                <label for="Name">ID Menu</label><span style="color: red; margin-left: 3px">*</span>
+            <div class="headeradmenu">
+                <span>::::::::THÊM MENU::::::::</span>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="idmenu">ID Menu</label><span
+                    style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="idmenu" placeholder="ID Menu"
+                        formControlName="idmenu" [ngClass]="{ 'is-invalid': submitted && f.idmenu.errors }">
+                    <div *ngIf="submitted && f.idmenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.idmenu.errors.required">Vui lòng nhập ID Menu</div>
+                        <div *ngIf="f.idmenu.errors.pattern">ID Menu không hợp lệ</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Name">Name Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="namemenu" placeholder="Name Menu"
+                        formControlName="namemenu" [ngClass]="{ 'is-invalid': submitted && f.namemenu.errors }">
+                    <div *ngIf="submitted && f.namemenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.namemenu.errors.required">Vui lòng nhập Name Menu</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Name">Code Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="codemenu" placeholder="Code Menu"
+                        formControlName="codemenu" [ngClass]="{ 'is-invalid': submitted && f.codemenu.errors }">
+                    <div *ngIf="submitted && f.codemenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.codemenu.errors.required">Vui lòng nhập Code Menu</div>
+                        <div *ngIf="f.codemenu.errors.pattern">Code Menu không hợp lệ</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Name">Status Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="statusmenu"
+                        formControlName="statusmenu" placeholder="Status Menu"
+                        [ngClass]="{ 'is-invalid': submitted && f.statusmenu.errors }">
+                    <div *ngIf="submitted && f.statusmenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.statusmenu.errors.required">Vui lòng nhập Status Menu</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Name">Icon Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="iconmenu" placeholder="Nhập mã icon"
+                        formControlName="iconmenu" [ngClass]="{ 'is-invalid': submitted && f.iconmenu.errors }">
+                    <div *ngIf="submitted && f.iconmenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.iconmenu.errors.required">Vui lòng nhập Icon Menu</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Name">Type Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="name" style="width: 80%;" class="form-control" id="Name" placeholder="Name">
-                    <span><i class="fa fa-check-circle"
-                            style="font-size: 20px; color: green; margin-left: 10px"></i></span>
+                    <input type="text" style="width: 80%;" class="form-control" id="typemenu" placeholder="Type Menu"
+                        formControlName="typemenu" [ngClass]="{ 'is-invalid': submitted && f.typemenu.errors }">
+                    <div *ngIf="submitted && f.typemenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.typemenu.errors.required">Vui lòng nhập Type Menu</div>
+                    </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-info">Submit Menu</button>&nbsp;&nbsp;
-            <button type="reset" class="btn btn-info">Reset Menu</button>
+            <button type="submit" class="btn btn-info" (click)="add()">Submit Menu</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-info">Reset Menu</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Update Menu</button>
 
         </div>
         <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">

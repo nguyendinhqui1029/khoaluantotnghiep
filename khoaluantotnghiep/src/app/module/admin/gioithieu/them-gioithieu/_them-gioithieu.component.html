@@ -1,0 +1,62 @@
+<div class="row" style=" margin-top: -8px">
+    <form id="form-add-duan" ng-submit="add()" [formGroup]="formthemGioiThieu">
+        <div class=" col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
+            <div class="headeradmenu">
+                <span>::::::::THÊM GIỚI THIỆU::::::::</span>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="magioithieu">Mã Giới Thiệu</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="magioithieu" placeholder="GT00123"
+                        formControlName="magioithieu" [ngClass]="{ 'is-invalid': submitted && f.magioithieu.errors }">
+                    <div *ngIf="submitted && f.magioithieu.errors" class="invalid-feedback">
+                        <div *ngIf="f.magioithieu.errors.required">Vui lòng nhập Mã Giới Thiệu</div>
+                        <div *ngIf="f.magioithieu.errors.pattern">Mã Giới Thiệu không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="tieude">Tiêu Đề</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="tieude"
+                        placeholder="Lĩnh vực hoạt động" formControlName="tieude"
+                        [ngClass]="{ 'is-invalid': submitted && f.tieude.errors }">
+                    <div *ngIf="submitted && f.tieude.errors" class="invalid-feedback">
+                        <div *ngIf="f.tieude.errors.required">Vui lòng nhập Tiêu đề</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="noidung">Nội Dung</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <textarea class="form-control" id="noidung" rows="4" style="width: 80%" formControlName="noidung"
+                        [ngClass]="{ 'is-invalid': submitted && f.noidung.errors }"></textarea>
+                    <div *ngIf="submitted && f.noidung.errors" class="invalid-feedback">
+                        <div *ngIf="f.noidung.errors.required">Vui lòng nhập Nội dung</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="icon">Icon</label>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="icon"
+                        placeholder="fas fa-map-marker-alt" formControlName="icon">
+
+                </div>
+            </div>
+
+            <button type=" submit" class="btn btn-info" (click)="add()">Submit Giới Thiệu</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Update Giới Thiệu</button>
+
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
+        </div>
+    </form>
+</div>

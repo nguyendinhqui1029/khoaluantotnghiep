@@ -23,10 +23,10 @@ import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.com
 
 const routes: Routes = [
     {
-        path: '', component: TrangChuComponent,
+        path: '', component: SanGiaoDichComponent,
         children: [
-            { path: '', component: DuAnListComponent },
-            { path: 'grid', component: DuAnGridComponent }]
+            { path: '', component: SanGiaoDichListComponent },
+            { path: 'grid', component: SanGiaoDichGridComponent }]
     },
 
     {

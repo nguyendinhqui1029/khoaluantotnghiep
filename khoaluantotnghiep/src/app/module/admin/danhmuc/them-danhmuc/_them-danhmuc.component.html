@@ -1,0 +1,73 @@
+<div class="row" style=" margin-top: -8px">
+    <form id="form-add-duan" ng-submit="add()" [formGroup]="formThemDanhMuc">
+        <div class=" col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
+            <div class="headeradmenu">
+                <span>::::::::THÊM DANH MỤC::::::::</span>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="maDanhMuc">Mã Danh Mục</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="maDanhMuc" placeholder="DM00123"
+                        formControlName="maDanhMuc" [ngClass]="{ 'is-invalid': submitted && f.maDanhMuc.errors }">
+                    <div *ngIf="submitted && f.maDanhMuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.maDanhMuc.errors.required">Vui lòng nhập Mã Danh Mục</div>
+                        <div *ngIf="f.maDanhMuc.errors.pattern">Mã Danh Mục không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="tenDanhMuc">Tên Danh Mục</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="tenDanhMuc" placeholder="Mua Bán"
+                        formControlName="tenDanhMuc" [ngClass]="{ 'is-invalid': submitted && f.tenDanhMuc.errors }">
+                    <div *ngIf="submitted && f.tenDanhMuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.tenDanhMuc.errors.required">Vui lòng nhập Tên Danh Mục</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="trangThai">Trạng Thái</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control custom-select mr-sm-2" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="trangThai"
+                        [ngClass]="{ 'is-invalid': submitted && f.trangThai.errors }">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <div *ngIf="submitted && f.trangThai.errors" class="invalid-feedback">
+                        <div *ngIf="f.trangThai.errors.required">Vui lòng chọn Trạng thái</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="isActive">isActive</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control custom-select mr-sm-2" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="isActive"
+                        [ngClass]="{ 'is-invalid': submitted && f.isActive.errors }">
+                        <option value="1">True</option>
+                        <option value="2">False</option>
+                    </select>
+                    <div *ngIf="submitted && f.isActive.errors" class="invalid-feedback">
+                        <div *ngIf="f.isActive.errors.required">Vui lòng chọn isActive</div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-info" (click)="add()">Submit Dự Án</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Update Dự Án</button>
+
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
+        </div>
+    </form>
+</div>

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 
 
 @Injectable()
-export class MeNuService {
+export class MenuService {
     trangthaiSlideBar: boolean = true;
     getTrangThaiSlideBar() {
         return this.trangthaiSlideBar;

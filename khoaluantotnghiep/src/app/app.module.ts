@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { TrangChuComponent } from './pages/trang-chu/_trangchu.component';
 import { FooterComponent } from './module/footer/_footer.component';
@@ -57,11 +57,27 @@ import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.com
 import { DuAnChiTietModuleComponent } from './module/du-an-chi-tiet/_du-an-chi-tiet.component';
 
 import { SanGiaoDichService } from './service/sangiaodich.service';
-import { MeNuService } from './service/menu.service';
+import { MenuService } from './service/menu.service';
 import { AdminComponent } from './pages/admin/_admin.component';
 import { ThemMenuComponent } from './module/admin/menu/them-menu/_them-menu.component';
 import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { TinTucNoiBatTrangChuComponent } from './pages/trang-chu/tin-tuc-noi-bat/_tin_tuc_noi_bat_trang_chu.component';
+import { LoaiGiaoDichService } from './service/loaigiaodich.service';
+import { XoaMenuComponent } from './module/admin/menu/xoa-menu/_xoa-menu.component';
+import { ThemDuAnComponent } from './module/admin/duan/them-duan/_them-duan.component';
+import { XoaDuAnComponent } from './module/admin/duan/xoa-duan/_xoa-duan.component';
+import { ThemDoiTacComponent } from './module/admin/doitac/them-doitac/_them-doitac.component';
+import { XoaDoiTacComponent } from './module/admin/doitac/xoa-doitac/_xoa-doitac.component';
+import { ThemLoaiGiaoDichComponent } from './module/admin/loaigiaodich/them-loaigiaodich/_them-loaigiaodich.component';
+import { XoaLoaiGiaoDichComponent } from './module/admin/loaigiaodich/xoa-loaigiaodich/_xoa-loaigiaodich.component';
+import { ThemDanhMucComponent } from './module/admin/danhmuc/them-danhmuc/_them-danhmuc.component';
+import { XoaDanhMucComponent } from './module/admin/danhmuc/xoa-danhmuc/_xoa-danhmuc.component';
+import { ThemLoaiTinTucComponent } from './module/admin/loaitintuc/them-loaitintuc/_them-loaitintuc.component';
+import { XoaLoaiTinTucComponent } from './module/admin/loaitintuc/xoa-loaitintuc/_xoa-loaitintuc.component';
+import { ThemGioiThieuComponent } from './module/admin/gioithieu/them-gioithieu/_them-gioithieu.component';
+import { XoaGioiThieuComponent } from './module/admin/gioithieu/xoa-gioithieu/_xoa-gioithieu.component';
+import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_them-taikhoan.component';
+import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
 
 
 
@@ -82,14 +98,21 @@ import { HttpClientModule } from '@angular/common/http';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent,
+    DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent,
     //Admin
-    AdminComponent, ThemMenuComponent
+    AdminComponent, ThemMenuComponent, XoaMenuComponent,
+    ThemDuAnComponent, XoaDuAnComponent,
+    ThemDoiTacComponent, XoaDoiTacComponent,
+    ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent,
+    ThemDanhMucComponent, XoaDanhMucComponent,
+    ThemLoaiTinTucComponent, XoaLoaiTinTucComponent,
+    ThemGioiThieuComponent, XoaGioiThieuComponent,
+    ThemTaiKhoanComponent, XoaTaiKhoanComponent
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MeNuService, FormBuilder],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
