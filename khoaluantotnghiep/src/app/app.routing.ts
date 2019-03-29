@@ -19,6 +19,7 @@ import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
+import { AdminComponent } from './pages/admin/_admin.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,7 @@ const routes: Routes = [
     { path: 'gio-hang', component: GioHangComponent },
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
+    { path: 'admin', component: AdminComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);

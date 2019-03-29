@@ -10,7 +10,7 @@ import { DuAnService } from 'src/app/service/duan.service';
 })
 export class DuAnListComponent implements OnInit {
     //Du liệu từ mock
-    dsDuAN: DUAN[] = ds_duan;
+    dsDuAN: DUAN[] = [];//ds_duan;
     constructor(private serviceDuAn: DuAnService) {
         this.dsDuAN = serviceDuAn.layDanhSachDuAn();
     }

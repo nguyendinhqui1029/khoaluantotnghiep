@@ -11,7 +11,7 @@ export class DuAnMoiComponent implements OnInit {
     //du liệu từ mock
     ds_duAnMoi: DUAN[] = [];
     constructor(private serviceDuAn: DuAnService) {
-        this.ds_duAnMoi = serviceDuAn.layDanhSachDuAnTheoTrangThai(serviceDuAn.modeTrangThai.DUANMOI);
+        this.ds_duAnMoi = this.serviceDuAn.layDanhSachDuAnTheoTrangThai(serviceDuAn.modeTrangThai.DUANMOI);
     }
 
     ngOnInit(): void {

@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { TAIKHOAN } from 'src/app/model/taikhoan';
-
+import { DangNhapDangKiService } from 'src/app/service/dangnhap_dangki.service';
+import { Md5 } from 'ts-md5/dist/md5';
 @Component({
     selector: 'form-dang-nhap',
     templateUrl: './_form-dang-nhap.component.html',
     styleUrls: ['./_form-dang-nhap.component.scss']
 })
 export class FormDangNhapComponent implements OnInit {
-    constructor(private router: Router, private fb: FormBuilder) { }
+    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
     formDangNhap: FormGroup;
     submitted = false;
-
-
-    tk = new TAIKHOAN("TK001", "Nguyễn Văn A", "0777 203 042", "An Giang", "50/2 Bình Tân, Bình Mỹ",
-        "Châu Phú", "Nam", "10/01/1997", { "tenhinh": "partner01.png", "alt": "logo đối tác" },
-        "Đối tác chuyên cung cấp phòng chung cư chất lượng cao", "nguyendinhqui", "nguyendinhqui1029@gmail.com",
-        "123", "Đối tác");
-
+    error: any = { "status": false, "message": "" }
     ngOnInit(): void {
         this.formDangNhap = this.fb.group({
             email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
@@ -29,19 +23,29 @@ export class FormDangNhapComponent implements OnInit {
 
 
     get f() { return this.formDangNhap.controls; }
-
-
-
-    onSubmit() {
-        this.submitted = true;
-        console.log(this.formDangNhap);
-        if (this.formDangNhap.invalid) {
-            return;
-        } else {
-            this.dangNhap();
-        }
+    changedata() {
+        this.error.status = false;
     }
     dangNhap() {
+        this.DangKiDangNhapService.layTaiKhoanTheoEmail(this.formDangNhap.controls.email.value).subscribe(e => {
+            const md5 = new Md5();
+            console.log(md5.appendAsciiStr(this.formDangNhap.controls.pass.value).end())
+            console.log(md5.appendAsciiStr(e.body[0].matKhau).start())
+            if (e.body[0]) {
+                if (md5.appendAsciiStr(this.formDangNhap.controls.pass.value).end() === e.body[0].matKhau) {
+                    this.router.navigate(['/admin']);
+                    sessionStorage.setItem("username", e.body[0].email);
+                    sessionStorage.setItem("name", e.body[0].hoTen);
+
+                } else {
+                    this.error.status = true;
+                    this.error.message = "Mật khẩu không đúng.Vui lòng nhập lại!";
+                }
+            } else {
+                this.error.status = true;
+                this.error.message = "Địa chỉ email không đúng.Vui lòng nhập lại!";
+            }
+        });
 
     }
 

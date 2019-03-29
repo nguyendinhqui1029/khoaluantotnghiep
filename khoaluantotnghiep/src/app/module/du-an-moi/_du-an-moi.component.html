@@ -15,19 +15,20 @@
                 <div class="project-item-box fixheight" *ngFor="let duan of ds_duAnMoi">
                     <div class="project-item project-slide-resize">
                         <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
-                            <a href="#" title="{{duan.mangHinh[0].alt}}">
-                                <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}" class="img-responsive" />
+                            <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
+                                <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}"
+                                    class="img-responsive" />
                             </a>
                             <span class="new">New</span>
                             <div class="thumbnail">
-                                <a class="zoom" href="#">
+                                <a class="zoom" [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
                                     <i class="glyphicon glyphicon-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="right-block">
                             <h2 class="name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                <a href="#">{{duan.tenDuAn}}</a>
+                                <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]"></a>
                             </h2>
                             <div class="rating">
                                 <div class="rating-1">

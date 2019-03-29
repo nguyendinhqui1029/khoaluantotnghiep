@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from './_must-match.validator';
-import * as moment from 'moment'
 import { TINHTHANHPHO } from 'src/app/model/tinhthanhpho';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 
