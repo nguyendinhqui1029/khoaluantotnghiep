@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ThemDanhMucComponent } from '../them-danhmuc/_them-danhmuc.component';
 
 @Component({
     selector: 'xoa-danhmuc',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_xoa-danhmuc.component.scss']
 })
 export class XoaDanhMucComponent implements OnInit {
-    constructor() { }
+    constructor(private router: Router) {
 
-    ngOnInit(): void { }
+    }
+
+    ngOnInit(): void {
+    }
+    update() {
+        this.router.navigate(['/admin/them-danhmuc']);
+    }
 }

@@ -113,7 +113,8 @@ import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

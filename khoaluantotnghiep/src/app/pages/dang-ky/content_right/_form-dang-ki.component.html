@@ -14,11 +14,21 @@
     <div class="register-content clearfix">
         <h1 class="title clearfix"><span>Đăng ký tài khoản</span></h1>
         <!--thong bao loi-->
-        <div *ngIf="submitted && !f.taikhoan.errors" class="alert alert-success fade in">
+        <!-- <div *ngIf="submitted && formvalid" class="alert alert-success fade in">
             <button data-dismiss="alert" class="close"></button>
             <i class="fa-fw fa fa-check"></i>
             <strong>Success!</strong> Đăng ký thành công.
+        </div> -->
+        <div *ngIf="submitted && formvalid else flap" id="popup1" class="overlayquy">
+            <div class="popupquy">
+                <a (click)="dongpopup()" class="close">&times;</a>
+                <h2><i class="fa-fw fa fa-check"></i>Đăng ký thành công</h2>
+                <div class="contentquy">
+                    Cảm ơn! Bạn đã là thành viên của chúng tôi.
+                </div>
+            </div>
         </div>
+
         <!--
         <div *ngIf="submitted && f.taikhoan.errors" class="alert alert-danger fade in">
             <button data-dismiss="alert" class="close"></button>
@@ -111,7 +121,11 @@
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Điện thoại</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" formControlName="sdt"
+                            [ngClass]="{ 'is-invalid': submitted && f.sdt.errors }" />
+                        <div *ngIf="submitted && f.sdt.errors" class="invalid-feedback">
+                            <div *ngIf="f.sdt.errors.pattern">Số điện thoại không hợp lệ</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
