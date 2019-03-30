@@ -19,6 +19,23 @@ import { LayLaiMatKhauComponent } from './pages/lay-lai-mat-khau/_laylaimatkhau.
 import { KetQuaTimKiemComponent } from './pages/ket-qua-tim-kiem/_ketquatimkiem.component';
 import { TinTucChiTietComponent } from './pages/tin-tuc-chi-tiet/_tintucchitiet.component';
 import { DuAnChiTietComponent } from './pages/du-an-chi-tiet/_du-an-chi-tiet.component';
+import { AdminComponent } from './pages/admin/_admin.component';
+import { XoaDuAnComponent } from './module/admin/duan/xoa-duan/_xoa-duan.component';
+import { ThemDuAnComponent } from './module/admin/duan/them-duan/_them-duan.component';
+import { ThemDanhMucComponent } from './module/admin/danhmuc/them-danhmuc/_them-danhmuc.component';
+import { XoaDanhMucComponent } from './module/admin/danhmuc/xoa-danhmuc/_xoa-danhmuc.component';
+import { ThemDoiTacComponent } from './module/admin/doitac/them-doitac/_them-doitac.component';
+import { XoaDoiTacComponent } from './module/admin/doitac/xoa-doitac/_xoa-doitac.component';
+import { ThemGioiThieuComponent } from './module/admin/gioithieu/them-gioithieu/_them-gioithieu.component';
+import { XoaGioiThieuComponent } from './module/admin/gioithieu/xoa-gioithieu/_xoa-gioithieu.component';
+import { ThemLoaiGiaoDichComponent } from './module/admin/loaigiaodich/them-loaigiaodich/_them-loaigiaodich.component';
+import { XoaLoaiGiaoDichComponent } from './module/admin/loaigiaodich/xoa-loaigiaodich/_xoa-loaigiaodich.component';
+import { ThemLoaiTinTucComponent } from './module/admin/loaitintuc/them-loaitintuc/_them-loaitintuc.component';
+import { XoaLoaiTinTucComponent } from './module/admin/loaitintuc/xoa-loaitintuc/_xoa-loaitintuc.component';
+import { ThemMenuComponent } from './module/admin/menu/them-menu/_them-menu.component';
+import { XoaMenuComponent } from './module/admin/menu/xoa-menu/_xoa-menu.component';
+import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_them-taikhoan.component';
+import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
 
 
 const routes: Routes = [
@@ -67,6 +84,31 @@ const routes: Routes = [
     { path: 'gio-hang', component: GioHangComponent },
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
+
+
+    //routing admin
+    {
+        path: 'admin', component: AdminComponent,
+        children: [
+            { path: '', component: XoaDuAnComponent },
+            { path: 'them-duan', component: ThemDuAnComponent },
+            { path: 'xoa-duan', component: XoaDuAnComponent },
+            { path: 'them-danhmuc', component: ThemDanhMucComponent },
+            { path: 'xoa-danhmuc', component: XoaDanhMucComponent },
+            { path: 'them-doitac', component: ThemDoiTacComponent },
+            { path: 'xoa-doitac', component: XoaDoiTacComponent },
+            { path: 'them-gioithieu', component: ThemGioiThieuComponent },
+            { path: 'xoa-gioithieu', component: XoaGioiThieuComponent },
+            { path: 'them-loaigiaodich', component: ThemLoaiGiaoDichComponent },
+            { path: 'xoa-loaigiaodich', component: XoaLoaiGiaoDichComponent },
+            { path: 'them-loaitintuc', component: ThemLoaiTinTucComponent },
+            { path: 'xoa-loaitintuc', component: XoaLoaiTinTucComponent },
+            { path: 'them-menu', component: ThemMenuComponent },
+            { path: 'xoa-menu', component: XoaMenuComponent },
+            { path: 'them-taikhoan', component: ThemTaiKhoanComponent },
+            { path: 'xoa-taikhoan', component: XoaTaiKhoanComponent },
+        ]
+    },
 ];
 
 export const routing = RouterModule.forRoot(routes);
