@@ -147,7 +147,7 @@ body {
  }
  
  .menu-open-button {
-    z-index: 2;
+      z-index: 2;
     -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     -webkit-transition-duration: 400ms;
@@ -592,7 +592,7 @@ body {
   -moz-transition: all 300ms linear;
   -webkit-transition: all 300ms linear;
   /*top: 130px;*/
-  z-index: 1000;
+ z-index: 1000;
   
   /* == */
   left:280px;

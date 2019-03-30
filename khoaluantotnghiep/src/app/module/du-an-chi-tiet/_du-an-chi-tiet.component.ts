@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DUAN } from 'src/app/model/duan';
 import { ds_duan } from 'src/app/model/mock_duan';
+import { DuAnService } from 'src/app/service/duan.service';
 
 @Component({
     selector: 'du-an-chi-tiet-module',
@@ -10,19 +11,17 @@ import { ds_duan } from 'src/app/model/mock_duan';
 })
 export class DuAnChiTietModuleComponent implements OnInit {
     // noi dung mock tin tuc
-    noidungduan: DUAN[] = ds_duan;
-    duan: DUAN;
+    duan: DUAN = new DUAN("", "", "", "", "", "", "", "", "", "", "", "", "", "");
     id: any = "";
-    constructor(private router: ActivatedRoute) {
+    constructor(private router: ActivatedRoute, private duAnService: DuAnService) {
         this.id = this.router.snapshot.params["id"];
-        alert(this.id)
-        this.noidungduan.forEach(element => {
-            if (element.maDuAn === this.id) {
-                alert(element.maDuAn)
-                this.duan = element;
-            }
-        });
+        this.layDuAnTheoMaDuAn(this.id);
     }
 
+    layDuAnTheoMaDuAn(maDuAn) {
+        this.duAnService.getDuAnTheoMaDuAn(maDuAn).subscribe(e => {
+            this.duan = e.body[0];
+        });
+    }
     ngOnInit(): void { }
 }

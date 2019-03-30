@@ -149,35 +149,20 @@ export class SearchComponent implements OnInit {
                 if (duan.giaTien > this.giatien) {
                     dstam.push(duan);
                 }
-                console.log(0);
             } else if (this.danhmuc !== "0" && this.loaigiaodich === "0" && this.quanhuyen === "0" && this.tinhthanhpho === "0" && Number(this.giatien) === 0) {
                 if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai) {
                     dstam.push(duan);
                 }
-                console.log(1);
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho === "0" && this.quanhuyen === "0" && Number(this.giatien) === 0) {
-                console.log(this.danhmuc + "=" + duan.loaiGiaoDich.maLoai);
-                console.log(this.loaigiaodich + "=" + duan.danhMuc.maDanhMuc);
                 if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
                     dstam.push(duan);
                 }
-                console.log(2);
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho === "0" && this.quanhuyen !== "0" && Number(this.giatien) === 0) {
-                console.log(this.quanhuyen + "=" + duan.quanHuyen);
-                console.log(this.danhmuc + "=" + duan.loaiGiaoDich.maLoai);
-                console.log(this.loaigiaodich + "=" + duan.danhMuc.maDanhMuc);
-
                 if (duan.giaTien > this.giatien && this.quanhuyen === duan.quanHuyen
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
-                    dstam.push(duan);
                 }
-                console.log(3);
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho !== "0" && this.quanhuyen !== "0" && Number(this.giatien) === 0) {
-                console.log(this.tinhthanhpho + "=" + duan.tinhThanhPho);
-                console.log(this.quanhuyen + "=" + duan.quanHuyen);
-                console.log(this.danhmuc + "=" + duan.loaiGiaoDich.maLoai);
-                console.log(this.loaigiaodich + "=" + duan.danhMuc.maDanhMuc);
                 if (duan.giaTien > Number(this.giatien) && this.quanhuyen === duan.quanHuyen
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc
@@ -185,13 +170,7 @@ export class SearchComponent implements OnInit {
                 ) {
                     dstam.push(duan);
                 }
-                console.log(4);
             } else {
-                console.log(this.tinhthanhpho + "=" + duan.tinhThanhPho);
-                console.log(this.quanhuyen + "=" + duan.quanHuyen);
-                console.log(this.danhmuc + "=" + duan.loaiGiaoDich.maLoai);
-                console.log(this.loaigiaodich + "=" + duan.danhMuc.maDanhMuc);
-                console.log(this.giatien + "=" + duan.giaTien);
                 if (duan.giaTien === Number(this.giatien) && this.quanhuyen === duan.quanHuyen
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc
@@ -199,10 +178,8 @@ export class SearchComponent implements OnInit {
                 ) {
                     dstam.push(duan);
                 }
-                console.log(5);
             }
         });
-        console.log(dstam);
     }
     ngOnInit() {
 

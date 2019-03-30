@@ -9,7 +9,7 @@ export class DuAnService {
     dsDuAn: DUAN[] = ds_duan;
     modeTrangThai: any = { "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
     modeGiaoDich: any = {};
-    URL: String = "https://serverkhoaluan2019.herokuapp.com/"
+    URL: String = "https://serverkhoaluan2019.herokuapp.com/";
     // URL: String = "http://localhost:8081/";
     constructor(private http: HttpClient) {
 
@@ -18,7 +18,9 @@ export class DuAnService {
         return this.http.get<DUAN[]>(this.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
     }
 
-
+    getDuAnTheoMaDuAn(maDuAn): Observable<HttpResponse<DUAN>> {
+        return this.http.get<DUAN>(this.URL + "get-du-an/" + maDuAn, { observe: 'response' });
+    }
 
     layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
         let arr = Array();

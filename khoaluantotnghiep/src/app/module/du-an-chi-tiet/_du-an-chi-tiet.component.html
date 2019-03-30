@@ -1,8 +1,7 @@
 <div class="breadcrumb clearfix">
     <ul>
-        <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-            <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
-                    chủ</span></a>
+        <li class="home">
+            <a title="Đến trang chủ" [routerLink]="['/trang-chu']"><span itemprop="title">Trang chủ</span></a>
         </li>
         <li class="icon-li"><strong>Dự án</strong> </li>
         <li class="icon-li">
@@ -18,13 +17,14 @@
 <!-- slider -->
 
 <!-- nội dung khung chi tiết -->
-<div class="project-tabs  margin-top-10">
+<div class="project-tabs  matop-5">
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a data-toggle="tab" href="#tab1">Chi tiết dự &#225;n</a></li>
+        <li role="presentation" class="active"><a data-toggle="tab">Chi tiết dự án</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-            <div style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; text-align: justify; background-color: rgb(241, 241, 241);">
+            <div
+                style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; text-align: justify; background-color: rgb(241, 241, 241);">
                 {{duan.noiDungChiTiet}}
             </div>
         </div>

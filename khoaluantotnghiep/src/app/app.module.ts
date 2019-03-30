@@ -78,6 +78,7 @@ import { ThemGioiThieuComponent } from './module/admin/gioithieu/them-gioithieu/
 import { XoaGioiThieuComponent } from './module/admin/gioithieu/xoa-gioithieu/_xoa-gioithieu.component';
 import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_them-taikhoan.component';
 import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
+import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
 
 
 
@@ -112,7 +113,7 @@ import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
