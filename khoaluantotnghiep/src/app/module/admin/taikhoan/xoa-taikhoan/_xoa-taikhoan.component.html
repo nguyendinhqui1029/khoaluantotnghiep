@@ -1,49 +1,42 @@
-<div>
-    <div class="headeradmenu">
-        <span>::::::::Danh Sách Tài Khoản::::::::</span>
+<div class="row" style="margin-top: 0px; background: rgba(255, 255, 255, 0.925)">
+    <div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class=" col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                <h1 style="color: #34495E;margin-left: 4%">
+                    <i class="fa fa-th-list"></i>Danh Sách Tài Khoản
+                </h1>
+            </div>
+            <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                <form id="demo-2" style="margin-top: 3%; margin-left: 2%">
+                    <input type="search" placeholder="Search">
+                </form>
+            </div>
+
+            <table class="rwd-table" style="width: 90%;margin-left: 4%">
+
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Mã Tài Khoản</th>
+                    <th scope="col">Tên Tài Khoản</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Số Điện Thoại</th>
+                    <th scope="col">Cài Đặt</th>
+                </tr>
+                <tr *ngFor="let item of ds_taikhoan; let i=index">
+                    <td data-th="#">{{i}}</td>
+                    <td data-th="Mã Tài Khoản">{{item.maTaiKhoan}}</td>
+                    <td data-th="Tên Tài Khoản">{{item.tenTaiKhoan}}</td>
+                    <td data-th="Email">{{item.email}}</td>
+                    <td data-th="Số Điện Thoại">{{item.soDienThoai}}</td>
+                    <td data-th="Cài Đặt"><a href="#" class="tooltipquy"><i class="fa fa-trash"
+                                style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
+                                class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            href="#" class="tooltipquy"><i class="fa fa-edit"
+                                style="font-size: 190%;color: white"></i><span class="tooltiptextquy">Sửa</span></a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Mã Tài Khoản</th>
-                <th scope="col">Tên Tài Khoản</th>
-                <th scope="col">Cài Đặt</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td><a href="#" class="btn btn-primary btn-lg active" role="button"
-                        aria-pressed="true">DELETE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
-                        class="btn btn-primary btn-lg active" role="button" aria-pressed="true">UPDATE</a></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td><a href="#" class="btn btn-primary btn-lg active" role="button"
-                        aria-pressed="true">DELETE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
-                        class="btn btn-primary btn-lg active" role="button" aria-pressed="true">UPDATE</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td><a href="#" class="btn btn-primary btn-lg active" role="button"
-                        aria-pressed="true">DELETE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
-                        class="btn btn-primary btn-lg active" role="button" aria-pressed="true">UPDATE</a></td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td><a href="#" class="btn btn-primary btn-lg active" role="button"
-                        aria-pressed="true">DELETE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
-                        class="btn btn-primary btn-lg active" role="button" aria-pressed="true">UPDATE</a></td>
-            </tr>
-        </tbody>
-    </table>
 </div>

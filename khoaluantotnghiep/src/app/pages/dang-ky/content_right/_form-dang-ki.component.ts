@@ -20,6 +20,9 @@ export class FormDangKiComponent implements OnInit {
     formDangKy: FormGroup;
     submitted = false;
     buttonGuiMaXacNhan: any = { status: false, name: "Lấy xác nhận" };
+    formvalid = false;
+    flap = false;
+
     dstinhthanhpho: TINHTHANHPHO[] = ds_tinhthanhpho;
     dstinhtam: any[] = [];
     dsquantam: any[] = [];
@@ -53,7 +56,7 @@ export class FormDangKiComponent implements OnInit {
             hoten: ['', [Validators.required]],
             gioitinh: [''],
             ngaysinh: [''],
-            sdt: [''],
+            sdt: ['', Validators.pattern('^(0|[1-9][0-9]*)$')],
             diachi: [''],
             tinhTP: [''],
             quanHuyen: [''],
@@ -70,7 +73,14 @@ export class FormDangKiComponent implements OnInit {
                 uiLibrary: 'bootstrap',
                 format: 'yyyy-mm-dd'
             });
+            if ($('#popup1')) {
+                setTimeout(function () {
+                    $('#popup1').close()
+                }, 3000);
+            }
+
         });
+
     }
 
     get f() { return this.formDangKy.controls; }
@@ -130,11 +140,18 @@ export class FormDangKiComponent implements OnInit {
 
 
         this.submitted = true;
+        console.log(this.formDangKy);
         if (this.formDangKy.invalid) {
+            this.formvalid = false;
             return;
-        } else {
-
+        } else if (this.formDangKy.valid) {
+            this.formvalid = true;
         }
+
+    }
+    dongpopup() {
+        this.flap = true;
+        this.submitted = false;
     }
 
     yeuCauMaXacNhan() {

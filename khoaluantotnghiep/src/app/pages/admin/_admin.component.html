@@ -1,7 +1,8 @@
 <section class="row">
-    <section class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
+    <section class="col-xs-2 col-sm-1 col-md-1 col-lg-3">
         <!-- header left -->
-        <div style="text-align: center;" class="hidden-xs hidden-sm">
+        <div style="text-align: center;background: rgb(139, 193, 238); width: 110%; margin-top: -0.5%"
+            class="hidden-xs hidden-sm">
             <div>
                 <img src="../../../assets/images/icon/logo.png" class="img-responsive " style="max-width: 130px;" />
             </div>
@@ -10,33 +11,35 @@
             </div>
         </div>
         <!-- end head left -->
-        <!-- content left -->
+        <!-- content left menu slidebar -->
         <article>
             <div style="font-size: 20px; ">
                 <nav>
                     <ul class="mcd-menu " style="background: rgb(236, 240, 237)">
                         <li>
-                            <a href="">
+                            <a [routerLink]="[ '/trang-chu']">
                                 <i class="fa fa-home"></i>
                                 <strong>Trang Chủ</strong>
                                 <small>Trở lại Trang chủ</small>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="active">
+                            <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-edit"></i>
                                 <strong>Menu</strong>
                                 <small>Cài đặt Menu</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Menu</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Menu</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Menu</a></li>
+                                <li><a [routerLink]="[ '/admin/them-menu']"><i class="fa fa-globe"></i>Thêm Menu</a>
+                                </li>
+                                <li><a [routerLink]="[ '/admin/xoa-menu']"><i class="fa fa-trophy"></i>Xóa Menu</a></li>
+                                <li><a [routerLink]="[ '/admin/them-menu']"><i class="fa fa-certificate"></i>Sửa
+                                        Menu</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-envelope-o"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-tasks"></i>
                                 <strong>Bài Đăng</strong>
                                 <small>Cài đặt Bài Đăng</small>
                             </a>
@@ -47,95 +50,160 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-gift"></i>
+                            <a [routerLink]="[ '/admin']" class="active">
+                                <i class="fa fa-briefcase"></i>
                                 <strong>Dự Án</strong>
                                 <small>Cài đặt Dự Án</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Dự Án</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Dự Án</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Dự Án</a></li>
+                                <li><a [routerLink]="[ '/admin/them-duan']"><i class="fa fa-globe"></i>Thêm Dự Án</a>
+                                </li>
+                                <li><a [routerLink]="[ '/admin/xoa-duan']"><i class="fa fa-trophy"></i>Xóa Dự Án</a>
+                                </li>
+                                <li><a [routerLink]="[ '/admin/them-duan']"><i class="fa fa-certificate"></i>Sửa Dự
+                                        Án</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-globe"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-slideshare"></i>
                                 <strong>Đối Tác</strong>
                                 <small>Cài đặt Đối Tác</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Đối Tác</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Đối Tác</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Đối Tác</a></li>
+                                <li><a [routerLink]="[ '/admin/them-doitac']"><i class="fa fa-globe"></i>Thêm Đối
+                                        Tác</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-doitac']"><i class="fa fa-trophy"></i>Xóa Đối Tác</a>
+                                </li>
+                                <li><a [routerLink]="[ '/admin/them-doitac']"><i class="fa fa-certificate"></i>Sửa Đối
+                                        Tác</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-comments-o"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <!-- <i class="fa fa-comments-o"></i> -->
+                                <i class="fa fa-building"></i>
                                 <strong>Công Ty</strong>
                                 <small>Cài đặt Công Ty</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Công Ty</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Công Ty</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-globe"></i>Thêm Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-trophy"></i>Xóa Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-certificate"></i>Sửa Công Ty</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-picture-o"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <!-- <i class="fas fa-list-ol"></i> -->
+                                <i class="fa fa-list-ol"></i>
                                 <strong>Danh Mục</strong>
                                 <small>Cài đặt Danh Mục</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Danh Mục</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Danh Mục</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Danh Mục</a></li>
+                                <li><a [routerLink]="[ '/admin/them-danhmuc']"><i class="fa fa-globe"></i>Thêm Danh
+                                        Mục</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-danhmuc']"><i class="fa fa-trophy"></i>Xóa Danh
+                                        Mục</a></li>
+                                <li><a [routerLink]="[ '/admin/them-danhmuc']"><i class="fa fa-certificate"></i>Sửa Danh
+                                        Mục</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-envelope-o"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-comments-o"></i>
                                 <strong>Tin Tức</strong>
                                 <small>Cài đặt Tin Tức</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Tin Tức</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Tin Tức</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Tin Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/them-tintuc']"><i class="fa fa-globe"></i>Thêm Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-tintuc']"><i class="fa fa-trophy"></i>Xóa Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/them-tintuc']"><i class="fa fa-certificate"></i>Sửa Tin
+                                        Tức</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-envelope-o"></i>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-user"></i>
                                 <strong>Tài Khoản</strong>
                                 <small>Cài đặt Tài Khoản</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Tài Khoản</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Tài Khoản</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Tài Khoản</a></li>
+                                <li><a [routerLink]="[ '/admin/them-taikhoan']"><i class="fa fa-globe"></i>Thêm Tài
+                                        Khoản</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-taikhoan']"><i class="fa fa-trophy"></i>Xóa Tài
+                                        Khoản</a></li>
+                                <li><a [routerLink]="[ '/admin/them-taikhoan']"><i class="fa fa-certificate"></i>Sửa Tài
+                                        Khoản</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-question-circle"></i>
+                                <strong>Giới Thiệu</strong>
+                                <small>Cài đặt Giới Thiệu</small>
+                            </a>
+                            <ul>
+                                <li><a [routerLink]="[ '/admin/them-gioithieu']"><i class="fa fa-globe"></i>Thêm Giới
+                                        Thiệu</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-gioithieu']"><i class="fa fa-trophy"></i>Xóa Giới
+                                        Thiệu</a></li>
+                                <li><a [routerLink]="[ '/admin/them-gioithieu']"><i class="fa fa-certificate"></i>Sửa
+                                        Giới Thiệu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-credit-card"></i>
+                                <strong>Giao Dịch</strong>
+                                <small>Cài đặt Giao Dịch</small>
+                            </a>
+                            <ul>
+                                <li><a [routerLink]="[ '/admin/them-loaigiaodich']"><i class="fa fa-globe"></i>Thêm Giao
+                                        Dịch</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-loaigiaodich']"><i class="fa fa-trophy"></i>Xóa Giao
+                                        Dịch</a></li>
+                                <li><a [routerLink]="[ '/admin/them-loaigiaodich']"><i class="fa fa-certificate"></i>Sửa
+                                        Giao Dịch</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a [routerLink]="[ '/admin']">
+                                <i class="fa fa-envelope-o"></i>
+                                <strong>Loại Tin Tức</strong>
+                                <small>Cài đặt Tin Tức</small>
+                            </a>
+                            <ul>
+                                <li><a [routerLink]="[ '/admin/them-loaitintuc']"><i class="fa fa-globe"></i>Thêm Loại
+                                        Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-loaitintuc']"><i class="fa fa-trophy"></i>Xóa Loại
+                                        Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/them-loaitintuc']"><i class="fa fa-certificate"></i>Sửa
+                                        Loại Tin Tức</a></li>
                             </ul>
                         </li>
                         <li class="float">
-                            <a class="search">
+                            <!-- <a class="search">
                                 <input type="text" value="search ...">
                                 <button><i class="fa fa-search"></i></button>
                             </a>
                             <a href="" class="search-mobile">
                                 <i class="fa fa-search"></i>
-                            </a>
+                            </a> -->
                         </li>
                     </ul>
                 </nav>
             </div>
         </article>
-        <!-- end content left -->
+        <!-- end content left menu slidebar -->
     </section>
-    <section class="col-xs-11 col-sm-11 col-md-9 col-lg-9">
+    <section class="col-xs-10 col-sm-11 col-md-11 col-lg-9">
         <!-- header right -->
-        <div class="card-group" style="text-align: right;">
+        <div class="card-group"
+            style="text-align: right; background: -webkit-radial-gradient(center right, circle farthest-side, #ffffff 0%, rgb(139, 193, 238) 100%);margin-left: -6%">
             <span>
                 <!-- notifycation -->
                 <div class="navbar-custom-menu hidden-xs hidden-sm" style="padding-left: 60%">
@@ -180,28 +248,9 @@
         </div>
         <!-- end header right -->
         <!-- content right -->
-        <article class="row">
-            <div class="col-md-12" style="padding-left: 10px;">
-                <xoa-taikhoan></xoa-taikhoan>
-            </div>
-            <!-- <them-menu></them-menu> -->
-            <!-- <xoa-menu></xoa-menu> -->
-            <!-- <them-duan></them-duan> -->
-            <!-- <xoa-duan></xoa-duan> -->
-            <!-- <them-doitac></them-doitac> -->
-            <!-- <xoa-doitac></xoa-doitac> -->
-            <!-- <them-loaigiaodich></them-loaigiaodich> -->
-            <!-- <xoa-loaigiaodich></xoa-loaigiaodich> -->
-            <!-- <them-danhmuc></them-danhmuc> -->
-            <!-- <xoa-danhmuc></xoa-danhmuc> -->
-            <!-- <them-loaitintuc></them-loaitintuc> -->
-            <!-- <xoa-loaitintuc></xoa-loaitintuc> -->
-            <!-- <them-gioithieu></them-gioithieu> -->
-            <!-- <xoa-gioithieu></xoa-gioithieu> -->
-            <!-- <them-taikhoan></them-taikhoan> -->
-
+        <article>
+            <router-outlet></router-outlet>
         </article>
-
     </section>
 </section>
 <footer-component></footer-component>

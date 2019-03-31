@@ -80,6 +80,8 @@ import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_th
 import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
 import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
 import { SendMailService } from './service/sendmail.service';
+import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
+import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 
 
 
@@ -109,7 +111,8 @@ import { SendMailService } from './service/sendmail.service';
     ThemDanhMucComponent, XoaDanhMucComponent,
     ThemLoaiTinTucComponent, XoaLoaiTinTucComponent,
     ThemGioiThieuComponent, XoaGioiThieuComponent,
-    ThemTaiKhoanComponent, XoaTaiKhoanComponent
+    ThemTaiKhoanComponent, XoaTaiKhoanComponent,
+    ThemTinTucComponent, XoaTinTucComponent
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
