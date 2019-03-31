@@ -24,29 +24,14 @@
                     <th scope="col">Loại Giao Dịch</th>
                     <th scope="col">Cài Đặt</th>
                 </tr>
-                <tr>
-                    <td data-th="#">1</td>
-                    <td data-th="Mã Dự Án">Otto</td>
-                    <td data-th="Tên Dự Án">Mark</td>
-                    <td data-th="Ngày Đăng">Otto</td>
-                    <td data-th="Giá Tiền">Mark</td>
-                    <td data-th="Loại Danh Mục">Otto</td>
-                    <td data-th="Loại Giao Dịch">Mark</td>
-                    <td data-th="Cài Đặt"><a href="#" class="tooltipquy"><i class="fa fa-trash"
-                                style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
-                                class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                            href="#" class="tooltipquy"><i class="fa fa-edit"
-                                style="font-size: 190%;color: white"></i><span class="tooltiptextquy">Sửa</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="#">2</td>
-                    <td data-th="Mã Dự Án">Otto</td>
-                    <td data-th="Tên Dự Án">Mark</td>
-                    <td data-th="Ngày Đăng">Otto</td>
-                    <td data-th="Giá Tiền">Mark</td>
-                    <td data-th="Loại Danh Mục">Otto</td>
-                    <td data-th="Loại Giao Dịch">Mark</td>
+                <tr *ngFor="let item of ds_duan; let i=index">
+                    <td data-th="#">{{i}}</td>
+                    <td data-th="Mã Dự Án">{{item.maDuAn}}</td>
+                    <td data-th="Tên Dự Án">{{item.tenDuAn}}</td>
+                    <td data-th="Ngày Đăng">{{item.ngayDang}}</td>
+                    <td data-th="Giá Tiền">{{item.giaTien}}</td>
+                    <td data-th="Loại Danh Mục">{{item.danhMuc.tenDanhMuc}}</td>
+                    <td data-th="Loại Giao Dịch">{{item.loaiGiaoDich.tenLoai}}</td>
                     <td data-th="Cài Đặt"><a href="#" class="tooltipquy"><i class="fa fa-trash"
                                 style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
                                 class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a

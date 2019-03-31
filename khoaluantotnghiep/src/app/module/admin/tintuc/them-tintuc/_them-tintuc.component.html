@@ -1,0 +1,116 @@
+<div class="row" style=" margin-top: -8px">
+    <form id="form-add-duan" ng-submit="add()" [formGroup]="formthemTinTuc">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="headeradmenu">
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM TIN TỨC</h1>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="matintuc">Mã Tin Tức</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="matintuc" placeholder="TT00123"
+                        formControlName="matintuc" [ngClass]="{ 'is-invalid': submitted && f.matintuc.errors }">
+                    <div *ngIf="submitted && f.matintuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.matintuc.errors.required">Vui lòng nhập Mã Tin Tức</div>
+                        <div *ngIf="f.matintuc.errors.pattern">Mã Tin Tức không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="tentintuc">Tên Tin Tức</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="tentintuc" placeholder="VinHomes"
+                        formControlName="tentintuc" [ngClass]="{ 'is-invalid': submitted && f.tentintuc.errors }">
+                    <div *ngIf="submitted && f.tentintuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.tentintuc.errors.required">Vui lòng nhập Tên Tin Tức</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="trangthai">Trạng Thái</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control custom-select mr-sm-2" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="trangthai"
+                        [ngClass]="{ 'is-invalid': submitted && f.trangthai.errors }">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <div *ngIf="submitted && f.trangthai.errors" class="invalid-feedback">
+                        <div *ngIf="f.trangthai.errors.required">Vui lòng chọn Trạng thái</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="ngaydang">Ngày Đăng</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <div style="width: 80%;">
+                        <div class="input-group date" data-date-format="dd.mm.yyyy">
+                            <input id="filterDate2" type="text" class="form-control" placeholder="yyyy-MM-dd"
+                                formControlName="ngaydang" [ngClass]="{ 'is-invalid': submitted && f.ngaydang.errors }">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="loaitintuc">Loại Tin Tức</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="loaitintuc"
+                        [ngClass]="{ 'is-invalid': submitted && f.loaitintuc.errors }">
+                        <option value="1">New</option>
+                        <option value="1">Normal</option>
+                    </select>
+                    <div *ngIf="submitted && f.loaitintuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaitintuc.errors.required">Vui lòng chọn Loại tin tức</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="noidungtomtat">Nội Dung Tóm Tắt</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%"
+                        formControlName="noidungtomtat"
+                        [ngClass]="{ 'is-invalid': submitted && f.noidungtomtat.errors }"></textarea>
+                    <div *ngIf="submitted && f.noidungtomtat.errors" class="invalid-feedback">
+                        <div *ngIf="f.noidungtomtat.errors.required">Vui lòng nhập Nội dung tóm tắt</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="noidungchitiet">Nội Dung Chi Tiết</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 80%"
+                        formControlName="noidungchitiet"
+                        [ngClass]="{ 'is-invalid': submitted && f.noidungchitiet.errors }"></textarea>
+                    <div *ngIf="submitted && f.noidungchitiet.errors" class="invalid-feedback">
+                        <div *ngIf="f.noidungchitiet.errors.required">Vui lòng nhập Nội dung chi tiết</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="hinhanh">Hình Ảnh</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="file" style="width: 80%;" id="hinhanh" formControlName="hinhanh">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-info" (click)="add()">Submit Tin Tức</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Update Tin Tức</button>
+
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+        </div>
+    </form>
+</div>

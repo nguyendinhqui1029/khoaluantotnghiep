@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LOAITINTUC } from 'src/app/model/loaitintuc';
+import { ds_loaitintuc } from 'src/app/model/mock_loaitintuc';
 
 @Component({
     selector: 'xoa-loaitintuc',
@@ -8,5 +10,6 @@ import { Component, OnInit } from '@angular/core';
 export class XoaLoaiTinTucComponent implements OnInit {
     constructor() { }
 
+    ds_loaitintuc: LOAITINTUC[] = ds_loaitintuc;
     ngOnInit(): void { }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DOITAC } from 'src/app/model/doitac';
+import { ds_DoiTac } from 'src/app/model/mock_doitac';
 
 @Component({
     selector: 'xoa-doitac',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class XoaDoiTacComponent implements OnInit {
     constructor() { }
+    ds_doitac: DOITAC[] = ds_DoiTac;
 
     ngOnInit(): void { }
 }

@@ -1,0 +1,46 @@
+.inputstl {
+ 
+    padding: 9px;
+     
+    border: solid 1px #4B718B;
+     
+    outline: 0;
+     
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CDDBE4), to(#FFFFFF));
+     
+    background: -moz-linear-gradient(top, #FFFFFF, #CDDBE4 1px, #FFFFFF 25px);
+     
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+     
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+     
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+     
+    }
+    .is-invalid{
+        border-color: rgb(247, 106, 106) !important;
+    }
+    
+    .invalid-feedback{
+        color: white !important;
+        border: 1px solid rgb(247, 176, 169);
+        background: salmon;
+        margin-top: -10px;
+        padding: 8px 5px;
+        border-radius: 3px 3px; 
+        width: 80%;
+    }
+    .form-control-feedback{
+        display: none;
+      }
+      .headeradmenu{
+        font-size: 20px;
+        color: rgb(9, 86, 163);
+        margin: -2%;
+    }
+    .tieude{
+        padding: 2% 5%;
+        margin: 5% -3.8%;
+        margin-bottom: 5%;
+        background: -webkit-radial-gradient(center right, circle farthest-side, #ffffff 0%, rgb(139, 193, 238) 100%);
+    }

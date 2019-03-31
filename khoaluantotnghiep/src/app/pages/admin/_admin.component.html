@@ -87,9 +87,9 @@
                                 <small>Cài đặt Công Ty</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Công Ty</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Công Ty</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-globe"></i>Thêm Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-trophy"></i>Xóa Công Ty</a></li>
+                                <li><a [routerLink]="[ '/admin']"><i class="fa fa-certificate"></i>Sửa Công Ty</a></li>
                             </ul>
                         </li>
                         <li>
@@ -115,9 +115,12 @@
                                 <small>Cài đặt Tin Tức</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Thêm Tin Tức</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Xóa Tin Tức</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Sửa Tin Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/them-tintuc']"><i class="fa fa-globe"></i>Thêm Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/xoa-tintuc']"><i class="fa fa-trophy"></i>Xóa Tin
+                                        Tức</a></li>
+                                <li><a [routerLink]="[ '/admin/them-tintuc']"><i class="fa fa-certificate"></i>Sửa Tin
+                                        Tức</a></li>
                             </ul>
                         </li>
                         <li>

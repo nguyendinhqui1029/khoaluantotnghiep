@@ -36,6 +36,8 @@ import { ThemMenuComponent } from './module/admin/menu/them-menu/_them-menu.comp
 import { XoaMenuComponent } from './module/admin/menu/xoa-menu/_xoa-menu.component';
 import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_them-taikhoan.component';
 import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
+import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
+import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 
 
 const routes: Routes = [
@@ -107,6 +109,9 @@ const routes: Routes = [
             { path: 'xoa-menu', component: XoaMenuComponent },
             { path: 'them-taikhoan', component: ThemTaiKhoanComponent },
             { path: 'xoa-taikhoan', component: XoaTaiKhoanComponent },
+            { path: 'them-tintuc', component: ThemTinTucComponent },
+            { path: 'xoa-tintuc', component: XoaTinTucComponent },
+
         ]
     },
 ];
