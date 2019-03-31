@@ -14,18 +14,16 @@
     <div class="register-content clearfix">
         <h1 class="title clearfix"><span>Đăng ký tài khoản</span></h1>
         <!--thong bao loi-->
-        <div *ngIf="submitted && !f.taikhoan.errors" class="alert alert-success fade in">
+        <div *ngIf="submitted && !f.taikhoan.errors && !thongBaoDangKi.status" class="alert alert-success fade in">
             <button data-dismiss="alert" class="close"></button>
             <i class="fa-fw fa fa-check"></i>
-            <strong>Success!</strong> Đăng ký thành công.
+            <strong>Thành công!</strong> Đăng ký tài khoản thành công.
         </div>
-        <!--
-        <div *ngIf="submitted && f.taikhoan.errors" class="alert alert-danger fade in">
+        <div *ngIf="thongBaoDangKi.status" class="alert alert-danger fade in">
             <button data-dismiss="alert" class="close"></button>
             <i class="fa-fw fa fa-times"></i>
-            <strong *ngIf="f.taikhoan.errors.required">Error! Vui lòng nhập Tài Khoản</strong>
-            <span ng-bind-html="Message"></span>
-        </div> -->
+            <strong>Lỗi!</strong>{{thongBaoDangKi.message}}
+        </div>
         <!--thong bao loi-->
         <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
             <form class="form-horizontal" ng-submit="register()" [formGroup]="formDangKy">
@@ -137,6 +135,26 @@
                     <div class="col-sm-9">
                         <select class="form-control" ng-model="DistrictId"
                             ng-options="item.Id as item.Name for item in Districts"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Mã xác nhận</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="1-2-3-4-5"
+                            style="font-weight:bold;font-size:15px; " (keyup)="dinhDangChuoi($event)" maxlength="9"
+                            ng-model="maXacNhan" required="true" formControlName="maXacNhan"
+                            [ngClass]="{ 'is-invalid': submitted && f.maXacNhan.errors }" />
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-default"
+                            (click)="yeuCauMaXacNhan()">{{buttonGuiMaXacNhan.name}} </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <div *ngIf="submitted && f.maXacNhan.errors" class="invalid-feedback">
+                            <div *ngIf="f.maXacNhan.errors.required">Vui lòng nhập mã xác nhận</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

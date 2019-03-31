@@ -79,6 +79,7 @@ import { XoaGioiThieuComponent } from './module/admin/gioithieu/xoa-gioithieu/_x
 import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_them-taikhoan.component';
 import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
 import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
+import { SendMailService } from './service/sendmail.service';
 
 
 
@@ -113,7 +114,9 @@ import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService],
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService,
+    MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
+    SendMailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

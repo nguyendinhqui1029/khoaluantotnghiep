@@ -14,4 +14,8 @@ export class DangNhapDangKiService {
     layTaiKhoanTheoEmail(email): Observable<HttpResponse<TAIKHOAN>> {
         return this.http.get<TAIKHOAN>(this.URL + "get-tai-khoan-theo-email/" + email, { observe: "response" });
     }
+
+    themTaiKhoan(taikhoan): Observable<any> {
+        return this.http.post(this.URL + "add-tai-khoan", taikhoan);
+    }
 }

@@ -9,15 +9,21 @@ import { Md5 } from 'ts-md5/dist/md5';
     styleUrls: ['./_form-dang-nhap.component.scss']
 })
 export class FormDangNhapComponent implements OnInit {
-    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
     formDangNhap: FormGroup;
     submitted = false;
     error: any = { "status": false, "message": "" }
+    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) {
+
+    }
+
     ngOnInit(): void {
         this.formDangNhap = this.fb.group({
             email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
             pass: ['', [Validators.required]],
         });
+        if (sessionStorage.getItem("username")) {
+            this.formDangNhap.controls.email.setValue(sessionStorage.getItem("username"));
+        }
     }
 
 
@@ -28,11 +34,8 @@ export class FormDangNhapComponent implements OnInit {
     }
     dangNhap() {
         this.DangKiDangNhapService.layTaiKhoanTheoEmail(this.formDangNhap.controls.email.value).subscribe(e => {
-            const md5 = new Md5();
-            console.log(md5.appendAsciiStr(this.formDangNhap.controls.pass.value).end())
-            console.log(md5.appendAsciiStr(e.body[0].matKhau).start())
             if (e.body[0]) {
-                if (md5.appendAsciiStr(this.formDangNhap.controls.pass.value).end() === e.body[0].matKhau) {
+                if (Md5.hashAsciiStr(this.formDangNhap.controls.pass.value) === e.body[0].matKhau) {
                     this.router.navigate(['/admin']);
                     sessionStorage.setItem("username", e.body[0].email);
                     sessionStorage.setItem("name", e.body[0].hoTen);
