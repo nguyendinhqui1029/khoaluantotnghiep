@@ -2,7 +2,7 @@ import { HINHANH } from './hinhanh';
 
 export class SLIDER {
     maSlider: any;
-    mangHinh: HINHANH[];
+    mangHinh: any[];
     trangThai: boolean;
     loaiSlider: any;
     constructor(maSlider, mangHinh, trangThai, loaiSlider) {

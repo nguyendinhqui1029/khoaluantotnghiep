@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SLIDER } from 'src/app/model/slider';
-import { ds_slider } from 'src/app/model/mock_slider';
+import { SliderService } from 'src/app/service/slider.service';
+import { HINHANH } from 'src/app/model/hinhanh';
+
 
 @Component({
     selector: 'doi-tac',
@@ -8,13 +10,29 @@ import { ds_slider } from 'src/app/model/mock_slider';
     styleUrls: ['./_doitac.component.scss']
 })
 export class DoiTacComponent implements OnInit {
-    ds_logoDoiTac: SLIDER = ds_slider[2];
-    constructor() { }
+    ds_logoDoiTac: SLIDER = new SLIDER("", [], "", "");
+    flag = false;
+    trangThai = true;
+    constructor(private sliderService: SliderService) {
+        this.getDSSLider(this.trangThai);
+    }
+
+    getDSSLider(trangthai) {
+        this.sliderService.getListSliderTheoTrangThai(trangthai).subscribe(e => {
+            e.body.forEach(element => {
+                if (SliderService.mode.LOGO === element.loaiSlider) {
+                    this.ds_logoDoiTac = element;
+                    this.flag = true;
+                }
+            });
+        });
+    }
 
     ngOnInit(): void {
 
     }
     ngAfterViewInit() {
+
         const $ = window["$"];
         $(document).ready(function () {
             var owl = $(".partner-block");
@@ -36,4 +54,6 @@ export class DoiTacComponent implements OnInit {
             });
         });
     }
+
+
 }
