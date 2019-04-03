@@ -8,6 +8,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { TAIKHOAN } from 'src/app/model/taikhoan';
 import { HINHANH } from 'src/app/model/hinhanh';
 import { Router } from '@angular/router';
+import { MenuService } from 'src/app/service/menu.service';
 
 @Component({
     selector: 'form-dang-ki',
@@ -15,19 +16,20 @@ import { Router } from '@angular/router';
     styleUrls: ['./_form-dang-ki.component.scss']
 })
 export class FormDangKiComponent implements OnInit {
-    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
+
     dsgioitinh = ["Nam", "Nữ"];
     formDangKy: FormGroup;
     submitted = false;
     buttonGuiMaXacNhan: any = { status: false, name: "Lấy xác nhận" };
     formvalid = false;
     flap = false;
-
     dstinhthanhpho: TINHTHANHPHO[] = ds_tinhthanhpho;
     dstinhtam: any[] = [];
     dsquantam: any[] = [];
     modeTaiKhoan: any = { "KHACHHANG": 1, "NHANVIEN": 2, "ADMIN": 3 };
     thongBaoDangKi: any = { "status": false, "message": "" };
+    thongBaoMaXacNhan: any = { "status": false, "message": "" };
+    constructor(private menu: MenuService, private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
     laydanhsachTinhThanhPho() {
         this.dstinhthanhpho.forEach(element => {
             if (this.dstinhtam.length <= 0) {
@@ -73,11 +75,6 @@ export class FormDangKiComponent implements OnInit {
                 uiLibrary: 'bootstrap',
                 format: 'yyyy-mm-dd'
             });
-            if ($('#popup1')) {
-                setTimeout(function () {
-                    $('#popup1').close()
-                }, 3000);
-            }
 
         });
 
@@ -100,6 +97,7 @@ export class FormDangKiComponent implements OnInit {
 
     }
     register() {
+        this.thongBaoMaXacNhan.status = false;
         const md5 = new Md5();
         let md5MatKhau = md5.appendAsciiStr(this.formDangKy.controls.pass.value).end();
         let maTaiKhoan = "TK" + (new Date()).getTime().toString();
@@ -112,6 +110,7 @@ export class FormDangKiComponent implements OnInit {
         let diachi = this.formDangKy.controls.diachi.value;
         let tinhTP = this.formDangKy.controls.tinhTP.value;
         let quanHuyen = this.formDangKy.controls.quanHuyen.value;
+        let maXacNhan = this.formDangKy.controls.maXacNhan.value;
         let tk = new TAIKHOAN(maTaiKhoan, hoten, sdt, tinhTP, diachi, quanHuyen
             , gioitinh, ngaysinh
             , new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo user"),
@@ -122,40 +121,56 @@ export class FormDangKiComponent implements OnInit {
             this.modeTaiKhoan.KHACHHANG
         );
         //xu li lay ma xac nhan
+        if (maXacNhan.length > 0 && this.formDangKy.valid) {
+            let dsmaxacnhan = maXacNhan.split("-");
+            maXacNhan = dsmaxacnhan[0] + dsmaxacnhan[1] + dsmaxacnhan[2] + dsmaxacnhan[3] + dsmaxacnhan[4];
+            this.DangKiDangNhapService.layMaXacNhanTheoEmail(email).subscribe(e => {
+                if (Number(e.body.maxacnhan) === Number(maXacNhan)) {
+                    this.DangKiDangNhapService.layTaiKhoanTheoEmail(email).subscribe(e => {
+                        if (e.body[0]) {
+                            this.thongBaoDangKi.status = true;
 
-        //kiem tra dang ki hop le
-        this.DangKiDangNhapService.layTaiKhoanTheoEmail(email).subscribe(e => {
-            if (e.body[0]) {
-                this.thongBaoDangKi.status = true;
-                this.thongBaoDangKi.message = " Địa chỉ email đã tồn tại.";
-            } else {
-                this.DangKiDangNhapService.themTaiKhoan(tk).subscribe(e => {
-                    if (e.code === 200) {
-                        sessionStorage.setItem("username", email);
-                        this.router.navigate(["/dang-nhap"]);
-                    }
-                });
-            }
-        });
-
-
-        this.submitted = true;
-        console.log(this.formDangKy);
-        if (this.formDangKy.invalid) {
-            this.formvalid = false;
-            return;
-        } else if (this.formDangKy.valid) {
-            this.formvalid = true;
+                            this.thongBaoDangKi.message = " Địa chỉ email đã tồn tại.";
+                        } else {
+                            this.DangKiDangNhapService.themTaiKhoan(tk).subscribe(e => {
+                                if (e.code === 200) {
+                                    this.DangKiDangNhapService.xoaMaXacNhanTheoEmail(email).subscribe();
+                                    sessionStorage.setItem("username", email);
+                                    this.router.navigate(["/dang-nhap"]);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    this.thongBaoMaXacNhan.status = true;
+                    this.thongBaoMaXacNhan.message = "Mã xác nhận không đúng. Vui lòng nhập lại!";
+                }
+            });
         }
+        this.submitted = true;
+
 
     }
-    dongpopup() {
-        this.flap = true;
-        this.submitted = false;
-    }
+
 
     yeuCauMaXacNhan() {
-        this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";
+        this.thongBaoMaXacNhan.status = false;
+        this.thongBaoDangKi.status = false;
         this.formDangKy.controls.maXacNhan.setValue("");
+        let data = {
+            namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: this.formDangKy.controls.email.value,
+            tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1
+        };
+        this.DangKiDangNhapService.sendEmail(data).subscribe(
+            err => {
+                this.thongBaoDangKi.status = true;
+                this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
+                this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";;
+            }, () => {
+                this.thongBaoDangKi.status = true;
+                this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
+                this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";
+
+            })
     }
 }

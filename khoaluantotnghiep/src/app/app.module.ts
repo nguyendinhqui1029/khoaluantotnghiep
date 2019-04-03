@@ -82,6 +82,7 @@ import { DangNhapDangKiService } from './service/dangnhap_dangki.service';
 import { SendMailService } from './service/sendmail.service';
 import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
+import { ConfigService } from './service/config.service';
 
 
 
@@ -119,7 +120,7 @@ import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
-    SendMailService],
+    SendMailService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

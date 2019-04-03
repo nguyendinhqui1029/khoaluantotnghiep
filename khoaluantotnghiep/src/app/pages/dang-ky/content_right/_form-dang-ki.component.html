@@ -15,7 +15,7 @@
         <h1 class="title clearfix"><span>Đăng ký tài khoản</span></h1>
         <!--thong bao loi-->
 
-        <div *ngIf="submitted && formvalid else flap" id="popup1" class="overlayquy">
+        <!-- <div *ngIf="submitted && formvalid else flap" id="popup1" class="overlayquy">
             <div class="popupquy">
                 <a (click)="dongpopup()" class="close">&times;</a>
                 <h2><i class="fa-fw fa fa-check"></i>Đăng ký thành công</h2>
@@ -23,7 +23,7 @@
                     Cảm ơn! Bạn đã là thành viên của chúng tôi.
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!--thong bao loi-->
@@ -161,6 +161,13 @@
                         <div *ngIf="submitted && f.maXacNhan.errors" class="invalid-feedback">
                             <div *ngIf="f.maXacNhan.errors.required">Vui lòng nhập mã xác nhận</div>
                         </div>
+                        <div *ngIf="thongBaoMaXacNhan.status" class="invalid-feedback">
+                            <div>{{thongBaoMaXacNhan.message}}</div>
+                        </div>
+                        <div *ngIf="thongBaoDangKi.status" class="invalid-feedback">
+                            <div> {{thongBaoDangKi.message}}</div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group">

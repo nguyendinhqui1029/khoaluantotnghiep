@@ -1,21 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { TAIKHOAN } from '../model/taikhoan';
 import { Observable } from 'rxjs';
+import { ConfigService } from './config.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class DangNhapDangKiService {
-    URL: string = "https://serverkhoaluan2019.herokuapp.com/";
-    //URL: string = "http://localhost:8081/";
     constructor(private http: HttpClient) {
 
     }
 
     layTaiKhoanTheoEmail(email): Observable<HttpResponse<TAIKHOAN>> {
-        return this.http.get<TAIKHOAN>(this.URL + "get-tai-khoan-theo-email/" + email, { observe: "response" });
+        return this.http.get<TAIKHOAN>(ConfigService.URL + "get-tai-khoan-theo-email/" + email, { observe: "response" });
     }
 
     themTaiKhoan(taikhoan): Observable<any> {
-        return this.http.post(this.URL + "add-tai-khoan", taikhoan);
+        return this.http.post(ConfigService.URL + "add-tai-khoan", taikhoan);
+    }
+
+    sendEmail(data): Observable<HttpResponse<any>> {
+        return this.http.post<any>(ConfigService.URL + "sendemail", data, { observe: "response" });
+    }
+
+    layMaXacNhanTheoEmail(email): Observable<HttpResponse<any>> {
+        return this.http.get(ConfigService.URL + "get-ma-xac-nhan-email/" + email, { observe: "response" });
+    }
+
+
+    xoaMaXacNhanTheoEmail(email): any {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+                'Access-Control-Allow-Credentials': 'true'
+            })
+        };
+        httpOptions.headers.append('Access-Control-Allow-Origin', ConfigService.URL);
+        return this.http.delete<any>(ConfigService.URL + 'delete-ma-xac-nhan/' + email, httpOptions).pipe(
+            tap(_ => console.log('deleted product id=${email}'))
+        );
+
     }
 }
