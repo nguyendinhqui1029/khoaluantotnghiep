@@ -73,16 +73,16 @@ $breakpoint-alpha: 480px; // adjust to your needs
 
 // presentational styling
 
-@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+// @import '../../../../../assets/bootstrap/fonts/';
 
-body {
-  padding: 0 2em;
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  color: #444;
-  background: #eee;
-}
+// body {
+//   padding: 0 2em;
+//   font-family: Montserrat, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   text-rendering: optimizeLegibility;
+//   color: #444;
+//   background: #eee;
+// }
 
 h1 {
   font-weight: normal;

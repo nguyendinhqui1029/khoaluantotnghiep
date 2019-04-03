@@ -13,6 +13,11 @@ export class XoaDuAnComponent implements OnInit {
     ds_duan: DUAN[] = ds_duan;
 
     ngOnInit(): void { }
-
+    deleteduan(maDuAn) {
+        console.log(maDuAn);
+    }
+    updateduan(maDuAn) {
+        console.log(maDuAn);
+    }
 
 }
