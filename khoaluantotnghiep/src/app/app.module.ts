@@ -84,6 +84,8 @@ import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tin
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 import { ConfigService } from './service/config.service';
 import { AdminAuthGuard } from './auth/admin.guard';
+import { SliderService } from './service/slider.service';
+
 
 
 
@@ -121,7 +123,8 @@ import { AdminAuthGuard } from './auth/admin.guard';
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
-    SendMailService, ConfigService, AdminAuthGuard],
+    SendMailService, ConfigService, AdminAuthGuard, SliderService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

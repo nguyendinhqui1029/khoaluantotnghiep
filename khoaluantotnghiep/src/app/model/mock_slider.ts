@@ -4,9 +4,15 @@ export const ds_slider: SLIDER[] = [
     {
         "maSlider": 1,
         "mangHinh": [
-            { "mahinh": "HA001", "tenhinh": "banner4.jpg", "alt": "chú thích slider 1" },
-            { "mahinh": "HA002", "tenhinh": "banner5.jpg", "alt": "chú thích slider 2" },
-            { "mahinh": "HA003", "tenhinh": "bathroom.jpg", "alt": "chú thích slider 3" }],
+            // { "mahinh": "HA001", "tenhinh": "banner4.jpg", "alt": "chú thích slider 1" },
+            // { "mahinh": "HA002", "tenhinh": "banner5.jpg", "alt": "chú thích slider 2" },
+            // { "mahinh": "HA003", "tenhinh": "bathroom.jpg", "alt": "chú thích slider 3" }],
+            { "mahinh": "HA004", "tenhinh": "slider-home-1.jpg", "alt": "chú thích slider 4" },
+            { "mahinh": "HA005", "tenhinh": "slider-home-2.jpg", "alt": "chú thích slider 5" },
+            { "mahinh": "HA006", "tenhinh": "slider-home-3.jpg", "alt": "chú thích slider 6" },
+            { "mahinh": "HA007", "tenhinh": "slider-home-4.jpg", "alt": "chú thích slider 7" },
+            { "mahinh": "HA008", "tenhinh": "slider-home-5.jpg", "alt": "chú thích slider 8" },
+        ],
         "trangThai": true,
         "loaiSlider": "SLIDER"
     },

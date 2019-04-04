@@ -3,23 +3,23 @@ import { DUAN } from '../model/duan';
 import { ds_duan } from '../model/mock_duan';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { ConfigService } from './config.service';
 
 @Injectable()
 export class DuAnService {
     dsDuAn: DUAN[] = ds_duan;
     modeTrangThai: any = { "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
     modeGiaoDich: any = {};
-    URL: String = "https://serverkhoaluan2019.herokuapp.com/";
-    // URL: String = "http://localhost:8081/";
+
     constructor(private http: HttpClient) {
 
     }
     getListDuAn(trangthai): Observable<HttpResponse<DUAN[]>> {
-        return this.http.get<DUAN[]>(this.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
+        return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
     }
 
     getDuAnTheoMaDuAn(maDuAn): Observable<HttpResponse<DUAN>> {
-        return this.http.get<DUAN>(this.URL + "get-du-an/" + maDuAn, { observe: 'response' });
+        return this.http.get<DUAN>(ConfigService.URL + "get-du-an/" + maDuAn, { observe: 'response' });
     }
 
     layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
