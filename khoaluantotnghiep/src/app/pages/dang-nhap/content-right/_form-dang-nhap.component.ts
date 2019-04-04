@@ -39,7 +39,7 @@ export class FormDangNhapComponent implements OnInit {
                     this.router.navigate(['/admin']);
                     sessionStorage.setItem("username", e.body[0].email);
                     sessionStorage.setItem("name", e.body[0].hoTen);
-
+                    sessionStorage.setItem("role", e.body[0].loaiTaiKhoan);
                 } else {
                     this.error.status = true;
                     this.error.message = "Mật khẩu không đúng.Vui lòng nhập lại!";

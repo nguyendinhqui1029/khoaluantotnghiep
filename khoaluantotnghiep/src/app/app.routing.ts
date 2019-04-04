@@ -38,6 +38,7 @@ import { ThemTaiKhoanComponent } from './module/admin/taikhoan/them-taikhoan/_th
 import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-taikhoan.component';
 import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
+import { AdminAuthGuard } from './auth/admin.guard';
 
 
 const routes: Routes = [
@@ -112,7 +113,8 @@ const routes: Routes = [
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
 
-        ]
+        ],
+        canActivate: [AdminAuthGuard]
     },
 ];
 
