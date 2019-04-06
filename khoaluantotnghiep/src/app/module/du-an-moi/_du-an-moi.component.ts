@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { DuAnService } from 'src/app/service/duan.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'du-an-moi',
@@ -11,7 +12,7 @@ export class DuAnMoiComponent implements OnInit {
     //du liệu từ mock
     ds_duAnMoi: DUAN[] = [];
     constructor(private serviceDuAn: DuAnService) {
-        this.ds_duAnMoi = this.serviceDuAn.layDanhSachDuAnTheoTrangThai(serviceDuAn.modeTrangThai.DUANMOI);
+        this.ds_duAnMoi = this.serviceDuAn.layDanhSachDuAnTheoTrangThai(ConfigService.TRANG_THAI_DU_AN.DUANMOI);
     }
 
     ngOnInit(): void {

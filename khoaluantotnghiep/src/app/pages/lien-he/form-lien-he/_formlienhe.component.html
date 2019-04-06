@@ -1,28 +1,74 @@
 <div class="contact-feedback">
-    <form>
+    <form ng-submit="send()" [formGroup]="formLienHe">
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-user"></i></span>
-            <input type="text" placeholder="Họ tên" class="form-control" required />
+            <input formControlName="hoten" type="text" placeholder="Họ tên" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.hoten.errors }" />
+            <div>
+                <div *ngIf="submitted && f.hoten.errors" class="invalid-feedback">
+                    <div *ngIf="f.hoten.errors.required">Vui lòng nhập Họ tên</div>
+                </div>
+            </div>
         </div>
+
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-            <input type="text" placeholder="Địa chỉ" class="form-control" />
+            <input formControlName="diachi" type="text" placeholder="Địa chỉ" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.diachi.errors }" />
+            <div>
+                <div *ngIf="submitted && f.diachi.errors" class="invalid-feedback">
+                    <div *ngIf="f.diachi.errors.required">Vui lòng nhập Địa chỉ</div>
+                </div>
+            </div>
         </div>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input type="email" placeholder="Email" class="form-control" required />
+            <input formControlName="email" type="email" placeholder="Email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Vui lòng nhập email</div>
+                    <div *ngIf="f.email.errors.pattern">Email không hợp lệ</div>
+                </div>
+            </div>
         </div>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-            <input type="text" placeholder="Điện thoại" class="form-control" required />
+            <input formControlName="sdt" type="text" placeholder="Điện thoại" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.sdt.errors }" />
+            <div>
+                <div *ngIf="submitted && f.sdt.errors" class="invalid-feedback">
+                    <div *ngIf="f.sdt.errors.required">Vui lòng nhập Số điện thoại</div>
+                    <div *ngIf="f.sdt.errors.pattern">Số điện thoại không hợp lệ</div>
+
+                </div>
+            </div>
         </div>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-            <input type="text" placeholder="Tiêu đề" class="form-control" required />
+            <input formControlName="tieude" type="text" placeholder="Tiêu đề" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.tieude.errors }" />
+            <div>
+                <div *ngIf="submitted && f.tieude.errors" class="invalid-feedback">
+                    <div *ngIf="f.tieude.errors.required">Vui lòng nhập Tiêu đề</div>
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <textarea placeholder="Nội dung" class="form-control" rows="3" required></textarea>
+            <textarea formControlName="noidung" placeholder="Nội dung" class="form-control" rows="3"
+                [ngClass]="{ 'is-invalid': submitted && f.noidung.errors }"></textarea>
+            <div *ngIf="submitted && f.noidung.errors" class="invalid-feedback2">
+                <div *ngIf="f.noidung.errors.required">Vui lòng nhập Nội dung</div>
+            </div>
         </div>
-        <button class="btn btn-default" type="submit">Gửi</button>
+        <div class="form-group">
+            <div class="col-sm-9">
+                <div *ngIf="thongBaoLienHe.status" class="invalid-feedback">
+                    <div> {{thongBaoLienHe.message}}</div>
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-default" type="submit" (click)="send()">Gửi</button>
     </form>
 </div>

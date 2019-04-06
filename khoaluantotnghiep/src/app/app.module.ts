@@ -84,6 +84,8 @@ import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tin
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 import { ConfigService } from './service/config.service';
 import { SliderService } from './service/slider.service';
+import { DoiTacService } from './service/doitac.service';
+import { TinhThanhPhoService } from './service/tinhthanhpho.service';
 
 
 
@@ -122,7 +124,7 @@ import { SliderService } from './service/slider.service';
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
-    SendMailService, ConfigService, SliderService],
+    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

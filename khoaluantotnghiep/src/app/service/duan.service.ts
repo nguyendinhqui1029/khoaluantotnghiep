@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { DUAN } from '../model/duan';
 import { ds_duan } from '../model/mock_duan';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class DuAnService {
-    dsDuAn: DUAN[] = ds_duan;
-    modeTrangThai: any = { "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
+    dsDuAn: DUAN[] = []; //ds_duan;
+
     modeGiaoDich: any = {};
 
     constructor(private http: HttpClient) {
@@ -49,7 +50,7 @@ export class DuAnService {
     layDanhSachDuAnTheoDanhMuc(maDanhMuc): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.danhMuc.maDanhMuc === maDanhMuc) {
+            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.danhMuc.maDanhMuc === maDanhMuc) {
                 arr.push(e);
             }
         });
@@ -59,7 +60,7 @@ export class DuAnService {
     layDanhSachDuAnTheoLoaiGiaoDich(maLoaiGiaoDich): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.loaiGiaoDich.maLoai === maLoaiGiaoDich) {
+            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.loaiGiaoDich.maLoai === maLoaiGiaoDich) {
                 arr.push(e);
             }
         });
@@ -69,10 +70,34 @@ export class DuAnService {
     layDanhSachDuAnTheoTenDanhMuc(tenDanhMuc): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.danhMuc.tenDanhMuc.indexOf(tenDanhMuc) >= 0) {
+            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.danhMuc.tenDanhMuc.indexOf(tenDanhMuc) >= 0) {
                 arr.push(e);
             }
         });
         return arr;
     }
+
+    //xoa du an theo maDuAn
+    xoaDuAnTheomaDuAn(maDuAn): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.delete<any>(ConfigService.URL + "delete-du-an/" + maDuAn, httpOptions);
+    }
+
+    //them du an
+    themDuAn(duAn): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+                'Access-Control-Allow-Credentials': 'true'
+            })
+        };
+        return this.http.post(ConfigService.URL + "add-du-an", duAn, httpOptions);
+    }
+
 }

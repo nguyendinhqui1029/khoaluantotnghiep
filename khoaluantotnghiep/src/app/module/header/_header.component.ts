@@ -4,6 +4,7 @@ import { ds_menu } from '../../model/mock_menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
+import { MenuService } from 'src/app/service/menu.service';
 
 @Component({
     selector: 'header-component',
@@ -18,7 +19,19 @@ export class HeaderComponent implements OnInit {
     menu_top: MENU[] = [];
     menu_bottom: MENU[] = [];
     modeMenu: any = { "MENU_TOP": 2, "MENU_BOTTOM": 1 };
-    constructor(private route: ActivatedRoute) {
+
+
+    dsmenutop_hero: MENU[] = [];
+
+    getDSMenuTheoType() {
+        let type = 2;
+        this.MenuService.getDsMeNUTheoType(type).subscribe(menutop => {
+            this.dsmenutop_hero = menutop.body;
+
+        })
+    }
+
+    constructor(private route: ActivatedRoute, private MenuService: MenuService) {
         this.ds_menu.forEach(menu => {
             if (menu.typeMenu === this.modeMenu.MENU_TOP) {
                 this.menu_top.push(menu);
@@ -38,7 +51,7 @@ export class HeaderComponent implements OnInit {
         //         }
         //     });
         // }
-
+        this.getDSMenuTheoType();
     }
 
     // xử lí cho menu chế độ di động

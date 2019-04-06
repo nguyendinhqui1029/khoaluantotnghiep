@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConfigService {
-    //URL: string = "https://serverkhoaluan2019.herokuapp.com/";
-    static URL: string = "http://localhost:8081/";
+    static URL: string = "https://serverkhoaluan2019.herokuapp.com/";
+    // static URL: string = "http://localhost:8081/";
+
+    static TRANG_THAI_DU_AN: any = { "TATCADUAN": 0, "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
 }

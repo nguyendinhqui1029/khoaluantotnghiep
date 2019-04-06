@@ -66,7 +66,6 @@ export class FormDangKiComponent implements OnInit {
         }, {
                 validator: MustMatch('pass', 'confirmpass')
             });
-        this.laydanhsachTinhThanhPho();
     }
     ngAfterViewInit() {
         const $ = window["$"];
