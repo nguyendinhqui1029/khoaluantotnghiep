@@ -39,6 +39,8 @@ import { XoaTaiKhoanComponent } from './module/admin/taikhoan/xoa-taikhoan/_xoa-
 import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 import { AdminAuthGuard } from './auth/admin.guard';
+import { CustomerAuthGuard } from './auth/customer.guard';
+import { EmployeeAuthGuard } from './auth/employee.guard';
 
 
 const routes: Routes = [
@@ -113,9 +115,34 @@ const routes: Routes = [
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
 
-        ],
-        canActivate: [AdminAuthGuard]
+        ], canActivate: [AdminAuthGuard]
     },
+    {
+        path: 'employee', component: AdminComponent,
+        children: [
+            { path: '', component: XoaDuAnComponent },
+            { path: 'them-duan', component: ThemDuAnComponent },
+            { path: 'them-danhmuc', component: ThemDanhMucComponent },
+            { path: 'them-doitac', component: ThemDoiTacComponent },
+            { path: 'them-gioithieu', component: ThemGioiThieuComponent },
+            { path: 'them-loaigiaodich', component: ThemLoaiGiaoDichComponent },
+            { path: 'them-loaitintuc', component: ThemLoaiTinTucComponent },
+            { path: 'them-menu', component: ThemMenuComponent },
+            { path: 'them-tintuc', component: ThemTinTucComponent },
+
+        ]
+    },
+    {
+        path: 'customer', component: AdminComponent,
+        children: [
+            { path: '', component: XoaDuAnComponent },
+            { path: 'them-duan', component: ThemDuAnComponent },
+            { path: 'xoa-duan', component: XoaDuAnComponent },
+            { path: 'them-tintuc', component: ThemTinTucComponent },
+            { path: 'xoa-tintuc', component: XoaTinTucComponent },
+
+        ]
+    }
 ];
 
 export const routing = RouterModule.forRoot(routes);

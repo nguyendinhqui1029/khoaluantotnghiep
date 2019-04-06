@@ -19,8 +19,17 @@ export class DangNhapDangKiService {
         return this.http.post(ConfigService.URL + "add-tai-khoan", taikhoan);
     }
 
-    sendEmail(data): Observable<HttpResponse<any>> {
-        return this.http.post<any>(ConfigService.URL + "sendemail", data, { observe: "response" });
+    sendEmail(data): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Access-Control-Allow-Origin': "*",
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+                'Access-Control-Allow-Credentials': 'true'
+            })
+        };
+        return this.http.post<any>(ConfigService.URL + "sendemail", data, httpOptions);
     }
 
     layMaXacNhanTheoEmail(email): Observable<HttpResponse<any>> {
@@ -31,16 +40,14 @@ export class DangNhapDangKiService {
     xoaMaXacNhanTheoEmail(email): any {
         const httpOptions = {
             headers: new HttpHeaders({
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
                 'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
                 'Access-Control-Allow-Credentials': 'true'
             })
         };
-        httpOptions.headers.append('Access-Control-Allow-Origin', ConfigService.URL);
-        return this.http.delete<any>(ConfigService.URL + 'delete-ma-xac-nhan/' + email, httpOptions).pipe(
-            tap(_ => console.log('deleted product id=${email}'))
-        );
+        return this.http.delete<any>(ConfigService.URL + 'delete-ma-xac-nhan/' + email, httpOptions);
 
     }
 }

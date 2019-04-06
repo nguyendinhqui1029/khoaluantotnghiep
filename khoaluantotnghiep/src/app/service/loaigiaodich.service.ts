@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { LOAIGIAODICH } from '../model/loaigiaodich';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { ConfigService } from './config.service';
 @Injectable()
 export class LoaiGiaoDichService {
-    URL: string = "https://serverkhoaluan2019.herokuapp.com/";
+
     constructor(private http: HttpClient) { }
     httpOptions = {
         headers: new HttpHeaders({
@@ -12,9 +13,9 @@ export class LoaiGiaoDichService {
         })
     };
     getAllLoaiGiaoDich(trangthai): Observable<HttpResponse<LOAIGIAODICH[]>> {
-        return this.http.get<LOAIGIAODICH[]>(this.URL + "get-all-danh-muc/" + trangthai, { observe: 'response' });
+        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-danh-muc/" + trangthai, { observe: 'response' });
     }
     addLoaiGiaoDich(loaigiaodich: LOAIGIAODICH): Observable<LOAIGIAODICH> {
-        return this.http.post<LOAIGIAODICH>(this.URL, loaigiaodich, this.httpOptions);
+        return this.http.post<LOAIGIAODICH>(ConfigService.URL, loaigiaodich, this.httpOptions);
     }
 }
