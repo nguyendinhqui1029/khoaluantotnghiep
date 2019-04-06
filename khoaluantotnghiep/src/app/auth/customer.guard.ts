@@ -11,12 +11,12 @@ export class CustomerAuthGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         let role = false;
-        if (sessionStorage.getItem("role") && Number(sessionStorage.getItem("role")) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
-            role = true;
-        } else {
-            role = false;
-            this.route.navigate(["/"]);
-        }
+        // if (sessionStorage.getItem("role") && Number(sessionStorage.getItem("role")) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+        //     role = true;
+        // } else {
+        //     role = false;
+        //     this.route.navigate(["/"]);
+        // }
         return role;
     }
 }

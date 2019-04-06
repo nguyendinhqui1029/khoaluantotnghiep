@@ -2,77 +2,69 @@ import { Injectable } from '@angular/core';
 import { DUAN } from '../model/duan';
 import { ds_duan } from '../model/mock_duan';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
 
 @Injectable()
 export class DuAnService {
-    dsDuAn: DUAN[] = ds_duan;
-    modeTrangThai: any = { "CHUAGIAODICH": 1, "DANGGIAODICH": 2, "DUANMOI": 3 };
-    modeGiaoDich: any = {};
-
+    static dsDuAn: any[] = [];// ds_duan;
+    // static ds_du_an: any[] = [];
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Origin': "*",
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+            'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+            'Access-Control-Allow-Credentials': 'true'
+        })
+    };
+    setValueForDSDuAn() {
+        this.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(e => {
+            DuAnService.dsDuAn = e.body;
+        });
+    }
     constructor(private http: HttpClient) {
 
     }
-    getListDuAn(trangthai): Observable<HttpResponse<DUAN[]>> {
+    getListDuAn(trangthai): Observable<HttpResponse<any[]>> {
         return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
     }
-
     getDuAnTheoMaDuAn(maDuAn): Observable<HttpResponse<DUAN>> {
         return this.http.get<DUAN>(ConfigService.URL + "get-du-an/" + maDuAn, { observe: 'response' });
     }
 
-    layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
-        let arr = Array();
-        this.dsDuAn.forEach(element => {
-            if (element.trangThai === trangThai) {
-                arr.push(element);
-            }
-        });
-        return arr;
-    }
+    // layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
+    //     let arr = Array();
+    //     DuAnService.dsDuAn.forEach(element => {
+    //         if (element.trangThai === trangThai) {
+    //             arr.push(element);
+    //         }
+    //     });
+    //     return arr;
+    // }
 
-    layDanhSachDuAnTheoLoaiDuAn(loaiduan): DUAN[] { //lấy danh sách dự án nổi bật
-        let arr = Array();
-        this.dsDuAn.forEach(element => {
-            if (element.loaiDuAn.indexOf(loaiduan) >= 0) {
-                arr.push(element);
-            }
-        });
-        return arr;
-    }
+    // layDanhSachDuAnTheoLoaiDuAn(loaiduan): DUAN[] { //lấy danh sách dự án nổi bật
+    //     let arr = Array();
+    //     DuAnService.dsDuAn.forEach(element => {
+    //         if (element.loaiDuAn.indexOf(loaiduan) >= 0) {
+    //             arr.push(element);
+    //         }
+    //     });
+    //     return arr;
+    // }
 
 
-    layDanhSachDuAn(): DUAN[] {
-        return this.dsDuAn;
-    }
-    layDanhSachDuAnTheoDanhMuc(maDanhMuc): DUAN[] {
-        let arr = Array();
-        this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.danhMuc.maDanhMuc === maDanhMuc) {
-                arr.push(e);
-            }
-        });
-        return arr;
-    }
+    // layDanhSachDuAn(): DUAN[] {
+    //     return DuAnService.dsDuAn;
+    // }
+    // layDanhSachDuAnTheoDanhMuc(maDanhMuc): DUAN[] {
+    //     let arr = Array();
+    //     DuAnService.dsDuAn.forEach(e => {
+    //         if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.danhMuc.maDanhMuc === maDanhMuc) {
+    //             arr.push(e);
+    //         }
+    //     });
+    //     return arr;
+    // }
 
-    layDanhSachDuAnTheoLoaiGiaoDich(maLoaiGiaoDich): DUAN[] {
-        let arr = Array();
-        this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.loaiGiaoDich.maLoai === maLoaiGiaoDich) {
-                arr.push(e);
-            }
-        });
-        return arr;
-    }
-
-    layDanhSachDuAnTheoTenDanhMuc(tenDanhMuc): DUAN[] {
-        let arr = Array();
-        this.dsDuAn.forEach(e => {
-            if (e.trangThai == this.modeTrangThai.CHUAGIAODICH && e.danhMuc.tenDanhMuc.indexOf(tenDanhMuc) >= 0) {
-                arr.push(e);
-            }
-        });
-        return arr;
-    }
 }

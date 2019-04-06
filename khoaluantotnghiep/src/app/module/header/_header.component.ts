@@ -62,8 +62,9 @@ export class HeaderComponent implements OnInit {
         window.onscroll = function () { myFunction() };
         var header = document.getElementById("myHeader");
         var sticky = header.offsetTop;
+
         function myFunction() {
-            if (window.innerWidth >= 992) {
+            if (window.innerWidth >= 769) {
                 if (window.pageYOffset > sticky) {
                     header.classList.add("sticky-menu");
                 } else {
