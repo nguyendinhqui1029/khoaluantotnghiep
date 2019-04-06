@@ -23,6 +23,12 @@ export class DuAnService {
         return this.http.get<DUAN>(ConfigService.URL + "get-du-an/" + maDuAn, { observe: 'response' });
     }
 
+    getDuAnTheoTrangThai(trangthai): Observable<HttpResponse<DUAN[]>> {
+        return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
+    }
+
+
+
     layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(element => {

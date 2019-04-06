@@ -8,7 +8,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { TAIKHOAN } from 'src/app/model/taikhoan';
 import { HINHANH } from 'src/app/model/hinhanh';
 import { Router } from '@angular/router';
-import { MenuService } from 'src/app/service/menu.service';
+
 
 @Component({
     selector: 'form-dang-ki',
@@ -29,7 +29,7 @@ export class FormDangKiComponent implements OnInit {
     modeTaiKhoan: any = { "KHACHHANG": 1, "NHANVIEN": 2, "ADMIN": 3 };
     thongBaoDangKi: any = { "status": false, "message": "" };
     thongBaoMaXacNhan: any = { "status": false, "message": "" };
-    constructor(private menu: MenuService, private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
+    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
     laydanhsachTinhThanhPho() {
         this.dstinhthanhpho.forEach(element => {
             if (this.dstinhtam.length <= 0) {
@@ -66,6 +66,7 @@ export class FormDangKiComponent implements OnInit {
         }, {
                 validator: MustMatch('pass', 'confirmpass')
             });
+        // this.laydanhsachTinhThanhPho();
     }
     ngAfterViewInit() {
         const $ = window["$"];

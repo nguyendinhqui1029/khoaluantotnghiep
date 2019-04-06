@@ -83,9 +83,15 @@ import { SendMailService } from './service/sendmail.service';
 import { ThemTinTucComponent } from './module/admin/tintuc/them-tintuc/_them-tintuc.component';
 import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc.component';
 import { ConfigService } from './service/config.service';
+import { AdminAuthGuard } from './auth/admin.guard';
 import { SliderService } from './service/slider.service';
 import { DoiTacService } from './service/doitac.service';
 import { TinhThanhPhoService } from './service/tinhthanhpho.service';
+import { CustomerAuthGuard } from './auth/customer.guard';
+import { EmployeeAuthGuard } from './auth/employee.guard';
+import { CustomerThemDuAnComponent } from './module/custormer/them-du-an/them_du_an.component';
+import { EmployeeThemDuAnComponent } from './module/employee/them-du-an/them_du_an.component';
+import { TinTucService } from './service/tintuc.service';
 
 
 
@@ -118,13 +124,17 @@ import { TinhThanhPhoService } from './service/tinhthanhpho.service';
     ThemGioiThieuComponent, XoaGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent,
     ThemTinTucComponent, XoaTinTucComponent
+    //ADmin khach hang
+    , CustomerThemDuAnComponent
+    //Admin employee
+    , EmployeeThemDuAnComponent
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService,
-    MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService,
-    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService],
+    MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService,
+    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

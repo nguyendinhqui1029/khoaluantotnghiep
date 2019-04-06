@@ -1400,6 +1400,6 @@ export const ds_tinhthanhpho: TINHTHANHPHO[] = [
     },
     {
         "tenTinhThanhPhoKhongdau": "QUANGNAM", "tenTinhThanhPhoCodau": "Quảng Nam", "quanKhongdau": "HTIENPHUOC", "quanCodau": "H.Tiên Phước"
-    },
+    }
 
 ]

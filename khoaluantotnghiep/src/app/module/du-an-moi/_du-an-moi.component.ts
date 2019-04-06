@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { DuAnService } from 'src/app/service/duan.service';
 import { ConfigService } from 'src/app/service/config.service';
@@ -10,9 +10,9 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class DuAnMoiComponent implements OnInit {
     //du liệu từ mock
-    ds_duAnMoi: DUAN[] = [];
-    constructor(private serviceDuAn: DuAnService) {
-        this.ds_duAnMoi = this.serviceDuAn.layDanhSachDuAnTheoTrangThai(ConfigService.TRANG_THAI_DU_AN.DUANMOI);
+    @Input() dsDuAN: any[];
+    constructor() {
+
     }
 
     ngOnInit(): void {
@@ -20,24 +20,22 @@ export class DuAnMoiComponent implements OnInit {
     }
     ngAfterViewInit() {
         const $ = window["$"];
-        $(document).ready(function () {
-            var owlproductslide2 = $("#project-slide");
-            owlproductslide2.owlCarousel({
-                autoPlay: true,
-                items: 4,
-                slideSpeed: 1000,
-                pagination: false,
-                itemsDesktop: [1200, 4],
-                itemsDesktopSmall: [980, 3],
-                itemsTablet: [767, 2],
-                itemsMobile: [480, 1]
-            });
-            $(".project-slide .nextlogo").click(function () {
-                owlproductslide2.trigger('owl.next');
-            })
-            $(".project-slide .prevlogo").click(function () {
-                owlproductslide2.trigger('owl.prev');
-            })
+        var owlproductslide2 = $("#project-slide");
+        owlproductslide2.owlCarousel({
+            autoPlay: true,
+            items: 4,
+            slideSpeed: 1000,
+            pagination: false,
+            itemsDesktop: [1200, 4],
+            itemsDesktopSmall: [980, 3],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1]
         });
+        $(".project-slide .nextlogo").click(function () {
+            owlproductslide2.trigger('owl.next');
+        })
+        $(".project-slide .prevlogo").click(function () {
+            owlproductslide2.trigger('owl.prev');
+        })
     }
 }

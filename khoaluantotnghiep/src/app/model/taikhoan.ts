@@ -30,6 +30,7 @@ export class TAIKHOAN {
         this.email = email;
         this.matKhau = matKhau;
         this.loaiTaiKhoan = loaiTaiKhoan;
+        this.gioiTinh = gioiTinh;
 
     }
 }
