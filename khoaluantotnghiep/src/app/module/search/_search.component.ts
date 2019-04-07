@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { DuAnService } from 'src/app/service/duan.service';
 import { DUAN } from 'src/app/model/duan';
+import { KetQuaTimService } from 'src/app/service/ketquatim.service';
 
 //import { FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -27,8 +28,11 @@ export class SearchComponent implements OnInit {
     giatien: Number = 0;
     TRANG_THAI_DU_AN = { "tatca": 0, "binhthuong": 1, "moi": 2, "phobien": 3, "hethan": 4 };
     formHopLe: Number = 0;
-    constructor(private router: ActivatedRoute, private duAnService: DuAnService) {
-        if (this.router.snapshot.routeConfig.path === 'trang-chu') {
+    constructor(private route: Router,
+        private router: ActivatedRoute,
+        private duAnService: DuAnService,
+        private ketQuaTimService: KetQuaTimService) {
+        if (this.router.snapshot.routeConfig.path === 'trang-chu' || this.router.snapshot.routeConfig.path === 'tim-kiem') {
             this.search = this.modeSearch.SEARCH_CENTER;
         } else {
             this.search = this.modeSearch.SEARCH_RIGHT;
@@ -57,87 +61,136 @@ export class SearchComponent implements OnInit {
     getListLoaiGiaoDichTheoDanhMuc(maDanhMuc) {
         const dsTam: string[] = [];
         this.dsLoaiGiaoDich = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "--Chọn loại danh mục--" }];
-        this.dsDuAn.forEach(duan => {
-            if (dsTam.indexOf(duan.danhMuc.maDanhMuc) === -1 && duan.loaiGiaoDich.maLoai === maDanhMuc) {
-                this.dsLoaiGiaoDich.push({ "maLoaiGiaoDich": duan.danhMuc.maDanhMuc, "tenLoaiGiaoDich": duan.danhMuc.tenDanhMuc });
-                dsTam.push(duan.danhMuc.maDanhMuc);
-            }
+        if (maDanhMuc !== "0") {
+            this.dsDuAn.forEach(duan => {
+                if (dsTam.indexOf(duan.danhMuc.maDanhMuc) === -1 && duan.loaiGiaoDich.maLoai === maDanhMuc) {
+                    this.dsLoaiGiaoDich.push({ "maLoaiGiaoDich": duan.danhMuc.maDanhMuc, "tenLoaiGiaoDich": duan.danhMuc.tenDanhMuc });
+                    dsTam.push(duan.danhMuc.maDanhMuc);
+                }
 
-        });
-
-    }
-
-
-    getListQuanHuyenTheoLoaiGiaoDich(maLoai, maDanhMuc) {
-        this.dsQuanHuyen = [{ "maquanhuyen": "0", "tenquanhuyen": "--Chọn Quận/Huyện--" }];
-        const dsTam: string[] = [];
-        this.dsDuAn.forEach(duan => {
-            if (dsTam.indexOf(duan.quanHuyen) === -1
-                && duan.danhMuc.maDanhMuc === maLoai
-                && duan.loaiGiaoDich.maLoai === maDanhMuc) {
-                this.dsQuanHuyen.push({ "maquanhuyen": duan.quanHuyen, "tenquanhuyen": duan.quanHuyen });
-                dsTam.push(duan.quanHuyen);
-
-            }
-        });
+            });
+        }
 
     }
-    getListTinhThanhPhoTheoQuanHuyen(maLoai, maDanhMuc, quanhuyen) {
+
+    getThanhPhoTheoLoaiGiaoDich(maLoai, maDanhMuc) {
         this.dsTinhThanhPho = [{ "matinhThanhPho": "0", "tentinhThanhPho": "--Chọn Tỉnh/Thành Phố--" }];
         const dsTam: string[] = [];
-        this.dsDuAn.forEach(duan => {
-            if (dsTam.indexOf(duan.quanHuyen) === -1
-                && duan.danhMuc.maDanhMuc === maLoai
-                && duan.loaiGiaoDich.maLoai === maDanhMuc
-                && duan.quanHuyen === quanhuyen) {
-                this.dsTinhThanhPho.push({ "matinhThanhPho": duan.tinhThanhPho, "tentinhThanhPho": duan.tinhThanhPho });
-                dsTam.push(duan.tinhThanhPho);
-            }
-        });
+        if (maLoai !== "0" && maDanhMuc !== "0") {
+            this.dsDuAn.forEach(duan => {
+                if (dsTam.indexOf(duan.tinhThanhPho) === -1
+                    && duan.danhMuc.maDanhMuc === maLoai
+                    && duan.loaiGiaoDich.maLoai === maDanhMuc
+                ) {
+                    this.dsTinhThanhPho.push({ "matinhThanhPho": duan.tinhThanhPho, "tentinhThanhPho": duan.tinhThanhPho });
+                    dsTam.push(duan.tinhThanhPho);
+                }
+            });
+        }
+    }
+    getQuanHuyenTheoThanhPho(maLoai, maDanhMuc, thanhPho) {
+        this.dsQuanHuyen = [{ "maquanhuyen": "0", "tenquanhuyen": "--Chọn Quận/Huyện--" }];
+        const dsTam: string[] = [];
+        if (maLoai !== "0" && maDanhMuc !== "0" && thanhPho !== "0") {
+            this.dsDuAn.forEach(duan => {
+                if (dsTam.indexOf(duan.quanHuyen) === -1
+                    && duan.danhMuc.maDanhMuc === maLoai
+                    && duan.loaiGiaoDich.maLoai === maDanhMuc
+                    && duan.tinhThanhPho === thanhPho) {
+                    this.dsQuanHuyen.push({ "maquanhuyen": duan.quanHuyen, "tenquanhuyen": duan.quanHuyen });
+                    dsTam.push(duan.quanHuyen);
+
+                }
+            });
+        }
 
     }
-    getListGiaTheoTinhThanhPho(maLoai, maDanhMuc, quanhuyen, thanhPho) {
+    getGiaTheoQuanHuyen(maLoai, maDanhMuc, thanhPho, quanhuyen) {
         const dsTam: Number[] = [];
         this.dsMucGia = [{ "magiaTien": "0", "tengiaTien": "--Chọn Mức giá--" }];
-        this.dsDuAn.forEach(duan => {
-            if (dsTam.indexOf(duan.giaTien) === -1
-                && duan.danhMuc.maDanhMuc === maLoai
-                && duan.loaiGiaoDich.maLoai === maDanhMuc
-                && duan.quanHuyen === quanhuyen
-                && duan.tinhThanhPho === thanhPho) {
-                this.dsMucGia.push({ "magiaTien": duan.giaTien, "tengiaTien": duan.giaTien });
-                dsTam.push(duan.giaTien);
-            }
-        });
+        if (maLoai !== "0" && maDanhMuc !== "0" && thanhPho !== "0" && quanhuyen !== "0"
+        ) {
+            this.dsDuAn.forEach(duan => {
+                if (dsTam.indexOf(duan.giaTien) === -1
+                    && duan.danhMuc.maDanhMuc === maLoai
+                    && duan.loaiGiaoDich.maLoai === maDanhMuc
+                    && duan.quanHuyen === quanhuyen
+                    && duan.tinhThanhPho === thanhPho) {
+                    this.dsMucGia.push({ "magiaTien": duan.giaTien, "tengiaTien": duan.giaTien });
+                    dsTam.push(duan.giaTien);
+                }
+            });
 
-        this.dsMucGia.sort();
+            this.dsMucGia.sort();
+        }
+
     }
+
+
+
 
     changeDanhMuc(event) {
         this.danhmuc = event.target.value;
         this.getListLoaiGiaoDichTheoDanhMuc(this.danhmuc);
+        this.getThanhPhoTheoLoaiGiaoDich(this.loaigiaodich, this.danhmuc);
+        this.getQuanHuyenTheoThanhPho(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho
+        );
+        this.getGiaTheoQuanHuyen(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho,
+            this.quanhuyen);
+        this.getGiaTheoQuanHuyen(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho,
+            this.quanhuyen);
     }
 
     changeLoaiGiaoDich(event) {
         this.loaigiaodich = event.target.value;
-        this.getListQuanHuyenTheoLoaiGiaoDich(this.loaigiaodich, this.danhmuc);
+        this.getThanhPhoTheoLoaiGiaoDich(this.loaigiaodich, this.danhmuc);
+        this.getQuanHuyenTheoThanhPho(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho
+        );
+        this.getGiaTheoQuanHuyen(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho,
+            this.quanhuyen);
+        this.getGiaTheoQuanHuyen(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho,
+            this.quanhuyen);
+    }
+
+    changeTinhThanhPho(event) {
+        this.tinhthanhpho = event.target.value;
+        this.getQuanHuyenTheoThanhPho(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho
+        );
+        this.getGiaTheoQuanHuyen(
+            this.loaigiaodich,
+            this.danhmuc,
+            this.tinhthanhpho,
+            this.quanhuyen);
+
     }
     changeQuanHuyen(event) {
         this.quanhuyen = event.target.value;
-        this.getListTinhThanhPhoTheoQuanHuyen(
+        this.getGiaTheoQuanHuyen(
             this.loaigiaodich,
             this.danhmuc,
+            this.tinhthanhpho,
             this.quanhuyen);
-    }
-    changeTinhThanhPho(event) {
-        this.tinhthanhpho = event.target.value;
-        this.getListGiaTheoTinhThanhPho(
-            this.loaigiaodich,
-            this.danhmuc,
-            this.quanhuyen,
-            this.tinhthanhpho
-        );
-
     }
     changeMucGia(event) {
         this.giatien = event.target.value;
@@ -157,10 +210,11 @@ export class SearchComponent implements OnInit {
                 if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
                     dstam.push(duan);
                 }
-            } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho === "0" && this.quanhuyen !== "0" && Number(this.giatien) === 0) {
-                if (duan.giaTien > this.giatien && this.quanhuyen === duan.quanHuyen
+            } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho !== "0" && this.quanhuyen === "0" && Number(this.giatien) === 0) {
+                if (duan.giaTien > this.giatien && this.tinhthanhpho === duan.tinhThanhPho
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
+                    dstam.push(duan);
                 }
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho !== "0" && this.quanhuyen !== "0" && Number(this.giatien) === 0) {
                 if (duan.giaTien > Number(this.giatien) && this.quanhuyen === duan.quanHuyen
@@ -180,6 +234,9 @@ export class SearchComponent implements OnInit {
                 }
             }
         });
+        //truyen du lieu qua trang timf kiem dung service
+        this.ketQuaTimService.changeValue(dstam);
+        this.route.navigate(["/tim-kiem"]);
     }
     ngOnInit() {
 

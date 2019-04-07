@@ -26,18 +26,18 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <select class="form-control" (change)="changeQuanHuyen($event)">
-                                                <option *ngFor="let obQuanHuyen of dsQuanHuyen"
-                                                    value="{{obQuanHuyen.maquanhuyen}}">
-                                                    {{obQuanHuyen.tenquanhuyen}}</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
                                             <!--Chọn tỉnh thanh phố-->
                                             <select class="form-control" (change)="changeTinhThanhPho($event)">
                                                 <option *ngFor="let obTinhThanhPho of dsTinhThanhPho"
                                                     value="{{obTinhThanhPho.matinhThanhPho}}">
                                                     {{obTinhThanhPho.tentinhThanhPho}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" (change)="changeQuanHuyen($event)">
+                                                <option *ngFor="let obQuanHuyen of dsQuanHuyen"
+                                                    value="{{obQuanHuyen.maquanhuyen}}">
+                                                    {{obQuanHuyen.tenquanhuyen}}</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
@@ -82,15 +82,15 @@
                     </select>
                 </li>
                 <li>
-                    <select class="form-control" (change)="changeQuanHuyen($event)">
-                        <option *ngFor="let obQuanHuyen of dsQuanHuyen" value="{{obQuanHuyen.maquanhuyen}}">
-                            {{obQuanHuyen.tenquanhuyen}}</option>
-                    </select>
-                </li>
-                <li>
                     <select class="form-control" (change)="changeTinhThanhPho($event)">
                         <option *ngFor="let obTinhThanhPho of dsTinhThanhPho" value="{{obTinhThanhPho.matinhThanhPho}}">
                             {{obTinhThanhPho.tentinhThanhPho}}</option>
+                    </select>
+                </li>
+                <li>
+                    <select class="form-control" (change)="changeQuanHuyen($event)">
+                        <option *ngFor="let obQuanHuyen of dsQuanHuyen" value="{{obQuanHuyen.maquanhuyen}}">
+                            {{obQuanHuyen.tenquanhuyen}}</option>
                     </select>
                 </li>
                 <li>

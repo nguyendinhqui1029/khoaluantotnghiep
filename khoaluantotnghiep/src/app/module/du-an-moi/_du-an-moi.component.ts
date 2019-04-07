@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DUAN } from 'src/app/model/duan';
-import { DuAnService } from 'src/app/service/duan.service';
-import { ConfigService } from 'src/app/service/config.service';
+
 
 
 @Component({
@@ -12,6 +10,7 @@ import { ConfigService } from 'src/app/service/config.service';
 export class DuAnMoiComponent implements OnInit {
 
     @Input() dsduan: any[];
+    //du liệu từ mock
     constructor() {
 
     }

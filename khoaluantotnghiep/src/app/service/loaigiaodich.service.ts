@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ConfigService } from './config.service';
 @Injectable()
 export class LoaiGiaoDichService {
-
     constructor(private http: HttpClient) { }
     httpOptions = {
         headers: new HttpHeaders({

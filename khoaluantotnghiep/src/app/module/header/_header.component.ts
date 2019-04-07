@@ -4,6 +4,7 @@ import { ds_menu } from '../../model/mock_menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
+import { MenuService } from 'src/app/service/menu.service';
 
 @Component({
     selector: 'header-component',
@@ -18,7 +19,19 @@ export class HeaderComponent implements OnInit {
     menu_top: MENU[] = [];
     menu_bottom: MENU[] = [];
     modeMenu: any = { "MENU_TOP": 2, "MENU_BOTTOM": 1 };
-    constructor(private route: ActivatedRoute) {
+
+
+    dsmenutop_hero: MENU[] = [];
+
+    getDSMenuTheoType() {
+        let type = 2;
+        this.MenuService.getDsMeNUTheoType(type).subscribe(menutop => {
+            this.dsmenutop_hero = menutop.body;
+
+        })
+    }
+
+    constructor(private route: ActivatedRoute, private MenuService: MenuService) {
         this.ds_menu.forEach(menu => {
             if (menu.typeMenu === this.modeMenu.MENU_TOP) {
                 this.menu_top.push(menu);
@@ -29,16 +42,22 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // if (this.route.snapshot.routeConfig.path !== '') {
-        //     this.menu_bottom.forEach(element => {
-        //         if (element.codeMenu.indexOf(this.route.snapshot.routeConfig.path) > -1) {
-        //             element.statusMenu = true;
-        //         } else {
-        //             element.statusMenu = false;
-        //         }
-        //     });
-        // }
 
+        this.getDSMenuTheoType();
+        window.onscroll = function () { myFunction() };
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.innerWidth >= 769) {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky-menu");
+                } else {
+                    header.classList.remove("sticky-menu");
+                }
+            }
+
+        }
     }
 
     // xử lí cho menu chế độ di động
@@ -58,21 +77,4 @@ export class HeaderComponent implements OnInit {
         }
     }
 
-    ngAfterViewInit(): void {
-        window.onscroll = function () { myFunction() };
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
-
-        function myFunction() {
-            if (window.innerWidth >= 769) {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add("sticky-menu");
-                } else {
-                    header.classList.remove("sticky-menu");
-                }
-            }
-
-        }
-
-    }
 }

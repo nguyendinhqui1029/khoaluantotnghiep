@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ds_tintuc } from 'src/app/model/mock_tintuc';
-import { TINTUC } from 'src/app/model/tintuc';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'tin-tuc-noi-bat-trang-chu',
@@ -8,17 +6,21 @@ import { TINTUC } from 'src/app/model/tintuc';
     styleUrls: ['./_tin_tuc_noi_bat_trang_chu.component.scss']
 })
 export class TinTucNoiBatTrangChuComponent implements OnInit {
-    dsTinTucNoiBat: TINTUC[] = ds_tintuc;
+    @Input() dsTinTuc: any[];
+
     constructor() { }
 
-    ngOnInit(): void { }
+
+
+    ngOnInit(): void {
+    }
     ngAfterViewInit() {
         const $ = window["$"];
         $(document).ready(function () {
-            var owlproductslide2 = $("#tin-tuc-noi-bat-slider");
-            owlproductslide2.owlCarousel({
+            var owl = $("#tin-tuc-noi-bat-slider");
+            owl.owlCarousel({
                 autoPlay: true,
-                items: 4,
+                items: 3,
                 slideSpeed: 1000,
                 pagination: false,
                 itemsDesktop: [1200, 4],
@@ -26,12 +28,12 @@ export class TinTucNoiBatTrangChuComponent implements OnInit {
                 itemsTablet: [767, 2],
                 itemsMobile: [480, 1]
             });
-            $(".project-slide .nextlogo").click(function () {
-                owlproductslide2.trigger('owl.next');
-            })
-            $(".project-slide .prevlogo").click(function () {
-                owlproductslide2.trigger('owl.prev');
-            })
+            $(".partner-content .nextlogo").click(function () {
+                owl.trigger('owl.next');
+            });
+            $(".partner-content .prevlogo").click(function () {
+                owl.trigger('owl.prev');
+            });
         });
     }
 }

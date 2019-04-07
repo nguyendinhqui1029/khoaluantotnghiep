@@ -11,13 +11,14 @@
             </div>
             <div class="project-block project-grid clearfix" id="tin-tuc-noi-bat-slider">
                 <!--new 1-->
-                <div class="project-item-box fixheight" *ngFor="let tintucnoibat of dsTinTucNoiBat">
+                <div class="project-item-box fixheight" *ngFor="let tintucnoibat of dsTinTuc">
                     <div class="project-item project-slide-resize">
                         <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                             <a [routerLink]="['/tin-tuc-chi-tiet',tintucnoibat.matintuc]"
                                 title="{{tintucnoibat.hinhanh[0].alt}}">
                                 <img src="..\assets\images\product\{{tintucnoibat.hinhanh[0].tenhinh}}"
-                                    class="img-responsive" />
+                                    class="img-responsive"
+                                    style=" width: 100%; max-height: 200px; min-height: 200px;" />
                             </a>
                             <span class="new">New</span>
                             <div class="thumbnail">

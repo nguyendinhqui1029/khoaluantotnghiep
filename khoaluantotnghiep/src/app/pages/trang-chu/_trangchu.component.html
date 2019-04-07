@@ -16,7 +16,8 @@
                 <div class="col-md-12">
                     <!--component panner top-->
                     <!-- <panner-top></panner-top> -->
-                    <tin-tuc-noi-bat-trang-chu></tin-tuc-noi-bat-trang-chu>
+                    <tin-tuc-noi-bat-trang-chu [dsTinTuc]="ds_tinTuc" *ngIf="ds_tinTuc.length > 0">
+                    </tin-tuc-noi-bat-trang-chu>
                     <!--component panner top-->
 
                     <!--component dự án mới-->
