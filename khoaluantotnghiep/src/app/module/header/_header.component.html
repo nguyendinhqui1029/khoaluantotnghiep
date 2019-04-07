@@ -7,7 +7,7 @@
                         <li><i class="fa fa-phone"></i> <span>Hotline:{{congty.hotlineCongTy}}</span></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                        <li *ngFor="let menu of dsmenutop_hero" class="{{menu.classMenu}}" routerLinkActive="active">
+                        <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}" routerLinkActive="active">
                             <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
                                 {{menu.nameMenu}}</a>
                         </li>

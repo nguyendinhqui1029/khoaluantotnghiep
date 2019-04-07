@@ -92,6 +92,7 @@ import { EmployeeAuthGuard } from './auth/employee.guard';
 import { CustomerThemDuAnComponent } from './module/custormer/them-du-an/them_du_an.component';
 import { EmployeeThemDuAnComponent } from './module/employee/them-du-an/them_du_an.component';
 import { TinTucService } from './service/tintuc.service';
+import { DanhMucService } from './service/danhmuc.service';
 
 
 
@@ -124,6 +125,7 @@ import { TinTucService } from './service/tintuc.service';
     ThemGioiThieuComponent, XoaGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent,
     ThemTinTucComponent, XoaTinTucComponent
+
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
@@ -132,7 +134,7 @@ import { TinTucService } from './service/tintuc.service';
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService,
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard],
   bootstrap: [AppComponent]

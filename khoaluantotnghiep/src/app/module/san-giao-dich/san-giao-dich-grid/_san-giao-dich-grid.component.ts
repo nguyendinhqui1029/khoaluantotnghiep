@@ -14,8 +14,13 @@ export class SanGiaoDichGridComponent implements OnInit {
     constructor(private serviceDuAn: DuAnService, private serviceSanGiaoDich: SanGiaoDichService) {
 
     }
-    ngDoCheck(): void {
-        this.dsDuAN = this.serviceDuAn.layDanhSachDuAnTheoDanhMuc(this.serviceSanGiaoDich.getMaGiaoDich());
+    getDSDuAnTheoDanhMuc() {
+        this.serviceSanGiaoDich.currentMessage.subscribe(duan => {
+            console.log("duan" + duan);
+            this.dsDuAN = duan;
+        })
     }
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.getDSDuAnTheoDanhMuc();
+    }
 }

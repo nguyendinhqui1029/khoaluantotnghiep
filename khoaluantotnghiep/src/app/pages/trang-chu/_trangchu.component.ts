@@ -20,7 +20,6 @@ export class TrangChuComponent implements OnInit {
             tintuc.body.forEach(tin => {
                 if (tin.trangthai === ConfigService.TRANG_THAI_TIN_TUC.NEW) {
                     this.ds_tinTuc.push(tin);
-                    console.log(this.ds_tinTuc);
                 }
             })
         })

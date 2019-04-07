@@ -11,15 +11,33 @@
                     <p class="date">Ngày đăng:{{duan.ngayDang}}</p>
                     <div class="desc">
                         <p>
-                            <span style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Sở
+                            <span
+                                style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Sở
                                 {{duan.noiDungTomTat}}</span></p>
-                        <span><i class="fa fa-map-marker"></i>{{duan.tinhThanhPho}}</span> &nbsp;&nbsp; <span><i class="fa fa-credit-card"></i>{{duan.giaTien}}</span>
+                        <span><i class="fa fa-map-marker"></i>{{duan.tinhThanhPho}}</span> &nbsp;&nbsp; <span><i
+                                class="fa fa-credit-card"></i>{{duan.giaTien}}</span>
                     </div>
 
                 </div>
             </div>
         </div>
-
+        <div class="navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="index2679.html?page=1" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li *ngFor="let item of collection"><a href="#">2</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
     </div>
+
 </div>
