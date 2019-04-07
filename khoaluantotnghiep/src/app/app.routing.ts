@@ -90,7 +90,6 @@ const routes: Routes = [
     { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
     { path: 'tim-kiem', component: KetQuaTimKiemComponent },
 
-
     //routing admin
     {
         path: 'admin', component: AdminComponent,
@@ -115,7 +114,8 @@ const routes: Routes = [
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
 
-        ]
+        ],
+        canActivate: [AdminAuthGuard]
     },
     {
         path: 'employee', component: AdminComponent,
@@ -130,7 +130,8 @@ const routes: Routes = [
             { path: 'them-menu', component: ThemMenuComponent },
             { path: 'them-tintuc', component: ThemTinTucComponent },
 
-        ]
+        ],
+        canActivate: [EmployeeAuthGuard]
     },
     {
         path: 'customer', component: AdminComponent,
@@ -141,7 +142,8 @@ const routes: Routes = [
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
 
-        ]
+        ],
+        canActivate: [CustomerAuthGuard]
     }
 ];
 

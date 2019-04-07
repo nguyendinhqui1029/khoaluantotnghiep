@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DangNhapDangKiService } from 'src/app/service/dangnhap_dangki.service';
 import { Md5 } from 'ts-md5/dist/md5';
+import { ConfigService } from 'src/app/service/config.service';
 @Component({
     selector: 'form-dang-nhap',
     templateUrl: './_form-dang-nhap.component.html',
@@ -36,21 +37,17 @@ export class FormDangNhapComponent implements OnInit {
         this.DangKiDangNhapService.layTaiKhoanTheoEmail(this.formDangNhap.controls.email.value).subscribe(e => {
             if (e.body[0]) {
                 if (Md5.hashAsciiStr(this.formDangNhap.controls.pass.value) === e.body[0].matKhau) {
-                    // this.router.navigate(['/customer']);
-                    if (Number(e.body[0].loaiTaiKhoan) === 1) {
-                        //    this.router.navigate(['/customer']);
-                        this.router.navigate(['/admin']);
 
-                    } else if (Number(e.body[0].loaiTaiKhoan) === 2) {
-                        //  this.router.navigate(['/employee']);
-                        this.router.navigate(['/admin']);
-
-                    } else if (Number(e.body[0].loaiTaiKhoan) === 3) {
-                        this.router.navigate(['/admin']);
-                    }
                     sessionStorage.setItem("username", e.body[0].email);
                     sessionStorage.setItem("name", e.body[0].hoTen);
                     sessionStorage.setItem("role", e.body[0].loaiTaiKhoan);
+                    if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+                        this.router.navigate(['/admin']);
+                    } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
+                        this.router.navigate(['/employee']);
+                    } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+                        this.router.navigate(['/customer']);
+                    }
                 } else {
                     this.error.status = true;
                     this.error.message = "Mật khẩu không đúng.Vui lòng nhập lại!";

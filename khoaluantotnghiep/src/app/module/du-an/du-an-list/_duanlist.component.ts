@@ -24,20 +24,6 @@ export class DuAnListComponent implements OnInit, OnDestroy {
         //this.dsDuAN = serviceDuAn.layDanhSachDuAn();
     }
 
-    // getDuAnTrongMotTrang() {
-    //     let soduanhienthi: any = 5;
-
-
-
-    //     if (this.dsDuAN.length <= soduanhienthi) {
-    //         return this.tongsotrang = 1;
-    //     } else {
-    //         this.tongsotrang = (this.dsDuAN.length) / soduanhienthi;
-    //     }
-    // }
-
-
-
     ngOnInit(): void {
         this.getListDuANtheoTrangThai();
     }

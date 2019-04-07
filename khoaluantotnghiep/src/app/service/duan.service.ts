@@ -8,17 +8,30 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class DuAnService {
-    dsDuAn: DUAN[] = []; //ds_duan;
+    dsDuAn: any[] = []; //ds_duan;
+    // static ds_du_an: any[] = [];
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Origin': "*",
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+            'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+            'Access-Control-Allow-Credentials': 'true'
+        })
+    };
+    setValueForDSDuAn() {
+        this.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(e => {
+            this.dsDuAn = e.body;
+        });
+    }
 
-    modeGiaoDich: any = {};
 
     constructor(private http: HttpClient) {
 
     }
-    getListDuAn(trangthai): Observable<HttpResponse<DUAN[]>> {
+    getListDuAn(trangthai): Observable<HttpResponse<any[]>> {
         return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
     }
-
     getDuAnTheoMaDuAn(maDuAn): Observable<HttpResponse<DUAN>> {
         return this.http.get<DUAN>(ConfigService.URL + "get-du-an/" + maDuAn, { observe: 'response' });
     }

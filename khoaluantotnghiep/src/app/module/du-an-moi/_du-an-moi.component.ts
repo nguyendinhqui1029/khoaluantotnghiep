@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { DUAN } from 'src/app/model/duan';
-import { DuAnService } from 'src/app/service/duan.service';
-import { ConfigService } from 'src/app/service/config.service';
+import { Component, OnInit, Input } from '@angular/core';
+
+
 
 @Component({
     selector: 'du-an-moi',
@@ -9,16 +8,21 @@ import { ConfigService } from 'src/app/service/config.service';
     styleUrls: ['./_du-an-moi.component.scss']
 })
 export class DuAnMoiComponent implements OnInit {
+
+    @Input() dsduan: any[];
     //du liệu từ mock
-    @Input() dsDuAN: any[];
     constructor() {
 
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
+
 
     }
+
     ngAfterViewInit() {
+
+
         const $ = window["$"];
         var owlproductslide2 = $("#project-slide");
         owlproductslide2.owlCarousel({
@@ -37,5 +41,6 @@ export class DuAnMoiComponent implements OnInit {
         $(".project-slide .prevlogo").click(function () {
             owlproductslide2.trigger('owl.prev');
         })
+
     }
 }

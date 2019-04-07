@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DuAnService } from './service/duan.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Bất động sản';
+  constructor() {
+
+  }
 }

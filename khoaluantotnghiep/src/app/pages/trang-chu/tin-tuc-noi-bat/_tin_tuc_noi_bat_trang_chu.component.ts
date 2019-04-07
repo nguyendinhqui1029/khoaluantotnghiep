@@ -20,13 +20,13 @@ export class TinTucNoiBatTrangChuComponent implements OnInit {
             var owl = $("#tin-tuc-noi-bat-slider");
             owl.owlCarousel({
                 autoPlay: true,
-                items: 6,
+                items: 3,
                 slideSpeed: 1000,
                 pagination: false,
-                itemsDesktop: [1200, 6],
-                itemsDesktopSmall: [980, 5],
-                itemsTablet: [767, 4],
-                itemsMobile: [480, 2]
+                itemsDesktop: [1200, 4],
+                itemsDesktopSmall: [980, 3],
+                itemsTablet: [767, 2],
+                itemsMobile: [480, 1]
             });
             $(".partner-content .nextlogo").click(function () {
                 owl.trigger('owl.next');

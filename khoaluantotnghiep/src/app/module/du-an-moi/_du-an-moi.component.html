@@ -11,11 +11,12 @@
             </div>
             <div class="project-block project-grid clearfix" id="project-slide">
                 <!--new 1-->
-                <div *ngFor="let ds of dsDuAN" class="project-item-box fixheight">
+                <div *ngFor="let ds of dsduan" class="project-item-box fixheight">
                     <div class="project-item project-slide-resize">
                         <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                             <a [routerLink]="['/']">
-                                <img src="..\assets\images\product\{{ds.mangHinh[0].tenhinh}}" class="img-responsive" />
+                                <img src="..\assets\images\product\{{ds.mangHinh[0].tenhinh}}" class="img-responsive"
+                                    style="max-height: 200px; min-height: 200px; width: 100%;" />
                             </a>
                             <span class="new">New</span>
                             <div class="thumbnail">

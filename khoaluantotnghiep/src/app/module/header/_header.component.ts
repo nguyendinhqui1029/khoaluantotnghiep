@@ -40,7 +40,22 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.getDSMenuTOPTheoType();
-        this.getDSMenuBOTTOMTheoType();
+        this.getDSMenuBOTTOMTheoType();//
+
+        window.onscroll = function () { myFunction() };
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.innerWidth >= 769) {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky-menu");
+                } else {
+                    header.classList.remove("sticky-menu");
+                }
+            }
+
+        }
     }
 
     // xử lí cho menu chế độ di động
@@ -60,20 +75,4 @@ export class HeaderComponent implements OnInit {
         }
     }
 
-    ngAfterViewInit(): void {
-        window.onscroll = function () { myFunction() };
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
-        function myFunction() {
-            if (window.innerWidth >= 992) {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add("sticky-menu");
-                } else {
-                    header.classList.remove("sticky-menu");
-                }
-            }
-
-        }
-
-    }
 }

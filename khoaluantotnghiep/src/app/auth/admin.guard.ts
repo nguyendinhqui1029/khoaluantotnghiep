@@ -11,9 +11,10 @@ export class AdminAuthGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         let role = false;
-        if (sessionStorage.getItem("role") && Number(sessionStorage.getItem("role")) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+        if (Number(sessionStorage.getItem("role")) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
             role = true;
-        } else {
+        }
+        else {
             role = false;
             this.route.navigate(["dang-nhap"]);
         }

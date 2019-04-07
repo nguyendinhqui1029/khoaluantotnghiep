@@ -93,6 +93,8 @@ import { CustomerThemDuAnComponent } from './module/custormer/them-du-an/them_du
 import { EmployeeThemDuAnComponent } from './module/employee/them-du-an/them_du_an.component';
 import { TinTucService } from './service/tintuc.service';
 import { DanhMucService } from './service/danhmuc.service';
+import { KetQuaTimService } from './service/ketquatim.service';
+import { PhanTranService } from './service/phantrang.service';
 
 
 
@@ -136,7 +138,8 @@ import { DanhMucService } from './service/danhmuc.service';
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService,
-    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard],
+    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
+    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

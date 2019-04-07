@@ -11,6 +11,7 @@ import { TinTucService } from 'src/app/service/tintuc.service';
 export class TrangChuComponent implements OnInit {
     ds_DuAn: any[] = [];
     ds_tinTuc: any[] = [];
+
     constructor(private duAnService: DuAnService, private tinTucService: TinTucService) {
         this.duAnService.getDuAnTheoTrangThai(ConfigService.TRANG_THAI_DU_AN.DUANMOI).subscribe(e => {
             this.ds_DuAn = e.body;
@@ -24,6 +25,10 @@ export class TrangChuComponent implements OnInit {
             })
         })
     }
-
+    getDanhSachDuAn() {
+        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(e => {
+            this.ds_DuAn = e.body;
+        });
+    }
     ngOnInit(): void { }
 }
