@@ -6,6 +6,7 @@ import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
 import { MenuService } from 'src/app/service/menu.service';
 import { ConfigService } from 'src/app/service/config.service';
+import { CongTyService } from 'src/app/service/congty.service';
 
 @Component({
     selector: 'header-component',
@@ -14,7 +15,7 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class HeaderComponent implements OnInit {
     //dữ liệu áp cứng
-    congty: CONGTY = congTy;
+    congty: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "");
 
     // ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
@@ -35,8 +36,16 @@ export class HeaderComponent implements OnInit {
         })
     }
 
-    constructor(private route: ActivatedRoute, private MenuService: MenuService) {
+    constructor(private route: ActivatedRoute, private MenuService: MenuService, private congtyservice: CongTyService) {
+        this.congtyservice.getCongTy().subscribe(ct => {
+
+            this.congty = ct.body[0];
+            console.log(this.congty);
+
+        })
     }
+
+
 
     ngOnInit(): void {
         this.getDSMenuTOPTheoType();
