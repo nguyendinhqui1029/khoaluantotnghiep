@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
 import { MenuService } from 'src/app/service/menu.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'header-component',
@@ -15,35 +16,32 @@ export class HeaderComponent implements OnInit {
     //dữ liệu áp cứng
     congty: CONGTY = congTy;
 
-    ds_menu: MENU[] = ds_menu;
+    // ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
     menu_bottom: MENU[] = [];
-    modeMenu: any = { "MENU_TOP": 2, "MENU_BOTTOM": 1 };
 
 
     dsmenutop_hero: MENU[] = [];
 
-    getDSMenuTheoType() {
-        let type = 2;
-        this.MenuService.getDsMeNUTheoType(type).subscribe(menutop => {
-            this.dsmenutop_hero = menutop.body;
+    getDSMenuTOPTheoType() {
+        this.MenuService.getDsMeNUTheoType(ConfigService.LOAI_MENU.MENU_TOP).subscribe(menutop => {
+            this.menu_top = menutop.body;
+        })
+    }
 
+    getDSMenuBOTTOMTheoType() {
+        this.MenuService.getDsMeNUTheoType(ConfigService.LOAI_MENU.MENU_BOTTOM).subscribe(menubottom => {
+            this.menu_bottom = menubottom.body;
         })
     }
 
     constructor(private route: ActivatedRoute, private MenuService: MenuService) {
-        this.ds_menu.forEach(menu => {
-            if (menu.typeMenu === this.modeMenu.MENU_TOP) {
-                this.menu_top.push(menu);
-            } else if (menu.typeMenu === this.modeMenu.MENU_BOTTOM) {
-                this.menu_bottom.push(menu);
-            }
-        });
     }
 
     ngOnInit(): void {
+        this.getDSMenuTOPTheoType();
+        this.getDSMenuBOTTOMTheoType();//
 
-        this.getDSMenuTheoType();
         window.onscroll = function () { myFunction() };
         var header = document.getElementById("myHeader");
         var sticky = header.offsetTop;

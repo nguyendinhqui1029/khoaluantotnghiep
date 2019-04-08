@@ -11,13 +11,30 @@ import { GioiThieuService } from 'src/app/service/gioithieu.service';
 })
 export class DanhMucGioiThieuComponent implements OnInit {
     //dữ liệu từ mock
-    ds_gioithieu: GIOITHIEU[] = ds_gioithieu;
-    constructor(private serviceGioiThieu: GioiThieuService) {
+    ds_gioithieu: GIOITHIEU[] = [];
 
+    constructor(private serviceGioiThieu: GioiThieuService) {
     }
     setGioiThieu(value) {
-        this.serviceGioiThieu.setGioiThieu(value);
+        if (value.magioithieu === this.ds_gioithieu[0].magioithieu) {
+            this.serviceGioiThieu.setGioiThieu(value);
+            this.serviceGioiThieu.changeValue(this.ds_gioithieu[0]); //Gửi gioi thiệu 1 qua trang nội dung
+
+        } else if (value.magioithieu === this.ds_gioithieu[1].magioithieu) {
+            this.serviceGioiThieu.setGioiThieu(value);
+            this.serviceGioiThieu.changeValue(this.ds_gioithieu[1]); //Gửi gioi thiệu 2 qua trang nội dung
+        }
     }
-    ngOnInit(): void { }
+
+
+    getDSGioiThieu() {
+        this.serviceGioiThieu.getDanhSachGioiThieu().subscribe(gioithieu => {
+            this.ds_gioithieu = gioithieu.body;
+            this.serviceGioiThieu.changeValue(this.ds_gioithieu[0]); //Gửi gioi thiêu khi chưa nhấn nút
+        })
+    }
+    ngOnInit(): void {
+        this.getDSGioiThieu();
+    }
 
 }

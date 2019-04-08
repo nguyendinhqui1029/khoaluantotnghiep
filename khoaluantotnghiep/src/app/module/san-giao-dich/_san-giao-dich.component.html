@@ -6,7 +6,7 @@
             <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus(modeView.grid)">
                 <a [routerLink]="['/'+pageCurrent+'/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
         </ul>
-        <div class="limit hidden-xs">
+        <!-- <div class="limit hidden-xs">
             <span>Sàn giao dịch/trang</span>
             <select id="lblimit" name="lblimit" onchange="window.location.href = this.options[this.selectedIndex].value">
                 <option value="?limit=10">10</option>
@@ -17,8 +17,8 @@
                 <option value="?limit=250">250</option>
                 <option value="?limit=500">500</option>
             </select>
-        </div>
-        <div class="sort hidden-xs">
+        </div> -->
+        <!-- <div class="sort hidden-xs">
             <span>Sắp xếp</span>
             <select id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
                 <option selected="selected" value="?sort=index&amp;order=asc">Mặc định</option>
@@ -27,14 +27,15 @@
                 <option value="?sort=name&amp;order=asc">T&#234;n dự &#225;n: A to Z</option>
                 <option value="?sort=name&amp;order=desc">T&#234;n dự &#225;n: Z to A</option>
             </select>
-        </div>
+        </div> -->
     </nav>
     <!--Hien thi sàn giao dịch dạng grid hoặc list-->
     <!--<du-an-list></du-an-list> <du-an-grid></du-an-grid>-->
 
     <div class="property-tabs">
         <ul class="nav nav-tabs">
-            <li role="presentation" *ngFor="let danhmuc of ds_danhmuc" [ngClass]="{'active':danhmuc.isActive}" (click)="buttonChoThueClick(danhmuc.maDanhMuc)">
+            <li role="presentation" *ngFor="let danhmuc of ds_danhmuc" [ngClass]="{'active':danhmuc.isActive}"
+                (click)="buttonChoThueClick(danhmuc.maDanhMuc)">
                 <a [routerLink]="[pagethue]">{{danhmuc.tenDanhMuc}}</a>
             </li>
         </ul>

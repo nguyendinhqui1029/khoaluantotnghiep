@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { DuAnService } from 'src/app/service/duan.service';
 import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 
 @Component({
@@ -16,8 +17,13 @@ export class SanGiaoDichListComponent implements OnInit {
 
 
     }
-    ngDoCheck(): void {
-        this.dsDuAN = this.serviceDuAn.layDanhSachDuAnTheoDanhMuc(this.serviceSanGiaoDich.getMaGiaoDich());
+    getDSDuAnTheoDanhMuc() {
+        this.serviceSanGiaoDich.currentMessage.subscribe(duan => {
+            console.log("duan" + duan);
+            this.dsDuAN = duan;
+        })
     }
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.getDSDuAnTheoDanhMuc();
+    }
 }

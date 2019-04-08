@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SanGiaoDichService {
@@ -10,5 +11,11 @@ export class SanGiaoDichService {
 
     getMaGiaoDich() {
         return this.maSanGiaoDich;
+    }
+
+    valueSource = new BehaviorSubject<any[]>([]);
+    currentMessage = this.valueSource.asObservable();
+    changeValue(value) {
+        this.valueSource.next(value);
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { DuAnService } from 'src/app/service/duan.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'du-an-list',
@@ -10,8 +11,6 @@ import { DuAnService } from 'src/app/service/duan.service';
 export class DuAnListComponent implements OnInit {
     //Du liệu từ mock
     dsDuAn: DUAN[] = [];//ds_duan;
-
-
     constructor(private serviceDuAn: DuAnService) {
         this.serviceDuAn.currentMessage.subscribe(e => {
             this.dsDuAn = e;

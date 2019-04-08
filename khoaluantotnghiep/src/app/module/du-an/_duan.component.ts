@@ -51,11 +51,14 @@ export class DuAnComponent implements OnInit {
             this.status = false;
             this.phanTrangService.soItemCuaPage = 12;
             this.soItemTrang = 12;
+            this.currentPagePhanTrang = 1;
         } else if (e === this.modeView.list) {
             this.status = true;
             this.phanTrangService.soItemCuaPage = 5;
             this.soItemTrang = 5;
+            this.currentPagePhanTrang = 1;
         }
+        this.pageCurrent = this.route.routerState.snapshot.url;
         this.createPhanTrang(this.currentPagePhanTrang);
     }
     createPhanTrang(value) {

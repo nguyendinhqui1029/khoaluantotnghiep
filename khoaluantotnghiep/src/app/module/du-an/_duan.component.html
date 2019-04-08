@@ -17,7 +17,7 @@
     <div class="navigation" *ngIf="dsDuAn.length >=phanTrangService.soItemCuaPage">
         <ul class="pagination">
             <li *ngFor="let page of ds_page" [ngClass]="{'active':currentPagePhanTrang===page.value?true:false}"><a
-                    href="javascript:Void(0)" (click)="createPhanTrang(page.value)">{{page.name}}</a>
+                    [routerLink]="[pageCurrent]" (click)="createPhanTrang(page.value)">{{page.name}}</a>
             </li>
         </ul>
     </div>

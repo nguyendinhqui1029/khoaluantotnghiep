@@ -14,6 +14,7 @@ export class DuAnGridComponent implements OnInit {
     constructor(private serviceDuAn: DuAnService) {
         this.serviceDuAn.currentMessage.subscribe(e => {
             this.dsDuAn = e;
+            console.log(this.dsDuAn)
         });
     }
 
