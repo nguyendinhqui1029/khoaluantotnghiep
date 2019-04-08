@@ -4,11 +4,8 @@
             Tin tức
         </span>
     </h3>
-    <ul class='level0'>
-        <li><a href='#'><i class='fa fa-arrow-circle-o-right'></i>
-                Tin trong nước</a></li>
-        <li><a href='#'><i class='fa fa-arrow-circle-o-right'></i>
-                Tin quốc tế</a></li>
-        <li><a href='#'><i class='fa fa-arrow-circle-o-right'></i>Thị trường</a></li>
+    <ul class='level0' *ngFor="let item of danhmuctin">
+        <li><a href="javaScript:void(0)" (click)="setTinTuc(item.maloai)"><i class='fa fa-arrow-circle-o-right'></i>
+                {{item.tenloai}}</a></li>
     </ul>
 </div>

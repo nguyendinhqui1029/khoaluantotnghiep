@@ -95,6 +95,7 @@ import { TinTucService } from './service/tintuc.service';
 import { DanhMucService } from './service/danhmuc.service';
 import { KetQuaTimService } from './service/ketquatim.service';
 import { PhanTranService } from './service/phantrang.service';
+import { LoaiTinTucService } from './service/loaitintuc.service';
 
 
 
@@ -136,7 +137,7 @@ import { PhanTranService } from './service/phantrang.service';
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
-  providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService,
+  providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
     AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService],

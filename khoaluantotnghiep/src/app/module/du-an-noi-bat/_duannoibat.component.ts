@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { ds_duan } from 'src/app/model/mock_duan';
 import { DuAnService } from 'src/app/service/duan.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'du-an-noi-bat',
@@ -13,7 +14,13 @@ export class DuAnNoiBatComponent implements OnInit {
     dsDuAN: DUAN[] = [];
     loai = "nổi bật";
     constructor(private serviceDuAn: DuAnService) {
-        this.dsDuAN = serviceDuAn.layDanhSachDuAnTheoLoaiDuAn(this.loai);
+        this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
+            duan.body.forEach(e => {
+                if (e.loaiDuAn === this.loai) {
+                    this.dsDuAN.push(e);
+                }
+            })
+        });
     }
 
     ngOnInit(): void { }
