@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TrangChuComponent } from './pages/trang-chu/_trangchu.component';
 import { GioiThieuComponent } from './pages/gioi-thieu/_gioithieu.component';
 import { DuAnPageComponent } from './pages/du-an/_du-an.component';
-import { DichVuComponent } from './pages/dich-vu/_dichvu.component';
+import { HuongDanComponent } from './pages/huong-dan/_huongdan.component';
 import { TinTucComponent } from './pages/tin-tuc/_tintuc_component';
 import { SanGiaoDichComponent } from './pages/san-giao-dich/_sangiaodich.component';
 import { ThuVienAnhPageComponent } from './pages/thu-vien-anh/_thu-vien-anh.component';
@@ -41,55 +41,54 @@ import { XoaTinTucComponent } from './module/admin/tintuc/xoa-tintuc/_xoa-tintuc
 import { AdminAuthGuard } from './auth/admin.guard';
 import { CustomerAuthGuard } from './auth/customer.guard';
 import { EmployeeAuthGuard } from './auth/employee.guard';
+import { SubPageComponent } from './pages/sub-page/sub_page.component';
 
 
 const routes: Routes = [
     {
-        path: '', component: SanGiaoDichComponent,
-        children: [
-            { path: '', component: SanGiaoDichListComponent },
-            { path: 'grid', component: SanGiaoDichGridComponent }]
+        path: '', component: SubPageComponent,
+        children: [{
+            path: '', component: SanGiaoDichComponent,
+            children: [
+                { path: '', component: SanGiaoDichListComponent },
+                { path: 'grid', component: SanGiaoDichGridComponent }]
+        },
+        {
+            path: 'trang-chu', component: TrangChuComponent,
+            children: [
+                { path: '', component: DuAnListComponent },
+                { path: 'grid', component: DuAnGridComponent }]
+        },
+        {
+            path: 'gioi-thieu', component: GioiThieuComponent
+        },
+        {
+            path: 'du-an', component: DuAnPageComponent,
+            children: [
+                { path: '', component: DuAnListComponent },
+                { path: 'grid', component: DuAnGridComponent }]
+        },
+        {
+            path: 'chi-tiet-du-an/:id', component: DuAnChiTietComponent
+        },
+        { path: 'huong-dan', component: HuongDanComponent },
+        { path: 'tin-tuc', component: TinTucComponent },
+        { path: 'tin-tuc-chi-tiet/:id', component: TinTucChiTietComponent },
+        {
+            path: 'san-giao-dich', component: SanGiaoDichComponent,
+            children: [
+                { path: '', component: SanGiaoDichListComponent },
+                { path: 'grid', component: SanGiaoDichGridComponent }]
+        },
+        { path: 'san-giao-dich-chi-tiet/:id', component: SanGiaoDichChiTietComponent },
+        { path: 'thu-vien-anh', component: ThuVienAnhPageComponent },
+        { path: 'lien-he', component: LienHeComponent },
+        { path: 'dang-nhap', component: DangNhapComponent },
+        { path: 'dang-ky', component: DangKyComponent },
+        { path: 'gio-hang', component: GioHangComponent },
+        { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
+        { path: 'tim-kiem', component: KetQuaTimKiemComponent }]
     },
-
-    {
-        path: 'trang-chu', component: TrangChuComponent,
-        children: [
-            { path: '', component: DuAnListComponent },
-            { path: 'grid', component: DuAnGridComponent }]
-    },
-    {
-        path: 'gioi-thieu', component: GioiThieuComponent
-    },
-    //{ path: 'gioi-thieu/:id', component: NoiDungGioiThieuComponent },
-
-    {
-        path: 'du-an', component: DuAnPageComponent,
-        children: [
-            { path: '', component: DuAnListComponent },
-            { path: 'grid', component: DuAnGridComponent }]
-    },
-    {
-        //doi lai component chi tiet du an
-        path: 'chi-tiet-du-an/:id', component: DuAnChiTietComponent
-    },
-    { path: 'dich-vu', component: DichVuComponent },
-    { path: 'tin-tuc', component: TinTucComponent },
-    { path: 'tin-tuc-chi-tiet/:id', component: TinTucChiTietComponent },
-    {
-        path: 'san-giao-dich', component: SanGiaoDichComponent,
-        children: [
-            { path: '', component: SanGiaoDichListComponent },
-            { path: 'grid', component: SanGiaoDichGridComponent }]
-    },
-    { path: 'san-giao-dich-chi-tiet/:id', component: SanGiaoDichChiTietComponent },
-    { path: 'thu-vien-anh', component: ThuVienAnhPageComponent },
-    { path: 'lien-he', component: LienHeComponent },
-    { path: 'dang-nhap', component: DangNhapComponent },
-    { path: 'dang-ky', component: DangKyComponent },
-    { path: 'gio-hang', component: GioHangComponent },
-    { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
-    { path: 'tim-kiem', component: KetQuaTimKiemComponent },
-
     //routing admin
     {
         path: 'admin', component: AdminComponent,

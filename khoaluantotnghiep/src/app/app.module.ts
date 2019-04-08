@@ -15,7 +15,7 @@ import { DuAnMoiComponent } from './module/du-an-moi/_du-an-moi.component';
 import { DuAnComponent } from './module/du-an/_duan.component';
 import { ThuVienAnhComponent } from './module/thuc-vien-anh/_thuvienanh.component';
 import { DuAnPageComponent } from './pages/du-an/_du-an.component';
-import { DichVuComponent } from './pages/dich-vu/_dichvu.component';
+import { HuongDanComponent } from './pages/huong-dan/_huongdan.component';
 import { TinTucComponent } from './pages/tin-tuc/_tintuc_component';
 import { SanGiaoDichComponent } from './pages/san-giao-dich/_sangiaodich.component';
 import { ThuVienAnhPageComponent } from './pages/thu-vien-anh/_thu-vien-anh.component';
@@ -96,6 +96,7 @@ import { DanhMucService } from './service/danhmuc.service';
 import { KetQuaTimService } from './service/ketquatim.service';
 import { PhanTranService } from './service/phantrang.service';
 import { LoaiTinTucService } from './service/loaitintuc.service';
+import { SubPageComponent } from './pages/sub-page/sub_page.component';
 
 
 
@@ -107,7 +108,7 @@ import { LoaiTinTucService } from './service/loaitintuc.service';
     HeaderComponent, SliderComponent, SearchComponent,
     GioiThieuComponent, PannerTopComponent, DoiTacComponent,
     DuAnMoiComponent, DuAnComponent, ThuVienAnhComponent, DuAnPageComponent,
-    DichVuComponent, TinTucComponent, SanGiaoDichComponent, ThuVienAnhPageComponent,
+    HuongDanComponent, TinTucComponent, SanGiaoDichComponent, ThuVienAnhPageComponent,
     LienHeComponent, DangNhapComponent, DangKyComponent, GioHangComponent,
     TaiKhoanComponent, FormDangKiComponent, FormDangNhapComponent,
     DanhMucGioiThieuComponent, NoiDungGioiThieuComponent, DuAnNoiBatComponent,
@@ -117,7 +118,7 @@ import { LoaiTinTucService } from './service/loaitintuc.service';
     BanDoComponent, FormLienHeComponent, SanGiaoDichChiTietModuleComponent, KhungChiTietModuleComponent,
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
-    DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent,
+    DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     //Admin
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent,

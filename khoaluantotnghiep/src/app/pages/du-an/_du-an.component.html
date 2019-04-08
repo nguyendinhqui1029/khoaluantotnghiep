@@ -1,44 +1,32 @@
-<div class="wrapper">
-    <!--header-->
-    <header-component></header-component>
-    <!--header-->
-    <div class="main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <!--navigate trang chủ-->
-                    <div class="breadcrumb clearfix">
-                        <ul>
-                            <li class="home">
-                                <a title="Đến trang chủ" [routerLink]="['/']"><span itemprop="title">Trang
-                                        chủ</span></a>
-                            </li>
-                            <li class="icon-li"><strong>Dự án</strong> </li>
-                        </ul>
-                    </div>
-                    <!--navigate trang chủ-->
-
-                    <!--component dự án-->
-                    <du-an></du-an>
-                    <!--component dự án-->
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <!--navigate trang chủ-->
+                <div class="breadcrumb clearfix">
+                    <ul>
+                        <li class="home">
+                            <a title="Đến trang chủ" [routerLink]="['/']"><span itemprop="title">Trang
+                                    chủ</span></a>
+                        </li>
+                        <li class="icon-li"><strong>Dự án</strong> </li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                    <!--component search-->
-                    <search-component></search-component>
-                    <!--component search-->
+                <!--navigate trang chủ-->
 
-                    <!--component dự án nổi bật-->
-                    <du-an-noi-bat></du-an-noi-bat>
-                    <!--component dự án nổi bật-->
-                </div>
+                <!--component dự án-->
+                <du-an></du-an>
+                <!--component dự án-->
+            </div>
+            <div class="col-md-3">
+                <!--component search-->
+                <search-component></search-component>
+                <!--component search-->
+
+                <!--component dự án nổi bật-->
+                <du-an-noi-bat></du-an-noi-bat>
+                <!--component dự án nổi bật-->
             </div>
         </div>
     </div>
-    <!--component đối tác-->
-    <doi-tac></doi-tac>
-    <!--component đối tác-->
-
-    <!--component footer-->
-    <footer-component></footer-component>
-    <!--component footer-->
 </div>
