@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DUAN } from '../model/duan';
 import { ds_duan } from '../model/mock_duan';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { tap } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { tap } from 'rxjs/operators';
 export class DuAnService {
     dsDuAn: any[] = []; //ds_duan;
     // static ds_du_an: any[] = [];
+    valueSource = new BehaviorSubject<any[]>([]);
+    currentMessage = this.valueSource.asObservable();
     httpOptions = {
         headers: new HttpHeaders({
             'Access-Control-Allow-Origin': "*",
@@ -39,6 +41,12 @@ export class DuAnService {
     getDuAnTheoTrangThai(trangthai): Observable<HttpResponse<DUAN[]>> {
         return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
     }
+
+    //Truyen du lieu cho du an list/gird
+    setValueDanhSachPhanTrang(value) {
+        this.valueSource.next(value);
+    }
+    //Truyen du lieu cho du an list/gird
 
 
 

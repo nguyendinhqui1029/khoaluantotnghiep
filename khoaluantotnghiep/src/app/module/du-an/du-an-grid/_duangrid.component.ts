@@ -7,24 +7,18 @@ import { DuAnService } from 'src/app/service/duan.service';
     templateUrl: './_duangrid.component.html',
     styleUrls: ['./_duangrid.component.scss']
 })
-export class DuAnGridComponent implements OnInit, OnDestroy {
+export class DuAnGridComponent implements OnInit {
     //Du liệu từ mock
-    dsDuAN: DUAN[] = [];
-    sub: any;
-    getListDuANtheoTrangThai() {
-        let trangthai = 0;
-        this.sub = this.serviceDuAn.getListDuAn(trangthai).subscribe(duan => {
-            this.dsDuAN = duan.body;
-        });
-    }
+    dsDuAn: DUAN[] = [];
+
     constructor(private serviceDuAn: DuAnService) {
-        //this.dsDuAN = serviceDuAn.layDanhSachDuAn();
+        this.serviceDuAn.currentMessage.subscribe(e => {
+            this.dsDuAn = e;
+        });
     }
 
     ngOnInit(): void {
-        this.getListDuANtheoTrangThai();
+
     }
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
+
 }
