@@ -1,14 +1,15 @@
 <div class="news-content">
     <div class="news-block clearfix">
         <!--Item 1-->
-        <div *ngFor="let duan of dsDuAN">
+        <div *ngFor="let duan of dsDuAn">
             <div class="news-item clearfix">
                 <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
                         <img src="../../../../assets/images/product/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
-                            alt="{{duan.mangHinh[0].alt}}" /></a></div>
+                            alt="{{duan.mangHinh[0].alt}}"
+                            style="max-height: 200px; min-height: 200px; width: 100%;" /></a></div>
                 <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
                     <h2 class="name"><a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">{{duan.tenDuAn}}</a></h2>
-                    <p class="date">Ngày đăng:{{duan.ngayDang}}</p>
+                    <p class="date">Ngày đăng:{{duan.ngayDang|date:'dd-MM-yyyy'}}</p>
                     <div class="desc">
                         <p>
                             <span
@@ -21,23 +22,6 @@
                 </div>
             </div>
         </div>
-        <div class="navigation">
-            <ul class="pagination">
-                <li>
-                    <a href="index2679.html?page=1" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li *ngFor="let item of collection"><a href="#">2</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
     </div>
 
 </div>

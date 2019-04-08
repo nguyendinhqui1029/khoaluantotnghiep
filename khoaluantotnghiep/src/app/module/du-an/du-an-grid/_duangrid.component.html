@@ -1,11 +1,12 @@
 <div class="project-block project-grid clearfix">
     <div class="row">
         <!--du an 1-->
-        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box" *ngFor="let duan of dsDuAN">
+        <div class="col-md-3 col-sm-3 col-xs-12 project-item-box" *ngFor="let duan of dsDuAn">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" title="{{duan.mangHinh[0].alt}}">
-                        <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}" class="img-responsive" />
+                        <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
+                            style="max-height: 200px; min-height: 200px; width: 100%;" />
                     </a>
                     <span class="new" *ngIf="duan.trangThai ===3">New</span>
                     <div class="thumbnail">

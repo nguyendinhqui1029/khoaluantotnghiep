@@ -42,8 +42,8 @@ export class DoiTacComponent implements OnInit {
                 slideSpeed: 1000,
                 pagination: false,
                 itemsDesktop: [1200, 6],
-                itemsDesktopSmall: [980, 5],
-                itemsTablet: [767, 4],
+                itemsDesktopSmall: [980, 3],
+                itemsTablet: [767, 2],
                 itemsMobile: [480, 2]
             });
             $(".partner-content .nextlogo").click(function () {

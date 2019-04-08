@@ -11,21 +11,17 @@
                         </span>
                     </h3>
                     <div class="partner-block" *ngIf="flag else nguoclai">
-
                         <div class="partner-item" *ngFor="let lg of ds_logoDoiTac.mangHinh">
                             <a href="javaScript:void(0)">
                                 <img src="../assets/images/logo-doitac/{{lg.tenhinh}}" class="img-responsive"
                                     alt="{{lg.alt}}" />
                             </a>
                         </div>
-
-
-
                     </div>
                     <ng-template #nguoclai>
-                        <div class="partner-block  fa-3x row">
-                            <div class="col-lg-12" style="margin: auto; clear: both; text-align: center">
-                                <i style="font-size: 70px; color: cornflowerblue;margin: auto;"
+                        <div class="fa-3x">
+                            <div style="margin: auto; clear: both; text-align: center">
+                                <i style="font-size: 70px; color: rgb(116, 182, 236);margin: auto;"
                                     class="fa fa-spinner fa-pulse"></i>
                             </div>
                         </div>
