@@ -38,10 +38,7 @@ export class HeaderComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private MenuService: MenuService, private congtyservice: CongTyService) {
         this.congtyservice.getCongTy().subscribe(ct => {
-
             this.congty = ct.body[0];
-            console.log(this.congty);
-
         })
     }
 

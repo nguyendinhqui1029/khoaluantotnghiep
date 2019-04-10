@@ -16,7 +16,7 @@ export class NoiDungTinTucComponent implements OnInit {
     noidungtintuc: TINTUC[] = [];
     constructor(private tintucService: TinTucService, private loaitintucservice: LoaiTinTucService,
         private phanTrangService: PhanTranService) {
-
+        this.getDSTinTuc();
     }
 
     ds_ketQua: any[] = [];
@@ -56,7 +56,6 @@ export class NoiDungTinTucComponent implements OnInit {
         this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_ketQua);
     }
     ngOnInit(): void {
-        this.getDSTinTuc();
     }
 
 

@@ -12,7 +12,9 @@ import { isFulfilled } from 'q';
 export class TinTucNoiBatComponent implements OnInit {
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = [];
-    constructor(private tintucService: TinTucService) { }
+    constructor(private tintucService: TinTucService) {
+        this.getDSTinTuc();
+    }
     getDSTinTuc() {
         this.tintucService.getDSTinTuc().subscribe(tintuc => {
             tintuc.body.forEach(e => {
@@ -23,6 +25,5 @@ export class TinTucNoiBatComponent implements OnInit {
         });
     }
     ngOnInit(): void {
-        this.getDSTinTuc();
     }
 }

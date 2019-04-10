@@ -9,7 +9,7 @@
             <!--doi thanh routerLink vao app.routing.ts them link giong trong grid list
                 them router-outlet trong cho right-->
             <li id="linhvuc" *ngFor="let gioithieu of ds_gioithieu">
-                <a href="javaScript:void(0)" (click)="setGioiThieu(gioithieu)">
+                <a [routerLink]="['/gioi-thieu']" (click)="setGioiThieu(gioithieu)">
                     {{gioithieu.tieude}}
                 </a>
             </li>

@@ -21,7 +21,7 @@ export class GioiThieuService {
     getDanhSachGioiThieu(): Observable<HttpResponse<GIOITHIEU[]>> {
         return this.http.get<GIOITHIEU[]>(ConfigService.URL + "get-all-gioi-thieu", { observe: 'response' });
     }
-    valueSource = new BehaviorSubject<any[]>([]);
+    valueSource = new BehaviorSubject<any>({});
     currentMessage = this.valueSource.asObservable();
     changeValue(value) {
         this.valueSource.next(value);

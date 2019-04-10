@@ -148,29 +148,31 @@ export class FormDangKiComponent implements OnInit {
             });
         }
         this.submitted = true;
-
-
     }
 
 
     yeuCauMaXacNhan() {
-        this.thongBaoMaXacNhan.status = false;
-        this.thongBaoDangKi.status = false;
-        this.formDangKy.controls.maXacNhan.setValue("");
-        let data = {
-            namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: this.formDangKy.controls.email.value,
-            tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1
-        };
-        this.DangKiDangNhapService.sendEmail(data).subscribe(
-            err => {
-                this.thongBaoDangKi.status = true;
-                this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
-                this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";;
-            }, () => {
-                this.thongBaoDangKi.status = true;
-                this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
-                this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";
+        this.submitted = true;
+        if (this.formDangKy.valid) {
+            this.thongBaoMaXacNhan.status = false;
+            this.thongBaoDangKi.status = false;
+            this.formDangKy.controls.maXacNhan.setValue("");
+            let data = {
+                namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: this.formDangKy.controls.email.value,
+                tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1
+            };
+            this.DangKiDangNhapService.sendEmail(data).subscribe(
+                err => {
+                    this.thongBaoDangKi.status = true;
+                    this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
+                    this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";;
+                }, () => {
+                    this.thongBaoDangKi.status = true;
+                    this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
+                    this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";
 
-            })
+                })
+        }
+
     }
 }

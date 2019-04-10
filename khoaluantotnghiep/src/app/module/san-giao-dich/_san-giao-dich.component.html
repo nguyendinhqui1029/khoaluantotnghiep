@@ -1,10 +1,10 @@
 <section class="project-content clearfix">
     <nav class="navbar navbar-default project-filter">
         <ul class="display">
-            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus(modeView.list)">
-                <a [routerLink]="['/'+pageCurrent]"><i class="glyphicon glyphicon-th-list"></i></a></li>
-            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus(modeView.grid)">
-                <a [routerLink]="['/'+pageCurrent+'/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
+            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus('/san-giao-dich')">
+                <a [routerLink]="['/san-giao-dich']"><i class="glyphicon glyphicon-th-list"></i></a></li>
+            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus('/san-giao-dich/grid')">
+                <a [routerLink]="['/san-giao-dich/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
         </ul>
         <!-- <div class="limit hidden-xs">
             <span>Sàn giao dịch/trang</span>
@@ -35,7 +35,7 @@
     <div class="property-tabs">
         <ul class="nav nav-tabs">
             <li role="presentation" *ngFor="let danhmuc of ds_danhmuc" [ngClass]="{'active':danhmuc.isActive}"
-                (click)="buttonChoThueClick(danhmuc.maDanhMuc)">
+                (click)="buttonChoThueClick(danhmuc)">
                 <a [routerLink]="[pagethue]">{{danhmuc.tenDanhMuc}}</a>
             </li>
         </ul>
@@ -47,22 +47,13 @@
         </div>
     </div>
     <router-outlet></router-outlet>
-
     <!--phân trang-->
-    <div class="navigation">
+    <div class="navigation" *ngIf="ds_DuAn.length >=phanTrangService.soItemCuaPage">
         <ul class="pagination">
-            <li>
-                <a href="index2679.html?page=1" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="active"><a href="index2679.html?page=1">1</a></li>
-            <li><a href="index4658.html?page=2">2</a></li>
-            <li>
-                <a href="index4658.html?page=2" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
+            <li *ngFor="let page of ds_page" [ngClass]="{'active':currentPagePhanTrang===page.value?true:false}"><a
+                    [routerLink]="[pageCurrent]" (click)="createPhanTrang(page.value)">{{page.name}}</a>
             </li>
         </ul>
     </div>
+
 </section>

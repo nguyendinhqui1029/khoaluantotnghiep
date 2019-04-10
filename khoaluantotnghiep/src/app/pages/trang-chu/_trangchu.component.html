@@ -1,45 +1,32 @@
-<div class="wrapper page-home">
-    <!--component header-->
-    <header-component></header-component>
-    <!--component header-->
+<!--component slider-->
+<slider-component></slider-component>
+<!--component slider-->
 
-    <!--component slider-->
-    <slider-component></slider-component>
-    <!--component slider-->
+<!--component search-->
+<search-component></search-component>
+<!--component search-->
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!--component panner top-->
+                <!-- <panner-top></panner-top> -->
+                <tin-tuc-noi-bat-trang-chu [dsTinTuc]="ds_tinTuc" *ngIf="ds_tinTuc.length > 0">
+                </tin-tuc-noi-bat-trang-chu>
+                <!--component panner top-->
 
-    <!--component search-->
-    <search-component></search-component>
-    <!--component search-->
-    <div class="main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!--component panner top-->
-                    <!-- <panner-top></panner-top> -->
-                    <tin-tuc-noi-bat-trang-chu [dsTinTuc]="ds_tinTuc" *ngIf="ds_tinTuc.length > 0">
-                    </tin-tuc-noi-bat-trang-chu>
-                    <!--component panner top-->
+                <!--component dự án mới-->
+                <du-an-moi [dsduan]="ds_DuAn" *ngIf="ds_DuAn.length>0"></du-an-moi>
+                <!--component dự án mới-->
 
-                    <!--component dự án mới-->
-                    <du-an-moi [dsduan]="ds_DuAn" *ngIf="ds_DuAn.length>0"></du-an-moi>
-                    <!--component dự án mới-->
+                <!--component dự án-->
+                <du-an></du-an>
+                <!--component dự án-->
 
-                    <!--component dự án-->
-                    <du-an></du-an>
-                    <!--component dự án-->
-
-                    <!--component thư viện ảnh-->
-                    <!-- <thu-vien-anh></thu-vien-anh> -->
-                    <!--component thư viện ảnh-->
-                </div>
+                <!--component thư viện ảnh-->
+                <!-- <thu-vien-anh></thu-vien-anh> -->
+                <!--component thư viện ảnh-->
             </div>
         </div>
     </div>
-    <!--component đối tác-->
-    <doi-tac></doi-tac>
-    <!--component đối tác-->
-
-    <!--component footer-->
-    <footer-component></footer-component>
-    <!--component footer-->
 </div>
