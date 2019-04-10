@@ -6,6 +6,7 @@ import { CONGTY } from '../../model/congty';
 import { congTy } from '../../model/mock_congty';
 import { MenuService } from 'src/app/service/menu.service';
 import { ConfigService } from 'src/app/service/config.service';
+import { DangNhapDangKiService } from 'src/app/service/dangnhap_dangki.service';
 
 @Component({
     selector: 'header-component',
@@ -15,17 +16,51 @@ import { ConfigService } from 'src/app/service/config.service';
 export class HeaderComponent implements OnInit {
     //dữ liệu áp cứng
     congty: CONGTY = congTy;
-
-    // ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
+    menu_top_tam: MENU[] = [];
     menu_bottom: MENU[] = [];
-
-
-    dsmenutop_hero: MENU[] = [];
-
+    menuLogin: MENU[] = [];
+    menuNotLogin: MENU[] = [];
+    constructor(private route: Router, private MenuService: MenuService, private DangKiDangNhapService: DangNhapDangKiService) {
+        this.getDSMenuTOPTheoType();
+        this.getDSMenuBOTTOMTheoType();//
+    }
+    dangXuat() {
+        this.getDSMenuTOPTheoType();
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("role");
+        this.route.navigate([""]);
+    }
     getDSMenuTOPTheoType() {
         this.MenuService.getDsMeNUTheoType(ConfigService.LOAI_MENU.MENU_TOP).subscribe(menutop => {
-            this.menu_top = menutop.body;
+            this.menu_top = [];
+            let role = sessionStorage.getItem("role");
+            if (role !== null || role) {
+                menutop.body.forEach(menu => {
+                    if (menu.idMenu !== 11 && menu.idMenu !== 12) {
+                        if (menu.idMenu === 28) {
+                            if (Number(role) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+                                menu.codeMenu = '/customer';
+                            } else if (Number(role) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
+                                menu.codeMenu = '/employee';
+                            } else if (Number(role) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+                                menu.codeMenu = '/admin';
+                            }
+                        }
+                        this.menuLogin.push(menu);
+                    }
+                });
+                this.menu_top = this.menuLogin;
+            } else {
+                menutop.body.forEach(menu => {
+                    if (menu.idMenu === 11 || menu.idMenu === 12) {
+                        this.menuNotLogin.push(menu);
+                    }
+                });
+                this.menu_top = this.menuNotLogin;
+            }
+
         })
     }
 
@@ -35,12 +70,9 @@ export class HeaderComponent implements OnInit {
         })
     }
 
-    constructor(private route: ActivatedRoute, private MenuService: MenuService) {
-    }
+
 
     ngOnInit(): void {
-        this.getDSMenuTOPTheoType();
-        this.getDSMenuBOTTOMTheoType();//
 
         window.onscroll = function () { myFunction() };
         var header = document.getElementById("myHeader");

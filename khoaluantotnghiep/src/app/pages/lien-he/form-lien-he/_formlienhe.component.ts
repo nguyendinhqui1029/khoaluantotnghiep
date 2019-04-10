@@ -64,7 +64,7 @@ export class FormLienHeComponent implements OnInit {
                 "</table>";
             let data = {
                 namegui: this.formLienHe.controls.email.value, emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: "hongquy0802@gmail.com",
-                tieude: "Thông Tin Khách Hàng Liên Hệ", data: thongTinKhachHang, mode: 2
+                tieude: "Thông Tin Khách Hàng Liên Hệ", data: thongTinKhachHang, mode: 2, cc: "", bcc: ""
             };
             console.log(thongTinKhachHang);
             this.sendmailService.sendEmail(data).subscribe(() => {

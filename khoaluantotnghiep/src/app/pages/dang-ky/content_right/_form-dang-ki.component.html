@@ -13,22 +13,11 @@
     </script>
     <div class="register-content clearfix">
         <h1 class="title clearfix"><span>Đăng ký tài khoản</span></h1>
-        <!--thong bao loi-->
-
-        <!-- <div *ngIf="submitted && formvalid else flap" id="popup1" class="overlayquy">
-            <div class="popupquy">
-                <a (click)="dongpopup()" class="close">&times;</a>
-                <h2><i class="fa-fw fa fa-check"></i>Đăng ký thành công</h2>
-                <div class="contentquy">
-                    Cảm ơn! Bạn đã là thành viên của chúng tôi.
-                </div>
-            </div>
-        </div> -->
 
 
         <!--thong bao loi-->
         <div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
-            <form class="form-horizontal" ng-submit="register()" [formGroup]="formDangKy">
+            <form method="POST" class="form-horizontal" ng-submit="register()" [formGroup]="formDangKy">
                 <h2><span>Thông tin tài khoản</span></h2>
                 <div class="form-group">
                     <label for="Code" class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
@@ -162,10 +151,10 @@
                             <div *ngIf="f.maXacNhan.errors.required">Vui lòng nhập mã xác nhận</div>
                         </div>
                         <div *ngIf="thongBaoMaXacNhan.status" class="invalid-feedback">
-                            <div>{{thongBaoMaXacNhan.message}}</div>
+                            <div [innerHTML]="thongBaoMaXacNhan.message"></div>
                         </div>
                         <div *ngIf="thongBaoDangKi.status" class="invalid-feedback">
-                            <div> {{thongBaoDangKi.message}}</div>
+                            <div [innerHTML]="thongBaoDangKi.message"></div>
                         </div>
 
                     </div>

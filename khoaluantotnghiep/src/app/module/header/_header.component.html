@@ -8,8 +8,14 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                         <li *ngFor="let menu of menu_top" class="{{menu.classMenu}}" routerLinkActive="active">
-                            <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
+                            <a *ngIf="menu.idMenu ==13 else nguoclai" (click)="dangXuat()"
+                                [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
                                 {{menu.nameMenu}}</a>
+                            <ng-template #nguoclai>
+                                <a [routerLink]="[menu.codeMenu]"><i class="{{menu.iconMenu}}"></i>
+                                    {{menu.nameMenu}}</a>
+                            </ng-template>
+
                         </li>
                     </ul>
                     <div class="show-mobile hidden-lg hidden-md">
