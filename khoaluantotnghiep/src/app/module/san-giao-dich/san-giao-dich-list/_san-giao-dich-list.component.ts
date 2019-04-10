@@ -19,7 +19,6 @@ export class SanGiaoDichListComponent implements OnInit {
     }
     getDSDuAnTheoDanhMuc() {
         this.serviceSanGiaoDich.currentMessage.subscribe(duan => {
-            console.log("duan" + duan);
             this.dsDuAN = duan;
         })
     }

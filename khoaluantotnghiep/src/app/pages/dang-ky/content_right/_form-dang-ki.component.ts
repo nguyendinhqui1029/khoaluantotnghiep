@@ -148,8 +148,6 @@ export class FormDangKiComponent implements OnInit {
             });
         }
         this.submitted = true;
-
-
     }
 
 

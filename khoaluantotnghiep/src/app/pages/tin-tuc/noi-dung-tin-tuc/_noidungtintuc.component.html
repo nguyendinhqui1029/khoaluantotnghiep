@@ -15,7 +15,7 @@
     <h1 class="title clearfix"><i class="fa fa-newspaper-o"></i><span>Tin tức</span></h1>
     <div class="news-block clearfix">
         <!--Item 1-->
-        <div *ngFor="let tin of noidungtintuc">
+        <div *ngFor="let tin of ds_ForHTML">
             <div class="news-item clearfix">
                 <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/tin-tuc-chi-tiet',tin.matintuc]">
                         <!-- <img src="../../../../assets/images/product/{{tin.hinhanh[0].tenhinh}}" class="img-responsive"
@@ -37,5 +37,12 @@
             </div>
         </div>
     </div>
-
+    <!--Phân trang-->
+    <div class="navigation" *ngIf="ds_ketQua.length >=2">
+        <ul class="pagination">
+            <li *ngFor="let page of ds_page" [ngClass]="{'active':currentPage===page.value?true:false}"><a
+                    [routerLink]="['/tin-tuc']" (click)="createPhanTrang(page.value)">{{page.name}}</a>
+            </li>
+        </ul>
+    </div>
 </div>

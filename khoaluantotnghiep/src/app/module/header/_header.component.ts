@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MENU } from '../../model/menu';
-import { ds_menu } from '../../model/mock_menu';
-import { ActivatedRoute, Router } from '@angular/router';
+
+import { Router } from '@angular/router';
 import { CONGTY } from '../../model/congty';
-import { congTy } from '../../model/mock_congty';
 import { MenuService } from 'src/app/service/menu.service';
 import { ConfigService } from 'src/app/service/config.service';
-import { DangNhapDangKiService } from 'src/app/service/dangnhap_dangki.service';
+import { CongTyService } from 'src/app/service/congty.service';
+
 
 @Component({
     selector: 'header-component',
@@ -15,15 +15,22 @@ import { DangNhapDangKiService } from 'src/app/service/dangnhap_dangki.service';
 })
 export class HeaderComponent implements OnInit {
     //dữ liệu áp cứng
-    congty: CONGTY = congTy;
+    congty: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "");
+
+    // ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];
     menu_top_tam: MENU[] = [];
     menu_bottom: MENU[] = [];
     menuLogin: MENU[] = [];
     menuNotLogin: MENU[] = [];
-    constructor(private route: Router, private MenuService: MenuService, private DangKiDangNhapService: DangNhapDangKiService) {
+    constructor(private route: Router,
+        private MenuService: MenuService,
+        private congtyservice: CongTyService) {
         this.getDSMenuTOPTheoType();
         this.getDSMenuBOTTOMTheoType();//
+        this.congtyservice.getCongTy().subscribe(ct => {
+            this.congty = ct.body[0];
+        })
     }
     dangXuat() {
         this.getDSMenuTOPTheoType();

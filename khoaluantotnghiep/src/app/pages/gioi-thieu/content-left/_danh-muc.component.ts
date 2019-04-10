@@ -14,16 +14,10 @@ export class DanhMucGioiThieuComponent implements OnInit {
     ds_gioithieu: GIOITHIEU[] = [];
 
     constructor(private serviceGioiThieu: GioiThieuService) {
+        this.getDSGioiThieu();
     }
     setGioiThieu(value) {
-        if (value.magioithieu === this.ds_gioithieu[0].magioithieu) {
-            this.serviceGioiThieu.setGioiThieu(value);
-            this.serviceGioiThieu.changeValue(this.ds_gioithieu[0]); //Gửi gioi thiệu 1 qua trang nội dung
-
-        } else if (value.magioithieu === this.ds_gioithieu[1].magioithieu) {
-            this.serviceGioiThieu.setGioiThieu(value);
-            this.serviceGioiThieu.changeValue(this.ds_gioithieu[1]); //Gửi gioi thiệu 2 qua trang nội dung
-        }
+        this.serviceGioiThieu.changeValue(value); //Gửi gioi thiệu 1 qua trang nội dung
     }
 
 
@@ -34,7 +28,6 @@ export class DanhMucGioiThieuComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.getDSGioiThieu();
     }
 
 }

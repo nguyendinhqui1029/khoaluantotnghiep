@@ -11,7 +11,11 @@ import { TinTucService } from 'src/app/service/tintuc.service';
 })
 export class DanhMucTinTucComponent implements OnInit {
     danhmuctin: LOAITINTUC[] = [];
-    constructor(private loaitintucservice: LoaiTinTucService, private tintucservice: TinTucService) { }
+    constructor(private loaitintucservice: LoaiTinTucService, private tintucservice: TinTucService) {
+        this.getDSLoaiTinTuc();
+        this.getDSTinTucNoiBat();
+        this.getDSTinTucMoi();
+    }
 
     getDSLoaiTinTuc() {
         this.loaitintucservice.getDsMeNUTheoType().subscribe(loaitin => {
@@ -48,8 +52,6 @@ export class DanhMucTinTucComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.getDSLoaiTinTuc();
-        this.getDSTinTucNoiBat();
-        this.getDSTinTucMoi();
+
     }
 }

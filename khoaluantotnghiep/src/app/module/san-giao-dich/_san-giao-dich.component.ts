@@ -7,6 +7,7 @@ import { DuAnService } from 'src/app/service/duan.service';
 import { DUAN } from 'src/app/model/duan';
 import { ConfigService } from 'src/app/service/config.service';
 import { DanhMucService } from 'src/app/service/danhmuc.service';
+import { PhanTranService } from 'src/app/service/phantrang.service';
 export type EditorType = true | false;
 @Component({
     selector: 'san-giao-dich',
@@ -18,47 +19,71 @@ export class SanGiaoDichModuleComponent implements OnInit {
     status: EditorType;
     pagethue: string = '';
     pageCurrent: string = '';
-    modeView: any = { "grid": "grid", "list": "list" };
+    //modeView: any = { "grid": "grid", "list": "list" };
+    modeView: any = { "grid": "/san-giao-dich/grid", "list": "/san-giao-dich" };
     //dữ liệu danh mục từ mock
     ds_danhmuc: DANHMUC[] = [];
     isActive: boolean = true;
 
+    ds_DuAn: DUAN[] = [];
+    ds_Gui: any[] = [];
+    currentPagePhanTrang: number = 1;
+    ds_page: any[] = [];
+    soItemTrang: number = 5;
     getDSDanhMuc() {
         this.Danhmucservice.getDSDanhMuc().subscribe(danhmuc => {
             this.ds_danhmuc = danhmuc.body;
         });
     }
-    constructor(private route: ActivatedRoute, private serviceSanGiaoDich: SanGiaoDichService, private router: Router,
-        private Duanservice: DuAnService, private Danhmucservice: DanhMucService) {
-        this.pageCurrent = this.route.snapshot.routeConfig.path;
+    constructor(private route: Router, private serviceSanGiaoDich: SanGiaoDichService, private router: Router,
+        private Duanservice: DuAnService, private Danhmucservice: DanhMucService,
+        private phanTrangService: PhanTranService) {
+        this.pageCurrent = this.route.routerState.snapshot.url;
+        if (this.pageCurrent === this.modeView.grid) {
+            this.status = false;
+            this.phanTrangService.soItemCuaPage = 12;
+        } else if (this.pageCurrent === this.modeView.list) {
+            this.status = true;
+            this.phanTrangService.soItemCuaPage = 5;
+        }
         this.pagethue = this.router.routerState.snapshot.url;
         if (this.pagethue === "/san-giao-dich") {
             this.status = true;
         } else {
             this.status = false;
         }
+        this.getDSDanhMuc();
+        this.getDSDuAnMuaBan();
     }
 
     ngOnInit(): void {
-        this.getDSDuAnChoThue();
-        this.getDSDanhMuc();
-        this.getDSDuAnMuaBan();
-        this.serviceSanGiaoDich.changeValue(this.ds_DuAnMuaban); //Danh sách dự án loại Mua bán lúc đầu show
-
     }
 
-    buttonChoThueClick(maDanhMuc) {
-        this.serviceSanGiaoDich.setMaGiaoDich(maDanhMuc);
+    buttonChoThueClick(danhmuc) {
+        this.serviceSanGiaoDich.setMaGiaoDich(danhmuc.maDanhMuc);
         this.ds_danhmuc.forEach(e => {
-            if (e.maDanhMuc === maDanhMuc) {
-                this.serviceSanGiaoDich.changeValue(this.ds_DuAnChothue); //Danh sách dự án loại Mua bán lúc nhấn nút
-
+            if (e.maDanhMuc === danhmuc.maDanhMuc) {
                 e.isActive = true;
+                this.currentPagePhanTrang = 1;
             } else {
                 e.isActive = false;
-                this.serviceSanGiaoDich.changeValue(this.ds_DuAnMuaban); //Danh sách dự án loại Cho thuê lúc nhấn nút
+                this.currentPagePhanTrang = 1;
             }
         });
+        this.ds_DuAn = [];
+        this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
+            duan.body.forEach(duanthuehoacban => {
+                if (duanthuehoacban.danhMuc.maDanhMuc === danhmuc.maDanhMuc) {
+                    this.ds_DuAn.push(duanthuehoacban);
+                }
+            })
+            //Phan trang
+            this.phanTrangService.setValueDanhSach(this.ds_DuAn);
+            this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+            this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+            this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút            //End phan trang
+        })
+
     }
     changeStatus(e) {
         if (e === this.modeView.grid) {
@@ -68,19 +93,20 @@ export class SanGiaoDichModuleComponent implements OnInit {
             this.pagethue = "/san-giao-dich";
             this.status = true;
         }
-    }
 
-
-    //update
-    ds_DuAnChothue: DUAN[] = [];
-    getDSDuAnChoThue() {
-        this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            duan.body.forEach(duanthue => {
-                if (duanthue.danhMuc.tenDanhMuc === 'Cho thuê') {
-                    this.ds_DuAnChothue.push(duanthue);
-                }
-            })
-        })
+        if (e === this.modeView.grid) {
+            this.status = false;
+            this.phanTrangService.soItemCuaPage = 12;
+            this.soItemTrang = 12;
+            this.currentPagePhanTrang = 1;
+        } else if (e === this.modeView.list) {
+            this.status = true;
+            this.phanTrangService.soItemCuaPage = 5;
+            this.soItemTrang = 5;
+            this.currentPagePhanTrang = 1;
+        }
+        this.pageCurrent = this.route.routerState.snapshot.url;
+        this.createPhanTrang(this.currentPagePhanTrang);
     }
     ds_DuAnMuaban: DUAN[] = [];
     getDSDuAnMuaBan() {
@@ -90,8 +116,14 @@ export class SanGiaoDichModuleComponent implements OnInit {
                     this.ds_DuAnMuaban.push(duanban);
                 }
             })
+            this.serviceSanGiaoDich.changeValue(this.ds_DuAnMuaban);
         })
     }
-
+    createPhanTrang(value) {
+        this.currentPagePhanTrang = value;
+        this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+        this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+        this.serviceSanGiaoDich.changeValue(this.ds_Gui);
+    }
 
 }

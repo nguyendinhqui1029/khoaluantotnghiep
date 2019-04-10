@@ -96,6 +96,7 @@ import { DanhMucService } from './service/danhmuc.service';
 import { KetQuaTimService } from './service/ketquatim.service';
 import { PhanTranService } from './service/phantrang.service';
 import { LoaiTinTucService } from './service/loaitintuc.service';
+import { CongTyService } from './service/congty.service';
 import { SubPageComponent } from './pages/sub-page/sub_page.component';
 
 
@@ -139,7 +140,7 @@ import { SubPageComponent } from './pages/sub-page/sub_page.component';
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
-    MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService,
+    MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
     AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService],
   bootstrap: [AppComponent]
