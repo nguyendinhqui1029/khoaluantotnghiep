@@ -1,48 +1,4 @@
-<div class="property-detail clearfix">
-    <div class="property-block clearfix ">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12 clearfix property-image">
-                <div class="col-md-12 col-sm-8 col-xs-12 image" style="margin-bottom: 20px;">
-                    <img src="../../../../assets/images/product/{{tenHinh}}" class="img-responsive" alt="{{duan.tenDuAn}}"
-                        style="width: 100%; height: 100%;" />
-                </div>
-                <!-- danh sach img lien quan chưa xử lí chọn hình hiện lên trên-->
-
-                <div class="col-xs-3" *ngFor="let hinh of duan.mangHinh">
-                    <a href="javascript:Void()" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh.tenhinh)">
-                        <img src="../../../../assets/images/product/{{hinh.tenhinh}}" alt="{{hinh.alt}}">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 property-info">
-                <h1 class="name">{{duan.tenDuAn}}</h1>
-                <ul>
-                    <li>
-                        MS:<label> </label>
-                    </li>
-                    <li>
-                        Giá:<label class="price">{{duan.giaTien}}</label>
-                    </li>
-                    <li>
-                        Ngày đăng:<label class="price">{{duan.ngayDang}}</label>
-                    </li>
-                    <li>
-                        Địa chỉ:<label>{{duan.quanHuyen}} - {{duan.tinhThanhPho}}</label>
-                    </li>
-                    <li>
-                        Khu vực:<label>{{duan.tinhThanhPho}}</label>
-                    </li>
-                    <li>
-                        Loại:<label>{{duan.danhMuc.tenDanhMuc}}</label>
-                    </li>
-                    <li>
-                        Danh mục bất động sản:<label>{{duan.loaiGiaoDich.tenLoai}}</label>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<hinh-anh-chi-tiet></hinh-anh-chi-tiet>
 <!-- Khung chi tiet -->
 <khung-chi-tiet></khung-chi-tiet>
 <!-- Khung thong tin nguoi dang -->

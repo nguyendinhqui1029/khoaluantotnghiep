@@ -17,4 +17,7 @@ export class LoaiGiaoDichService {
     addLoaiGiaoDich(loaigiaodich: LOAIGIAODICH): Observable<LOAIGIAODICH> {
         return this.http.post<LOAIGIAODICH>(ConfigService.URL, loaigiaodich, this.httpOptions);
     }
+    getDSTenLoaiDanhMuc(trangthai): Observable<HttpResponse<LOAIGIAODICH[]>> {
+        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-loai-giao-dich/" + trangthai, { observe: 'response' });
+    }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { ds_duan } from 'src/app/model/mock_duan';
 import { ActivatedRoute } from '@angular/router';
+import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 
 @Component({
     selector: 'khung-thong-tin-nguoi-dang',
@@ -9,8 +10,11 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./_khung-thong-tin-nguoi-dang.component.scss']
 })
 export class KhungThongTinNguoiDangModuleComponent implements OnInit {
-
-    constructor() {
+    thongtinnguoidang: any = "";
+    constructor(private sanGiaoDichService: SanGiaoDichService) {
+        this.sanGiaoDichService.getThongTin.subscribe(e => {
+            this.thongtinnguoidang = e.thongtinnguoidang;
+        })
 
     }
 

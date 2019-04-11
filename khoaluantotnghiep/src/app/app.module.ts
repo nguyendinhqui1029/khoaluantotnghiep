@@ -98,6 +98,9 @@ import { PhanTranService } from './service/phantrang.service';
 import { LoaiTinTucService } from './service/loaitintuc.service';
 import { CongTyService } from './service/congty.service';
 import { SubPageComponent } from './pages/sub-page/sub_page.component';
+import { DanhMucHuongDanComponent } from './pages/huong-dan/content-left/_danh-muc-huong-dan.component';
+import { NoiDungHuongDanComponent } from './pages/huong-dan/content-right/_noi-dung-huong-dan.component';
+import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-tiet-du-an/_hinh-anh-chi-tiet.component';
 
 
 
@@ -120,6 +123,7 @@ import { SubPageComponent } from './pages/sub-page/sub_page.component';
     KhungThongTinNguoiDangModuleComponent, SanGiaoDichChiTietComponent, FormLayLaiMatKhauComponent, LayLaiMatKhauComponent,
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
+    HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
     //Admin
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent,
