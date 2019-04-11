@@ -25,14 +25,8 @@
                             <span>Sàn giao dịch</span>
                         </h3>
                         <ul>
-                            <li><a href='san-giao-dich/dat-nen-21.html'><i class='fa fa-arrow-circle-o-right'></i>Đất
-                                    nền</a></li>
-                            <li><a href='san-giao-dich/dat-tho-cu-22.html'><i class='fa fa-arrow-circle-o-right'></i>Đất
-                                    thổ cư</a></li>
-                            <li><a href='san-giao-dich/chung-cu-23.html'><i class='fa fa-arrow-circle-o-right'></i>Chung
-                                    cư</a></li>
-                            <li><a href='san-giao-dich/nha-pho-24.html'><i class='fa fa-arrow-circle-o-right'></i>Nhà
-                                    phố</a></li>
+                            <li *ngFor="let item of ds_loaigiaodich"><a href='san-giao-dich/dat-nen-21.html'><i
+                                        class='fa fa-arrow-circle-o-right'></i>{{item.tenLoai}}</a></li>
                         </ul>
                     </div>
                     <!--Chen khung search ben phai -->

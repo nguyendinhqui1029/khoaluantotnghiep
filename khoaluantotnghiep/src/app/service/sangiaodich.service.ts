@@ -18,4 +18,10 @@ export class SanGiaoDichService {
     changeValue(value) {
         this.valueSource.next(value);
     }
+    //Behivior thong tin du an
+    valueThongtin = new BehaviorSubject<any>({});
+    getThongTin = this.valueThongtin.asObservable();
+    setValueThongTin(value) {
+        this.valueThongtin.next(value);
+    }
 }

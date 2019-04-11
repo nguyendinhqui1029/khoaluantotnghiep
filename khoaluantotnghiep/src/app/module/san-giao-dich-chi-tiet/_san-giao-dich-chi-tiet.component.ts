@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
 import { ds_duan } from 'src/app/model/mock_duan';
 import { ActivatedRoute } from '@angular/router';
+import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
+import { DuAnService } from 'src/app/service/duan.service';
 
 @Component({
     selector: 'san-giao-dich-chi-tiet',
@@ -10,22 +12,57 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SanGiaoDichChiTietModuleComponent implements OnInit {
     // noi dung mock tin tuc
-    noidungduan: DUAN[] = ds_duan;
-    duan: DUAN;
-    id: any = "";
+    noidungduan: DUAN[] = [];
     status: boolean;
-    tenHinh: String = "";
-    constructor(private router: ActivatedRoute) {
-        this.id = this.router.snapshot.params["id"];
-        this.noidungduan.forEach(element => {
-            if (element.maDuAn === this.id) {
-                this.duan = element;
+    mangHinh: any[] = [];
+    thongTinDuAn: any = {};
+    noiDungChiTiet: any = "";
+    thongTinNguoiDang: any = {};
+    constructor(private router: ActivatedRoute, private duAnSerVice: DuAnService, private sanGiaoDichService: SanGiaoDichService) {
+        let id = this.router.snapshot.params["id"];
+        this.duAnSerVice.getDuAnTheoMaDuAn(id).subscribe(duan => {
+            this.thongTinDuAn =
+                {
+                    tenDuAn: duan.body[0].tenDuAn,
+                    maduan: duan.body[0].maDuAn,
+                    giaTien: duan.body[0].giaTien,
+                    ngayDang: duan.body[0].ngayDang,
+                    quanHuyen: duan.body[0].quanHuyen,
+                    tinhThanhPho: duan.body[0].tinhThanhPho,
+                    danhMuc: duan.body[0].danhMuc.tenDanhMuc,
+                    loaiGiaoDich: duan.body[0].loaiGiaoDich.tenLoai
+                };
+            this.thongTinNguoiDang = {
+                hoTen: duan.body[0].doiTac.hoTen,
+                diaChi: duan.body[0].doiTac.diaChi,
+                soDienThoai: duan.body[0].doiTac.soDienThoai,
+                email: duan.body[0].doiTac.email
             }
+            this.mangHinh = duan.body[0].mangHinh;
+            this.noiDungChiTiet = duan.body[0].noiDungChiTiet;
+            this.sanGiaoDichService.setValueThongTin({
+                mangHinh: this.mangHinh,
+                noidungchitiet: this.noiDungChiTiet,
+                thongtinduan: this.thongTinDuAn,
+                thongtinnguoidang: this.thongTinNguoiDang
+            });
         });
-        this.tenHinh = this.duan.mangHinh[0].tenhinh;
+
     }
-    thayDoiHinh(value) {
-        this.tenHinh = value;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ngOnInit(): void { }
 }

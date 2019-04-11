@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaiGiaoDichService } from 'src/app/service/loaigiaodich.service';
 
 @Component({
     selector: 'san-giao-dich-chi-tiet-component',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./_sangiaodichchitiet.component.scss']
 })
 export class SanGiaoDichChiTietComponent implements OnInit {
-    constructor() { }
-
+    ds_loaigiaodich: any[] = [];
+    constructor(private loaiGiaoDichService: LoaiGiaoDichService) {
+        this.loaiGiaoDichService.getDSTenLoaiDanhMuc(1).subscribe(loaigiaodich => {
+            this.ds_loaigiaodich = loaigiaodich.body;
+        })
+    }
     ngOnInit(): void { }
 }
