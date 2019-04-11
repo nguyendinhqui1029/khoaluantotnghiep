@@ -42,10 +42,13 @@ export class FormDangNhapComponent implements OnInit {
                     sessionStorage.setItem("name", e.body[0].hoTen);
                     sessionStorage.setItem("role", e.body[0].loaiTaiKhoan);
                     if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+
                         this.router.navigate(['/admin']);
                     } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
+
                         this.router.navigate(['/employee']);
                     } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+
                         this.router.navigate(['/customer']);
                     }
                 } else {

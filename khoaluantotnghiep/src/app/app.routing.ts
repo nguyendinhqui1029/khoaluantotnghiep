@@ -87,7 +87,9 @@ const routes: Routes = [
         { path: 'dang-ky', component: DangKyComponent },
         { path: 'gio-hang', component: GioHangComponent },
         { path: 'quen-mat-khau', component: LayLaiMatKhauComponent },
-        { path: 'tim-kiem', component: KetQuaTimKiemComponent }]
+        { path: 'tim-kiem', component: KetQuaTimKiemComponent }
+
+        ]
     },
     //routing admin
     {
@@ -127,10 +129,10 @@ const routes: Routes = [
             { path: 'them-loaigiaodich', component: ThemLoaiGiaoDichComponent },
             { path: 'them-loaitintuc', component: ThemLoaiTinTucComponent },
             { path: 'them-menu', component: ThemMenuComponent },
-            { path: 'them-tintuc', component: ThemTinTucComponent },
-
+            { path: 'them-tintuc', component: ThemTinTucComponent }
         ],
-        canActivate: [EmployeeAuthGuard]
+        canActivate: [EmployeeAuthGuard],
+
     },
     {
         path: 'customer', component: AdminComponent,
@@ -139,8 +141,7 @@ const routes: Routes = [
             { path: 'them-duan', component: ThemDuAnComponent },
             { path: 'xoa-duan', component: XoaDuAnComponent },
             { path: 'them-tintuc', component: ThemTinTucComponent },
-            { path: 'xoa-tintuc', component: XoaTinTucComponent },
-
+            { path: 'xoa-tintuc', component: XoaTinTucComponent }
         ],
         canActivate: [CustomerAuthGuard]
     }

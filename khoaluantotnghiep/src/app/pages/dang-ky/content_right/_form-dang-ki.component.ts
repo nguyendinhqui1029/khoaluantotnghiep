@@ -153,26 +153,31 @@ export class FormDangKiComponent implements OnInit {
 
     yeuCauMaXacNhan() {
         this.submitted = true;
-        if (this.formDangKy.valid) {
-            this.thongBaoMaXacNhan.status = false;
-            this.thongBaoDangKi.status = false;
-            this.formDangKy.controls.maXacNhan.setValue("");
+        this.thongBaoMaXacNhan.status = false;
+        this.thongBaoDangKi.status = false;
+        this.formDangKy.controls.maXacNhan.setValue("");
+        if (this.formDangKy.valid && this.formDangKy.controls.email.value !== "") {
             let data = {
-                namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: this.formDangKy.controls.email.value,
-                tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1
+                namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com",
+                passgui: "Nguyenqui1997", emailnhan: this.formDangKy.controls.email.value,
+                tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1, cc: "",
+                bcc: ""
             };
-            this.DangKiDangNhapService.sendEmail(data).subscribe(
-                err => {
+
+            this.DangKiDangNhapService.sendEmail(data).subscribe(e => {
+                if (e.ok) {
                     this.thongBaoDangKi.status = true;
-                    this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
-                    this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";;
-                }, () => {
-                    this.thongBaoDangKi.status = true;
-                    this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:" + this.formDangKy.controls.email.value;
+                    this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:<a target='_blank'  href='https://www.google.com/gmail/'>" + this.formDangKy.controls.email.value + "</a>";
                     this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";
 
-                })
+                } else {
+                    this.thongBaoDangKi.status = true;
+                    this.thongBaoDangKi.message = "Quá trình lấy mã bị lỗi. Xim mời nhấn nút 'Lấy lại mã xác nhận'!";
+                    this.buttonGuiMaXacNhan.name = "Lấy lại mã xác nhận";;
+                }
+            })
         }
+
 
     }
 }

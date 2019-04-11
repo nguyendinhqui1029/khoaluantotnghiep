@@ -11,7 +11,4 @@ export class ConfigService {
     static TRANG_THAI_DANHMUC = { "MUABAN": 'Mua bán', "CHOTHUE": "Cho thuê", "MAMUABAN": "DM001", "MACHOTHUE": "DM002" };
 
 
-    //static URL: string = "http://localhost:8081/";
-
-
 }

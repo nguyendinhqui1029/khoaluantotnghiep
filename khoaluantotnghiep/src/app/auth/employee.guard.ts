@@ -15,7 +15,7 @@ export class EmployeeAuthGuard implements CanActivate {
             role = true;
         } else {
             role = false;
-            this.route.navigate(["/"]);
+            this.route.navigate(["dang-nhap"]);
         }
         return role;
     }
