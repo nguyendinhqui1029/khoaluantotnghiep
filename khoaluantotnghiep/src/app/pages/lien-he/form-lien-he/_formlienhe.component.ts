@@ -17,7 +17,7 @@ export class FormLienHeComponent implements OnInit {
         this.formLienHe = this.fb.group({
             hoten: ['', [Validators.required]],
             diachi: ['', [Validators.required]],
-            email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+            email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,3}')]],
             sdt: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
             tieude: ['', [Validators.required]],
             noidung: ['', [Validators.required]]
@@ -32,7 +32,7 @@ export class FormLienHeComponent implements OnInit {
             return;
         } else if (this.formLienHe.valid) {
             let thongTinKhachHang =
-                "<table>" +
+                "<table >" +
                 "<tr>" +
                 "<th>#</th>" +
                 "<th>Nội dung</th>" +
@@ -63,13 +63,15 @@ export class FormLienHeComponent implements OnInit {
                 "</tr>" +
                 "</table>";
             let data = {
-                namegui: this.formLienHe.controls.email.value, emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyendinhqui", emailnhan: "hongquy0802@gmail.com",
-                tieude: "Thông Tin Khách Hàng Liên Hệ", data: thongTinKhachHang, mode: 2, cc: "", bcc: ""
+                namegui: this.formLienHe.controls.email.value, emailgui: "nguyendinhqui100197@gmail.com", passgui: "Nguyenqui1997", emailnhan: "hongquy0802@gmail.com",
+                tieude: "Thông Tin Khách Hàng Liên Hệ", noidung: thongTinKhachHang, mode: 2, cc: "", bcc: ""
             };
             console.log(thongTinKhachHang);
-            this.sendmailService.sendEmail(data).subscribe(() => {
-                this.thongBaoLienHe.status = true;
-                this.thongBaoLienHe.message = "Thông tin Liên Hệ của quý khách đã được gửi đi. Xin cảm ơn!";
+            this.sendmailService.sendEmail(data).subscribe(e => {
+                if (e.ok) {
+                    this.thongBaoLienHe.status = true;
+                    this.thongBaoLienHe.message = "Liên hệ đã được gửi.";
+                }
             });
         }
     }

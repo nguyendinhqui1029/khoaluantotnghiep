@@ -50,12 +50,14 @@ export class SearchComponent implements OnInit {
 
     getListDanhMuc() {
         const dsTam: string[] = [];
-        this.dsDuAn.forEach(duan => {
-            if (dsTam.indexOf(duan.loaiGiaoDich.maLoai) <= -1) {
-                this.dsDanhMuc.push({ "maDanhMuc": duan.loaiGiaoDich.maLoai, "tenDanhMuc": duan.loaiGiaoDich.tenLoai });
-                dsTam.push(duan.loaiGiaoDich.maLoai);
-            }
-        });
+        if (this.dsDuAn) {
+            this.dsDuAn.forEach(duan => {
+                if (dsTam.indexOf(duan.loaiGiaoDich.maLoai) <= -1) {
+                    this.dsDanhMuc.push({ "maDanhMuc": duan.loaiGiaoDich.maLoai, "tenDanhMuc": duan.loaiGiaoDich.tenLoai });
+                    dsTam.push(duan.loaiGiaoDich.maLoai);
+                }
+            });
+        }
     }
 
     getListLoaiGiaoDichTheoDanhMuc(maDanhMuc) {

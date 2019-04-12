@@ -127,4 +127,10 @@ export class DuAnService {
         return this.http.post(ConfigService.URL + "add-du-an", duAn, httpOptions);
     }
 
+    //Behivior thong tin du an
+    valueThongtin = new BehaviorSubject<any>({});
+    getThongTin = this.valueThongtin.asObservable();
+    setValueThongTin(value) {
+        this.valueThongtin.next(value);
+    }
 }

@@ -111,11 +111,13 @@ export class SanGiaoDichModuleComponent implements OnInit {
     ds_DuAnMuaban: DUAN[] = [];
     getDSDuAnMuaBan() {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            duan.body.forEach(duanban => {
-                if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
-                    this.ds_DuAnMuaban.push(duanban);
-                }
-            })
+            if (duan.body) {
+                duan.body.forEach(duanban => {
+                    if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
+                        this.ds_DuAnMuaban.push(duanban);
+                    }
+                })
+            }
             this.serviceSanGiaoDich.changeValue(this.ds_DuAnMuaban);
         })
     }
