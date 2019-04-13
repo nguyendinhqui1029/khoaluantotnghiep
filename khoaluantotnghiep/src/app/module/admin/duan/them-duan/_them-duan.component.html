@@ -19,10 +19,11 @@
                 <label class="control-label" for="tenDuAn">Giá Tiền</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="text" style="width: 80%;" class="form-control" id="giaTien" placeholder="Tên Dự Án"
+                    <input type="text" style="width: 80%;" class="form-control" id="giaTien" placeholder="25 000 000"
                         formControlName="giaTien" [ngClass]="{ 'is-invalid': submitted && f.giaTien.errors }">
                     <div *ngIf="submitted && f.giaTien.errors" class="invalid-feedback">
                         <div *ngIf="f.giaTien.errors.required">Vui lòng nhập Giá Tiền</div>
+                        <div *ngIf="f.giaTien.errors.pattern">Giá Tiền phải là số</div>
                     </div>
                 </div>
             </div>
@@ -78,7 +79,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="loaiGiaoDich"
                         [ngClass]="{ 'is-invalid': submitted && f.loaiGiaoDich.errors }">
-                        <option *ngFor="let item of ds_loaigiaodich" value="{{item.maDanhMuc}}">
+                        <option *ngFor="let item of ds_loaigiaodich" value="{{item}}">
                             {{item.tenDanhMuc}}</option>
                     </select>
                     <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
@@ -93,8 +94,8 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="danhMuc"
                         [ngClass]="{ 'is-invalid': submitted && f.danhMuc.errors }">
-                        <option value="">
-                            Chung Cư</option>
+                        <option *ngFor="let item of ds_danhmuc" value="{{item}}">
+                            {{item.tenLoai}}</option>
                     </select>
                     <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
                         <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Loại Danh mục</div>
@@ -107,7 +108,8 @@
                 <div class="form-inline">
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)">
-                        <option *ngFor="let item of ds_doitac" value="{{item.maDoiTac}}">
+
+                        <option *ngFor="let item of ds_doitac" value="{{item}}">
                             {{item.hoTen}}</option>
                     </select>
                     <div *ngIf="submitted && f.doiTac.errors" class="invalid-feedback">
@@ -135,13 +137,15 @@
                 <label class="control-label" for="quanHuyen">Loại Dự Án</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
+                    <!-- <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="loaiDuAn"
                         [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }">
                         <option value="1">Nổi bật</option>
-                    </select>
+                    </select> -->
+                    <input type="text" style="width: 80%;" class="form-control" id="loaiDuAn" placeholder="Nổi Bật"
+                        formControlName="loaiDuAn" [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }">
                     <div *ngIf="submitted && f.loaiDuAn.errors" class="invalid-feedback">
-                        <div *ngIf="f.loaiDuAn.errors.required">Vui lòng chọn Loại dự án</div>
+                        <div *ngIf="f.loaiDuAn.errors.required">Vui lòng nhập Loại dự án</div>
                     </div>
                 </div>
             </div>

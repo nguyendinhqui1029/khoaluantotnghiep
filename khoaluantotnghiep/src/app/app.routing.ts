@@ -42,6 +42,7 @@ import { AdminAuthGuard } from './auth/admin.guard';
 import { CustomerAuthGuard } from './auth/customer.guard';
 import { EmployeeAuthGuard } from './auth/employee.guard';
 import { SubPageComponent } from './pages/sub-page/sub_page.component';
+import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
 import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
 
 
@@ -99,6 +100,7 @@ const routes: Routes = [
             { path: '', component: XoaDuAnComponent },
             { path: 'them-duan', component: ThemDuAnComponent },
             { path: 'xoa-duan', component: XoaDuAnComponent },
+            { path: 'update-duan/:id', component: UpdateDuAnComponent },
             { path: 'them-danhmuc', component: ThemDanhMucComponent },
             { path: 'xoa-danhmuc', component: XoaDanhMucComponent },
             { path: 'them-doitac', component: ThemDoiTacComponent },

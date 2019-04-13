@@ -124,6 +124,19 @@ export class DuAnService {
         return this.http.post(ConfigService.URL + "add-du-an", duAn, httpOptions);
     }
 
+    //update du an
+    updateDuAn(duAn): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+                'Access-Control-Allow-Credentials': 'true'
+            })
+        };
+        return this.http.put(ConfigService.URL + "update-du-an", duAn, httpOptions);
+    }
+
     //Behivior thong tin du an
     valueThongtin = new BehaviorSubject<any>({});
     getThongTin = this.valueThongtin.asObservable();
