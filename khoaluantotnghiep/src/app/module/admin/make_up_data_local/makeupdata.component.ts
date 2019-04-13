@@ -36,20 +36,20 @@ export class MakeUpDataComponent implements OnInit {
                 ob.namebutton = "Cập nhật ...";
                 this.makeUpDateService.getListDoiTac().subscribe(e => {
                     this.makeUpDateService.getListDoiTacLocal().subscribe(elocal => {
-                        let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
-                        if (ds.arr) {
+                        if (e.body) {
+                            let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
+
                             if (flag) {
                                 ds.arr.forEach(element => {
                                     this.makeUpDateService.themListDoiTacLoCal(element).subscribe(e => {
                                         console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
                                     });
                                 });
                             }
+                            ob.itemnew = ds.itemnew;
+                            ob.tongitem = ds.tongitem;
                         }
-                        ob.itemnew = ds.itemnew;
-                        ob.tongitem = ds.tongitem;
+
                     });
                 });
                 ob.namebutton = "Cập nhật";
@@ -60,17 +60,15 @@ export class MakeUpDataComponent implements OnInit {
                 this.makeUpDateService.getCongTy().subscribe(e => {
                     this.makeUpDateService.getCongTyLoCal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themCongTyLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themCongTyLoCal(element).subscribe(e => {
+                                    console.log(e);
+
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });
@@ -84,17 +82,15 @@ export class MakeUpDataComponent implements OnInit {
                 this.makeUpDateService.getDSDanhMuc().subscribe(e => {
                     this.makeUpDateService.getDSDanhMucLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themDanhMucLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themDanhMucLoCal(element).subscribe(e => {
+                                    console.log(e);
+
                                 });
-                            }
+                            });
                         }
+
 
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
@@ -110,17 +106,16 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getListDuAnLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themListDuAnLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themListDuAnLoCal(element).subscribe(e => {
+                                    console.log(e);
+
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
 
@@ -135,17 +130,15 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getGioiThieuLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themGioiThieuLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themGioiThieuLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
 
@@ -160,17 +153,15 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getMeNUTheoTypeLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
 
@@ -184,18 +175,14 @@ export class MakeUpDataComponent implements OnInit {
                 this.makeUpDateService.getAllLoaiGiaoDich().subscribe(e => {
                     this.makeUpDateService.getAllLoaiGiaoDichLoCal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
-
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themLoaiGiaoDichLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themLoaiGiaoDichLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });
@@ -209,17 +196,15 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getMeNUTheoTypeLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+                        console.log(e.body)
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });
@@ -233,17 +218,15 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getSliderTrangThaiLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themSliderTrangThaiLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themSliderTrangThaiLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });
@@ -257,17 +240,15 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.layTaiKhoanTheoEmailLoCal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themTaiKhoanLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themTaiKhoanLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });
@@ -280,17 +261,15 @@ export class MakeUpDataComponent implements OnInit {
                 this.makeUpDateService.getDSTinTuc().subscribe(e => {
                     this.makeUpDateService.getTinTucLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
-                        if (ds.arr) {
-                            if (flag) {
-                                ds.arr.forEach(element => {
-                                    this.makeUpDateService.themTinTucLoCal(element).subscribe(e => {
-                                        console.log(e);
-                                        ob.itemnew = ds.itemnew;
-                                        ob.tongitem = ds.tongitem;
-                                    });
+
+                        if (flag) {
+                            ds.arr.forEach(element => {
+                                this.makeUpDateService.themTinTucLoCal(element).subscribe(e => {
+                                    console.log(e);
                                 });
-                            }
+                            });
                         }
+
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
                     });

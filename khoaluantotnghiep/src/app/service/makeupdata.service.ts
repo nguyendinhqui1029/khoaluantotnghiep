@@ -132,23 +132,21 @@ export class MakeUpDateService {
         let arrTam: any[] = [];
         let tongso: any = 0;
         let itemnew: any = 0;
-        if (arrhost && arrlocal) {
-            if (arrhost.length > arrlocal.length) {
-                arrhost.forEach(eHost => {
-                    var dem = 0;
-                    arrlocal.forEach(eLocal => {
-                        if (JSON.stringify(eHost) === JSON.stringify(eLocal)) {
-                            dem = dem + 1;
-                        }
-                    });
-                    if (dem === 0) {
-                        arrTam.push(eHost);
+        if (arrhost.length > arrlocal.length) {
+            arrhost.forEach(eHost => {
+                var dem = 0;
+                arrlocal.forEach(eLocal => {
+                    if (JSON.stringify(eHost) === JSON.stringify(eLocal)) {
+                        dem = dem + 1;
                     }
                 });
-                itemnew = (arrhost.length - arrlocal.length);
-                tongso = arrhost.length;
-            }
+                if (dem === 0) {
+                    arrTam.push(eHost);
+                }
+            });
         }
+        itemnew = (arrhost.length - arrlocal.length);
+        tongso = arrhost.length;
         return { tongitem: tongso, itemnew: itemnew, arr: arrTam };
     }
 }
