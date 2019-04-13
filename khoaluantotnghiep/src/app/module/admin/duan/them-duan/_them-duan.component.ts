@@ -10,6 +10,7 @@ import { DoiTacService } from 'src/app/service/doitac.service';
 import { TINHTHANHPHO } from 'src/app/model/tinhthanhpho';
 import { TinhThanhPhoService } from 'src/app/service/tinhthanhpho.service';
 import { DANHMUC } from 'src/app/model/danhmuc';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'them-duan',
@@ -26,11 +27,11 @@ export class ThemDuAnComponent implements OnInit {
     ds_doitac: DOITAC[] = [];
     ds_tinhthanhpho: TINHTHANHPHO[] = [];
     ds_quan: any[] = [];
-
+    ds_danhmuc: DANHMUC[] = [];
+    ds_loaiduan: any[] = [];
     getDSDanhMuc() {
         this.loaiGiaodichservice.getAllLoaiGiaoDich(0).subscribe(loaigiaodich => {
             this.ds_loaigiaodich = loaigiaodich.body;
-            console.log(this.ds_loaigiaodich);
         })
     }
 
@@ -42,13 +43,40 @@ export class ThemDuAnComponent implements OnInit {
     getDSTinhThanhPho() {
         this.ds_tinhthanhpho = this.tinhThanhpho.LayDanhSachTP();
     }
+    getDSLoaiGiaoDich() {
+        this.loaiGiaodichservice.getDSTenLoaiDanhMuc(0).subscribe(loaidanhmuc => {
+            this.ds_danhmuc = loaidanhmuc.body;
+        })
+    }
 
+    getDSLoaiDuAn() {
+        let ds_loaiduan_tam: any[] = [];
+        let ds_loaiduan_tam2: any[] = [];
+
+        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(da => {
+            da.body.forEach(e => {
+                if (ds_loaiduan_tam.length === 0) {
+                    ds_loaiduan_tam.push(e);
+                }
+                else {
+                    ds_loaiduan_tam.forEach(duantam => {
+                        if (duantam.loaiDuAn.indexOf(e.loaiDuAn) < -1) {
+                            ds_loaiduan_tam.push(e);
+                        }
+                    })
+
+                }
+            })
+            this.ds_loaiduan = ds_loaiduan_tam;
+            console.log(this.ds_loaiduan);
+        })
+    }
 
     selectTinhThanhPho(e) {
         this.ds_quan = this.tinhThanhpho.layQuanHuyen(e.target.value);
-        console.log(this.ds_quan);
-
     }
+
+
 
     ngOnInit(): void {
         this.formthemDuan = this.fb.group({
@@ -68,7 +96,8 @@ export class ThemDuAnComponent implements OnInit {
         this.getDSDanhMuc();
         this.getDSDoiTac();
         this.getDSTinhThanhPho();
-
+        this.getDSLoaiGiaoDich();
+        this.getDSLoaiDuAn();
     }
     ngAfterViewInit() {
         const $ = window["$"];
@@ -111,8 +140,6 @@ export class ThemDuAnComponent implements OnInit {
             duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
                 doiTac, giaTien, giaodich, danhMuc, quanHuyen, tinhThanhPho, trangThai, loaiDuAn);
         }
-        console.log(duan);
-
         this.duAnService.themDuAn(duan).subscribe(res => {
             console.log(res);
         });

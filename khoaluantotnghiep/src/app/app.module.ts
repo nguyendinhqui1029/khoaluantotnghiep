@@ -101,6 +101,7 @@ import { SubPageComponent } from './pages/sub-page/sub_page.component';
 import { DanhMucHuongDanComponent } from './pages/huong-dan/content-left/_danh-muc-huong-dan.component';
 import { NoiDungHuongDanComponent } from './pages/huong-dan/content-right/_noi-dung-huong-dan.component';
 import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-tiet-du-an/_hinh-anh-chi-tiet.component';
+import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
 
 
 
@@ -126,7 +127,7 @@ import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-ti
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
     //Admin
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
-    ThemDuAnComponent, XoaDuAnComponent,
+    ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent,
     ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent,
     ThemDanhMucComponent, XoaDanhMucComponent,

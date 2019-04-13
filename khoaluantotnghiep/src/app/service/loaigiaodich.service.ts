@@ -3,6 +3,7 @@ import { LOAIGIAODICH } from '../model/loaigiaodich';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ConfigService } from './config.service';
+import { DANHMUC } from '../model/danhmuc';
 @Injectable()
 export class LoaiGiaoDichService {
     constructor(private http: HttpClient) { }
@@ -17,7 +18,7 @@ export class LoaiGiaoDichService {
     addLoaiGiaoDich(loaigiaodich: LOAIGIAODICH): Observable<LOAIGIAODICH> {
         return this.http.post<LOAIGIAODICH>(ConfigService.URL, loaigiaodich, this.httpOptions);
     }
-    getDSTenLoaiDanhMuc(trangthai): Observable<HttpResponse<LOAIGIAODICH[]>> {
-        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-loai-giao-dich/" + trangthai, { observe: 'response' });
+    getDSTenLoaiDanhMuc(trangthai): Observable<HttpResponse<DANHMUC[]>> {
+        return this.http.get<DANHMUC[]>(ConfigService.URL + "get-all-loai-giao-dich/" + trangthai, { observe: 'response' });
     }
 }

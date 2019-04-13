@@ -78,7 +78,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="loaiGiaoDich"
                         [ngClass]="{ 'is-invalid': submitted && f.loaiGiaoDich.errors }">
-                        <option *ngFor="let item of ds_loaigiaodich" value="{{item.maDanhMuc}}">
+                        <option *ngFor="let item of ds_loaigiaodich" value="{{item}}">
                             {{item.tenDanhMuc}}</option>
                     </select>
                     <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
@@ -93,8 +93,8 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="danhMuc"
                         [ngClass]="{ 'is-invalid': submitted && f.danhMuc.errors }">
-                        <option value="">
-                            Chung Cư</option>
+                        <option *ngFor="let item of ds_danhmuc" value="{{item}}">
+                            {{item.tenLoai}}</option>
                     </select>
                     <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
                         <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Loại Danh mục</div>
@@ -107,7 +107,8 @@
                 <div class="form-inline">
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)">
-                        <option *ngFor="let item of ds_doitac" value="{{item.maDoiTac}}">
+
+                        <option *ngFor="let item of ds_doitac" value="{{item}}">
                             {{item.hoTen}}</option>
                     </select>
                     <div *ngIf="submitted && f.doiTac.errors" class="invalid-feedback">

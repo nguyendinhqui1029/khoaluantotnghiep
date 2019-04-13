@@ -1,15 +1,16 @@
 <div class="row" style=" margin-top: -8px">
-    <form id="form-add-duan" [formGroup]="formthemDuan">
+    <form id="form-add-duan" [formGroup]="formupdateDuan">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="headeradmenu">
-                <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM DỰ ÁN</h1>
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>CẬP NHẬT DỰ ÁN</h1>
             </div>
             <div class="form-group">
                 <label class="control-label" for="tenDuAn">Tên Dự Án</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <input type="text" style="width: 80%;" class="form-control" id="tenDuAn" placeholder="Tên Dự Án"
-                        formControlName="tenDuAn" [ngClass]="{ 'is-invalid': submitted && f.tenDuAn.errors }">
+                        formControlName="tenDuAn" [ngClass]="{ 'is-invalid': submitted && f.tenDuAn.errors }"
+                        value="{{duan.tenDuAn}}">
                     <div *ngIf="submitted && f.tenDuAn.errors" class="invalid-feedback">
                         <div *ngIf="f.tenDuAn.errors.required">Vui lòng nhập Tên Dự Án</div>
                     </div>
@@ -20,7 +21,8 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <input type="text" style="width: 80%;" class="form-control" id="giaTien" placeholder="Tên Dự Án"
-                        formControlName="giaTien" [ngClass]="{ 'is-invalid': submitted && f.giaTien.errors }">
+                        formControlName="giaTien" [ngClass]="{ 'is-invalid': submitted && f.giaTien.errors }"
+                        value="{{duan.giaTien}}">
                     <div *ngIf="submitted && f.giaTien.errors" class="invalid-feedback">
                         <div *ngIf="f.giaTien.errors.required">Vui lòng nhập Giá Tiền</div>
                     </div>
@@ -33,7 +35,8 @@
                     <div style="width: 80%;">
                         <div class="input-group date" data-date-format="dd.mm.yyyy">
                             <input id="filterDate2" type="text" class="form-control" placeholder="yyyy-MM-dd"
-                                formControlName="ngayDang" [ngClass]="{ 'is-invalid': submitted && f.ngayDang.errors }">
+                                formControlName="ngayDang" [ngClass]="{ 'is-invalid': submitted && f.ngayDang.errors }"
+                                value="{{duan.ngayDang | date}}">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -47,7 +50,8 @@
                 <div class="form-inline">
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         (change)="selectTinhThanhPho($event)" formControlName="tinhThanhPho"
-                        [ngClass]="{ 'is-invalid': submitted && f.tinhThanhPho.errors }">
+                        [ngClass]="{ 'is-invalid': submitted && f.tinhThanhPho.errors}">
+                        <option>{{duan.tinhThanhPho}}</option>
                         <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
                             {{item.d}}</option>
                     </select>
@@ -63,6 +67,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="quanHuyen"
                         [ngClass]="{ 'is-invalid': submitted && f.quanHuyen.errors }">
+                        <option>{{duan.quanHuyen}}</option>
                         <option *ngFor="let item of ds_quan" value="{{item.tenquanhuyenkhongdau}}">
                             {{item.tenquanhuyencodau}}</option>
                     </select>
@@ -93,8 +98,8 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="danhMuc"
                         [ngClass]="{ 'is-invalid': submitted && f.danhMuc.errors }">
-                        <option value="">
-                            Chung Cư</option>
+                        <option *ngFor="let item of ds_danhmuc" value="{{item.maLoai}}">
+                            {{item.tenLoai}}</option>
                     </select>
                     <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
                         <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Loại Danh mục</div>
@@ -151,7 +156,8 @@
                 <div class="form-inline">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%"
                         formControlName="noiDungTomTat"
-                        [ngClass]="{ 'is-invalid': submitted && f.noiDungTomTat.errors }"></textarea>
+                        [ngClass]="{ 'is-invalid': submitted && f.noiDungTomTat.errors }"
+                        value="{{duan.noiDungTomTat}}"></textarea>
                     <div *ngIf="submitted && f.noiDungTomTat.errors" class="invalid-feedback">
                         <div *ngIf="f.noiDungTomTat.errors.required">Vui lòng nhập Nội dung tóm tắt</div>
                     </div>
@@ -163,7 +169,8 @@
                 <div class="form-inline">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 80%"
                         formControlName="noiDungChiTiet"
-                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }"></textarea>
+                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }"
+                        value="{{duan.noiDungChiTiet}}"></textarea>
                     <div *ngIf="submitted && f.noiDungChiTiet.errors" class="invalid-feedback">
                         <div *ngIf="f.noiDungChiTiet.errors.required">Vui lòng nhập Nội dung chi tiết</div>
                     </div>
