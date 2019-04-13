@@ -12,4 +12,6 @@ export class CongTyService {
     getCongTy(): Observable<HttpResponse<CONGTY>> {
         return this.http.get<CONGTY>(ConfigService.URL + "get-all-cong-ty", { observe: 'response' });
     }
+
+
 }

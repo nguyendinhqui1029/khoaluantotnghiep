@@ -12,7 +12,7 @@ import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 })
 export class DuAnChiTietModuleComponent implements OnInit {
     // noi dung mock tin tuc
-    duan: DUAN = new DUAN("", "", "", "", "", "", "", "", "", "", "", "", "", "");
+    duan: any = {};
     id: any = "";
     mangHinh: any[] = [];
     thongTinDuAn: any = {};

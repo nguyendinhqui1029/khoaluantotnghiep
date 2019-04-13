@@ -85,7 +85,7 @@ export class ThemDuAnComponent implements OnInit {
             noiDungChiTiet: ['', [Validators.required]],
             ngayDang: ['', [Validators.required]],
             doiTac: ['', [Validators.required]],
-            giaTien: ['', [Validators.required]],
+            giaTien: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
             loaiGiaoDich: ['', [Validators.required]],
             danhMuc: ['', [Validators.required]],
             quanHuyen: ['', [Validators.required]],

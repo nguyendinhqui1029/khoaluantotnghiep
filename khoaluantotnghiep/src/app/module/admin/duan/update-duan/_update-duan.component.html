@@ -20,11 +20,12 @@
                 <label class="control-label" for="tenDuAn">Giá Tiền</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="text" style="width: 80%;" class="form-control" id="giaTien" placeholder="Tên Dự Án"
+                    <input type="text" style="width: 80%;" class="form-control" id="giaTien" placeholder="25 000 000"
                         formControlName="giaTien" [ngClass]="{ 'is-invalid': submitted && f.giaTien.errors }"
                         value="{{duan.giaTien}}">
                     <div *ngIf="submitted && f.giaTien.errors" class="invalid-feedback">
                         <div *ngIf="f.giaTien.errors.required">Vui lòng nhập Giá Tiền</div>
+                        <div *ngIf="f.giaTien.errors.pattern">Giá Tiền phải là số</div>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         (change)="selectTinhThanhPho($event)" formControlName="tinhThanhPho"
                         [ngClass]="{ 'is-invalid': submitted && f.tinhThanhPho.errors}">
-                        <option>{{duan.tinhThanhPho}}</option>
+                        <option value="{{duan.tinhThanhPho}}">{{duan.tinhThanhPho}}</option>
                         <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
                             {{item.d}}</option>
                     </select>
@@ -67,7 +68,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="quanHuyen"
                         [ngClass]="{ 'is-invalid': submitted && f.quanHuyen.errors }">
-                        <option>{{duan.quanHuyen}}</option>
+                        <option value="{{duan.quanHuyen}}">{{duan.quanHuyen}}</option>
                         <option *ngFor="let item of ds_quan" value="{{item.tenquanhuyenkhongdau}}">
                             {{item.tenquanhuyencodau}}</option>
                     </select>
@@ -83,6 +84,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="loaiGiaoDich"
                         [ngClass]="{ 'is-invalid': submitted && f.loaiGiaoDich.errors }">
+                        <option value="{{duan.danhMuc.tenDanhMuc}}">{{duan.danhMuc.tenDanhMuc}}</option>
                         <option *ngFor="let item of ds_loaigiaodich" value="{{item.maDanhMuc}}">
                             {{item.tenDanhMuc}}</option>
                     </select>
@@ -98,6 +100,7 @@
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="danhMuc"
                         [ngClass]="{ 'is-invalid': submitted && f.danhMuc.errors }">
+                        <option value="{{duan.loaiGiaoDich.tenLoai}}">{{duan.loaiGiaoDich.tenLoai}}</option>
                         <option *ngFor="let item of ds_danhmuc" value="{{item.maLoai}}">
                             {{item.tenLoai}}</option>
                     </select>
@@ -112,6 +115,7 @@
                 <div class="form-inline">
                     <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)">
+                        <option value="{{duan.doiTac.hoTen}}">{{duan.doiTac.hoTen}}</option>
                         <option *ngFor="let item of ds_doitac" value="{{item.maDoiTac}}">
                             {{item.hoTen}}</option>
                     </select>
@@ -126,7 +130,7 @@
                 <div class="form-inline">
                     <select class="form-control custom-select mr-sm-2" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="trangThai"
-                        [ngClass]="{ 'is-invalid': submitted && f.trangThai.errors }">
+                        [ngClass]="{ 'is-invalid': submitted && f.trangThai.errors }" value="{{duan.trangThai}}">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -140,13 +144,19 @@
                 <label class="control-label" for="quanHuyen">Loại Dự Án</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
+                    <!-- <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
                         ng-change="getDistricts(ProvinceId)" formControlName="loaiDuAn"
                         [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }">
                         <option value="1">Nổi bật</option>
                     </select>
                     <div *ngIf="submitted && f.loaiDuAn.errors" class="invalid-feedback">
                         <div *ngIf="f.loaiDuAn.errors.required">Vui lòng chọn Loại dự án</div>
+                    </div> -->
+                    <input type="text" style="width: 80%;" class="form-control" id="loaiDuAn" placeholder="Nổi Bật"
+                        formControlName="loaiDuAn" [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }"
+                        value="{{duan.loaiDuAn}}">
+                    <div *ngIf="submitted && f.loaiDuAn.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaiDuAn.errors.required">Vui lòng nhập Loại dự án</div>
                     </div>
                 </div>
             </div>
@@ -181,6 +191,11 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="mangHinh">
+                </div>
+            </div>
+            <div class="form-group">
+                <div *ngIf="statusUpdate.status" class="invalid-feedback">
+                    <div [innerHTML]="statusUpdate.message"></div>
                 </div>
             </div>
             <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;

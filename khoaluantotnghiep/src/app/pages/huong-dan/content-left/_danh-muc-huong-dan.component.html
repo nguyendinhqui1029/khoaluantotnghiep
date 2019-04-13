@@ -8,11 +8,11 @@
         <ul>
             <!--doi thanh routerLink vao app.routing.ts them link giong trong grid list
                 them router-outlet trong cho right-->
-            <!-- <li id="linhvuc" *ngFor="let gioithieu of ds_gioithieu">
-                <a [routerLink]="['/gioi-thieu']" (click)="setGioiThieu(gioithieu)">
-                    {{gioithieu.tieude}}
+            <li id="linhvuc" *ngFor="let huongdan of ds_huongdan">
+                <a [routerLink]="['/huong-dan']" (click)="setHuongDan(huongdan)">
+                    {{huongdan.tieude}}
                 </a>
-            </li> -->
+            </li>
         </ul>
     </div>
 </div>

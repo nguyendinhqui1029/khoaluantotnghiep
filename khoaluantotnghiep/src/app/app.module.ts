@@ -102,6 +102,8 @@ import { DanhMucHuongDanComponent } from './pages/huong-dan/content-left/_danh-m
 import { NoiDungHuongDanComponent } from './pages/huong-dan/content-right/_noi-dung-huong-dan.component';
 import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-tiet-du-an/_hinh-anh-chi-tiet.component';
 import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
+import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
+import { MakeUpDateService } from './service/makeupdata.service';
 
 
 
@@ -139,7 +141,7 @@ import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-dua
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
-    , EmployeeThemDuAnComponent
+    , EmployeeThemDuAnComponent, MakeUpDataComponent
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
@@ -147,7 +149,7 @@ import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-dua
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
-    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService],
+    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

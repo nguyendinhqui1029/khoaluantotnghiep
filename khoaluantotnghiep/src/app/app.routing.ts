@@ -43,6 +43,7 @@ import { CustomerAuthGuard } from './auth/customer.guard';
 import { EmployeeAuthGuard } from './auth/employee.guard';
 import { SubPageComponent } from './pages/sub-page/sub_page.component';
 import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
+import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
 
 
 const routes: Routes = [
@@ -116,6 +117,7 @@ const routes: Routes = [
             { path: 'xoa-taikhoan', component: XoaTaiKhoanComponent },
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
+            { path: 'make-up-data', component: MakeUpDataComponent }
 
         ],
         canActivate: [AdminAuthGuard]
