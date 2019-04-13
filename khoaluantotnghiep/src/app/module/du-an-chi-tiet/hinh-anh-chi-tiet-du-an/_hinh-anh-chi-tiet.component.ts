@@ -28,11 +28,19 @@ export class HinhAnhChiTietComponent implements OnInit {
             }
         })
     }
-    thayDoiHinh(value, i) {
+    thayDoiHinh(value) {
         this.tenHinh = value.tenhinh;
         this.mota = value.alt;
     }
+
+
     ngOnInit(): void { }
 
+    ngOnDestroy(): void {
+        this.tenHinh = '';
+        this.mota = '';
+        this.duan = {};
+        this.mangHinh = [];
 
+    }
 }

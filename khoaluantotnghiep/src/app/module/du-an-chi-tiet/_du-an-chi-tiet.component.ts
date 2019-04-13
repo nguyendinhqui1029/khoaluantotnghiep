@@ -12,9 +12,9 @@ import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 })
 export class DuAnChiTietModuleComponent implements OnInit {
     // noi dung mock tin tuc
-    duan: DUAN = new DUAN("", "", "", "", "", "", "", "", "", "", "", "", "", "");
+    duan: any = {};
     id: any = "";
-    constructor(private router: ActivatedRoute, private duAnService: DuAnService, private sanGiaoDichService: SanGiaoDichService) {
+    constructor(private router: ActivatedRoute, private duAnService: DuAnService) {
         this.id = this.router.snapshot.params["id"];
         this.layDuAnTheoMaDuAn(this.id);
     }

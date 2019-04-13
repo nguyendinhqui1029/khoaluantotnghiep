@@ -101,6 +101,8 @@ import { SubPageComponent } from './pages/sub-page/sub_page.component';
 import { DanhMucHuongDanComponent } from './pages/huong-dan/content-left/_danh-muc-huong-dan.component';
 import { NoiDungHuongDanComponent } from './pages/huong-dan/content-right/_noi-dung-huong-dan.component';
 import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-tiet-du-an/_hinh-anh-chi-tiet.component';
+import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
+import { MakeUpDateService } from './service/makeupdata.service';
 
 
 
@@ -138,7 +140,7 @@ import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-ti
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
-    , EmployeeThemDuAnComponent
+    , EmployeeThemDuAnComponent, MakeUpDataComponent
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
@@ -146,7 +148,7 @@ import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-ti
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
-    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService],
+    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

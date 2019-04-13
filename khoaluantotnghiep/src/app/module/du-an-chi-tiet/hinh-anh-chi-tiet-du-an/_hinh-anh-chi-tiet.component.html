@@ -8,12 +8,28 @@
                 </div>
                 <!-- danh sach img lien quan chưa xử lí chọn hình hiện lên trên-->
 
-                <div class="col-xs-3" *ngFor="let hinh of mangHinh; let i=index"
-                    style="width: 80px !important; height: 60px !important;">
-                    <a [routerLink]="[pathCurrent]" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh,i)">
-                        <img src="../../../../assets/images/product/{{hinh.tenhinh}}"
-                            style="width: 100% !important; height: 40px !important;" alt="{{hinh.alt}}">
-                    </a>
+                <div class="col-md-12 col-sm-8 col-xs-12">
+                    <marquee *ngIf="mangHinh.length > 5 else nguoclai" behavior="alternate" onmouseover="this.stop()"
+                        onmouseout="this.start()" scrollamount="2">
+                        <span *ngFor="let hinh of mangHinh;" style="width: 80px !important; height: 60px !important; display: inline-block; margin-left:
+                        5px;">
+                            <a [routerLink]=" [pathCurrent]" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh)">
+                                <img src="../../../../assets/images/product/{{hinh.tenhinh}}"
+                                    style="width: 100% !important; height: 40px !important;" alt="{{hinh.alt}}">
+                            </a>
+                        </span>
+                    </marquee>
+                    <ng-template #nguoclai>
+                        <span *ngFor="let hinh of mangHinh;" style="width: 80px !important; height: 60px !important; display: inline-block; margin-left:
+                            5px;">
+                            <a [routerLink]=" [pathCurrent]" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh)">
+                                <img src="../../../../assets/images/product/{{hinh.tenhinh}}"
+                                    style="width: 100% !important; height: 40px !important;" alt="{{hinh.alt}}">
+                            </a>
+                        </span>
+                    </ng-template>
+
+
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 property-info" *ngIf="duan">

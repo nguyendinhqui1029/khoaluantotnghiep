@@ -1,0 +1,19 @@
+<h3>Danh sách Data</h3>
+<table class="rwd-table" border="2" style="width: 90%;margin-left: 4%; text-align: center;">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên Object</th>
+        <th scope="col">Số Item mới</th>
+        <th scope="col">Tổng số Item</th>
+        <th scope="col">Chức năng</th>
+    </tr>
+    <tr *ngFor="let item of arrObject; let i=index">
+        <td data-th="#">{{i}}</td>
+        <td data-th="Mã Tài Khoản">{{item.name}}</td>
+        <td data-th="Tên Tài Khoản">{{item.itemnew}}</td>
+        <td data-th="Email">{{item.tongitem}}</td>
+        <td data-th="Số Điện Thoại" style="padding: 4px;">
+            <button (click)="CapNhat(item)">{{item.namebutton}}</button>
+        </td>
+    </tr>
+</table>

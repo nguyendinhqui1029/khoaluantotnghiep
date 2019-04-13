@@ -46,9 +46,6 @@ export class DuAnService {
     setValueDanhSachPhanTrang(value) {
         this.valueSource.next(value);
     }
-    //Truyen du lieu cho du an list/gird
-
-
 
     layDanhSachDuAnTheoTrangThai(trangThai): DUAN[] {
         let arr = Array();

@@ -9,20 +9,20 @@
 
                     <div class="property-item clearfix" *ngFor="let itemkq of ds_ForHTML" style="margin-bottom: 2px;">
                         <div class="image image-resize col-md-3 col-xs-12 col-sm-4">
-                            <a [routerLink]="['/du-an-chi-tiet',itemkq.maDuAn]">
+                            <a [routerLink]="['/chi-tiet-du-an',itemkq.maDuAn]">
                                 <img src="../assets/images/product/{{itemkq.mangHinh[0].tenhinh}}"
                                     class="img-responsive" style="width: 100%;" />
                             </a>
                             <span class="rent">{{itemkq.danhMuc.tenDanhMuc}}</span>
                             <div class="thumbnail">
-                                <a [routerLink]="['/du-an-chi-tiet',itemkq.maDuAn]" class="zoom">
+                                <a [routerLink]="['/chi-tiet-du-an',itemkq.maDuAn]" class="zoom">
                                     <i class="glyphicon glyphicon-link"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="right-block col-md-9 col-xs-12 col-sm-8">
                             <h2 class="name">
-                                <a [routerLink]="['/du-an-chi-tiet',itemkq.maDuAn]">
+                                <a [routerLink]="['/chi-tiet-du-an',itemkq.maDuAn]">
                                     {{itemkq.tenDuAn}}
                                 </a>
                             </h2>
