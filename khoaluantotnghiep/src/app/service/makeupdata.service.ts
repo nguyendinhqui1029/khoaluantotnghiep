@@ -130,20 +130,25 @@ export class MakeUpDateService {
     ///////////////////////////////////////
     isMakeUpData(arrhost, arrlocal): any {
         let arrTam: any[] = [];
-
-        if (arrhost.length > arrlocal.length) {
-            arrhost.forEach(eHost => {
-                var dem = 0;
-                arrlocal.forEach(eLocal => {
-                    if (JSON.stringify(eHost) === JSON.stringify(eLocal)) {
-                        dem = dem + 1;
+        let tongso: any = 0;
+        let itemnew: any = 0;
+        if (arrhost && arrlocal) {
+            if (arrhost.length > arrlocal.length) {
+                arrhost.forEach(eHost => {
+                    var dem = 0;
+                    arrlocal.forEach(eLocal => {
+                        if (JSON.stringify(eHost) === JSON.stringify(eLocal)) {
+                            dem = dem + 1;
+                        }
+                    });
+                    if (dem === 0) {
+                        arrTam.push(eHost);
                     }
                 });
-                if (dem === 0) {
-                    arrTam.push(eHost);
-                }
-            });
-            return { tongitem: arrhost.length, itemnew: (arrhost.length - arrlocal.length), arr: arrTam };
+                itemnew = (arrhost.length - arrlocal.length);
+                tongso = arrhost.length;
+            }
         }
+        return { tongitem: tongso, itemnew: itemnew, arr: arrTam };
     }
 }

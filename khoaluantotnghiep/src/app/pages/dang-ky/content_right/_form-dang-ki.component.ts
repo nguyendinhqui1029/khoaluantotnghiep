@@ -52,7 +52,7 @@ export class FormDangKiComponent implements OnInit {
     ngOnInit(): void {
         this.formDangKy = this.fb.group({
             taikhoan: ['', [Validators.required, Validators.pattern('^[-a-zA-Z0-9@\.+_]+$')]],
-            email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+            email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,3}')]],
             pass: ['', [Validators.required]],
             confirmpass: ['', [Validators.required]],
             hoten: ['', [Validators.required]],
@@ -152,19 +152,23 @@ export class FormDangKiComponent implements OnInit {
 
 
     yeuCauMaXacNhan() {
-        this.submitted = true;
+        //this.submitted = true;
         this.thongBaoMaXacNhan.status = false;
         this.thongBaoDangKi.status = false;
         this.formDangKy.controls.maXacNhan.setValue("");
-        if (this.formDangKy.valid && this.formDangKy.controls.email.value !== "") {
+        if (this.formDangKy.controls.email.value !== "") {
+            console.log('b');
+
             let data = {
                 namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com",
                 passgui: "Nguyenqui1997", emailnhan: this.formDangKy.controls.email.value,
-                tieude: "Mã xác nhận đăng kí tài khoản", data: "", mode: 1, cc: "",
+                tieude: "Mã xác nhận đăng kí tài khoản", noidung: "", mode: 1, cc: "",
                 bcc: ""
             };
 
             this.DangKiDangNhapService.sendEmail(data).subscribe(e => {
+                console.log('c');
+
                 if (e.ok) {
                     this.thongBaoDangKi.status = true;
                     this.thongBaoDangKi.message = "Mã xác nhận đã được gửi đến địa chỉ email:<a target='_blank'  href='https://www.google.com/gmail/'>" + this.formDangKy.controls.email.value + "</a>";

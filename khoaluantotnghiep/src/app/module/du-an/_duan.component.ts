@@ -19,6 +19,9 @@ export class DuAnComponent implements OnInit {
     currentPagePhanTrang: number = 1;
     ds_page: any[] = [];
     soItemTrang: number = 5;
+
+    ds_duan_theo_loai_giao_dich: any[] = [];
+    tieude: any = "";
     constructor(private route: Router,
         private phanTrangService: PhanTranService,
         private serviceDuAn: DuAnService) {
@@ -31,16 +34,38 @@ export class DuAnComponent implements OnInit {
             this.phanTrangService.soItemCuaPage = 5;
         }
         this.getListDuANtheoTrangThai();
+
+        /////////////////////Lấy dự án khi click vào khung loại sàn giao dịch
+        this.serviceDuAn.getThongTin.subscribe(e => {
+            this.ds_duan_theo_loai_giao_dich = e.dsDuantheoloaigiaodich;
+            this.tieude = e.tieude;
+            if (this.ds_duan_theo_loai_giao_dich !== undefined) {
+                console.log('aaa');
+                //Phan trang
+                this.phanTrangService.setValueDanhSach(this.ds_duan_theo_loai_giao_dich);
+                this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+                this.ds_HienThi = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_duan_theo_loai_giao_dich);
+                this.serviceDuAn.setValueDanhSachPhanTrang(this.ds_HienThi);
+                //End phan trang
+            }
+
+        });
+
     }
+
+
     getListDuANtheoTrangThai() {
         this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             this.dsDuAn = duan.body;
-            //Phan trang
-            this.phanTrangService.setValueDanhSach(this.dsDuAn);
-            this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
-            this.ds_HienThi = this.phanTrangService.ds_KetQuaPhanTrang(this.dsDuAn);
-            this.serviceDuAn.setValueDanhSachPhanTrang(this.ds_HienThi);
-            //End phan trang
+
+            if (this.ds_duan_theo_loai_giao_dich === undefined) {
+                //Phan trang
+                this.phanTrangService.setValueDanhSach(this.dsDuAn);
+                this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+                this.ds_HienThi = this.phanTrangService.ds_KetQuaPhanTrang(this.dsDuAn);
+                this.serviceDuAn.setValueDanhSachPhanTrang(this.ds_HienThi);
+                //End phan trang
+            }
 
         })
     }

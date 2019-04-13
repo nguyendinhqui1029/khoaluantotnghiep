@@ -6,14 +6,11 @@
                     <div class="breadcrumb clearfix">
                         <ul>
                             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-                                <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
+                                <a title="Đến trang chủ" [routerLink]="['/trang-chu']" itemprop="url"><span
+                                        itemprop="title">Trang
                                         chủ</span></a>
                             </li>
-                            <li class="icon-li"><strong>Sàn giao dịch</strong> </li>
-                            <li class="icon-li">
-                                <title>HELIOS 75 TAM TRINH _ CHIẾT KHẤU 2% GI&#193; CHỈ TỪ 1,4 TỶ _ LI&#202;N HỆ 094
-                                    706 4444</title>
-                            </li>
+                            <li class="icon-li"><strong>Sàn giao dịch chi tiết</strong> </li>
                         </ul>
                     </div>
                     <san-giao-dich-chi-tiet></san-giao-dich-chi-tiet>
@@ -25,7 +22,8 @@
                             <span>Sàn giao dịch</span>
                         </h3>
                         <ul>
-                            <li *ngFor="let item of ds_loaigiaodich"><a href='san-giao-dich/dat-nen-21.html'><i
+                            <li *ngFor="let item of ds_loaigiaodich"><a [routerLink]="['/du-an']"
+                                    (click)="clickSanGiaoDich(item.tenLoai)"><i
                                         class='fa fa-arrow-circle-o-right'></i>{{item.tenLoai}}</a></li>
                         </ul>
                     </div>

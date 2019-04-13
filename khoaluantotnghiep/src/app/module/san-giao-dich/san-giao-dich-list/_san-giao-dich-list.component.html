@@ -4,7 +4,9 @@
         <div class="news-item clearfix" *ngFor="let duan of dsDuAN">
             <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">
                     <img src="../../../../assets/images/product/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
-                        alt="{{duan.tenDuAn}}" /></a></div>
+                        alt="{{duan.tenDuAn}}" /></a>
+                <span class="text">{{duan.danhMuc.tenDanhMuc}}</span>
+            </div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
                 <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">{{duan.tenDuAn}}</a></h2>
                 <p class="date">Ngày đăng: {{duan.ngayDang}}</p>

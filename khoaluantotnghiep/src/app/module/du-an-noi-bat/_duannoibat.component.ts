@@ -15,11 +15,13 @@ export class DuAnNoiBatComponent implements OnInit {
     loai = "nổi bật";
     constructor(private serviceDuAn: DuAnService) {
         this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            duan.body.forEach(e => {
-                if (e.loaiDuAn === this.loai) {
-                    this.dsDuAN.push(e);
-                }
-            })
+            if (duan.body) {
+                duan.body.forEach(e => {
+                    if (e.loaiDuAn === this.loai) {
+                        this.dsDuAN.push(e);
+                    }
+                })
+            }
         });
     }
 

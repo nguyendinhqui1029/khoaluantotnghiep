@@ -58,7 +58,6 @@ export class SearchComponent implements OnInit {
                 }
             });
         }
-
     }
 
     getListLoaiGiaoDichTheoDanhMuc(maDanhMuc) {
