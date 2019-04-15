@@ -52,7 +52,7 @@ export class ThemDuAnComponent implements OnInit {
             loaiGiaoDich: ['', [Validators.required]],
             danhMuc: ['', [Validators.required]],
             trangThai: ['', [Validators.required]],
-            loaiDuAn: ['', [Validators.required]],
+            loaiDuAn: ['', [Validators.required]]
         });
 
     }

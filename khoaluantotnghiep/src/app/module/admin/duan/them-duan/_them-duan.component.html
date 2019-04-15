@@ -51,6 +51,9 @@
                         <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
                             {{item.d}}</option>
                     </select>
+                    <div *ngIf="submitted && tinhthanhphocodau.length === 0" class="invalid-feedback">
+                        <div *ngIf="tinhthanhphocodau.length === 0">Vui lòng chọn Tỉnh/TP</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -72,8 +75,8 @@
                         <option *ngFor="let item of ds_danhmuc" value="{{item.maDanhMuc}}">
                             {{item.tenDanhMuc}}</option>
                     </select>
-                    <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
-                        <div *ngIf="f.loaiGiaoDich.errors.required">Vui lòng chọn Loại giao dịch</div>
+                    <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Danh Mục</div>
                     </div>
                 </div>
             </div>
@@ -85,8 +88,8 @@
                         <option *ngFor="let item of ds_loaigiaodich" value="{{item.maLoai}}">
                             {{item.tenLoai}}</option>
                     </select>
-                    <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
-                        <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Loại Danh mục</div>
+                    <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaiGiaoDich.errors.required">Vui lòng chọn Loại Giao Dịch</div>
                     </div>
                 </div>
             </div>
