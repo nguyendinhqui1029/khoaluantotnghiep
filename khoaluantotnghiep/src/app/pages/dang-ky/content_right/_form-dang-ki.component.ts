@@ -157,7 +157,6 @@ export class FormDangKiComponent implements OnInit {
         this.thongBaoDangKi.status = false;
         this.formDangKy.controls.maXacNhan.setValue("");
         if (this.formDangKy.controls.email.value !== "") {
-            console.log('b');
 
             let data = {
                 namegui: "CÔNG TY BẤT ĐỘNG SẢN", emailgui: "nguyendinhqui100197@gmail.com",

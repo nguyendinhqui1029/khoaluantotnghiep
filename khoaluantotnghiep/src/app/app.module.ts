@@ -107,6 +107,7 @@ import { MakeUpDateService } from './service/makeupdata.service';
 import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_update-doitac.component';
 import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
+import { CKEditorModule } from 'ngx-ckeditor';
 
 
 
@@ -146,7 +147,7 @@ import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_u
     , EmployeeThemDuAnComponent, MakeUpDataComponent
   ],
   imports: [
-    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
+    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,

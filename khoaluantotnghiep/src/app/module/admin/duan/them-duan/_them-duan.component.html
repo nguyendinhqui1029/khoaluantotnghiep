@@ -32,9 +32,9 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <div style="width: 80%;">
-                        <div class="input-group date" data-date-format="dd.mm.yyyy">
-                            <input id="filterDate2" type="text" class="form-control" placeholder="yyyy-MM-dd"
-                                formControlName="ngayDang" [ngClass]="{ 'is-invalid': submitted && f.ngayDang.errors }">
+                        <div class="input-group date" data-date-format="yyyy-MM-dd" id="filterDate2">
+                            <input type="text" class="form-control" placeholder="yyyy-MM-dd" formControlName="ngayDang"
+                                [ngClass]="{ 'is-invalid': submitted && f.ngayDang.errors }">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -144,9 +144,12 @@
                 <label class="control-label" for="quanHuyen">Nội Dung Chi Tiết</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 80%"
+                    <ck-editor name="editor1" formControlName="noiDungChiTiet" skin="moono-lisa" language="en"
+                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }">
+                    </ck-editor>
+                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 80%"
                         formControlName="noiDungChiTiet"
-                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }"></textarea>
+                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }"></textarea> -->
                     <div *ngIf="submitted && f.noiDungChiTiet.errors" class="invalid-feedback">
                         <div *ngIf="f.noiDungChiTiet.errors.required">Vui lòng nhập Nội dung chi tiết</div>
                     </div>

@@ -176,6 +176,11 @@ export class ThemDuAnComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+        let d = new Date();
+        let date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+
+        this.formthemDuan.controls.ngayDang.setValue(date);
         this.getDSDanhMuc();
         this.getDSDoiTac();
         this.getDSTinhThanhPho();
@@ -188,14 +193,18 @@ export class ThemDuAnComponent implements OnInit {
         $(document).ready(function () {
             $('#filterDate2').datepicker({
                 uiLibrary: 'bootstrap',
-                format: 'yyyy-mm-dd'
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
             });
         });
     }
 
+
+
     get f() { return this.formthemDuan.controls };
     add() {
-        this.submitted = true;
+        // this.submitted = true;
         let tenDuAn = this.formthemDuan.controls.tenDuAn.value;
         let noiDungTomTat = this.formthemDuan.controls.noiDungTomTat.value;
         let noiDungChiTiet = this.formthemDuan.controls.noiDungChiTiet.value;
