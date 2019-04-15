@@ -172,12 +172,6 @@ export class ThemDuAnComponent implements OnInit {
     }
 
     selectTrangThai(e) {
-        console.log(this.formthemDuan.controls.danhMuc.value);
-        console.log(this.formthemDuan.controls.loaiGiaoDich.value);
-        console.log(this.formthemDuan.controls.doiTac.value);
-        console.log(this.formthemDuan.controls.trangThai.value);
-        console.log(this.formthemDuan.controls.loaiDuAn.value);
-
         this.tentrangthaiduocchon = e.target.value;
     }
 
@@ -215,13 +209,9 @@ export class ThemDuAnComponent implements OnInit {
         let trangThai = this.formthemDuan.controls.trangThai.value;
         let loaiDuAn = this.formthemDuan.controls.loaiDuAn.value;
 
-
-        console.log(ngayDang.value);
-
         if (this.formthemDuan.invalid) {
             return;
         } else if (this.formthemDuan.valid) {
-
             let duan;
             let maduan = "DA" + (new Date()).getTime().toString();
             let ObjectDoiTac = this.getDoiTacTheoMa(doiTac);

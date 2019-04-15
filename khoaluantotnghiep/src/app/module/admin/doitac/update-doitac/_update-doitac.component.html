@@ -1,8 +1,8 @@
 <div class="row" style=" margin-top: -8px">
-    <form id="form-add-menu" ng-submit="add()" [formGroup]="formThemDoiTac">
+    <form id="form-add-menu" ng-submit="add()" [formGroup]="formUpdateDoiTac">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="headeradmenu">
-                <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM ĐỐI TÁC</h1>
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>CẬP NHẬT ĐỐI TÁC</h1>
             </div>
             <div class="form-group has-feedback">
                 <label class="control-label" for="hoTen">Họ Tên</label><span
@@ -32,9 +32,9 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <div style="width: 80%;">
-                        <div class="input-group date" data-date-format="dd.mm.yyyy">
-                            <input id="filterDate2" type="text" class="form-control" placeholder="yyyy-MM-dd"
-                                formControlName="ngaySinh" [ngClass]="{ 'is-invalid': submitted && f.ngaySinh.errors }">
+                        <div class="input-group date" data-date-format="dd.mm.yyyy" id="filterDate2">
+                            <input type="text" class="form-control" placeholder="yyyy-MM-dd" formControlName="ngaySinh"
+                                [ngClass]="{ 'is-invalid': submitted && f.ngaySinh.errors }">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
@@ -47,13 +47,10 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <select class="form-control" style="width: 80%;" (change)="selectTinhThanhPho($event)">
-                        <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Tỉnh/TP-----</option>
-                        <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
+                        <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}"
+                            selected="{{item.d == tinhthanhpho}} ? true : false">
                             {{item.d}}</option>
                     </select>
-                    <div *ngIf="submitted && tinhthanhphocodau.length === 0" class="invalid-feedback">
-                        <div *ngIf="tinhthanhphocodau.length === 0">Vui lòng chọn Tỉnh/TP</div>
-                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -61,9 +58,9 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <select class="form-control" style="width: 80%;" (change)="selectQuanHuyen($event)">
-                        <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Quận/Huyện-----</option>
-                        <option *ngFor="let item of ds_quan" value="{{item.tenquanhuyenkhongdau}}">
-                            {{item.tenquanhuyencodau}}</option>
+                        <option *ngFor="let quy of ds_quan" value="{{quy.tenquanhuyenkhongdau}}"
+                            [selected]="quy.tenquanhuyencodau == quanhuyen ? true : false">
+                            {{quy.tenquanhuyencodau}} </option>
                     </select>
                 </div>
             </div>
@@ -106,37 +103,37 @@
             <div class="form-group has-feedback">
                 <label class="control-label" for="loaiTaiKhoan">Loại Tài Khoản</label>
                 <div class="form-inline">
-                    <input type="password" style="width: 80%;" class="form-control" id="loaiTaiKhoan" placeholder=""
+                    <input type="text" style="width: 80%;" class="form-control" id="loaiTaiKhoan" placeholder=""
                         formControlName="loaiTaiKhoan">
                 </div>
             </div>
             <div class="form-group has-feedback">
-                <label class="control-label" for="loaiTaiKhoan">Email</label>
+                <label class="control-label" for="email">Email</label>
                 <div class="form-inline">
-                    <input type="password" style="width: 80%;" class="form-control" id="loaiTaiKhoan" placeholder=""
-                        formControlName="loaiTaiKhoan">
+                    <input type="text" style="width: 80%;" class="form-control" id="email" placeholder=""
+                        formControlName="email">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label" for="moTa">Mô Tả</label>
                 <div class="form-inline">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%"
+                    <textarea class="form-control" id="moTa" rows="4" style="width: 80%"
                         formControlName="moTa"></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label" for="loGo">LoGo</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="loGo">
+                    <input type="file" (change)="changeImage($event)" style="width: 80%;" id="loGo">
                 </div>
             </div>
             <div class="form-group">
-                <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                <div *ngIf="statusUpdate.status" class="invalid-feedback">
+                    <div [innerHTML]="statusUpdate.message"></div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-info" (click)="add()">Thêm Đối Tác</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Cập Nhật Đối Tác</button>&nbsp;&nbsp;
             <button type="reset" class="btn btn-info">Reset Tất cả</button>&nbsp;&nbsp;
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">

@@ -104,6 +104,8 @@ import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-ti
 import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
 import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
 import { MakeUpDateService } from './service/makeupdata.service';
+import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_update-doitac.component';
+import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
 
 
@@ -130,9 +132,9 @@ import { MakeUpDateService } from './service/makeupdata.service';
     //Admin
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
-    ThemDoiTacComponent, XoaDoiTacComponent,
+    ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
     ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent,
-    ThemDanhMucComponent, XoaDanhMucComponent,
+    ThemDanhMucComponent, XoaDanhMucComponent, UpdateDanhMucComponent,
     ThemLoaiTinTucComponent, XoaLoaiTinTucComponent,
     ThemGioiThieuComponent, XoaGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent,

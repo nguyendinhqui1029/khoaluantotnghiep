@@ -11,8 +11,31 @@ export class DanhMucService {
 
     }
 
-    getDSDanhMuc(): Observable<HttpResponse<DANHMUC[]>> {
-        return this.http.get<DANHMUC[]>(ConfigService.URL + "get-all-danh-muc/" + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
+    getDSDanhMuc(trangThai): Observable<HttpResponse<DANHMUC[]>> {
+        return this.http.get<DANHMUC[]>(ConfigService.URL + "get-all-danh-muc/" + trangThai + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
+    }
 
+    getDanhMucTheoMaDanhMuc(maDanhMuc): Observable<HttpResponse<DANHMUC>> {
+        return this.http.get<DANHMUC>(ConfigService.URL + "get-danh-muc/" + maDanhMuc, { observe: 'response' });
+    }
+
+    //xoa du an theo maDanhMuc
+    xoaDanhMucTheomaDanhMuc(maDanhMuc): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.delete<any>(ConfigService.URL + "delete-danh-muc/" + maDanhMuc, httpOptions);
+    }
+
+    //them danh muc
+    themDanhMuc(DanhMuc): Observable<any> {
+        return this.http.post(ConfigService.URL + "add-danh-muc", DanhMuc);
+    }
+
+    //update du an
+    updateDanhMuc(DanhMuc): Observable<any> {
+        return this.http.put(ConfigService.URL + "update-danh-muc", DanhMuc);
     }
 }

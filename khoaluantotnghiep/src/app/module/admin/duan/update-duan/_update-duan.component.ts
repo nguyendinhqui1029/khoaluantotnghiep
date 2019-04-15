@@ -43,6 +43,8 @@ export class UpdateDuAnComponent implements OnInit {
     quanhuyen: any = "";
     ds_tinhthanhphofromMock: TINHTHANHPHO[] = ds_tinhthanhpho;
     tinhthanhphokhongdau: any = "";
+    formupdateDuan: FormGroup;
+
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
         private doiTacservice: DoiTacService, private tinhThanhpho: TinhThanhPhoService) {
         let id = this.rout.snapshot.params.id;
@@ -95,7 +97,6 @@ export class UpdateDuAnComponent implements OnInit {
         });
     }
 
-    formupdateDuan: FormGroup;
 
     ngOnInit(): void {
 

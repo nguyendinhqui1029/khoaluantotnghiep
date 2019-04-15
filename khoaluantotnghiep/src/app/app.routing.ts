@@ -44,6 +44,8 @@ import { EmployeeAuthGuard } from './auth/employee.guard';
 import { SubPageComponent } from './pages/sub-page/sub_page.component';
 import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
 import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
+import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_update-doitac.component';
+import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
 
 const routes: Routes = [
@@ -103,8 +105,10 @@ const routes: Routes = [
             { path: 'update-duan/:id', component: UpdateDuAnComponent },
             { path: 'them-danhmuc', component: ThemDanhMucComponent },
             { path: 'xoa-danhmuc', component: XoaDanhMucComponent },
+            { path: 'update-danhmuc/:id', component: UpdateDanhMucComponent },
             { path: 'them-doitac', component: ThemDoiTacComponent },
             { path: 'xoa-doitac', component: XoaDoiTacComponent },
+            { path: 'update-doitac/:id', component: UpdateDoiTacComponent },
             { path: 'them-gioithieu', component: ThemGioiThieuComponent },
             { path: 'xoa-gioithieu', component: XoaGioiThieuComponent },
             { path: 'them-loaigiaodich', component: ThemLoaiGiaoDichComponent },
