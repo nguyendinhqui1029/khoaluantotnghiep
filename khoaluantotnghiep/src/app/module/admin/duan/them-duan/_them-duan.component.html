@@ -46,14 +46,13 @@
                 <label class="control-label" for="tinhThanhPho">Tỉnh/TP</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        (change)="selectTinhThanhPho($event)" formControlName="tinhThanhPho"
-                        [ngClass]="{ 'is-invalid': submitted && f.tinhThanhPho.errors }">
+                    <select class="form-control" style="width: 80%;" (change)="selectTinhThanhPho($event)">
+                        <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Tỉnh/TP-----</option>
                         <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
                             {{item.d}}</option>
                     </select>
-                    <div *ngIf="submitted && f.tinhThanhPho.errors" class="invalid-feedback">
-                        <div *ngIf="f.tinhThanhPho.errors.required">Vui lòng chọn Tỉnh/TP</div>
+                    <div *ngIf="submitted && tinhthanhphocodau.length === 0" class="invalid-feedback">
+                        <div *ngIf="tinhthanhphocodau.length === 0">Vui lòng chọn Tỉnh/TP</div>
                     </div>
                 </div>
             </div>
@@ -61,14 +60,23 @@
                 <label class="control-label" for="quanHuyen">Quận/Huyện</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="quanHuyen"
-                        [ngClass]="{ 'is-invalid': submitted && f.quanHuyen.errors }">
+                    <select class="form-control" style="width: 80%;" (change)="selectQuanHuyen($event)">
+                        <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Quận/Huyện-----</option>
                         <option *ngFor="let item of ds_quan" value="{{item.tenquanhuyenkhongdau}}">
                             {{item.tenquanhuyencodau}}</option>
                     </select>
-                    <div *ngIf="submitted && f.quanHuyen.errors" class="invalid-feedback">
-                        <div *ngIf="f.quanHuyen.errors.required">Vui lòng chọn Quận/Huyện</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="quanHuyen">Loại Danh Mục</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" style="width: 80%;" formControlName="danhMuc">
+                        <option *ngFor="let item of ds_danhmuc" value="{{item.maDanhMuc}}">
+                            {{item.tenDanhMuc}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
+                        <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Danh Mục</div>
                     </div>
                 </div>
             </div>
@@ -76,29 +84,12 @@
                 <label class="control-label" for="quanHuyen">Loại Giao Dịch</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="loaiGiaoDich"
-                        [ngClass]="{ 'is-invalid': submitted && f.loaiGiaoDich.errors }">
-                        <option *ngFor="let item of ds_loaigiaodich" value="{{item}}">
-                            {{item.tenDanhMuc}}</option>
-                    </select>
-                    <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
-                        <div *ngIf="f.loaiGiaoDich.errors.required">Vui lòng chọn Loại giao dịch</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="quanHuyen">Loại Danh Mục</label><span
-                    style="color: red; margin-left: 3px">*</span>
-                <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="danhMuc"
-                        [ngClass]="{ 'is-invalid': submitted && f.danhMuc.errors }">
-                        <option *ngFor="let item of ds_danhmuc" value="{{item}}">
+                    <select class="form-control" style="width: 80%;" formControlName="loaiGiaoDich">
+                        <option *ngFor="let item of ds_loaigiaodich" value="{{item.maLoai}}">
                             {{item.tenLoai}}</option>
                     </select>
-                    <div *ngIf="submitted && f.danhMuc.errors" class="invalid-feedback">
-                        <div *ngIf="f.danhMuc.errors.required">Vui lòng chọn Loại Danh mục</div>
+                    <div *ngIf="submitted && f.loaiGiaoDich.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaiGiaoDich.errors.required">Vui lòng chọn Loại Giao Dịch</div>
                     </div>
                 </div>
             </div>
@@ -106,10 +97,8 @@
                 <label class="control-label" for="quanHuyen">Đối Tác</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="doiTac">
-
-                        <option *ngFor="let item of ds_doitac" value="{{item}}">
+                    <select class="form-control" style="width: 80%;" formControlName="doiTac">
+                        <option *ngFor="let item of ds_doitac" value="{{item.maDoiTac}}">
                             {{item.hoTen}}</option>
                     </select>
                     <div *ngIf="submitted && f.doiTac.errors" class="invalid-feedback">
@@ -121,32 +110,22 @@
                 <label class="control-label" for="quanHuyen">Trạng Thái</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control custom-select mr-sm-2" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="trangThai"
-                        [ngClass]="{ 'is-invalid': submitted && f.trangThai.errors }">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="trangThai"
+                        (change)="selectTrangThai($event)">
+                        <option *ngFor="let item of ds_trangthaiduan" value="{{item.matrangthai}}">
+                            {{item.tentrangthai}}
+                        </option>
                     </select>
-                    <div *ngIf="submitted && f.trangThai.errors" class="invalid-feedback">
-                        <div *ngIf="f.trangThai.errors.required">Vui lòng chọn Trạng thái</div>
-                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label" for="quanHuyen">Loại Dự Án</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <!-- <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
-                        ng-change="getDistricts(ProvinceId)" formControlName="loaiDuAn"
-                        [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }">
-                        <option value="1">Nổi bật</option>
-                    </select> -->
-                    <input type="text" style="width: 80%;" class="form-control" id="loaiDuAn" placeholder="Nổi Bật"
-                        formControlName="loaiDuAn" [ngClass]="{ 'is-invalid': submitted && f.loaiDuAn.errors }">
-                    <div *ngIf="submitted && f.loaiDuAn.errors" class="invalid-feedback">
-                        <div *ngIf="f.loaiDuAn.errors.required">Vui lòng nhập Loại dự án</div>
-                    </div>
+                    <select class="form-control" style="width: 80%;" formControlName="loaiDuAn">
+                        <option *ngFor="let item of ds_loaiduan" value="{{item.maLoai}}">
+                            {{item.tenLoai}}</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -181,6 +160,12 @@
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="mangHinh">
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div *ngIf="statusAdd.status" class="invalid-feedback">
+                    <div [innerHTML]="statusAdd.message"></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info" (click)="add()">Submit Dự Án</button>&nbsp;&nbsp;

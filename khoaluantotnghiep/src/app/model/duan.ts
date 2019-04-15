@@ -2,6 +2,7 @@ import { HINHANH } from './hinhanh';
 import { TAIKHOAN } from './taikhoan';
 import { LOAIGIAODICH } from './loaigiaodich';
 import { DANHMUC } from './danhmuc';
+import { DOITAC } from './doitac';
 
 export class DUAN {
     maDuAn: any;
@@ -10,7 +11,7 @@ export class DUAN {
     noiDungChiTiet: any;
     mangHinh: HINHANH[];
     ngayDang: any;
-    doiTac: TAIKHOAN;
+    doiTac: any;
     giaTien: any;
     loaiGiaoDich: LOAIGIAODICH;
     danhMuc: DANHMUC;

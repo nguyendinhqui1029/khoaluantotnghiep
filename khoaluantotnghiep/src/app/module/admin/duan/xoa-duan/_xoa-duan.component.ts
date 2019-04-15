@@ -21,7 +21,8 @@ export class XoaDuAnComponent implements OnInit {
 
     getListDuAn(): void {
         this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            this.ds_duan = duan.body
+            this.ds_duan = duan.body;
+            console.log(this.ds_duan);
         });
     }
 
@@ -32,9 +33,5 @@ export class XoaDuAnComponent implements OnInit {
             }
         });
     }
-    updateduan(value) {
-        console.log(value.maDuAn);
-        this.router.navigate(['admin/update-duan/' + value.maDuAn]);
-        this.duAnService.setValueThongTin(value);
-    }
+
 }
