@@ -1,3 +1,5 @@
+import { Serializable } from 'selenium-webdriver';
+
 export class DOITAC {
     maDoiTac: any;
     hoTen: any;

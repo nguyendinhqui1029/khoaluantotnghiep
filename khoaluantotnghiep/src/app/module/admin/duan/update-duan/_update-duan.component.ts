@@ -8,9 +8,14 @@ import { LOAIGIAODICH } from 'src/app/model/loaigiaodich';
 import { DOITAC } from 'src/app/model/doitac';
 import { TINHTHANHPHO } from 'src/app/model/tinhthanhpho';
 import { DANHMUC } from 'src/app/model/danhmuc';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DUAN } from 'src/app/model/duan';
 import { HINHANH } from 'src/app/model/hinhanh';
+import { TRANGTHAIDUAN } from 'src/app/model/trangthaiduan';
+import { LOAIDUAN } from 'src/app/model/loaiduan';
+import { ds_trangthaiduan } from 'src/app/model/mock_trangthaiduan';
+import { ds_loaiduan } from 'src/app/model/mock_loaiduan';
+import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 
 @Component({
     selector: 'update-duan',
@@ -18,42 +23,72 @@ import { HINHANH } from 'src/app/model/hinhanh';
     styleUrls: ['./_update-duan.component.scss']
 })
 export class UpdateDuAnComponent implements OnInit {
-    duan: any[] = [];
+    duan: any = {};
     ds_mangHinh: HINHANH[] = [];
     ds_loaigiaodich: LOAIGIAODICH[] = [];
     ds_doitac: DOITAC[] = [];
     ds_tinhthanhpho: TINHTHANHPHO[] = [];
     ds_quan: any[] = [];
     ds_danhmuc: DANHMUC[] = [];
+    ds_trangthaiduan: TRANGTHAIDUAN[] = ds_trangthaiduan; //lấy từ mock để show giá trị
+    ds_loaiduan1: LOAIDUAN[] = ds_loaiduan; //lấy từ mock để show giá trị
     submitted = false;
     statusUpdate: any = { "status": false, "message": "" };
     maduan: any = "";
-    constructor(private router: Router, private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
+    madoitac: any = "";
+    madanhmuc: any = "";
+    maloaigiaodich: any = "";
+    matrangthai: any = "";
+    loaiduan: any = "";
+    tinhthanhpho: any = "";
+    quanhuyen: any = "";
+    ds_tinhthanhphofromMock: TINHTHANHPHO[] = ds_tinhthanhpho;
+    tinhthanhphokhongdau: any = "";
+    constructor(private rout: ActivatedRoute, private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
         private doiTacservice: DoiTacService, private tinhThanhpho: TinhThanhPhoService) {
-        this.duAnService.getThongTin.subscribe(da => {
-            this.duan = da;
-            this.maduan = da.maDuAn;
+        let id = this.rout.snapshot.params.id;
+        this.formupdateDuan = this.fb.group({
+            tenDuAn: ['', [Validators.required]],
+            noiDungTomTat: ['', [Validators.required]],
+            noiDungChiTiet: ['', [Validators.required]],
+            ngayDang: ['', [Validators.required]],
+            doiTac: [{}, [Validators.required]],
+            giaTien: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
+            loaiGiaoDich: [{}, [Validators.required]],
+            danhMuc: [{}, [Validators.required]],
+            quanHuyen: ['', [Validators.required]],
+            tinhThanhPho: ['', [Validators.required]],
+            trangThai: ['', [Validators.required]],
+            loaiDuAn: ['', [Validators.required]],
+        });
+        this.duAnService.getDuAnTheoMaDuAn(id).subscribe(da => {
+            this.duan = da.body[0];
+            this.formupdateDuan.controls.tenDuAn.setValue(this.duan.tenDuAn);
+            this.formupdateDuan.controls.noiDungTomTat.setValue(this.duan.noiDungTomTat);
+            this.formupdateDuan.controls.noiDungChiTiet.setValue(this.duan.noiDungChiTiet);
+            this.formupdateDuan.controls.giaTien.setValue(this.duan.giaTien);
+            this.formupdateDuan.controls.ngayDang.setValue(this.duan.ngayDang.substr(0, 10));
             console.log(this.duan);
-        })
+            this.madoitac = this.duan.doiTac.maDoiTac;
+            this.maloaigiaodich = this.duan.loaiGiaoDich.maLoai;
+            this.madanhmuc = this.duan.danhMuc.maDanhMuc;
+            this.matrangthai = this.duan.trangThai;
+            this.loaiduan = this.duan.loaiDuAn;
+            this.tinhthanhpho = this.duan.tinhThanhPho;
+            this.quanhuyen = this.duan.quanHuyen;
+            this.ds_tinhthanhphofromMock.forEach(tinh => {
+                if (this.tinhthanhpho === tinh.tenTinhThanhPhoCodau) {
+                    this.tinhthanhphokhongdau = tinh.tenTinhThanhPhoKhongdau;
+                }
+            })
+            this.ds_quan = this.tinhThanhpho.layQuanHuyen(this.tinhthanhphokhongdau);
+        });
     }
 
     formupdateDuan: FormGroup;
 
     ngOnInit(): void {
-        this.formupdateDuan = this.fb.group({
-            tenDuAn: [' ', [Validators.required]],
-            noiDungTomTat: [' ', [Validators.required]],
-            noiDungChiTiet: [' ', [Validators.required]],
-            ngayDang: [' ', [Validators.required]],
-            doiTac: [' ', [Validators.required]],
-            giaTien: ['0', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
-            loaiGiaoDich: [' ', [Validators.required]],
-            danhMuc: [' ', [Validators.required]],
-            quanHuyen: [' ', [Validators.required]],
-            tinhThanhPho: [' ', [Validators.required]],
-            trangThai: [' ', [Validators.required]],
-            loaiDuAn: [' ', [Validators.required]],
-        });
+
         this.getDSDanhMuc();
         this.getDSDoiTac();
         this.getDSTinhThanhPho();
@@ -61,9 +96,8 @@ export class UpdateDuAnComponent implements OnInit {
 
     }
     getDSDanhMuc() {
-        this.loaiGiaodichservice.getAllLoaiGiaoDich(0).subscribe(loaigiaodich => {
-            this.ds_loaigiaodich = loaigiaodich.body;
-            console.log(this.ds_loaigiaodich);
+        this.loaiGiaodichservice.getAllLoaiGiaoDich(0).subscribe(danhmuc => {
+            this.ds_danhmuc = danhmuc.body;
         })
     }
     getDSDoiTac() {
@@ -79,10 +113,13 @@ export class UpdateDuAnComponent implements OnInit {
     selectTinhThanhPho(e) {
         this.ds_quan = this.tinhThanhpho.layQuanHuyen(e.target.value);
     }
+
+    selectQuanHuyen(e) {
+
+    }
     getDSLoaiGiaoDich() {
-        this.loaiGiaodichservice.getDSTenLoaiDanhMuc(0).subscribe(loaidanhmuc => {
-            this.ds_danhmuc = loaidanhmuc.body;
-            console.log(this.ds_danhmuc);
+        this.loaiGiaodichservice.getDSTenLoaiDanhMuc(0).subscribe(loaigiaodich => {
+            this.ds_loaigiaodich = loaigiaodich.body;
         })
     }
     ngAfterViewInit() {
@@ -90,7 +127,9 @@ export class UpdateDuAnComponent implements OnInit {
         $(document).ready(function () {
             $('#filterDate2').datepicker({
                 uiLibrary: 'bootstrap',
-                format: 'yyyy-mm-dd'
+                format: 'yyyy-mm-dd',
+                todayHighlight: true,
+                minDate: 0,
             });
         });
     }
