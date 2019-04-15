@@ -113,15 +113,7 @@ export class DuAnService {
 
     //them du an
     themDuAn(duAn): Observable<any> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
-                'Access-Control-Allow-Credentials': 'true'
-            })
-        };
-        return this.http.post(ConfigService.URL + "add-du-an", duAn, httpOptions);
+        return this.http.post(ConfigService.URL + "add-du-an", duAn);
     }
 
     //update du an

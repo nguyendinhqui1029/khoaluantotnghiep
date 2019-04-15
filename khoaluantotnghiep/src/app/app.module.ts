@@ -105,6 +105,7 @@ import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-dua
 import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
 import { MakeUpDateService } from './service/makeupdata.service';
 
+import { CKEditorModule } from 'ngx-ckeditor';
 
 
 
@@ -144,7 +145,7 @@ import { MakeUpDateService } from './service/makeupdata.service';
     , EmployeeThemDuAnComponent, MakeUpDataComponent
   ],
   imports: [
-    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule
+    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
