@@ -204,7 +204,7 @@ export class ThemDuAnComponent implements OnInit {
 
     get f() { return this.formthemDuan.controls };
     add() {
-        // this.submitted = true;
+        this.submitted = true;
         let tenDuAn = this.formthemDuan.controls.tenDuAn.value;
         let noiDungTomTat = this.formthemDuan.controls.noiDungTomTat.value;
         let noiDungChiTiet = this.formthemDuan.controls.noiDungChiTiet.value;
