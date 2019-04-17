@@ -169,15 +169,14 @@ export class UpdateDoiTacComponent implements OnInit {
                 user, pass, loaiTaiKhoan, email);
         }
         console.log(doitacpdate);
-
-        this.doiTacService.updateDoiTac(doitacpdate).subscribe(res => {
-            console.log(res);
-            this.statusUpdate.status = true;
-            this.statusUpdate.message = "Đối Tác đã được Cập Nhật";
-        });
-
         if (this.formUpdateDoiTac.invalid) {
             return;
+        } else if (this.formUpdateDoiTac.valid) {
+            this.doiTacService.updateDoiTac(doitacpdate).subscribe(res => {
+                console.log(res);
+                this.statusUpdate.status = true;
+                this.statusUpdate.message = "Đối Tác đã được Cập Nhật";
+            });
         }
     }
 }

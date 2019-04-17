@@ -44,7 +44,6 @@ export class UpdateDanhMucComponent implements OnInit {
 
     getDSTrangThaiDuAn() {
         this.ds_trangthaiduan = ds_trangthaiduan; //lấy từ mock để show giá trị
-
     }
 
     update() {

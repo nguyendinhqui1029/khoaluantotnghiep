@@ -1,8 +1,8 @@
 <div class="row" style=" margin-top: -8px">
-    <form id="form-add-duan" ng-submit="add()" [formGroup]="formthemGioiThieu">
+    <form id="form-add-duan" ng-submit="add()" [formGroup]="formUpdateGioiThieu">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="headeradmenu">
-                <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM GIỚI THIỆU</h1>
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>CẬP NHẬT GIỚI THIỆU</h1>
             </div>
             <div class="form-group" style="margin-top: 5px">
                 <label class="control-label" for="tieude">Tiêu Đề</label><span
@@ -24,7 +24,7 @@
                         [ngClass]="{ 'is-invalid': submitted && f.noidung.errors }">
                     </ck-editor>
                     <!-- <textarea class="form-control" id="noidung" rows="4" style="width: 80%" formControlName="noidung"
-                        [ngClass]="{ 'is-invalid': submitted && f.noidung.errors }"></textarea> -->
+                            [ngClass]="{ 'is-invalid': submitted && f.noidung.errors }"></textarea> -->
                     <div *ngIf="submitted && f.noidung.errors" class="invalid-feedback2">
                         <div *ngIf="f.noidung.errors.required">Vui lòng nhập Nội dung</div>
                     </div>
@@ -39,11 +39,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                <div *ngIf="statusUpdate.status" class="invalid-feedback">
+                    <div [innerHTML]="statusUpdate.message"></div>
                 </div>
             </div>
-            <button type=" submit" class="btn btn-info" (click)="add()">Submit Giới Thiệu</button>&nbsp;&nbsp;
+            <button type=" submit" class="btn btn-info" (click)="update()">Update Giới Thiệu</button>&nbsp;&nbsp;
             <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">

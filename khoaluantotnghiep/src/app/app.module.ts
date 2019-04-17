@@ -108,6 +108,9 @@ import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_upda
 import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
 import { CKEditorModule } from 'ngx-ckeditor';
+import { UpdateGioiThieuComponent } from './module/admin/gioithieu/update-gioithieu/_update-gioithieu.component';
+import { UpdateLoaiGiaoDichComponent } from './module/admin/loaigiaodich/update-loaigiaodich/_update-loaigiaodich.component';
+import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loaitintuc/_update-loaitintuc.component';
 
 
 
@@ -134,10 +137,10 @@ import { CKEditorModule } from 'ngx-ckeditor';
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
-    ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent,
+    ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent, UpdateLoaiGiaoDichComponent,
     ThemDanhMucComponent, XoaDanhMucComponent, UpdateDanhMucComponent,
-    ThemLoaiTinTucComponent, XoaLoaiTinTucComponent,
-    ThemGioiThieuComponent, XoaGioiThieuComponent,
+    ThemLoaiTinTucComponent, XoaLoaiTinTucComponent, UpdateLoaiTinTucComponent,
+    ThemGioiThieuComponent, XoaGioiThieuComponent, UpdateGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent,
     ThemTinTucComponent, XoaTinTucComponent
 
