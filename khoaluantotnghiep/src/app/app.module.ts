@@ -104,9 +104,14 @@ import { HinhAnhChiTietComponent } from './module/du-an-chi-tiet/hinh-anh-chi-ti
 import { UpdateDuAnComponent } from './module/admin/duan/update-duan/_update-duan.component';
 import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdata.component';
 import { MakeUpDateService } from './service/makeupdata.service';
+import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_update-doitac.component';
+import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
 import { CKEditorModule } from 'ngx-ckeditor';
 import { SafeHtmlPipe } from './pipe/SafeHtmlPipe';
+import { UpdateGioiThieuComponent } from './module/admin/gioithieu/update-gioithieu/_update-gioithieu.component';
+import { UpdateLoaiGiaoDichComponent } from './module/admin/loaigiaodich/update-loaigiaodich/_update-loaigiaodich.component';
+import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loaitintuc/_update-loaitintuc.component';
 
 
 
@@ -132,11 +137,11 @@ import { SafeHtmlPipe } from './pipe/SafeHtmlPipe';
     //Admin
     AdminComponent, ThemMenuComponent, XoaMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
-    ThemDoiTacComponent, XoaDoiTacComponent,
-    ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent,
-    ThemDanhMucComponent, XoaDanhMucComponent,
-    ThemLoaiTinTucComponent, XoaLoaiTinTucComponent,
-    ThemGioiThieuComponent, XoaGioiThieuComponent,
+    ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
+    ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent, UpdateLoaiGiaoDichComponent,
+    ThemDanhMucComponent, XoaDanhMucComponent, UpdateDanhMucComponent,
+    ThemLoaiTinTucComponent, XoaLoaiTinTucComponent, UpdateLoaiTinTucComponent,
+    ThemGioiThieuComponent, XoaGioiThieuComponent, UpdateGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent,
     ThemTinTucComponent, XoaTinTucComponent
 

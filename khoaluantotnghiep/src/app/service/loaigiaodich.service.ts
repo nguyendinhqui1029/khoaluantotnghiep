@@ -21,4 +21,28 @@ export class LoaiGiaoDichService {
     getDSTenLoaiDanhMuc(trangthai): Observable<HttpResponse<LOAIGIAODICH[]>> {
         return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-loai-giao-dich/" + trangthai, { observe: 'response' });
     }
+
+    getLoaiGiaoDichtheoMaLoai(id): Observable<HttpResponse<LOAIGIAODICH[]>> {
+        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-loai-giao-dich/" + id, { observe: 'response' });
+    }
+
+    //xoa loai giao dich
+    xoaLoaiGiaoDichTheomaLoai(maLoaiGiaoDich): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.delete<any>(ConfigService.URL + "delete-loai-giao-dich/" + maLoaiGiaoDich, httpOptions);
+    }
+
+    //them loai giao dich
+    themLoaiGiaoDich(LoaiGiaoDich): Observable<any> {
+        return this.http.post(ConfigService.URL + "add-loai-giao-dich", LoaiGiaoDich);
+    }
+
+    //update loai giao dich
+    updateLoaiGiaoDich(LoaiGiaoDich): Observable<any> {
+        return this.http.put(ConfigService.URL + "update-loai-giao-dich", LoaiGiaoDich);
+    }
 }

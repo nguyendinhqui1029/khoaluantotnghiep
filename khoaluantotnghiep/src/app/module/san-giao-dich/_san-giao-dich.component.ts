@@ -31,7 +31,7 @@ export class SanGiaoDichModuleComponent implements OnInit {
     ds_page: any[] = [];
     soItemTrang: number = 5;
     getDSDanhMuc() {
-        this.Danhmucservice.getDSDanhMuc().subscribe(danhmuc => {
+        this.Danhmucservice.getDSDanhMuc(ConfigService.TRANG_THAI_DANHMUC.TATCA).subscribe(danhmuc => {
             this.ds_danhmuc = danhmuc.body;
         });
     }
