@@ -106,6 +106,7 @@ import { MakeUpDataComponent } from './module/admin/make_up_data_local/makeupdat
 import { MakeUpDateService } from './service/makeupdata.service';
 
 import { CKEditorModule } from 'ngx-ckeditor';
+import { SafeHtmlPipe } from './pipe/SafeHtmlPipe';
 
 
 
@@ -142,7 +143,7 @@ import { CKEditorModule } from 'ngx-ckeditor';
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
-    , EmployeeThemDuAnComponent, MakeUpDataComponent
+    , EmployeeThemDuAnComponent, MakeUpDataComponent, SafeHtmlPipe
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule
