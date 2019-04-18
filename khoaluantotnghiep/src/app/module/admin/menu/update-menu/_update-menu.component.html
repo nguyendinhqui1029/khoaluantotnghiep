@@ -1,8 +1,8 @@
 <div class="row" style=" margin-top: -8px">
-    <form id="form-add-menu" ng-submit="add()" [formGroup]="formthemMenu">
+    <form id="form-add-menu" ng-submit="add()" [formGroup]="formUpdateMenu">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="headeradmenu">
-                <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM MENU</h1>
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>CẬP NHẬT MENU</h1>
             </div>
             <div class="form-group">
                 <label for="Name">Tên Menu</label><span style="color: red; margin-left: 3px">*</span>
@@ -29,7 +29,8 @@
                 <label for="Name">Trạng Thái Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="statusmenu">
-                        <option *ngFor="let item of ds_status" value="{{item.id}}">
+                        <option *ngFor="let item of ds_status" [selected]="item.id == statusmenu ? true : false"
+                            value="{{item.id}}">
                             {{item.value}}
                         </option>
                     </select>
@@ -52,7 +53,8 @@
                 <label for="Name">Loại Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="typemenu">
-                        <option *ngFor="let item of ds_loaimenu" value="{{item.maloai}}">
+                        <option *ngFor="let item of ds_loaimenu" [selected]="item.maloai == typemenu ? true : false"
+                            value="{{item.maloai}}">
                             {{item.maloai}}
                         </option>
                     </select>
@@ -63,11 +65,11 @@
             </div>
 
             <div class="form-group">
-                <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                <div *ngIf="statusUpdate.status" class="invalid-feedback">
+                    <div [innerHTML]="statusUpdate.message"></div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-info" (click)="add()">Submit Menu</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-info" (click)="update()">Submit Menu</button>&nbsp;&nbsp;
             <button type="reset" class="btn btn-info">Reset Menu</button>&nbsp;&nbsp;
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">

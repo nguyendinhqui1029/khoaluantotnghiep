@@ -30,11 +30,13 @@
                     <td data-th="Trạng Thái">{{item.trangthai}}</td>
                     <td data-th="Ngày Đăng">{{item.ngaydang}}</td>
                     <td data-th="Loại Tin">{{item.loaitintuc.tenloai}}</td>
-                    <td data-th="Cài Đặt"><a href="#" class="tooltipquy"><i class="fa fa-trash"
+                    <td data-th="Cài Đặt"><a href="javaScript:void(0)" (click)="deletetintuc(item.matintuc)"
+                            class="tooltipquy"><i class="fa fa-trash"
                                 style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
                                 class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                            href="#" class="tooltipquy"><i class="fa fa-edit"
-                                style="font-size: 190%;color: white"></i><span class="tooltiptextquy">Sửa</span></a>
+                            [routerLink]="['/admin/update-tintuc', item.matintuc]" class="tooltipquy"><i
+                                class="fa fa-edit" style="font-size: 190%;color: white"></i><span
+                                class="tooltiptextquy">Sửa</span></a>
                     </td>
                 </tr>
             </table>

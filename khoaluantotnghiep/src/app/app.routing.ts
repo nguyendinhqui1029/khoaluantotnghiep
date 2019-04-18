@@ -49,6 +49,9 @@ import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_u
 import { UpdateGioiThieuComponent } from './module/admin/gioithieu/update-gioithieu/_update-gioithieu.component';
 import { UpdateLoaiGiaoDichComponent } from './module/admin/loaigiaodich/update-loaigiaodich/_update-loaigiaodich.component';
 import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loaitintuc/_update-loaitintuc.component';
+import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_update-tintuc.component';
+import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
+import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
 
 
 const routes: Routes = [
@@ -123,10 +126,13 @@ const routes: Routes = [
             { path: 'update-loaitintuc/:id', component: UpdateLoaiTinTucComponent },
             { path: 'them-menu', component: ThemMenuComponent },
             { path: 'xoa-menu', component: XoaMenuComponent },
+            { path: 'update-menu/:id', component: UpdateMenuComponent },
             { path: 'them-taikhoan', component: ThemTaiKhoanComponent },
             { path: 'xoa-taikhoan', component: XoaTaiKhoanComponent },
+            { path: 'update-taikhoan/:id', component: UpdateTaiKhoanComponent },
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
+            { path: 'update-tintuc/:id', component: UpdateTinTucComponent },
             { path: 'make-up-data', component: MakeUpDataComponent }
 
         ],

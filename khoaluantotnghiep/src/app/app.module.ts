@@ -111,6 +111,10 @@ import { CKEditorModule } from 'ngx-ckeditor';
 import { UpdateGioiThieuComponent } from './module/admin/gioithieu/update-gioithieu/_update-gioithieu.component';
 import { UpdateLoaiGiaoDichComponent } from './module/admin/loaigiaodich/update-loaigiaodich/_update-loaigiaodich.component';
 import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loaitintuc/_update-loaitintuc.component';
+import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_update-tintuc.component';
+import { TaiKhoanService } from './service/taikhoan.service';
+import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
+import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
 
 
 
@@ -134,15 +138,15 @@ import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loai
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
     //Admin
-    AdminComponent, ThemMenuComponent, XoaMenuComponent,
+    AdminComponent, ThemMenuComponent, XoaMenuComponent,UpdateMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
     ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent, UpdateLoaiGiaoDichComponent,
     ThemDanhMucComponent, XoaDanhMucComponent, UpdateDanhMucComponent,
     ThemLoaiTinTucComponent, XoaLoaiTinTucComponent, UpdateLoaiTinTucComponent,
     ThemGioiThieuComponent, XoaGioiThieuComponent, UpdateGioiThieuComponent,
-    ThemTaiKhoanComponent, XoaTaiKhoanComponent,
-    ThemTinTucComponent, XoaTinTucComponent
+    ThemTaiKhoanComponent, XoaTaiKhoanComponent, UpdateTaiKhoanComponent,
+    ThemTinTucComponent, XoaTinTucComponent, UpdateTinTucComponent
 
     //ADmin khach hang
     , CustomerThemDuAnComponent
@@ -154,7 +158,7 @@ import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loai
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
-    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService,
+    SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, TaiKhoanService,
     AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService],
   bootstrap: [AppComponent]
 })
