@@ -108,6 +108,7 @@ import { UpdateDoiTacComponent } from './module/admin/doitac/update-doitac/_upda
 import { UpdateDanhMucComponent } from './module/admin/danhmuc/update-danhmuc/_update-danhmuc.component';
 
 import { CKEditorModule } from 'ngx-ckeditor';
+import { SafeHtmlPipe } from './pipe/SafeHtmlPipe';
 import { UpdateGioiThieuComponent } from './module/admin/gioithieu/update-gioithieu/_update-gioithieu.component';
 import { UpdateLoaiGiaoDichComponent } from './module/admin/loaigiaodich/update-loaigiaodich/_update-loaigiaodich.component';
 import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loaitintuc/_update-loaitintuc.component';
@@ -151,7 +152,7 @@ import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-men
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
-    , EmployeeThemDuAnComponent, MakeUpDataComponent
+    , EmployeeThemDuAnComponent, MakeUpDataComponent, SafeHtmlPipe
   ],
   imports: [
     BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule
