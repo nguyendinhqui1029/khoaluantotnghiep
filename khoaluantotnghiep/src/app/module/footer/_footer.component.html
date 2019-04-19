@@ -5,33 +5,13 @@
                 <div class="footer-box col-md-3 col-sm-12 col-xs-12">
                     <div class="item">
                         <h3>
-                            <span>Th&#244;ng tin địa ốc</span>
+                            <span>Các Loại Danh Mục</span>
                         </h3>
                     </div>
                     <ul>
-                        <li>
-                            <a href="tin-tuc.html">
-                                Thị trường địa ốc
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tin-tuc.html">
-                                Hoạt động cộng đồng
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tin-tuc.html">
-                                Ch&#237;nh s&#225;ch - Quy hoạch
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tin-tuc.html">
-                                T&#224;i ch&#237;nh - Chứng kho&#225;ng
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tin-tuc.html">
-                                Bất động sản thế giới
+                        <li *ngFor="let item of ds_danhmuc">
+                            <a href="javaScript:void(0)">
+                                {{item.tenDanhMuc}}
                             </a>
                         </li>
                     </ul>
@@ -39,33 +19,13 @@
                 <div class="footer-box col-md-3 col-sm-12 col-xs-12">
                     <div class="item">
                         <h3>
-                            <span>Si&#234;u thị địa ốc</span>
+                            <span>Các Loại Giao Dịch</span>
                         </h3>
                     </div>
                     <ul>
-                        <li>
-                            <a href="san-giao-dich.html">
-                                Chung cư
-                            </a>
-                        </li>
-                        <li>
-                            <a href="san-giao-dich.html">
-                                Nh&#224; phố
-                            </a>
-                        </li>
-                        <li>
-                            <a href="san-giao-dich.html">
-                                Đất thổ cư
-                            </a>
-                        </li>
-                        <li>
-                            <a href="san-giao-dich.html">
-                                Đất dự &#225;n
-                            </a>
-                        </li>
-                        <li>
-                            <a href="san-giao-dich.html">
-                                Phong thủy
+                        <li *ngFor="let item of ds_loaigiaodich">
+                            <a href="javaScript:void(0)">
+                                {{item.tenLoai}}
                             </a>
                         </li>
                     </ul>
@@ -76,15 +36,15 @@
                             Thông tin công ty
                         </h3>
                         <div class="box-address-content">
-                            <b>{{congty.tenCongTy}}</b>
-                            <p><i class="fa fa-map-marker"></i> {{congty.diaChiCongTy}}</p>
+                            <b>{{thongtinCT.tenCongTy}}</b>
+                            <p><i class="fa fa-map-marker"></i> {{thongtinCT.diaChiCongTy}}</p>
                             <p>
                                 <i class="fa fa-envelope"></i>
-                                <a href="{{congty.emailChiCongTy}}">{{congty.emailCongTy}}</a>
+                                <a [routerLink]="['/lien-he']">{{thongtinCT.emailCongTy}}</a>
                             </p>
                             <p>
                                 <i class="fa fa-phone"></i>
-                                Phone: {{congty.soDienThoaiCongTy}}
+                                Phone: {{thongtinCT.soDienThoaiCongTy}}
                             </p>
                         </div>
                     </div>
