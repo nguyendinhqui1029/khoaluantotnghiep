@@ -28,7 +28,7 @@
                     <td data-th="Mã Tin Tức">{{item.matintuc}}</td>
                     <td data-th="Tên Tin Tức">{{item.tentintuc}}</td>
                     <td data-th="Trạng Thái">{{item.trangthai}}</td>
-                    <td data-th="Ngày Đăng">{{item.ngaydang}}</td>
+                    <td data-th="Ngày Đăng">{{item.ngaydang | date:"dd-MM-yyyy"}}</td>
                     <td data-th="Loại Tin">{{item.loaitintuc.tenloai}}</td>
                     <td data-th="Cài Đặt"><a href="javaScript:void(0)" (click)="deletetintuc(item.matintuc)"
                             class="tooltipquy"><i class="fa fa-trash"

@@ -96,6 +96,18 @@ export class MakeUpDateService {
         return this.http.post(this.URLLOCAL + "add-menu", menu);
     }
     /////////////////////////////////////////
+    /////////////////////////////////////////
+    getDsLoaiTinTuc(): Observable<HttpResponse<MENU[]>> {
+        return this.http.get<MENU[]>(ConfigService.URL + "get-all-loai-tin-tuc/" + ConfigService.LOAI_TIN_TUC.TATCA, { observe: 'response' });
+    }
+    getLoaiTinTucLocal(): Observable<HttpResponse<MENU[]>> {
+        return this.http.get<MENU[]>(this.URLLOCAL + "get-all-loai-tin-tuc/" + ConfigService.LOAI_TIN_TUC.TATCA, { observe: 'response' });
+
+    }
+    themLoaiTinTucLoCal(loaitintuc): Observable<any> {
+        return this.http.post(this.URLLOCAL + "add-loai-tin-tuc", loaitintuc);
+    }
+    /////////////////////////////////////////
     getListSliderTheoTrangThai(): Observable<HttpResponse<SLIDER[]>> {
         return this.http.get<SLIDER[]>(ConfigService.URL + "get-all-slider/1", { observe: 'response' });
     }
@@ -119,20 +131,29 @@ export class MakeUpDateService {
     }
     ////////////////////////////////////////
     getAllLoaiGiaoDich(): Observable<HttpResponse<LOAIGIAODICH[]>> {
-        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-danh-muc/" + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
+        return this.http.get<LOAIGIAODICH[]>(ConfigService.URL + "get-all-loai-giao-dich/" + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
     }
     getAllLoaiGiaoDichLoCal(): Observable<HttpResponse<LOAIGIAODICH[]>> {
-        return this.http.get<LOAIGIAODICH[]>(this.URLLOCAL + "get-all-danh-muc/" + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
+        return this.http.get<LOAIGIAODICH[]>(this.URLLOCAL + "get-all-loai-giao-dich/" + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
     }
     themLoaiGiaoDichLoCal(danhmuc): Observable<any> {
-        return this.http.post(this.URLLOCAL + "add-danh-muc", danhmuc);
+        return this.http.post(this.URLLOCAL + "add-loai-giao-dich", danhmuc);
     }
     ///////////////////////////////////////
     isMakeUpData(arrhost, arrlocal): any {
         let arrTam: any[] = [];
         let tongso: any = 0;
         let itemnew: any = 0;
-        if (arrhost.length > arrlocal.length) {
+        let tongitemlocal: any = 0;
+        let tongitemhost: any = 0;
+        if (arrlocal && arrhost) {
+            tongitemlocal = arrlocal.length;
+            tongitemhost = arrhost.length;
+
+            itemnew = arrlocal.length;
+            tongso = arrhost.length;
+        }
+        if (tongitemhost > tongitemlocal) {
             arrhost.forEach(eHost => {
                 var dem = 0;
                 arrlocal.forEach(eLocal => {
@@ -142,11 +163,12 @@ export class MakeUpDateService {
                 });
                 if (dem === 0) {
                     arrTam.push(eHost);
+
                 }
             });
+
         }
-        itemnew = (arrhost.length - arrlocal.length);
-        tongso = arrhost.length;
+
         return { tongitem: tongso, itemnew: itemnew, arr: arrTam };
     }
 }

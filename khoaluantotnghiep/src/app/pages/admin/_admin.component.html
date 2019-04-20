@@ -26,7 +26,13 @@
                                 <small>Trở lại Trang chủ</small>
                             </a>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
+                            <a [routerLink]="[ '/admin']" class="active">
+                                <i class="fa fa-pie-chart"></i> <strong>Thống Kê</strong>
+                                <small>Chi tiết Thống Kê</small>
+                            </a>
+                        </li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-edit"></i>
                                 <strong>Menu</strong>
@@ -42,7 +48,7 @@
                                         Menu</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-tasks"></i>
                                 <strong>Bài Đăng</strong>
@@ -55,7 +61,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a [routerLink]="[ '/admin']" class="active">
+                            <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-briefcase"></i>
                                 <strong>Dự Án</strong>
                                 <small>Cài đặt Dự Án</small>
@@ -69,7 +75,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-slideshare"></i>
                                 <strong>Đối Tác</strong>
@@ -84,21 +90,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
-                                <!-- <i class="fa fa-comments-o"></i> -->
-                                <i class="fa fa-building"></i>
-                                <strong>Công Ty</strong>
-                                <small>Cài đặt Công Ty</small>
+                                <i class="fa fa-user"></i>
+                                <strong>Nhân Viên</strong>
+                                <small>Quản lý Nhân viên</small>
                             </a>
                             <ul>
                                 <li><a [routerLink]="[ '/admin']"><i class="fa fa-plus-square"
-                                            style="margin-top: 5px"></i>Thêm Công Ty</a></li>
+                                            style="margin-top: 5px"></i>Thêm Nhân Viên</a></li>
                                 <li><a [routerLink]="[ '/admin']"><i class="fa fa-list-alt"
-                                            style="margin-top: 5px"></i>List Công Ty</a></li>
+                                            style="margin-top: 5px"></i>List Nhân Viên</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <!-- <i class="fas fa-list-ol"></i> -->
                                 <i class="fa fa-list-ol"></i>
@@ -114,7 +119,7 @@
                                         Mục</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-comments-o"></i>
                                 <strong>Tin Tức</strong>
@@ -129,7 +134,7 @@
                                         Tức</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-user"></i>
                                 <strong>Tài Khoản</strong>
@@ -144,7 +149,7 @@
                                         Khoản</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3 || role === 2">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-question-circle"></i>
                                 <strong>Giới Thiệu</strong>
@@ -159,7 +164,7 @@
                                         Thiệu</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-credit-card"></i>
                                 <strong>Giao Dịch</strong>
@@ -174,7 +179,7 @@
                                         Dịch</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li *ngIf="role === 3">
                             <a [routerLink]="[ '/admin']">
                                 <i class="fa fa-envelope-o"></i>
                                 <strong>Loại Tin Tức</strong>
@@ -206,40 +211,17 @@
             style="text-align: right; background: -webkit-radial-gradient(center right, circle farthest-side, #ffffff 0%, rgb(139, 193, 238) 100%);margin-left: -6%">
             <span>
                 <!-- notifycation -->
-                <div class="navbar-custom-menu hidden-xs hidden-sm" style="padding-left: 60%">
-                    <ul class="nav navbar-nav">
-                        <!-- Messages: style can be found in dropdown.less-->
-                        <li class="dropdown messages-menu">
-                            <a class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">4</span>
-                            </a>
-                        </li>
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">10</span>
-                            </a>
-                        </li>
-                        <!-- Tasks: style can be found in dropdown.less -->
-                        <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-flag-o"></i>
-                                <span class="label label-danger">9</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
                 <!--end notifycation -->
 
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text hidden-xs hidden-sm">ADMIN: Trương Hồng Quý</p>
+                        <p class="card-text hidden-xs hidden-sm">Quản Trị: Trương Hồng Quý</p>
                     </div>
                 </div>
                 <div class="card" style="text-align: right; padding-right: 3%">
-                    <img src="../../../assets/images/icon/admin.jpg" class="circle" style="max-width: 40px; " />
+                    <img src="../../../assets/images/icon/avartar-default.jpg" class="circle"
+                        style="max-width: 40px; " />
                     <p class="card-text hidden-xs hidden-sm"><small class="text-muted"><a href="#"> <i
                                     class="fa fa-circle text-success"></i>Online</a></small></p>
                 </div>
