@@ -34,7 +34,7 @@ export class ThemDuAnComponent implements OnInit {
     ds_trangthaiduan: TRANGTHAIDUAN[] = [];
     ds_loaiduan: LOAIDUAN[] = []; //lấy từ mock để show giá trị
     danhmucduocchon = new DANHMUC("", "", "", "");
-    doitacduocchon = new DOITAC("", "", "", "", "", "", "", "", "", "", "", "", "");
+    doitacduocchon = new DOITAC("", "", "", "", "", "", "", "", "", "", "", "", "", "");
     loaigiaodichduocchon = new LOAIGIAODICH("", "", "");
     trangthaiduocchon = new TRANGTHAIDUAN("", "");
     tentrangthaiduocchon: any = "";

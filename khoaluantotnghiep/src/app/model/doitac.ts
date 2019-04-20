@@ -14,7 +14,9 @@ export class DOITAC {
     pass: any;
     loaiTaiKhoan: any;
     email: any;
-    constructor(maDoiTac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, loGo, moTa, user, pass, loaiTaiKhoan, email) {
+    trangThai: any;
+    constructor(maDoiTac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, loGo, moTa, user, pass, loaiTaiKhoan, email,
+        trangThai) {
         this.maDoiTac = maDoiTac;
         this.hoTen = hoTen;
         this.diaChi = diaChi;
@@ -28,5 +30,6 @@ export class DOITAC {
         this.pass = pass;
         this.loaiTaiKhoan = loaiTaiKhoan;
         this.email = email;
+        this.trangThai = trangThai;
     }
 }

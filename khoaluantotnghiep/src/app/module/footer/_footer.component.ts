@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
     // congty: CONGTY = congTy;
     ds_loaigiaodich: LOAIGIAODICH[] = [];
     ds_danhmuc: DANHMUC[] = [];
-    thongtinCT: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "");
+    thongtinCT: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "", "");
 
     constructor(private LoaigiaodichService: LoaiGiaoDichService, private danhMucService: DanhMucService,
         private congTyService: CongTyService) { }
