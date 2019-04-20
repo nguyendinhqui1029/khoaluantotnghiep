@@ -116,6 +116,7 @@ import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_upda
 import { TaiKhoanService } from './service/taikhoan.service';
 import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
 import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
+import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang.component';
 
 
 
@@ -139,7 +140,7 @@ import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-men
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
     //Admin
-    AdminComponent, ThemMenuComponent, XoaMenuComponent,UpdateMenuComponent,
+    AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
     ThemLoaiGiaoDichComponent, XoaLoaiGiaoDichComponent, UpdateLoaiGiaoDichComponent,
@@ -147,8 +148,8 @@ import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-men
     ThemLoaiTinTucComponent, XoaLoaiTinTucComponent, UpdateLoaiTinTucComponent,
     ThemGioiThieuComponent, XoaGioiThieuComponent, UpdateGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent, UpdateTaiKhoanComponent,
-    ThemTinTucComponent, XoaTinTucComponent, UpdateTinTucComponent
-
+    ThemTinTucComponent, XoaTinTucComponent, UpdateTinTucComponent,
+    DuyetBaiDangComponent
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee

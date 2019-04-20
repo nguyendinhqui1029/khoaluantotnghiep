@@ -55,9 +55,13 @@
                                 <small>Cài đặt Bài Đăng</small>
                             </a>
                             <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i>Bài Chờ duyệt</a></li>
-                                <li><a href="#"><i class="fa fa-trophy"></i>Bài Đã duyệt</a></li>
-                                <li><a href="#"><i class="fa fa-certificate"></i>Bài Đã Bỏ qua</a></li>
+                                <li><a [routerLink]="[ '/admin/duyet-baidang']"><i class="fa fa-bell"
+                                            style="margin-top: 5px"></i>Bài Chờ duyệt<sup
+                                            class="sobaichoduyet">{{duan_trangthai_dangchoduyet}}</sup></a>
+                                </li>
+                                <li><a [routerLink]="[ '/admin/xoa-duan']"><i class="fa fa-check-square"
+                                            style="margin-top: 5px"></i>Bài Đã
+                                        duyệt<sup class="sobaidaduyet">{{duan_trangthai_daduyet}}</sup></a></li>
                             </ul>
                         </li>
                         <li>
@@ -67,7 +71,7 @@
                                 <small>Cài đặt Dự Án</small>
                             </a>
                             <ul>
-                                <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-duan']"><i
+                                <li *ngIf="role === 2"><a [routerLink]="[ '/employee/them-duan']"><i
                                             class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Dự Án</a>
                                 </li>
                                 <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-duan']"><i class="fa fa-list-alt"

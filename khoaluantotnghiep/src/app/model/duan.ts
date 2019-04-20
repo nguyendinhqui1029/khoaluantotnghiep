@@ -19,8 +19,10 @@ export class DUAN {
     tinhThanhPho: any;
     trangThai: any;
     loaiDuAn: any;
+    huong: any;
+    dienTich: any;
     constructor(maDuAn, tenDuAn, noiDungTomTat, noiDungChiTiet, mangHinh, ngayDang,
-        doiTac, giaTien, loaiGiaoDich, danhMuc, quanHuyen, tinhThanhPho, trangThai, loaiDuAn) {
+        doiTac, giaTien, loaiGiaoDich, danhMuc, quanHuyen, tinhThanhPho, trangThai, loaiDuAn, huong, dienTich) {
         this.maDuAn = maDuAn;
         this.tenDuAn = tenDuAn;
         this.noiDungTomTat = noiDungTomTat;
@@ -35,5 +37,7 @@ export class DUAN {
         this.tinhThanhPho = tinhThanhPho;
         this.trangThai = trangThai;
         this.loaiDuAn = loaiDuAn;
+        this.huong = huong;
+        this.dienTich = dienTich;
     }
 }

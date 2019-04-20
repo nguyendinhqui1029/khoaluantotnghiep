@@ -10,6 +10,7 @@ import { LOAITAIKHOAN } from 'src/app/model/loaitaikhoan';
 import { ds_loaitaikhoan } from 'src/app/model/mock_loaitaikhoan';
 import { TAIKHOAN } from 'src/app/model/taikhoan';
 import { TaiKhoanService } from 'src/app/service/taikhoan.service';
+import { Md5 } from 'ts-md5';
 
 @Component({
     selector: 'them-taikhoan',
@@ -30,12 +31,10 @@ export class ThemTaiKhoanComponent implements OnInit {
         this.formThemTaiKhoan = this.fb.group({
             hoTen: ['', [Validators.required]],
             soDienThoai: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
-            tinhThanhPho: ['', [Validators.required]],
-            quanHuyen: ['', [Validators.required]],
             diaChi: ['', [Validators.required]],
             gioiTinh: ['', [Validators.required]],
             ngaySinh: ['', [Validators.required]],
-            logo: ['', [Validators.required]],
+            logo: ['',],
             moTa: ['',],
             tenTaiKhoan: ['', [Validators.required, Validators.pattern('^[-a-zA-Z0-9@\.+_]+$')]],
             email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$')]],
@@ -120,6 +119,8 @@ export class ThemTaiKhoanComponent implements OnInit {
         let tenTaiKhoan = this.formThemTaiKhoan.controls.tenTaiKhoan.value;
         let email = this.formThemTaiKhoan.controls.email.value;
         let matKhau = this.formThemTaiKhoan.controls.matKhau.value;
+        const md5 = new Md5();
+        let md5MatKhau = md5.appendAsciiStr(matKhau).end();
         let loaiTaiKhoan = this.formThemTaiKhoan.controls.loaiTaiKhoan.value;
         let quanHuyen = this.quanhuyenduocchon;
         let tinhThanhPho = this.tinhthanhphocodau;
@@ -128,16 +129,16 @@ export class ThemTaiKhoanComponent implements OnInit {
         let ObjectLoaiTaikhoan = this.getLoaiTaiKhoanTheoMa(loaiTaiKhoan);
         if (this.ds_mangHinh.length > 0) {
             taikhoan = new TAIKHOAN(mataikhoan, hoTen, soDienThoai, tinhThanhPho, diaChi, quanHuyen,
-                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, matKhau, ObjectLoaiTaikhoan);
+                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, md5MatKhau, ObjectLoaiTaikhoan);
         } else if (this.ds_mangHinh.length === 0) {
             let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
             this.ds_mangHinh.push(hinhanh);
             taikhoan = new TAIKHOAN(mataikhoan, hoTen, soDienThoai, tinhThanhPho, diaChi, quanHuyen,
-                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, matKhau, ObjectLoaiTaikhoan);
+                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, md5MatKhau, ObjectLoaiTaikhoan);
         }
 
         console.log(taikhoan);
-
+        console.log(this.formThemTaiKhoan)
         if (this.formThemTaiKhoan.invalid) {
             return;
         } else if (this.formThemTaiKhoan.valid) {

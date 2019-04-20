@@ -17,7 +17,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 25000000, "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Đất nền", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Quận 5",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Nam",
+        "dienTich": "200m2"
     },
     {
         "maDuAn": "DA002", "tenDuAn": "LẠI NÓNG ĐỐI TƯỢNG CHO VAY GÓI 30.000 TỶ ĐỒNG",
@@ -34,7 +36,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 35000000, "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Chung Cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 2, "isActive": true }, "quanHuyen": "Quận 5",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Tây - Nam",
+        "dienTich": "300m2"
     },
     {
         "maDuAn": "DA003", "tenDuAn": "GẦN 1.000 TỶ ĐÃ ĐƯỢC GIẢI NGÂN TRONG GÓI 30.000 TỶ ĐỒNG",
@@ -51,7 +55,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 11000000, "loaiGiaoDich": { "maLoai": "LGD003", "tenLoai": "Chung cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Lấp Vò",
         "tinhThanhPho": "Đồng Tháp", "trangThai": 3,
-        "loaiDuAn": "nổi bật"
+        "loaiDuAn": "nổi bật",
+        "huong": "Tây - Bắc",
+        "dienTich": "300m2"
     },
     {
         "maDuAn": "DA004", "tenDuAn": "THỦ PHẠM LÀM GIÁ BẤT ĐỘNG SẢN TĂNG CAO",
@@ -68,7 +74,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 120000000, "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Khu Trung Tâm", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Ninh Kiều",
         "tinhThanhPho": "Cần Thơ", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Đông - Nam",
+        "dienTich": "340m2"
     },
     {
         "maDuAn": "DA005", "tenDuAn": "CĂN HỘ SUNVIEW TOWN-THỦ ĐỨC",
@@ -88,7 +96,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 300000000, "loaiGiaoDich": { "maLoai": "LGD002", "tenLoai": "Đất thổ cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Bình Thạnh",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
-        "loaiDuAn": "nổi bật"
+        "loaiDuAn": "nổi bật",
+        "huong": "Đông - Bắc",
+        "dienTich": "300m2"
     },
     {
         "maDuAn": "DA006", "tenDuAn": "GOLD HILL CENTER",
@@ -109,7 +119,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 20000000, "loaiGiaoDich": { "maLoai": "LGD004", "tenLoai": "Nhà mặt phố", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Vũng Tàu",
         "tinhThanhPho": "TP.Vũng Tàu", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Đông - Bắc",
+        "dienTich": "450m2"
     },
     {
         "maDuAn": "DA007", "tenDuAn": "CĂN HỘ EMERALD-THỦ ĐỨC",
@@ -130,7 +142,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 1500000000, "loaiGiaoDich": { "maLoai": "LGD001", "tenLoai": "Căn Hộ", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Đồng Nai",
         "tinhThanhPho": "TP.Đồng Nai", "trangThai": 2,
-        "loaiDuAn": "xem nhiều"
+        "loaiDuAn": "xem nhiều",
+        "huong": "Đông - Nam",
+        "dienTich": "100m2"
     },
     {
         "maDuAn": "DA008", "tenDuAn": "CHO THUÊ NHÀ XƯỞNG, 6000M2 MẶT TIỀN TRẦN ĐẠI NGHĨA, GIÁ 270 TRIỆU/THÁNG",
@@ -149,7 +163,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 320000000, "loaiGiaoDich": { "maLoai": "LGD003", "tenLoai": "Chung cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Thành phố Mới",
         "tinhThanhPho": "TP.Bình Dương", "trangThai": 2,
-        "loaiDuAn": "xem nhiều"
+        "loaiDuAn": "xem nhiều",
+        "huong": "Đông",
+        "dienTich": "300m2"
     },
     {
         "maDuAn": "DA009", "tenDuAn": "OPAL RIVERSIDE",
@@ -168,7 +184,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 50000000, "loaiGiaoDich": { "maLoai": "LGD002", "tenLoai": "Đất thổ cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Quận 5",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
-        "loaiDuAn": "nổi bật"
+        "loaiDuAn": "nổi bật",
+        "huong": "Tây - Bắc",
+        "dienTich": "350m2"
     },
     {
         "maDuAn": "DA010", "tenDuAn": "SUNVIEW TOWN",
@@ -187,7 +205,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 300000000, "loaiGiaoDich": { "maLoai": "LGD003", "tenLoai": "Chung cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Đồng Nai",
         "tinhThanhPho": "TP.Đồng Nai", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Tây - Bắc",
+        "dienTich": "380m2"
     },
     {
         "maDuAn": "DA011", "tenDuAn": "TOPAZ CITY",
@@ -206,7 +226,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 350000000, "loaiGiaoDich": { "maLoai": "LGD004", "tenLoai": "Nhà mặt phố", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Quận 9",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 3,
-        "loaiDuAn": "nổi bật"
+        "loaiDuAn": "nổi bật",
+        "huong": "Đông - Nam",
+        "dienTich": "120m2"
     },
     {
         "maDuAn": "DA012", "tenDuAn": "MỸ SƠN TOWER",
@@ -225,7 +247,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 280000000, "loaiGiaoDich": { "maLoai": "LGD002", "tenLoai": "Đất thổ cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 2, "isActive": false }, "quanHuyen": "Quận 5",
         "tinhThanhPho": "TP.Hồ Chí Minh", "trangThai": 2,
-        "loaiDuAn": "xem nhiều"
+        "loaiDuAn": "xem nhiều",
+        "huong": "Đông - Bắc",
+        "dienTich": "200m2"
     },
     {
         "maDuAn": "DA013", "tenDuAn": "TOPAZ CITY02",
@@ -244,7 +268,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 2200000000, "loaiGiaoDich": { "maLoai": "LGD003", "tenLoai": "Chung cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM002", "tenDanhMuc": "Cho thuê", "trangThai": 1, "isActive": false }, "quanHuyen": "Ninh Kiều",
         "tinhThanhPho": "TP.Cần Thơ", "trangThai": 1,
-        "loaiDuAn": "bình thường"
+        "loaiDuAn": "bình thường",
+        "huong": "Tây - Bắc",
+        "dienTich": "370m2"
     },
     {
         "maDuAn": "DA014", "tenDuAn": "TOPAZ CITY023",
@@ -263,7 +289,9 @@ export const ds_duan: DUAN[] = [
         "giaTien": 390000000, "loaiGiaoDich": { "maLoai": "LGD004", "tenLoai": "Nhà mặt phố", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Quận 3",
         "tinhThanhPho": "TP.Cần Thơ", "trangThai": 2,
-        "loaiDuAn": "xem nhiều"
+        "loaiDuAn": "xem nhiều",
+        "huong": "Bắc",
+        "dienTich": "300m2"
     },
     {
         "maDuAn": "DA015", "tenDuAn": "TOPAZ CITY024",
@@ -282,6 +310,8 @@ export const ds_duan: DUAN[] = [
         "giaTien": 250000000, "loaiGiaoDich": { "maLoai": "LGD003", "tenLoai": "Chung cư", "trangThai": 1 },
         "danhMuc": { "maDanhMuc": "DM001", "tenDanhMuc": "Mua bán", "trangThai": 1, "isActive": true }, "quanHuyen": "Quận 5",
         "tinhThanhPho": "TP.Cần Thơ", "trangThai": 3,
-        "loaiDuAn": "nổi bật"
+        "loaiDuAn": "nổi bật",
+        "huong": "Nam",
+        "dienTich": "50m2"
     }
 ];

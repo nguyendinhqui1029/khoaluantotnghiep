@@ -52,6 +52,7 @@ import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loai
 import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_update-tintuc.component';
 import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
 import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
+import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang.component';
 
 
 const routes: Routes = [
@@ -133,7 +134,9 @@ const routes: Routes = [
             { path: 'them-tintuc', component: ThemTinTucComponent },
             { path: 'xoa-tintuc', component: XoaTinTucComponent },
             { path: 'update-tintuc/:id', component: UpdateTinTucComponent },
-            { path: 'make-up-data', component: MakeUpDataComponent }
+            { path: 'make-up-data', component: MakeUpDataComponent },
+            { path: 'duyet-baidang', component: DuyetBaiDangComponent },
+
 
         ],
         canActivate: [AdminAuthGuard]
