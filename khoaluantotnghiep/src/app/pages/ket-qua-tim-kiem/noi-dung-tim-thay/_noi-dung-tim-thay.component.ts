@@ -22,7 +22,6 @@ export class NoiDungTimThayComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(ds);
-            console.log(this.ds_page)
         });
     }
 

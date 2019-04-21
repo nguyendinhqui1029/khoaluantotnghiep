@@ -30,7 +30,7 @@ export class PhanTranService {
     soTrang(): number {
         let kichThuocKetQua: number = this.chieuDaiDanhSach;
         let tongSoTrang: number = 0;
-        tongSoTrang = Math.floor(kichThuocKetQua / this.soItemCuaPage) + 1;
+        tongSoTrang = (kichThuocKetQua % this.soItemCuaPage) === 0 ? Math.floor(kichThuocKetQua / this.soItemCuaPage) : Math.floor(kichThuocKetQua / this.soItemCuaPage) + 1;
         return tongSoTrang;
     }
     createPhanTrang(currentPage): any[] {
