@@ -16,6 +16,8 @@ import { ds_trangthaiduan } from 'src/app/model/mock_trangthaiduan';
 import { LOAIDUAN } from 'src/app/model/loaiduan';
 import { ds_loaiduan } from 'src/app/model/mock_loaiduan';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
+import { HUONG } from 'src/app/model/huong';
+import { ds_huong } from 'src/app/model/mock_huong';
 
 @Component({
     selector: 'them-duan',
@@ -31,13 +33,13 @@ export class ThemDuAnComponent implements OnInit {
     ds_tinhthanhpho: TINHTHANHPHO[] = [];
     ds_quan: any[] = [];
     ds_danhmuc: DANHMUC[] = [];
-    ds_trangthaiduan: TRANGTHAIDUAN[] = [];
+    ds_huong: HUONG[] = [];
     ds_loaiduan: LOAIDUAN[] = []; //lấy từ mock để show giá trị
     danhmucduocchon = new DANHMUC("", "", "", "");
-    doitacduocchon = new DOITAC("", "", "", "", "", "", "", "", "", "", "", "", "");
+    doitacduocchon = new DOITAC("", "", "", "", "", "", "", "", "", "", "", "", "", "");
     loaigiaodichduocchon = new LOAIGIAODICH("", "", "");
-    trangthaiduocchon = new TRANGTHAIDUAN("", "");
-    tentrangthaiduocchon: any = "";
+    huongduocchon = new HUONG("", "", "");
+    tenhuongduocchon: any = "";
     statusAdd: any = { "status": false, "message": "" };
 
     constructor(private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
@@ -51,8 +53,9 @@ export class ThemDuAnComponent implements OnInit {
             giaTien: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
             loaiGiaoDich: ['', [Validators.required]],
             danhMuc: ['', [Validators.required]],
-            trangThai: ['', [Validators.required]],
-            loaiDuAn: ['', [Validators.required]]
+            huong: ['', [Validators.required]],
+            loaiDuAn: ['', [Validators.required]],
+            dienTich: ['', [Validators.required]]
         });
 
     }
@@ -80,9 +83,9 @@ export class ThemDuAnComponent implements OnInit {
         })
     }
 
-    getDSTrangThaiDuAn() {
-        this.ds_trangthaiduan = ds_trangthaiduan; //lấy từ mock để show giá trị
-        this.formthemDuan.controls.trangThai.setValue(this.ds_trangthaiduan[0].matrangthai); //Lấy giá trị show lên combo đầu tiên
+    getDSHuong() {
+        this.ds_huong = ds_huong; //lấy từ mock để show giá trị
+        this.formthemDuan.controls.huong.setValue(this.ds_huong[0].mahuong); //Lấy giá trị show lên combo đầu tiên
     }
 
     getDSLoaiDuAn() {
@@ -121,14 +124,14 @@ export class ThemDuAnComponent implements OnInit {
         return this.loaigiaodich;
     }
 
-    trangthai: any = {};
-    getTrangThaiTheoMa(ma): any {
-        this.ds_trangthaiduan.forEach(trangthai => {
-            if (trangthai.matrangthai === ma) {
-                this.trangthai = trangthai.matrangthai;
+    huong: any = {};
+    getHuongTheoMa(ma): any {
+        this.ds_huong.forEach(huong => {
+            if (huong.mahuong === ma) {
+                this.huong = huong.tenhuong;
             }
         })
-        return this.trangthai;
+        return this.huong;
     }
 
     loaiduan: any = {};
@@ -170,11 +173,6 @@ export class ThemDuAnComponent implements OnInit {
             }
         })
     }
-
-    selectTrangThai(e) {
-        this.tentrangthaiduocchon = e.target.value;
-    }
-
     ngOnInit(): void {
 
         let d = new Date();
@@ -185,7 +183,7 @@ export class ThemDuAnComponent implements OnInit {
         this.getDSDoiTac();
         this.getDSTinhThanhPho();
         this.getDSLoaiGiaoDich();
-        this.getDSTrangThaiDuAn();
+        this.getDSHuong();
         this.getDSLoaiDuAn();
     }
     ngAfterViewInit() {
@@ -215,8 +213,9 @@ export class ThemDuAnComponent implements OnInit {
         let doiTac = this.formthemDuan.controls.doiTac.value;
         let loaiGiaoDich = this.formthemDuan.controls.loaiGiaoDich.value;
         let danhMuc = this.formthemDuan.controls.danhMuc.value;
-        let trangThai = this.formthemDuan.controls.trangThai.value;
+        let huong = this.formthemDuan.controls.huong.value;
         let loaiDuAn = this.formthemDuan.controls.loaiDuAn.value;
+        let dienTich = this.formthemDuan.controls.dienTich.value;
 
         if (this.formthemDuan.invalid) {
             return;
@@ -226,17 +225,21 @@ export class ThemDuAnComponent implements OnInit {
             let ObjectDoiTac = this.getDoiTacTheoMa(doiTac);
             let ObjectDanhMuc = this.getDanhMucTheoMa(danhMuc);
             let ObjectLoaiGiaoDich = this.getLoaiGiaoDichTheoMa(loaiGiaoDich);
-            let tentrangthai = this.getTrangThaiTheoMa(trangThai);
+            let tenhuong = this.getHuongTheoMa(huong);
             let tenloaiduan = this.getLoaiDuAnTheoMa(loaiDuAn);
             if (this.ds_mangHinh.length > 0) {
                 duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang.value,
-                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, tentrangthai, tenloaiduan);
+                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, 1, tenloaiduan,
+                    tenhuong, dienTich);
             } else if (this.ds_mangHinh.length === 0) {
                 let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
                 this.ds_mangHinh.push(hinhanh);
                 duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang.value,
-                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, tentrangthai, tenloaiduan);
+                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, 1, tenloaiduan,
+                    tenhuong, dienTich);
             }
+            console.log(duan);
+
             this.duAnService.themDuAn(duan).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Dự Án đã được thêm thành công!";

@@ -9,9 +9,9 @@ export class CONGTY {
     viDoCOngTy: any;
     faxCongTy: any;
     hotlineCongTy: any;
-
+    trangThai: any;
     constructor(id, tenCongTy, logoCongTy, soDienThoaiCongTy, emailCongTy, diaChiCongTy,
-        kinhDoCongTy, viDoCongTy, faxCongTy, hotlineCongTy) {
+        kinhDoCongTy, viDoCongTy, faxCongTy, hotlineCongTy, trangThai) {
         this.id = id;
         this.tenCongTy = tenCongTy;
         this.logoCongTy = logoCongTy;
@@ -22,6 +22,7 @@ export class CONGTY {
         this.viDoCOngTy = viDoCongTy;
         this.faxCongTy = faxCongTy;
         this.hotlineCongTy = hotlineCongTy;
+        this.trangThai = trangThai;
     }
 
 }

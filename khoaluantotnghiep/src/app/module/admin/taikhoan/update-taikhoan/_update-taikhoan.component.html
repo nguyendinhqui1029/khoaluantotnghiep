@@ -1,0 +1,176 @@
+<div class="row" style=" margin-top: -8px">
+    <form id="form-add-duan" ng-submit="add()" [formGroup]="formUpdateTaiKhoan">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="headeradmenu">
+                <h1 class="tieude"><i class="fa fa-info-circle"></i>CẬP NHẬT TÀI KHOẢN</h1>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="hoTen">Họ Tên</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="hoTen" placeholder="Nguyễn Văn An"
+                        formControlName="hoTen" [ngClass]="{ 'is-invalid': submitted && f.hoTen.errors }">
+                    <div *ngIf="submitted && f.hoTen.errors" class="invalid-feedback">
+                        <div *ngIf="f.hoTen.errors.required">Vui lòng nhập Họ tên</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <label class="control-label" for="soDienThoai">Số Điện Thoại</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="soDienThoai"
+                        placeholder="(+84) 299 6777" formControlName="soDienThoai"
+                        [ngClass]="{ 'is-invalid': submitted && f.soDienThoai.errors }">
+                    <div *ngIf="submitted && f.soDienThoai.errors" class="invalid-feedback">
+                        <div *ngIf="f.soDienThoai.errors.required">Vui lòng nhập Số Điện Thoại</div>
+                        <div *ngIf="f.soDienThoai.errors.pattern">Số Điện Thoại không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="tinhThanhPho">Tỉnh/TP</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" style="width: 80%;" (change)="selectTinhThanhPho($event)">
+                        <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}"
+                            selected="{{item.d == tinhthanhpho}} ? true : false">
+                            {{item.d}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="quanHuyen">Quận/Huyện</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" style="width: 80%;" (change)="selectQuanHuyen($event)">
+                        <option *ngFor="let quy of ds_quan" value="{{quy.tenquanhuyenkhongdau}}"
+                            [selected]="quy.tenquanhuyencodau == quanhuyen ? true : false">
+                            {{quy.tenquanhuyencodau}} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="diaChi">Địa Chỉ</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="diaChi"
+                        placeholder="123 Điện Biên Phủ, Bình Thạnh" formControlName="diaChi"
+                        [ngClass]="{ 'is-invalid': submitted && f.diaChi.errors }">
+                    <div *ngIf="submitted && f.diaChi.errors" class="invalid-feedback">
+                        <div *ngIf="f.diaChi.errors.required">Vui lòng nhập Địa chỉ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="gioiTinh">Giới tính</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="gioiTinh"
+                        [ngClass]="{ 'is-invalid': submitted && f.gioiTinh.errors }">
+                        <option *ngFor="let item of ds_gioitinh"
+                            selected="{{item.magioitinh == magioitinh}} ? true : false" value="{{item.magioitinh}}">
+                            {{item.tengioitinh}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.gioiTinh.errors" class="invalid-feedback">
+                        <div *ngIf="f.gioiTinh.errors.required">Vui lòng chọn Giới tính</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="tenDuAn">Ngày Sinh</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <div style="width: 80%;">
+                        <div class="input-group date" data-date-format="yyyy-MM-dd" id="filterDate2">
+                            <input type="text" class="form-control" placeholder="yyyy-MM-dd" formControlName="ngaySinh"
+                                [ngClass]="{ 'is-invalid': submitted && f.ngaySinh.errors }">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="tenTaiKhoan">Tên Tài Khoản</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="tenTaiKhoan"
+                        placeholder="NguyenHoa123" formControlName="tenTaiKhoan"
+                        [ngClass]="{ 'is-invalid': submitted && f.tenTaiKhoan.errors }">
+                    <div *ngIf="submitted && f.tenTaiKhoan.errors" class="invalid-feedback">
+                        <div *ngIf="f.tenTaiKhoan.errors.required">Vui lòng nhập Tên Tài Khoản</div>
+                        <div *ngIf="f.tenTaiKhoan.errors.pattern">Tên Tài Khoản không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="matKhau">Mật Khẩu</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="password" style="width: 80%;" class="form-control" id="matKhau" placeholder="*"
+                        formControlName="matKhau" [ngClass]="{ 'is-invalid': submitted && f.matKhau.errors }">
+                    <div *ngIf="submitted && f.matKhau.errors" class="invalid-feedback">
+                        <div *ngIf="f.matKhau.errors.required">Vui lòng nhập Mật khẩu</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label" for="email">Email</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="email"
+                        placeholder="Annhien@gmail.com" formControlName="email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Vui lòng nhập Email</div>
+                        <div *ngIf="f.email.errors.pattern">Email không hợp lệ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="loaiTaiKhoan">Loại Tài Khoản</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control" ng-model="ProvinceId" style="width: 80%;"
+                        ng-change="getDistricts(ProvinceId)" formControlName="loaiTaiKhoan"
+                        [ngClass]="{ 'is-invalid': submitted && f.loaiTaiKhoan.errors }">
+                        <option *ngFor="let item of ds_loaitaikhoan"
+                            selected="{{item.maloai == maloaitaikhoan}} ? true : false" value="{{item.maloai}}">
+                            {{item.tenloai}}</option>
+
+                    </select>
+                    <div *ngIf="submitted && f.loaiTaiKhoan.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaiTaiKhoan.errors.required">Vui lòng chọn Loại Tài Khoản</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="quanHuyen">Mô Tả</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" style="width: 80%"
+                        formControlName="moTa" [ngClass]="{ 'is-invalid': submitted && f.moTa.errors }"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="mangHinh">Lo Go</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="mangHinh">
+                </div>
+            </div>
+            <div class="form-group">
+                <div *ngIf="statusUpdate.status" class="invalid-feedback">
+                    <div [innerHTML]="statusUpdate.message"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info" (click)="update()">Update Tài Khoản</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+        </div>
+    </form>
+</div>

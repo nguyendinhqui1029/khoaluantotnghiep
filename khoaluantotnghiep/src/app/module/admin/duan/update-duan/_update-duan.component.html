@@ -121,6 +121,29 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label" for="quanHuyen">Hướng</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="huong">
+                        <option *ngFor="let item of ds_huong" value="{{item.mahuong}}"
+                            [selected]="item.mahuong == mahuong ? true : false">
+                            {{item.tenhuong}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="dienTich">Diện Tích</label><span
+                    style="color: red; margin-left: 3px">*</span>
+                <div class="form-inline">
+                    <input type="text" style="width: 80%;" class="form-control" id="dienTich" placeholder="200 m2"
+                        formControlName="dienTich" [ngClass]="{ 'is-invalid': submitted && f.dienTich.errors }">
+                    <div *ngIf="submitted && f.dienTich.errors" class="invalid-feedback">
+                        <div *ngIf="f.dienTich.errors.required">Vui lòng nhập Diện Tích</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label" for="quanHuyen">Nội Dung Tóm Tắt</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">

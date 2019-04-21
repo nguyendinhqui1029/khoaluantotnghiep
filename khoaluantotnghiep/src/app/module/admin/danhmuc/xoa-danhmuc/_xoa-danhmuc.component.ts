@@ -12,7 +12,7 @@ import { ConfigService } from 'src/app/service/config.service';
     styleUrls: ['./_xoa-danhmuc.component.scss']
 })
 export class XoaDanhMucComponent implements OnInit {
-    constructor(private router: Router, private danhMucService: DanhMucService) {
+    constructor(private danhMucService: DanhMucService) {
 
     }
 

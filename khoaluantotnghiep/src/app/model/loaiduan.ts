@@ -1,8 +1,10 @@
 export class LOAIDUAN {
     maLoai: any;
     tenLoai: any;
-    constructor(maLoai, tenLoai) {
+    trangThai: any;
+    constructor(maLoai, tenLoai, trangThai) {
         this.maLoai = maLoai;
         this.tenLoai = tenLoai;
+        this.trangThai = trangThai;
     }
 }

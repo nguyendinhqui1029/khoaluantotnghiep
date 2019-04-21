@@ -9,7 +9,7 @@ import { congTy } from 'src/app/model/mock_congty';
     styleUrls: ['./_thongtincongty.component.scss']
 })
 export class ThongTinCongTyComponent implements OnInit {
-    thongtinCT: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "");
+    thongtinCT: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "", "");
     constructor(private congTyService: CongTyService) {
         this.congTyService.getCongTy().subscribe(congty => {
             this.thongtinCT = congty.body[0];

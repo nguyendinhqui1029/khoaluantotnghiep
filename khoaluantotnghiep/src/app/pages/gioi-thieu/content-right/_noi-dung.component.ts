@@ -9,7 +9,7 @@ import { ds_gioithieu } from 'src/app/model/mock_gioithieu';
     styleUrls: ['./_noi-dung.component.scss']
 })
 export class NoiDungGioiThieuComponent implements OnInit {
-    gioiThieu: GIOITHIEU = new GIOITHIEU("", "", "", "");
+    gioiThieu: GIOITHIEU = new GIOITHIEU("", "", "", "", "");
 
     constructor(private serviceGioiThieu: GioiThieuService) {
         this.getDSGioiThieu();

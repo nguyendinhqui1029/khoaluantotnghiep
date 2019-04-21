@@ -4,20 +4,8 @@
             <div class="headeradmenu">
                 <h1 class="tieude"><i class="fa fa-info-circle"></i>THÊM MENU</h1>
             </div>
-            <div class="form-group has-feedback">
-                <label class="control-label" for="idmenu">ID Menu</label><span
-                    style="color: red; margin-left: 3px">*</span>
-                <div class="form-inline">
-                    <input type="text" style="width: 80%;" class="form-control" id="idmenu" placeholder="ID Menu"
-                        formControlName="idmenu" [ngClass]="{ 'is-invalid': submitted && f.idmenu.errors }">
-                    <div *ngIf="submitted && f.idmenu.errors" class="invalid-feedback">
-                        <div *ngIf="f.idmenu.errors.required">Vui lòng nhập ID Menu</div>
-                        <div *ngIf="f.idmenu.errors.pattern">ID Menu không hợp lệ</div>
-                    </div>
-                </div>
-            </div>
             <div class="form-group">
-                <label for="Name">Name Menu</label><span style="color: red; margin-left: 3px">*</span>
+                <label for="Name">Tên Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
                     <input type="text" style="width: 80%;" class="form-control" id="namemenu" placeholder="Name Menu"
                         formControlName="namemenu" [ngClass]="{ 'is-invalid': submitted && f.namemenu.errors }">
@@ -38,11 +26,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Name">Status Menu</label><span style="color: red; margin-left: 3px">*</span>
+                <label for="Name">Trạng Thái Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="text" style="width: 80%;" class="form-control" id="statusmenu"
-                        formControlName="statusmenu" placeholder="Status Menu"
-                        [ngClass]="{ 'is-invalid': submitted && f.statusmenu.errors }">
+                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="statusmenu">
+                        <option *ngFor="let item of ds_status" value="{{item.id}}">
+                            {{item.value}}
+                        </option>
+                    </select>
                     <div *ngIf="submitted && f.statusmenu.errors" class="invalid-feedback">
                         <div *ngIf="f.statusmenu.errors.required">Vui lòng nhập Status Menu</div>
                     </div>
@@ -59,19 +49,26 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="Name">Type Menu</label><span style="color: red; margin-left: 3px">*</span>
+                <label for="Name">Loại Menu</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <input type="text" style="width: 80%;" class="form-control" id="typemenu" placeholder="Type Menu"
-                        formControlName="typemenu" [ngClass]="{ 'is-invalid': submitted && f.typemenu.errors }">
+                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="typemenu">
+                        <option *ngFor="let item of ds_loaimenu" value="{{item.maloai}}">
+                            {{item.maloai}}
+                        </option>
+                    </select>
                     <div *ngIf="submitted && f.typemenu.errors" class="invalid-feedback">
                         <div *ngIf="f.typemenu.errors.required">Vui lòng nhập Type Menu</div>
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <div *ngIf="statusAdd.status" class="invalid-feedback">
+                    <div [innerHTML]="statusAdd.message"></div>
+                </div>
+            </div>
             <button type="submit" class="btn btn-info" (click)="add()">Submit Menu</button>&nbsp;&nbsp;
             <button type="reset" class="btn btn-info">Reset Menu</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-info" (click)="update()">Update Menu</button>
-
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
         </div>

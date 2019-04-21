@@ -162,11 +162,11 @@ export class UpdateDoiTacComponent implements OnInit {
         let doitacpdate;
         if (this.loGo) {
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
-                user, pass, loaiTaiKhoan, email);
+                user, pass, loaiTaiKhoan, email, 1);
         } else {
             this.loGo = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
-                user, pass, loaiTaiKhoan, email);
+                user, pass, loaiTaiKhoan, email, 1);
         }
         console.log(doitacpdate);
         if (this.formUpdateDoiTac.invalid) {

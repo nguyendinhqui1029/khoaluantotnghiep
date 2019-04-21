@@ -10,5 +10,6 @@ export class ConfigService {
     static LOAI_MENU = { "TATCA": 0, "MENU_BOTTOM": 1, "MENU_TOP": 2, "MENU_ADMIN": 3 };
     static TRANG_THAI_DANHMUC = { "TATCA": 0, "MUABAN": 'Mua bán', "CHOTHUE": "Cho thuê", "MAMUABAN": "DM001", "MACHOTHUE": "DM002" };
     static TRANG_THAI_LOAIGIAODICH = { "TATCA": 0 };
+    static LOAI_TIN_TUC: any = { "TATCA": 0 };
 
 }

@@ -16,6 +16,8 @@ import { LOAIDUAN } from 'src/app/model/loaiduan';
 import { ds_trangthaiduan } from 'src/app/model/mock_trangthaiduan';
 import { ds_loaiduan } from 'src/app/model/mock_loaiduan';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
+import { HUONG } from 'src/app/model/huong';
+import { ds_huong } from 'src/app/model/mock_huong';
 
 @Component({
     selector: 'update-duan',
@@ -44,7 +46,8 @@ export class UpdateDuAnComponent implements OnInit {
     ds_tinhthanhphofromMock: TINHTHANHPHO[] = ds_tinhthanhpho;
     tinhthanhphokhongdau: any = "";
     formupdateDuan: FormGroup;
-
+    ds_huong: HUONG[] = [];
+    mahuong: any = "";
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
         private doiTacservice: DoiTacService, private tinhThanhpho: TinhThanhPhoService) {
         let id = this.rout.snapshot.params.id;
@@ -82,6 +85,9 @@ export class UpdateDuAnComponent implements OnInit {
             this.formupdateDuan.controls.trangThai.setValue(this.matrangthai);
             this.loaiduan = this.duan.loaiDuAn;
             this.formupdateDuan.controls.loaiDuAn.setValue(this.loaiduan);
+            this.mahuong = this.getMatuTenHuong(this.duan.huong);
+            this.formupdateDuan.controls.huong.setValue(this.mahuong);
+            this.formupdateDuan.controls.dienTich.setValue(this.duan.dienTich);
             this.tinhthanhpho = this.duan.tinhThanhPho;
             this.formupdateDuan.controls.tinhThanhPho.setValue(this.tinhthanhpho);
             this.quanhuyen = this.duan.quanHuyen;
@@ -96,8 +102,17 @@ export class UpdateDuAnComponent implements OnInit {
             //end hiển thị dữ liệu trả về từ list
         });
     }
-
-
+    getMatuTenHuong(ten) {
+        this.ds_huong = ds_huong;
+        this.ds_huong.forEach(h => {
+            if (h.tenhuong === ten) {
+                return h;
+            }
+        })
+    }
+    getDSHuong() {
+        this.ds_huong = ds_huong;
+    }
     ngOnInit(): void {
 
         this.getDSDanhMuc();
@@ -106,6 +121,7 @@ export class UpdateDuAnComponent implements OnInit {
         this.getDSLoaiGiaoDich();
         this.getDSTrangThaiDuAn();
         this.getDSLoaiDuAn();
+        this.getDSHuong();
     }
     getDSDanhMuc() {
         this.loaiGiaodichservice.getAllLoaiGiaoDich(0).subscribe(danhmuc => {
@@ -208,6 +224,16 @@ export class UpdateDuAnComponent implements OnInit {
         return this.trangthai;
     }
 
+    huong: any = {};
+    getHuongTheoMa(ma): any {
+        this.ds_huong.forEach(huong => {
+            if (huong.mahuong === ma) {
+                this.huong = huong.tenhuong;
+            }
+        })
+        return this.huong;
+    }
+
     loaiduan: any = {};
     getLoaiDuAnTheoMa(ma): any {
         this.ds_loaiduan.forEach(loaiduan => {
@@ -263,19 +289,26 @@ export class UpdateDuAnComponent implements OnInit {
         let danhMuc = this.formupdateDuan.controls.danhMuc.value;
         let trangThai = this.formupdateDuan.controls.trangThai.value;
         let loaiDuAn = this.formupdateDuan.controls.loaiDuAn.value;
+        let mahuong = this.formupdateDuan.controls.huong.value;
+        let dienTich = this.formupdateDuan.controls.dienTich.value;
+
         //formControls
         let duanupdate;
         let ObjectDoiTac = this.getDoiTacTheoMa(doiTac);
         let ObjectDanhMuc = this.getDanhMucTheoMa(danhMuc);
         let ObjectLoaiGiaoDich = this.getLoaiGiaoDichTheoMa(loaiGiaoDich);
         let tenloaiduan = this.getLoaiDuAnTheoMa(loaiDuAn);
+        let tenhuong = this.getHuongTheoMa(mahuong);
+
         if (this.ds_mangHinh.length > 0) {
             duanupdate = new DUAN(this.maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
-                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan);
+                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+                tenhuong, dienTich);
         } else {
             this.ds_mangHinh.push(new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an"));
             duanupdate = new DUAN(this.maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
-                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan);
+                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+                tenhuong, dienTich);
         }
         console.log(duanupdate);
 

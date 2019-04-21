@@ -15,7 +15,7 @@ import { CongTyService } from 'src/app/service/congty.service';
 })
 export class HeaderComponent implements OnInit {
     //dữ liệu áp cứng
-    congty: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "");
+    congty: CONGTY = new CONGTY("", "", "", "", "", "", "", "", "", "", "");
 
     // ds_menu: MENU[] = ds_menu;
     menu_top: MENU[] = [];

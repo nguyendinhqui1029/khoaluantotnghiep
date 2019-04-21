@@ -17,6 +17,28 @@ export class TinTucService {
         return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc", { observe: 'response' });
     }
 
+    getTinTuctheoMaLoai(id): Observable<HttpResponse<TINTUC[]>> {
+        return this.http.get<TINTUC[]>(ConfigService.URL + "get-tin-tuc/" + id, { observe: 'response' });
+    }
 
+    //xoa loai tin tuc
+    xoaTinTucTheomaLoai(maTinTuc): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.delete<any>(ConfigService.URL + "delete-tin-tuc/" + maTinTuc, httpOptions);
+    }
+
+    //them loai tin tuc
+    themTinTuc(TinTuc): Observable<any> {
+        return this.http.post(ConfigService.URL + "add-tin-tuc", TinTuc);
+    }
+
+    //update loai giao dich
+    updateTinTuc(TinTuc): Observable<any> {
+        return this.http.put(ConfigService.URL + "update-tin-tuc", TinTuc);
+    }
 
 }

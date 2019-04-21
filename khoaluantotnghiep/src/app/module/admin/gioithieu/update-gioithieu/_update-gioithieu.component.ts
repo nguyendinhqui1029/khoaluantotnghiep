@@ -44,7 +44,7 @@ export class UpdateGioiThieuComponent implements OnInit {
         //form Controls
 
         let gioithieu;
-        gioithieu = new GIOITHIEU(magioithieu, tieude, noidung, icon);
+        gioithieu = new GIOITHIEU(magioithieu, tieude, noidung, icon, 1);
 
         if (this.formUpdateGioiThieu.invalid) {
             return;

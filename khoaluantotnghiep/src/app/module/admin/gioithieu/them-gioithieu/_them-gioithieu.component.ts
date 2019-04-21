@@ -43,7 +43,7 @@ export class ThemGioiThieuComponent implements OnInit {
             if (icon === "") {
                 icon = "fa fa-newspaper-o";
             }
-            gioithieu = new GIOITHIEU(magioithieu, tieude, noidung, icon);
+            gioithieu = new GIOITHIEU(magioithieu, tieude, noidung, icon, 1);
             this.gioiThieuService.themGioiThieu(gioithieu).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Giới Thiệu đã được thêm thành công!";

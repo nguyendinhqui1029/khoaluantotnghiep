@@ -45,6 +45,8 @@ export class MakeUpDataComponent implements OnInit {
                                         console.log(e);
                                     });
                                 });
+                                ob.itemnew = ds.itemnew;
+                                ob.tongitem = ds.tongitem;
                             }
                             ob.itemnew = ds.itemnew;
                             ob.tongitem = ds.tongitem;
@@ -94,6 +96,7 @@ export class MakeUpDataComponent implements OnInit {
 
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
+                        console.log(ob.itemnew);
 
                     });
                 });
@@ -137,6 +140,8 @@ export class MakeUpDataComponent implements OnInit {
                                     console.log(e);
                                 });
                             });
+                            ob.itemnew = ds.itemnew;
+                            ob.tongitem = ds.tongitem;
                         }
 
                         ob.itemnew = ds.itemnew;
@@ -149,17 +154,19 @@ export class MakeUpDataComponent implements OnInit {
                 break;
             case 6: {
                 ob.namebutton = "Cập nhật ...";
-                this.makeUpDateService.getDsMeNUTheoType().subscribe(e => {
-                    this.makeUpDateService.getMeNUTheoTypeLocal().subscribe(elocal => {
+                this.makeUpDateService.getDsLoaiTinTuc().subscribe(e => {
+                    this.makeUpDateService.getLoaiTinTucLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
 
                         if (flag) {
                             ds.arr.forEach(element => {
-                                this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
+                                this.makeUpDateService.themLoaiTinTucLoCal(element).subscribe(e => {
                                     console.log(e);
                                 });
                             });
+                            ob.itemnew = ds.itemnew;
+                            ob.tongitem = ds.tongitem;
                         }
 
                         ob.itemnew = ds.itemnew;

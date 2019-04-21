@@ -108,12 +108,12 @@ export class ThemDoiTacComponent implements OnInit {
             let madoitac = "DT" + (new Date()).getTime().toString();
             if (this.ds_mangHinh.length > 0) {
                 doitac = new DOITAC(madoitac, hoten, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh.value,
-                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email);
+                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email, 1);
             } else if (this.ds_mangHinh.length === 0) {
                 let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
                 this.ds_mangHinh.push(hinhanh);
                 doitac = new DOITAC(madoitac, hoten, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh.value,
-                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email);
+                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email, 1);
             }
             this.doiTacService.themDoiTac(doitac).subscribe(res => {
                 this.statusAdd.status = true;

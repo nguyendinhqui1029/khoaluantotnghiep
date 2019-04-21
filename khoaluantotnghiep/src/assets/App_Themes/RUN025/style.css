@@ -57,7 +57,7 @@ CSS CSS Scripts
   background-clip: padding-box;
 }
 .owl-carousel .boxprevnext a:hover {
-  background: #f55a4e none repeat scroll 0 0;
+  background: #00B2EE none repeat scroll 0 0;
 }
 .owl-carousel .boxprevnext a.prev {
   left: 0;
@@ -147,7 +147,7 @@ h1.title {
 }
 h1.title i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
@@ -155,13 +155,13 @@ h1.title i {
   height: 47px;
 }
 h1.title span {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   padding: 14px;
   float: left;
   height: 47px;
 }
 h1.title span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -170,7 +170,7 @@ h1.title span:before {
   top: 19px;
 }
 h2.title {
-  color: #f55a4e;
+  color: #00B2EE;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -246,7 +246,7 @@ a {
   color: #5e5e5e;
 }
 a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 hr {
   margin-top: 0;
@@ -277,10 +277,10 @@ img:hover {
   color: #5e5e5e;
 }
 .breadcrumb ul li a:hover {
-  color: #dd5147;
+  color: #009ACD;
 }
 .breadcrumb ul li:last-child {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .breadcrumb ul li .link-site-more {
   display: inline;
@@ -308,7 +308,7 @@ img:hover {
   display: block;
 }
 .breadcrumb ul li ul li a:hover {
-  background-color: #dd5147;
+  background-color: #009ACD;
   color: #ffffff;
 }
 .breadcrumb ul li ul li + li:before {
@@ -363,7 +363,7 @@ img:hover {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:active {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .navbar-default .navbar-nav > li > a.login {
   border: 1px solid #ffffff;
@@ -401,7 +401,7 @@ img:hover {
 }
 ul.pagination {
   margin: 0;
-  border: 1px solid #f55a4e;
+  border: 1px solid #00B2EE;
   border-radius: 0;
 }
 ul.pagination li a {
@@ -422,7 +422,7 @@ ul.pagination li.active a,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
 .pagination > li > span:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 /*06.Tab================================== */
@@ -460,7 +460,7 @@ ul.pagination li.active a,
   background: none;
 }
 .alert-warning {
-  border-color: #f55a4e;
+  border-color: #00B2EE;
   color: #9e7841;
   background: #ffdaa4;
 }
@@ -492,7 +492,7 @@ input[type="checkbox"] {
   margin-bottom: 10px;
 }
 .help-block {
-  color: #dd5147;
+  color: #009ACD;
 }
 input {
   margin-bottom: 15px;
@@ -528,7 +528,7 @@ textarea {
   border: none;
 }
 .btn-default {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .btn-default:hover {
   color: #ffffff;
@@ -539,7 +539,7 @@ textarea {
   color: #ffffff;
 }
 .btn-primary:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 /*10.Table*/
 .table > tbody > tr > td,
@@ -570,10 +570,10 @@ textarea {
   font-weight: 600;
 }
 .flexslider ul li h3 a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .flexslider ul li .price-description span {
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 22px;
   padding: 0 5px;
 }
@@ -617,7 +617,7 @@ End CSS structure reset Bootstrap
   top: 7px;
   color: #ffffff;
   font-size: 16px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   border-radius: 0 5px 5px 0;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -631,7 +631,7 @@ End CSS structure reset Bootstrap
   transition: all 0.2s ease-out;
 }
 .panel-tool .panel-button:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .panel-tool .panel-content {
   border: 1px solid #919191;
@@ -658,7 +658,7 @@ End CSS structure reset Bootstrap
 /*BEGIN-CSS:TOPLINK
 ==================================================================================================================*/
 .top-link {
-  background: #f55a4e;
+  background: #00B2EE;
   margin-bottom: 0;
   border-top: solid 1px transparent;
   border-left: solid 1px transparent;
@@ -693,7 +693,7 @@ End CSS structure reset Bootstrap
 }
 .top-link ul .account-info a:first-child {
   padding-right: 0;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .top-link .show-mobile {
   float: right;
@@ -740,11 +740,11 @@ End CSS structure reset Bootstrap
   padding: 5px;
   border-right: none;
   display: block;
-  color: #f55a4e;
+  color: #00B2EE;
   float: none;
 }
 .top-link .show-mobile .inner-toggle ul li a:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .top-link .quick-user:hover .inner-toggle {
@@ -787,7 +787,7 @@ End CSS structure reset Bootstrap
   padding-right: 0;
 }
 .header-content .header-right .contact-info-blocks .contact-info-item i {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .header-content .header-right .contact-info-blocks .contact-info-item span {
   color: #666666;
@@ -826,13 +826,13 @@ End CSS structure reset Bootstrap
 }
 .navigation-menu .nav-menu .menu li a:hover {
   background-color: #ffffff;
-  color: #f55a4e;
-  border-top-color: #f55a4e;
+  color: #00B2EE;
+  border-top-color: #00B2EE;
 }
 .navigation-menu .nav-menu .menu li.active > a {
   background-color: #ffffff;
-  color: #f55a4e;
-  border-top-color: #f55a4e;
+  color: #00B2EE;
+  border-top-color: #00B2EE;
 }
 .navigation-menu .nav-menu .menu li ul.level1 {
   display: none;
@@ -890,7 +890,7 @@ End CSS structure reset Bootstrap
   position: relative;
 }
 .advance-search .item-adv-search .top-title {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
   font-size: 18px;
   opacity: 0.9;
@@ -976,7 +976,7 @@ End CSS structure reset Bootstrap
   margin-bottom: 10px;
 }
 .tab-category-container .tabs-category .tab-content {
-  border-bottom: 2px solid #f55a4e;
+  border-bottom: 2px solid #00B2EE;
   padding-bottom: 10px;
 }
 .tab-category-container .tabs-category .tab-content .tabs-title .tab-title h3 {
@@ -1004,7 +1004,7 @@ End CSS structure reset Bootstrap
 }
 .tab-category-container .tabs-category ul.tab-cates li.active,
 .tab-category-container .tabs-category ul.tab-cates li:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .tab-category-container .tabs-category .dropdown {
   float: right;
@@ -1014,7 +1014,7 @@ End CSS structure reset Bootstrap
   border-right: none;
   border-top: none;
   width: auto;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .tab-category-container .tabs-category .dropdown ul {
   right: 0;
@@ -1026,7 +1026,7 @@ End CSS structure reset Bootstrap
   cursor: pointer;
 }
 .tab-category-container .tabs-category .dropdown ul li:hover {
-  color: #dd5147;
+  color: #009ACD;
 }
 /*end tab-category*/
 /*start project-content*/
@@ -1046,18 +1046,18 @@ End CSS structure reset Bootstrap
 }
 .project-content h1 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
 }
 .project-content h1 span {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   padding: 14px;
   float: left;
 }
 .project-content h1 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -1089,7 +1089,7 @@ End CSS structure reset Bootstrap
   width: 30px;
   padding: 0 7px;
   height: 30px;
-  border: 1px solid #f55a4e;
+  border: 1px solid #00B2EE;
   text-align: center;
   font-size: 0;
   display: inline-block;
@@ -1102,7 +1102,7 @@ End CSS structure reset Bootstrap
   margin-right: 0;
 }
 .project-content .project-filter .display li.active a i {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .project-content .project-filter .limit select,
 .project-content .project-filter .sort select {
@@ -1142,7 +1142,7 @@ End CSS structure reset Bootstrap
   padding: 5px;
   font-size: 12px;
   font-weight: 700;
-  color: #f55a4e;
+  color: #00B2EE;
   text-transform: uppercase;
   position: absolute;
   left: 5px;
@@ -1186,7 +1186,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .project-content .project-block .project-item-box .project-item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .project-content .project-block .project-item-box .project-item .image:hover .thumbnail {
@@ -1210,7 +1210,7 @@ End CSS structure reset Bootstrap
 }
 .project-content .project-block .project-item-box .project-item .right-block h2.name a:hover,
 .project-content .project-block .project-item-box .project-item .right-block h2.name a:visited:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .project-content .project-block .project-item-box .project-item:hover {
   box-shadow: 0 0 12px #dedede;
@@ -1254,18 +1254,18 @@ End CSS structure reset Bootstrap
 }
 .property-content h1 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
 }
 .property-content h1 span {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   padding: 14px;
   float: left;
 }
 .property-content h1 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -1297,7 +1297,7 @@ End CSS structure reset Bootstrap
   width: 30px;
   padding: 0 7px;
   height: 30px;
-  border: 1px solid #f55a4e;
+  border: 1px solid #00B2EE;
   text-align: center;
   font-size: 0;
   display: inline-block;
@@ -1310,7 +1310,7 @@ End CSS structure reset Bootstrap
   margin-right: 0;
 }
 .property-content .property-filter .display li.active a i {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .property-content .property-filter .limit select,
 .property-content .property-filter .sort select {
@@ -1339,7 +1339,7 @@ End CSS structure reset Bootstrap
 }
 .property-content .property-tabs ul.nav-tabs li:hover a {
   border: none;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .property-content .property-tabs .property-block .property-item-box {
@@ -1363,7 +1363,7 @@ End CSS structure reset Bootstrap
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .image .rent {
   display: block;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   text-align: center;
   padding: 5px;
   font-size: 12px;
@@ -1407,7 +1407,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .image:hover .thumbnail {
@@ -1429,7 +1429,7 @@ End CSS structure reset Bootstrap
 .property-content .property-tabs .property-block .property-item-box .property-item .right-block h2.name a:visited {
   text-transform: uppercase;
   font-weight: 600;
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 15px;
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .right-block h2.name a:hover,
@@ -1442,7 +1442,7 @@ End CSS structure reset Bootstrap
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .right-block .location i {
   font-size: 16px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .property-content .property-tabs .property-block .property-item-box .property-item .right-block ul {
   background-color: #f7f7f7;
@@ -1528,18 +1528,18 @@ End CSS structure reset Bootstrap
 }
 .service-content h1 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
 }
 .service-content h1 span {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   padding: 14px;
   float: left;
 }
 .service-content h1 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -1571,7 +1571,7 @@ End CSS structure reset Bootstrap
   width: 30px;
   padding: 0 7px;
   height: 30px;
-  border: 1px solid #f55a4e;
+  border: 1px solid #00B2EE;
   text-align: center;
   font-size: 0;
   display: inline-block;
@@ -1584,7 +1584,7 @@ End CSS structure reset Bootstrap
   margin-right: 0;
 }
 .service-content .service-filter .display li.active a i {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .service-content .service-filter .limit select,
 .service-content .service-filter .sort select {
@@ -1647,7 +1647,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .service-content .service-block .service-item-box .service-item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .service-content .service-block .service-item-box .service-item .image:hover .thumbnail {
@@ -1668,7 +1668,7 @@ End CSS structure reset Bootstrap
 .service-content .service-block .service-item-box .service-item .right-block h2.name a:visited {
   text-transform: uppercase;
   font-weight: bold;
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 15px;
 }
 .service-content .service-block .service-item-box .service-item .right-block h2.name a:hover,
@@ -1789,7 +1789,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .gallery-content .gallery-item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .gallery-content .gallery-item .image:hover .thumbnail {
@@ -1837,7 +1837,7 @@ End CSS structure reset Bootstrap
   margin-bottom: 10px;
   color: #515b5c;
   font-weight: bold;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
 }
 .partner .partner-content .partner-block {
@@ -1881,7 +1881,7 @@ End CSS structure reset Bootstrap
   margin-bottom: 15px;
 }
 .footer .footer-box h3 {
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   margin-bottom: 15px;
   padding-bottom: 10px;
   color: #394041;
@@ -1928,7 +1928,7 @@ End CSS structure reset Bootstrap
   width: 40px;
 }
 .footer .footer-box.box-social .social-icon ul li a:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .footer .footer-bottom {
@@ -1952,7 +1952,7 @@ End CSS structure reset Bootstrap
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -1973,7 +1973,7 @@ End CSS structure reset Bootstrap
   display: block;
 }
 .menu-service ul li a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-service ul li .open-close {
   position: absolute;
@@ -1990,7 +1990,7 @@ End CSS structure reset Bootstrap
   font-size: 18px;
 }
 .menu-service ul li .open-close i:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-service ul li ul {
   border: none;
@@ -2017,7 +2017,7 @@ End CSS structure reset Bootstrap
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -2043,7 +2043,7 @@ End CSS structure reset Bootstrap
   display: block;
 }
 .menu-property ul li a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-property ul li .open-close {
   position: absolute;
@@ -2060,7 +2060,7 @@ End CSS structure reset Bootstrap
   font-size: 18px;
 }
 .menu-property ul li .open-close i:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-property ul li ul {
   border: none;
@@ -2084,7 +2084,7 @@ End CSS structure reset Bootstrap
   padding-left: 40px;
 }
 .menu-property ul li ul li ul li.active a {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-project {
   margin-bottom: 20px;
@@ -2095,7 +2095,7 @@ End CSS structure reset Bootstrap
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -2121,7 +2121,7 @@ End CSS structure reset Bootstrap
   display: block;
 }
 .menu-project ul li a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-project ul li .open-close {
   position: absolute;
@@ -2138,7 +2138,7 @@ End CSS structure reset Bootstrap
   font-size: 18px;
 }
 .menu-project ul li .open-close i:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-project ul li ul {
   border: none;
@@ -2162,7 +2162,7 @@ End CSS structure reset Bootstrap
   padding-left: 40px;
 }
 .menu-project ul li ul li ul li.active a {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 /*menu*/
 .menu-news {
@@ -2174,7 +2174,7 @@ End CSS structure reset Bootstrap
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -2195,7 +2195,7 @@ End CSS structure reset Bootstrap
   display: block;
 }
 .menu-news ul li a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-news ul li .open-close {
   position: absolute;
@@ -2212,7 +2212,7 @@ End CSS structure reset Bootstrap
   font-size: 18px;
 }
 .menu-news ul li .open-close i:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-news ul li ul {
   border: none;
@@ -2241,11 +2241,11 @@ End CSS structure reset Bootstrap
   border-bottom: none;
   position: relative;
   color: #ffffff;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .menu-search h3 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
@@ -2258,7 +2258,7 @@ End CSS structure reset Bootstrap
   height: 47px;
 }
 .menu-search h3 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -2288,7 +2288,7 @@ End CSS structure reset Bootstrap
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 20px;
 }
@@ -2317,7 +2317,7 @@ End CSS structure reset Bootstrap
 .menu-about ul li a:visited:hover,
 .menu-logined ul li a:visited:hover,
 .menu-account ul li a:visited:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-about ul li a:before,
 .menu-logined ul li a:before,
@@ -2342,7 +2342,7 @@ End CSS structure reset Bootstrap
 .menu-about ul li.active a,
 .menu-logined ul li.active a,
 .menu-account ul li.active a {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .menu-logined ul li a,
 .menu-account ul li a {
@@ -2385,7 +2385,7 @@ End CSS structure reset Bootstrap
   border-bottom: none;
   position: relative;
   color: #ffffff;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .box-counter h3 i,
 .box-price-gold h3 i,
@@ -2395,7 +2395,7 @@ End CSS structure reset Bootstrap
 .box-adv h3 i,
 .box-video h3 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
@@ -2420,7 +2420,7 @@ End CSS structure reset Bootstrap
 .box-html h3 span:before,
 .box-adv h3 span:before,
 .box-video h3 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -2576,7 +2576,7 @@ End CSS structure reset Bootstrap
 }
 .news-content .news-info h2.name a {
   font-size: 17px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .news-content .news-info h2.name a:hover {
   color: #394041;
@@ -2602,11 +2602,11 @@ End CSS structure reset Bootstrap
   border-bottom: none;
   position: relative;
   color: #ffffff;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .box-news h3 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
@@ -2619,7 +2619,7 @@ End CSS structure reset Bootstrap
   height: 47px;
 }
 .box-news h3 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -2643,7 +2643,7 @@ End CSS structure reset Bootstrap
   font-weight: bold;
 }
 .box-news .news-content .news-info h2.name a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 /*START-CSS:NEWS
 ==================================================================================================================*/
@@ -2687,7 +2687,7 @@ End CSS structure reset Bootstrap
 }
 .news-detail .news-other h3,
 .about-detail .news-other h3 {
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -2702,7 +2702,7 @@ End CSS structure reset Bootstrap
 }
 .news-detail .news-other ul li a:hover,
 .about-detail .news-other ul li a:hover {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .news-detail .news-other ul li a:before,
 .about-detail .news-other ul li a:before {
@@ -2720,11 +2720,11 @@ End CSS structure reset Bootstrap
 }
 .service-detail .service-block h1 {
   font-size: 24px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .service-detail .service-block h2 {
   font-size: 24px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .service-detail .service-block .date {
   font-style: italic;
@@ -2758,7 +2758,7 @@ End CSS structure reset Bootstrap
   font-size: 14px;
 }
 .contact-content .contact-info a {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .contact-content .contact-info a:hover {
   color: #394041;
@@ -2772,7 +2772,7 @@ End CSS structure reset Bootstrap
   text-transform: uppercase;
   margin-bottom: 10px;
   font-size: 14px;
-  color: #f55a4e;
+  color: #00B2EE;
   font-weight: bold;
 }
 .contact-content .description {
@@ -2800,7 +2800,7 @@ End CSS structure reset Bootstrap
   margin-right: 30px;
 }
 .contact-content .map .map-information ul li a {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .contact-content .map .map-information ul li a:hover {
   color: #394041;
@@ -2809,7 +2809,7 @@ End CSS structure reset Bootstrap
   text-transform: uppercase;
   margin-bottom: 10px;
   font-size: 14px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .box-support-online {
   margin-bottom: 15px;
@@ -2822,11 +2822,11 @@ End CSS structure reset Bootstrap
   border-bottom: none;
   position: relative;
   color: #ffffff;
-  background-color: #f55a4e;
+  background-color: #00B2EE;
 }
 .box-support-online h3 i {
   padding: 15px;
-  background-color: #dd5147;
+  background-color: #009ACD;
   margin-right: 0;
   float: left;
   position: relative;
@@ -2839,7 +2839,7 @@ End CSS structure reset Bootstrap
   height: 47px;
 }
 .box-support-online h3 span:before {
-  border-color: transparent transparent transparent #dd5147;
+  border-color: transparent transparent transparent #009ACD;
   border-style: solid;
   border-width: 5px;
   content: "";
@@ -2857,7 +2857,7 @@ End CSS structure reset Bootstrap
   font-weight: bold;
 }
 .box-support-online .support-online-block .support-hotline span {
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 20px;
 }
 .box-support-online .support-online-block .support-item {
@@ -2869,7 +2869,7 @@ End CSS structure reset Bootstrap
   font-size: 18px;
 }
 .box-support-online .support-online-block .support-item .name b {
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .box-support-online .support-online-block .support-item ul li {
   border-bottom: 1px solid #eee;
@@ -2917,7 +2917,7 @@ End CSS structure reset Bootstrap
 .login-content h2,
 .register-content h2 {
   text-transform: uppercase;
-  color: #f55a4e;
+  color: #00B2EE;
   border-bottom: 1px dotted #5e5e5e;
   padding-bottom: 5px;
   font-weight: bold;
@@ -2946,7 +2946,7 @@ End CSS structure reset Bootstrap
 .foget-password-content .warning,
 .login-content .warning,
 .register-content .warning {
-  color: #dd5147;
+  color: #009ACD;
 }
 .change-password-content .warning,
 .comunication-content .warning,
@@ -2988,7 +2988,7 @@ End CSS structure reset Bootstrap
 }
 .exchange-content .exchange-block table.exchange-list tbody .edit a,
 .exchange-content .exchange-block table.exchange-list tbody .delete a {
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 18px;
 }
 .exchange-content .exchange-block table.exchange-list tbody .edit a:hover,
@@ -3057,7 +3057,7 @@ End CSS structure reset Bootstrap
 .property-detail .property-info h1.name {
   font-size: 20px;
   line-height: 28px;
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -3090,25 +3090,25 @@ End CSS structure reset Bootstrap
   position: relative;
 }
 .property-tabs ul li a:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   border: none;
   color: #ffffff;
 }
 .property-tabs ul li.active a,
 .property-tabs ul li.active a:hover,
 .property-tabs ul li.active a:focus {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .property-tabs ul li.active a:after,
 .property-tabs ul li.active a:hover:after,
 .property-tabs ul li.active a:focus:after {
-  border-top-color: #f55a4e;
+  border-top-color: #00B2EE;
 }
 .property-tabs .tab-content {
   padding: 15px;
   line-height: 30px;
-  border: 1px solid #f55a4e;
+  border: 1px solid #00B2EE;
 }
 .property-info-detail {
   background-color: #f7f7f7;
@@ -3121,7 +3121,7 @@ End CSS structure reset Bootstrap
   font-weight: bold;
   margin: 0 0 10px;
   font-size: 16px;
-  color: #f55a4e;
+  color: #00B2EE;
 }
 .property-info-detail ul li {
   margin-bottom: 5px;
@@ -3154,24 +3154,24 @@ End CSS structure reset Bootstrap
   bottom: -16px;
 }
 .project-tabs ul li a:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   border: none;
   color: #ffffff;
 }
 .project-tabs ul li a:hover:after {
-  border-top-color: #f55a4e !important;
+  border-top-color: #00B2EE !important;
 }
 .project-tabs ul li.active a,
 .project-tabs ul li.active a:hover,
 .project-tabs ul li.active a:focus {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   border: none;
   color: #ffffff;
 }
 .project-tabs ul li.active a:after,
 .project-tabs ul li.active a:hover:after,
 .project-tabs ul li.active a:focus:after {
-  border-top-color: #f55a4e;
+  border-top-color: #00B2EE;
 }
 .project-tabs .tab-content {
   padding: 15px 0;
@@ -3181,7 +3181,7 @@ End CSS structure reset Bootstrap
   margin-bottom: 15px;
 }
 .box-sale-policy h3 {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   border-bottom: 2px solid #aaaaaa;
   color: #ffffff;
   font-size: 14px;
@@ -3205,7 +3205,7 @@ End CSS structure reset Bootstrap
 .box-sale-policy .sale-policy-block ul li:before {
   content: counter(item) "";
   counter-increment: item;
-  background: #f55a4e;
+  background: #00B2EE;
   color: #ffffff;
   display: inline-block;
   border-radius: 3px;
@@ -3213,7 +3213,7 @@ End CSS structure reset Bootstrap
   padding: 2px 7px;
 }
 .box-sale-policy .sale-policy-block ul li span {
-  color: #dd5147;
+  color: #009ACD;
 }
 .box-sale-policy .buy-guide ul {
   padding: 10px;
@@ -3230,10 +3230,10 @@ End CSS structure reset Bootstrap
   font-weight: bold;
 }
 .box-sale-policy .buy-guide ul li strong {
-  color: #dd5147;
+  color: #009ACD;
 }
 .box-project h3 {
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   color: #394041;
   font-size: 17px;
   font-weight: 600;
@@ -3271,7 +3271,7 @@ End CSS structure reset Bootstrap
   padding: 5px;
   font-size: 12px;
   font-weight: 700;
-  color: #f55a4e;
+  color: #00B2EE;
   text-transform: uppercase;
   position: absolute;
   left: 5px;
@@ -3315,7 +3315,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .box-project .box-project-block .item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .box-project .box-project-block .item .image:hover .thumbnail {
@@ -3336,7 +3336,7 @@ End CSS structure reset Bootstrap
 .box-project .box-project-block .item .name a:visited {
   text-transform: uppercase;
   font-weight: bold;
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 15px;
 }
 .box-project .box-project-block .item .name a:hover,
@@ -3344,7 +3344,7 @@ End CSS structure reset Bootstrap
   color: #394041;
 }
 .box-service h3 {
-  border-bottom: 1px solid #f55a4e;
+  border-bottom: 1px solid #00B2EE;
   color: #394041;
   font-size: 17px;
   font-weight: 600;
@@ -3382,7 +3382,7 @@ End CSS structure reset Bootstrap
   padding: 5px;
   font-size: 12px;
   font-weight: 700;
-  color: #f55a4e;
+  color: #00B2EE;
   text-transform: uppercase;
   position: absolute;
   left: 5px;
@@ -3426,7 +3426,7 @@ End CSS structure reset Bootstrap
   color: #ffffff;
 }
 .box-service .box-service-block .item .image .thumbnail a i:hover {
-  background-color: #f55a4e;
+  background-color: #00B2EE;
   color: #ffffff;
 }
 .box-service .box-service-block .item .image:hover .thumbnail {
@@ -3447,7 +3447,7 @@ End CSS structure reset Bootstrap
 .box-service .box-service-block .item .name a:visited {
   text-transform: uppercase;
   font-weight: bold;
-  color: #f55a4e;
+  color: #00B2EE;
   font-size: 15px;
 }
 .box-service .box-service-block .item .name a:hover,
