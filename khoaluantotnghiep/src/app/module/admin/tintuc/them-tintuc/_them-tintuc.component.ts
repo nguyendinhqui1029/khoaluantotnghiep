@@ -6,6 +6,7 @@ import { TINTUC } from 'src/app/model/tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { TRANGTHAITINTUC } from 'src/app/model/trangthaitintuc';
 import { ds_trangtintuc } from 'src/app/model/mock_trangthaitintuc';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'them-tintuc',
@@ -24,7 +25,6 @@ export class ThemTinTucComponent implements OnInit {
         private tinTucService: TinTucService) {
         this.formthemTinTuc = this.fb.group({
             tentintuc: ['', [Validators.required]],
-            trangthai: ['', [Validators.required]],
             ngayDang: ['', [Validators.required]],
             loaitintuc: ['', [Validators.required]],
             noidungchitiet: ['', [Validators.required]],
@@ -44,10 +44,7 @@ export class ThemTinTucComponent implements OnInit {
         return this.loaitintuc;
     }
     // end
-    getDSTrangThaiTinTuc() {
-        this.ds_trangthaitintuc = ds_trangtintuc; //lấy từ mock để show giá trị
-        this.formthemTinTuc.controls.trangthai.setValue(this.ds_trangthaitintuc[0].matrangthai); //Lấy giá trị show lên combo đầu tiên
-    }
+
 
     getDSLoaiTinTuc() {
         this.loaiTinTucService.getDSLoaiTinTuc().subscribe(ltt => {
@@ -58,15 +55,11 @@ export class ThemTinTucComponent implements OnInit {
         })
     }
 
-    selectTrangThai(e) {
-        this.tentrangthaiduocchon = e.target.value;
-    }
     ngOnInit(): void {
         let d = new Date();
         let date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
         this.formthemTinTuc.controls.ngayDang.setValue(date);
-        this.getDSTrangThaiTinTuc();
         this.getDSLoaiTinTuc();
     }
 
@@ -87,7 +80,6 @@ export class ThemTinTucComponent implements OnInit {
     add() {
         this.submitted = true;
         let tentintuc = this.formthemTinTuc.controls.tentintuc.value;
-        let trangthai = this.formthemTinTuc.controls.trangthai.value;
         let ngayDang = this.formthemTinTuc.controls.ngayDang;
         let maloaitintuc = this.formthemTinTuc.controls.loaitintuc.value;
         let noidungchitiet = this.formthemTinTuc.controls.noidungchitiet.value;
@@ -98,7 +90,7 @@ export class ThemTinTucComponent implements OnInit {
         let loaitintuc;
         let maloai = "TT" + (new Date()).getTime().toString();
         let ObjectLoaiTinTuc = this.getLoaiTinTucTheoMa(maloaitintuc);
-
+        let trangthai = ConfigService.TRANG_THAI_TIN_TUC.CHODUYET;
         if (this.ds_mangHinh.length > 0) {
             loaitintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang.value, this.ds_mangHinh,
                 ObjectLoaiTinTuc);

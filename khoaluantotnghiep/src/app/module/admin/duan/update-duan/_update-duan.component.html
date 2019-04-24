@@ -159,10 +159,10 @@
                 <label class="control-label" for="quanHuyen">Nội Dung Chi Tiết</label><span
                     style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 80%"
-                        formControlName="noiDungChiTiet"
-                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }"></textarea>
-                    <div *ngIf="submitted && f.noiDungChiTiet.errors" class="invalid-feedback">
+                    <ck-editor name="editor1" formControlName="noiDungChiTiet" skin="moono-lisa" language="en"
+                        [ngClass]="{ 'is-invalid': submitted && f.noiDungChiTiet.errors }">
+                    </ck-editor>
+                    <div *ngIf="submitted && f.noiDungChiTiet.errors" class="invalid-feedback2">
                         <div *ngIf="f.noiDungChiTiet.errors.required">Vui lòng nhập Nội dung chi tiết</div>
                     </div>
                 </div>

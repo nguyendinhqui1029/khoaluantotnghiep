@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from 'src/app/service/config.service';
 import { DuAnService } from 'src/app/service/duan.service';
+import { DanhMucService } from 'src/app/service/danhmuc.service';
+import { DoiTacService } from 'src/app/service/doitac.service';
+import { TinTucService } from 'src/app/service/tintuc.service';
 
 @Component({
     selector: 'admin',
@@ -9,20 +12,26 @@ import { DuAnService } from 'src/app/service/duan.service';
 })
 export class AdminComponent implements OnInit {
     duan_trangthai_dangchoduyet: any = 0; // trạng thái đang chờ duyệt = 1
-    duan_trangthai_daduyet: any = 0; // trạng thái đang chờ duyệt = 2
-    constructor(private duAnService: DuAnService) { }
+    doitac_trangthai_dangchoduyet: any = 0;
+    tintuc_trangthai_dangchoduyet: any = 0;
+
+    constructor(private duAnService: DuAnService, private doiTacService: DoiTacService,
+        private tinTucService: TinTucService) { }
 
     ngOnInit(): void {
-        this.getListDuAn();
+        this.getListChoDuyet();
         this.isMenuAdminforAdmin();
     }
-    getListDuAn(): void {
+    getListChoDuyet(): void {
         this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH).subscribe(duan => {
             this.duan_trangthai_dangchoduyet = duan.body.length;
         });
-        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.DANGGIAODICH).subscribe(duan => {
-            this.duan_trangthai_daduyet = duan.body.length;
+        this.doiTacService.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.CHODUYET).subscribe(doitac => {
+            this.doitac_trangthai_dangchoduyet = doitac.body.length;
         });
+        this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.CHODUYET).subscribe(tintuc => {
+            this.tintuc_trangthai_dangchoduyet = tintuc.body.length;
+        })
     }
 
     role: any = 0;

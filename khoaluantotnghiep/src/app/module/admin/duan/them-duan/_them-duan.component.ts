@@ -67,7 +67,7 @@ export class ThemDuAnComponent implements OnInit {
     }
 
     getDSDoiTac() {
-        this.doiTacservice.getListDoiTac().subscribe(doitac => {
+        this.doiTacservice.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.TATCA).subscribe(doitac => {
             this.ds_doitac = doitac.body;
             this.formthemDuan.controls.doiTac.setValue(this.ds_doitac[0].maDoiTac);
         })

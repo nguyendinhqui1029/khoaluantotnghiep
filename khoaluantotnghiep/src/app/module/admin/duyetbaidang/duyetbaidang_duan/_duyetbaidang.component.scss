@@ -73,6 +73,7 @@ $breakpoint-alpha: 480px; // adjust to your needs
 
 // presentational styling
 
+
 body {
   padding: 0 2em;
   font-family: Montserrat, sans-serif;
@@ -234,27 +235,4 @@ input::-webkit-input-placeholder {
   
   .tooltipquy:hover .tooltiptextquy {
     visibility: visible;
-  }
-
-  //css search
-  body{
-    padding:20px 20px;
-  }
-  
-  .results tr[visible='false'],
-  .no-result{
-    display:none;
-  }
-  
-  .results tr[visible='true']{
-    display:table-row;
-  }
-  
-  .counter{
-    padding:8px; 
-    color:#ccc;
-  }
-
-  .khungsearch{
-    
   }

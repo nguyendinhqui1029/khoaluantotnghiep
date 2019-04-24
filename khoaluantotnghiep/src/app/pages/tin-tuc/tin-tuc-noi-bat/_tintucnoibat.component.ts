@@ -3,6 +3,7 @@ import { TINTUC } from 'src/app/model/tintuc';
 import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { isFulfilled } from 'q';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'tin-tuc-noi-bat',
@@ -16,12 +17,8 @@ export class TinTucNoiBatComponent implements OnInit {
         this.getDSTinTuc();
     }
     getDSTinTuc() {
-        this.tintucService.getDSTinTuc().subscribe(tintuc => {
-            tintuc.body.forEach(e => {
-                if (e.loaitintuc.tenloai === 'Nổi Bật') {
-                    this.noidungtintuc.push(e);
-                }
-            });
+        this.tintucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.PHOBIEN).subscribe(tintuc => {
+            this.noidungtintuc = tintuc.body;
         });
     }
     ngOnInit(): void {

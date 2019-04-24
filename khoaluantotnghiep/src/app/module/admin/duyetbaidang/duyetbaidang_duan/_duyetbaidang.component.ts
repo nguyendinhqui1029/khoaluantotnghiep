@@ -12,6 +12,8 @@ export class DuyetBaiDangComponent implements OnInit {
     ds_baidangchoduyet: DUAN[] = [];
     duanduyet: any = {};
     duanchapnhan: any = {};
+    duan_trangthai_dangchoduyet: any = 0; // trạng thái đang chờ duyệt = 1
+
     constructor(private duAnService: DuAnService) { }
 
     getDSDuAnChoDuyet() {
@@ -19,6 +21,7 @@ export class DuyetBaiDangComponent implements OnInit {
             this.ds_baidangchoduyet = duan.body;
         })
     }
+
     ngOnInit(): void {
         this.getDSDuAnChoDuyet();
     }
@@ -60,6 +63,7 @@ export class DuyetBaiDangComponent implements OnInit {
             console.log(res);
             this.getDSDuAnChoDuyet();
         });
+
     }
 
     boquaduan(maDuAn) {

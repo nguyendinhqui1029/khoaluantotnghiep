@@ -154,7 +154,6 @@ export class UpdateDoiTacComponent implements OnInit {
         }
         let user = this.formUpdateDoiTac.controls.user.value;
         let pass = this.formUpdateDoiTac.controls.pass.value;
-        let loaiTaiKhoan = this.formUpdateDoiTac.controls.loaiTaiKhoan.value;
         let email = this.formUpdateDoiTac.controls.email.value;
         let moTa = this.formUpdateDoiTac.controls.moTa.value;
 
@@ -162,11 +161,11 @@ export class UpdateDoiTacComponent implements OnInit {
         let doitacpdate;
         if (this.loGo) {
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
-                user, pass, loaiTaiKhoan, email, 1);
+                user, pass, "", email, 1);
         } else {
             this.loGo = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
-                user, pass, loaiTaiKhoan, email, 1);
+                user, pass, "", email, 1);
         }
         console.log(doitacpdate);
         if (this.formUpdateDoiTac.invalid) {

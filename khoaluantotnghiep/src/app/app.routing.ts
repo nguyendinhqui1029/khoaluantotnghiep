@@ -52,7 +52,10 @@ import { UpdateLoaiTinTucComponent } from './module/admin/loaitintuc/update-loai
 import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_update-tintuc.component';
 import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
 import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
-import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang.component';
+import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/duyetbaidang_duan/_duyetbaidang.component';
+import { DuyetBaiDangDoiTacComponent } from './module/admin/duyetbaidang/duyetbaidang_doitac/_duyetbaidang-doitac.component';
+import { DuyetBaiDangTinTucComponent } from './module/admin/duyetbaidang/duyetbaidang_tintuc/_duyetbaidang-tintuc.component';
+import { ThongKeComponent } from './module/admin/thongke/_thongke.component';
 
 
 const routes: Routes = [
@@ -106,7 +109,7 @@ const routes: Routes = [
     {
         path: 'admin', component: AdminComponent,
         children: [
-            { path: '', component: XoaDuAnComponent },
+            { path: '', component: ThongKeComponent },
             { path: 'them-duan', component: ThemDuAnComponent },
             { path: 'xoa-duan', component: XoaDuAnComponent },
             { path: 'update-duan/:id', component: UpdateDuAnComponent },
@@ -136,8 +139,9 @@ const routes: Routes = [
             { path: 'update-tintuc/:id', component: UpdateTinTucComponent },
             { path: 'make-up-data', component: MakeUpDataComponent },
             { path: 'duyet-baidang', component: DuyetBaiDangComponent },
-
-
+            { path: 'duyetbaidang-doitac', component: DuyetBaiDangDoiTacComponent },
+            { path: 'duyetbaidang-tintuc', component: DuyetBaiDangTinTucComponent },
+            { path: 'thong-ke', component: ThongKeComponent },
         ],
         canActivate: [AdminAuthGuard]
     },

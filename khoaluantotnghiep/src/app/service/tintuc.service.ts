@@ -13,8 +13,8 @@ export class TinTucService {
 
     }
 
-    getDSTinTuc(): Observable<HttpResponse<TINTUC[]>> {
-        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc", { observe: 'response' });
+    getDSTinTucTheoTrangThai(trangthai): Observable<HttpResponse<TINTUC[]>> {
+        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc/" + trangthai, { observe: 'response' });
     }
 
     getTinTuctheoMaLoai(id): Observable<HttpResponse<TINTUC[]>> {

@@ -3,6 +3,7 @@ import { LOAITINTUC } from 'src/app/model/loaitintuc';
 import { LoaiTinTucService } from 'src/app/service/loaitintuc.service';
 import { TINTUC } from 'src/app/model/tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'danh-muc-tin-tuc',
@@ -33,7 +34,7 @@ export class DanhMucTinTucComponent implements OnInit {
     }
     ds_tintucnoibat: TINTUC[] = [];
     getDSTinTucNoiBat() {
-        this.tintucservice.getDSTinTuc().subscribe(tintucmoi => {
+        this.tintucservice.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintucmoi => {
             tintucmoi.body.forEach(tin => {
                 if (tin.loaitintuc.tenloai === 'Nổi Bật') {
                     this.ds_tintucnoibat.push(tin);
@@ -43,7 +44,7 @@ export class DanhMucTinTucComponent implements OnInit {
     }
     ds_tintucmoi: TINTUC[] = [];
     getDSTinTucMoi() {
-        this.tintucservice.getDSTinTuc().subscribe(tintucmoi => {
+        this.tintucservice.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintucmoi => {
             tintucmoi.body.forEach(tin => {
                 if (tin.loaitintuc.tenloai === 'Tin Mới') {
                     this.ds_tintucmoi.push(tin);
