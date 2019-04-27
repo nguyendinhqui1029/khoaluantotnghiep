@@ -12,7 +12,8 @@
                 </form>
             </div>
 
-            <table class="rwd-table results" style="width: 90%;margin-left: 4%">
+            <table class="rwd-table results" style="width: 90%;margin-left: 4%"
+                *ngIf="ds_danhmuc.length > 0 else nguoclai">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -40,7 +41,14 @@
                     </tr>
                 </tbody>
             </table>
-
+            <ng-template #nguoclai>
+                <div class="fa-3x">
+                    <div style="margin: auto; clear: both; text-align: center">
+                        <i style="font-size: 40px; color: rgb(116, 182, 236);margin: auto;"
+                            class="fa fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

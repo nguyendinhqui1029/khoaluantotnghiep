@@ -121,6 +121,7 @@ import { DuyetBaiDangDoiTacComponent } from './module/admin/duyetbaidang/duyetba
 import { DuyetBaiDangTinTucComponent } from './module/admin/duyetbaidang/duyetbaidang_tintuc/_duyetbaidang-tintuc.component';
 import { ThongKeComponent } from './module/admin/thongke/_thongke.component';
 import { ChartsModule } from 'ng2-charts';
+import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
 
 
 
@@ -144,6 +145,7 @@ import { ChartsModule } from 'ng2-charts';
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
     //Admin
+    MenuAdminComponent,
     AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,

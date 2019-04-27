@@ -1,0 +1,211 @@
+<section class="row">
+    <section>
+
+        <div style="font-size: 20px; ">
+            <nav class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <ul class="mcd-menu" style="background: rgb(236, 240, 237)">
+                    <li>
+                        <a [routerLink]="[ '/trang-chu']">
+                            <i class="fa fa-home"></i>
+                            <strong>Trang Chủ</strong>
+                            <small>Trở lại Trang chủ</small>
+                        </a>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a [routerLink]="[ '/admin/thong-ke']" class="active">
+                            <i class="fa fa-pie-chart"></i> <strong>Thống Kê</strong>
+                            <small>Chi tiết Thống Kê</small>
+                        </a>
+                    </li>
+                    <li *ngIf="role === 2">
+                        <a [routerLink]="[ '/admin/thong-ke']" class="active">
+                            <i class="fa fa-edit"></i> <strong>Tạo Báo Cáo</strong>
+                            <small>Báo cáo</small>
+                        </a>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-edit"></i>
+                            <strong>Menu</strong>
+                            <small>Cài đặt Menu</small>
+                        </a>
+                        <ul>
+                            <li><a [routerLink]="[ '/admin/them-menu']"><i class="fa fa-plus-square"
+                                        style="margin-top: 5px"></i>Thêm
+                                    Menu</a>
+                            </li>
+                            <li><a [routerLink]="[ '/admin/xoa-menu']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List
+                                    Menu</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-tasks"></i>
+                            <strong>Bài Đăng</strong>
+                            <small>Cài đặt Bài Đăng</small>
+                        </a>
+                        <ul>
+                            <li><a [routerLink]="[ '/admin/duyet-baidang']" style="font-size: 90%"><i class="fa fa-bell"
+                                        style="margin-top: 5px"></i>Dự Án chờ duyệt<sup class="sobaichoduyet"
+                                        *ngIf="duan_trangthai_dangchoduyet">{{duan_trangthai_dangchoduyet}}</sup></a>
+                            </li>
+                            <li><a [routerLink]="[ '/admin/duyetbaidang-doitac']" style="font-size: 90%"><i
+                                        class="fa fa-bell" style="margin-top: 5px"></i>Đối Tác chờ duyệt<sup
+                                        class="sobaichoduyet"
+                                        *ngIf="doitac_trangthai_dangchoduyet">{{doitac_trangthai_dangchoduyet}}</sup></a>
+                            </li>
+                            <li><a [routerLink]="[ '/admin/duyetbaidang-tintuc']" style="font-size: 90%"><i
+                                        class="fa fa-bell" style="margin-top: 5px"></i>Tin Tức chờ duyệt<sup
+                                        class="sobaichoduyet"
+                                        *ngIf="tintuc_trangthai_dangchoduyet">{{tintuc_trangthai_dangchoduyet}}</sup></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-briefcase"></i>
+                            <strong>Dự Án</strong>
+                            <small>Cài đặt Dự Án</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/employee/them-duan']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Dự Án</a>
+                            </li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-duan']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Dự Án</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3 || role === 2">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-slideshare"></i>
+                            <strong>Đối Tác</strong>
+                            <small>Cài đặt Đối Tác</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/employee/them-doitac']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Đối
+                                    Tác</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-doitac']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Đối Tác</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-user"></i>
+                            <strong>Nhân Viên</strong>
+                            <small>Quản lý Nhân viên</small>
+                        </a>
+                        <ul>
+                            <li><a [routerLink]="[ '/admin']"><i class="fa fa-plus-square"
+                                        style="margin-top: 5px"></i>Thêm Nhân
+                                    Viên</a></li>
+                            <li><a [routerLink]="[ '/admin']"><i class="fa fa-list-alt" style="margin-top: 5px"></i>List
+                                    Nhân
+                                    Viên</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <!-- <i class="fas fa-list-ol"></i> -->
+                            <i class="fa fa-list-ol"></i>
+                            <strong>Danh Mục</strong>
+                            <small>Cài đặt Danh Mục</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-danhmuc']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Danh
+                                    Mục</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-danhmuc']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Danh
+                                    Mục</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3 || role === 2">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-comments-o"></i>
+                            <strong>Tin Tức</strong>
+                            <small>Cài đặt Tin Tức</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/employee/them-tintuc']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Tin
+                                    Tức</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-tintuc']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Tin
+                                    Tức</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-user"></i>
+                            <strong>Tài Khoản</strong>
+                            <small>Cài đặt Tài Khoản</small>
+                        </a>
+                        <ul>
+                            <li><a [routerLink]="[ '/admin/them-taikhoan']"><i class="fa fa-plus-square"
+                                        style="margin-top: 5px"></i>Thêm Tài
+                                    Khoản</a></li>
+                            <li><a [routerLink]="[ '/admin/xoa-taikhoan']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Tài
+                                    Khoản</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3 || role === 2">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-question-circle"></i>
+                            <strong>Giới Thiệu</strong>
+                            <small>Cài đặt Giới Thiệu</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-gioithieu']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Giới
+                                    Thiệu</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-gioithieu']"><i class="fa fa-list-alt"
+                                        style="margin-top: 5px"></i>List Giới
+                                    Thiệu</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3 || role === 2 ">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-credit-card"></i>
+                            <strong>Giao Dịch</strong>
+                            <small>Cài đặt Giao Dịch</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-loaigiaodich']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Giao
+                                    Dịch</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-loaigiaodich']"><i
+                                        class="fa fa-list-alt" style="margin-top: 5px"></i>List Giao
+                                    Dịch</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="role === 3">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-envelope-o"></i>
+                            <strong>Loại Tin Tức</strong>
+                            <small>Cài đặt Tin Tức</small>
+                        </a>
+                        <ul>
+                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-loaitintuc']"><i
+                                        class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Loại
+                                    Tin
+                                    Tức</a></li>
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-loaitintuc']"><i
+                                        class="fa fa-list-alt" style="margin-top: 5px"></i>List Loại Tin Tức</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="float">
+                    </li>
+                    <li class="float">
+                        <a [routerLink]="[ '/admin/make-up-data']">Back up data</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</section>

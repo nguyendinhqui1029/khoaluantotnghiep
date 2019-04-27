@@ -8,7 +8,10 @@ body, html, #container{
     color: red;
     padding-left: 30%;
 }
-
+canvas {
+  max-width: 100%;
+  height: auto;
+  }
 //css table
 
 // More practical CSS...
