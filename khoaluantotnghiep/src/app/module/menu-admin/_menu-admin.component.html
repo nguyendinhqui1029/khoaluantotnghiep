@@ -17,12 +17,6 @@
                             <small>Chi tiết Thống Kê</small>
                         </a>
                     </li>
-                    <li *ngIf="role === 2">
-                        <a [routerLink]="[ '/admin/thong-ke']" class="active">
-                            <i class="fa fa-edit"></i> <strong>Tạo Báo Cáo</strong>
-                            <small>Báo cáo</small>
-                        </a>
-                    </li>
                     <li *ngIf="role === 3">
                         <a href="javaScript:void(0)">
                             <i class="fa fa-edit"></i>
@@ -115,7 +109,7 @@
                             <small>Cài đặt Danh Mục</small>
                         </a>
                         <ul>
-                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-danhmuc']"><i
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/them-danhmuc']"><i
                                         class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Danh
                                     Mục</a></li>
                             <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-danhmuc']"><i class="fa fa-list-alt"
@@ -153,14 +147,14 @@
                                     Khoản</a></li>
                         </ul>
                     </li>
-                    <li *ngIf="role === 3 || role === 2">
+                    <li *ngIf="role === 3">
                         <a href="javaScript:void(0)">
                             <i class="fa fa-question-circle"></i>
                             <strong>Giới Thiệu</strong>
                             <small>Cài đặt Giới Thiệu</small>
                         </a>
                         <ul>
-                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-gioithieu']"><i
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/them-gioithieu']"><i
                                         class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Giới
                                     Thiệu</a></li>
                             <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-gioithieu']"><i class="fa fa-list-alt"
@@ -168,14 +162,14 @@
                                     Thiệu</a></li>
                         </ul>
                     </li>
-                    <li *ngIf="role === 3 || role === 2 ">
+                    <li *ngIf="role === 3">
                         <a href="javaScript:void(0)">
                             <i class="fa fa-credit-card"></i>
                             <strong>Giao Dịch</strong>
                             <small>Cài đặt Giao Dịch</small>
                         </a>
                         <ul>
-                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-loaigiaodich']"><i
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/them-loaigiaodich']"><i
                                         class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Giao
                                     Dịch</a></li>
                             <li *ngIf="role === 3"><a [routerLink]="[ '/admin/xoa-loaigiaodich']"><i
@@ -190,7 +184,7 @@
                             <small>Cài đặt Tin Tức</small>
                         </a>
                         <ul>
-                            <li *ngIf="role === 2"><a [routerLink]="[ '/admin/them-loaitintuc']"><i
+                            <li *ngIf="role === 3"><a [routerLink]="[ '/admin/them-loaitintuc']"><i
                                         class="fa fa-plus-square" style="margin-top: 5px"></i>Thêm Loại
                                     Tin
                                     Tức</a></li>
