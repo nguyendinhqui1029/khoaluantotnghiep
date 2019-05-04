@@ -26,6 +26,12 @@ import { ConfigService } from 'src/app/service/config.service';
     styleUrls: ['./_update-duan.component.scss']
 })
 export class UpdateDuAnComponent implements OnInit {
+
+    //page upload
+    flag = false;
+    status = "capnhat";
+    //
+
     duan: any = {};
     ds_mangHinh: HINHANH[] = [];
     ds_loaigiaodich: LOAIGIAODICH[] = [];
@@ -117,6 +123,7 @@ export class UpdateDuAnComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.flag = true;
 
         this.getDSDanhMuc();
         this.getDSDoiTac();

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DuAnService } from './service/duan.service';
 import { Router } from '@angular/router';
+import { ConfigService } from './service/config.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,19 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Bất động sản';
-  constructor() {
-
+  constructor(private DuanService: DuAnService) {
+    // this.ChuyenTrangThaiDuAn();
   }
+
+  // ChuyenTrangThaiDuAn() {
+  //   this.DuanService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.DUANMOI).subscribe(duanmoi => {
+  //     if (duanmoi.body) {
+  //       duanmoi.body.forEach(duan => {
+  //         if(duan.ngayDang){
+
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
 }

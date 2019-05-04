@@ -122,6 +122,8 @@ import { DuyetBaiDangTinTucComponent } from './module/admin/duyetbaidang/duyetba
 import { ThongKeComponent } from './module/admin/thongke/_thongke.component';
 import { ChartsModule } from 'ng2-charts';
 import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
+import { UploadImageComponent } from './module/upload-image/_upload-image.component';
+import { UploadImageService } from './service/upload-image.service';
 
 
 
@@ -144,6 +146,7 @@ import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
+    UploadImageComponent,
     //Admin
     MenuAdminComponent,
     AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,
@@ -168,7 +171,8 @@ import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, TaiKhoanService,
-    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService],
+    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService,
+    UploadImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

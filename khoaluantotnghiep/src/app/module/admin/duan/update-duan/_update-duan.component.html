@@ -173,6 +173,9 @@
                 <div class="form-inline">
                     <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="mangHinh">
                 </div>
+                <!-- hinh anh -->
+                <upload-image *ngIf="flag" [page]="status"></upload-image>
+                <!-- hinh anh -->
             </div>
             <div class="form-group">
                 <div *ngIf="statusUpdate.status" class="invalid-feedback">

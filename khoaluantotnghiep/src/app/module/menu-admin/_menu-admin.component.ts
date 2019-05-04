@@ -19,6 +19,9 @@ export class MenuAdminComponent implements OnInit {
     ngOnInit(): void {
         this.getListChoDuyet();
         this.isMenuAdminforAdmin();
+        this.duAnService.soChuaDuyet.subscribe(sl => {
+            this.duan_trangthai_dangchoduyet = sl;
+        })
     }
     role: any = 0;
     isMenuAdminforAdmin() {
@@ -35,6 +38,7 @@ export class MenuAdminComponent implements OnInit {
     getListChoDuyet(): void {
         this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH).subscribe(duan => {
             this.duan_trangthai_dangchoduyet = duan.body.length;
+
         });
         this.doiTacService.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.CHODUYET).subscribe(doitac => {
             this.doitac_trangthai_dangchoduyet = doitac.body.length;

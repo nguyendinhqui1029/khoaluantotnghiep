@@ -12,6 +12,7 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class SanGiaoDichListComponent implements OnInit {
     //Du liệu từ mock
+    urlImage: string = ConfigService.URL;
     dsDuAN: DUAN[] = [];
     constructor(private serviceDuAn: DuAnService, private serviceSanGiaoDich: SanGiaoDichService) {
 

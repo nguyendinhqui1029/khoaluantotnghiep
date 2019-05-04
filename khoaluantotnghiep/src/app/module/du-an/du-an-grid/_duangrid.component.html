@@ -5,10 +5,10 @@
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
                     <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" title="{{duan.mangHinh[0].alt}}">
-                        <img src="..\assets\images\product\{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
+                        <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
                             style="max-height: 200px; min-height: 200px; width: 100%;" />
                     </a>
-                    <span class="new" *ngIf="duan.trangThai ===3">New</span>
+                    <span class="new" *ngIf="duan.trangThai ===3">Mới</span>
                     <div class="thumbnail">
                         <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" class="zoom">
                             <i class="glyphicon glyphicon-link"></i>

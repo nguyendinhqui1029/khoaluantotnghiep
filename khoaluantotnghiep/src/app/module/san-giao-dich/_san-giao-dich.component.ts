@@ -72,11 +72,14 @@ export class SanGiaoDichModuleComponent implements OnInit {
         });
         this.ds_DuAn = [];
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            duan.body.forEach(duanthuehoacban => {
-                if (duanthuehoacban.danhMuc.maDanhMuc === danhmuc.maDanhMuc) {
-                    this.ds_DuAn.push(duanthuehoacban);
-                }
-            })
+            if (duan.body) {
+                duan.body.forEach(duanthuehoacban => {
+                    if (duanthuehoacban.danhMuc.maDanhMuc === danhmuc.maDanhMuc) {
+                        this.ds_DuAn.push(duanthuehoacban);
+                    }
+                })
+            }
+
             //Phan trang
             this.phanTrangService.setValueDanhSach(this.ds_DuAn);
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);

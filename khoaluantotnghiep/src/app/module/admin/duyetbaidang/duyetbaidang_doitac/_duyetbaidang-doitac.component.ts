@@ -53,7 +53,6 @@ export class DuyetBaiDangDoiTacComponent implements OnInit {
             user, pass, loaiTaiKhoan, email, trangThai);
 
         this.doiTacService.updateDoiTac(this.doitacchapnhan).subscribe(res => {
-            console.log(res);
             this.getDSDoiTacChoDuyet();
         });
     }

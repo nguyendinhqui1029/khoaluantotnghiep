@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DUAN } from '../model/duan';
-import { ds_duan } from '../model/mock_duan';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class DuAnService {
@@ -12,6 +10,15 @@ export class DuAnService {
     // static ds_du_an: any[] = [];
     valueSource = new BehaviorSubject<any[]>([]);
     currentMessage = this.valueSource.asObservable();
+
+    //Cập nhật số lượng dự án chưa duyệt
+    soChuaDuyet = new BehaviorSubject<Number>(0);
+    soChuaDuyetMessage = this.soChuaDuyet.asObservable();
+    setSoLuongChuaDuyet(sl) {
+        this.soChuaDuyet.next(sl);
+    }
+    //Cập nhật số lượng dự án chưa duyệt
+
     httpOptions = {
         headers: new HttpHeaders({
             'Access-Control-Allow-Origin': "*",
@@ -40,6 +47,10 @@ export class DuAnService {
 
     getDuAnTheoTrangThai(trangthai): Observable<HttpResponse<DUAN[]>> {
         return this.http.get<DUAN[]>(ConfigService.URL + "get-all-du-an/" + trangthai, { observe: 'response' });
+    }
+
+    getDuAnLimitTheoTrangThai(vtbd, sl, trangthai) {
+        return this.http.get<DUAN[]>(ConfigService.URL + "get-limit-du-an/" + vtbd + "/" + sl + "/" + trangthai, { observe: 'response' });
     }
 
     //Truyen du lieu cho du an list/gird
@@ -127,4 +138,6 @@ export class DuAnService {
     setValueThongTin(value) {
         this.valueThongtin.next(value);
     }
+
+
 }

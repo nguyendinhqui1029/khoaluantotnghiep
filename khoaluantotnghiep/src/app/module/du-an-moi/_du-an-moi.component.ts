@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ConfigService } from 'src/app/service/config.service';
 
 
 
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./_du-an-moi.component.scss']
 })
 export class DuAnMoiComponent implements OnInit {
-
+    urlImage: string = ConfigService.URL;
     @Input() dsduan: any[];
     //du liệu từ mock
     constructor() {
