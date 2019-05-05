@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TINTUC } from 'src/app/model/tintuc';
-import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
-import { isFulfilled } from 'q';
 import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
@@ -11,6 +9,8 @@ import { ConfigService } from 'src/app/service/config.service';
     styleUrls: ['./_tintucnoibat.component.scss']
 })
 export class TinTucNoiBatComponent implements OnInit {
+    urlImage: string = ConfigService.URL;
+
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = [];
     constructor(private tintucService: TinTucService) {

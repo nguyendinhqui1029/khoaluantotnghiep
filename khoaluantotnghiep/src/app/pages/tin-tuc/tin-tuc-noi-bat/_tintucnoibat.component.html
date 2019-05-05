@@ -10,13 +10,14 @@
             <!--Item 1-->
             <div *ngFor="let tinnoibat of noidungtintuc">
                 <div class="news-item clearfix">
-                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="tin-tuc/can-hotopaz-garden-tan-phu.html"><img
-                                class="img-responsive"
-                                src="../../../../assets/images/product/{{tinnoibat.hinhanh[0].tenhinh}}"
+                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a
+                            [routerLink]="['/tin-tuc-chi-tiet',tinnoibat.matintuc]"><img class="img-responsive"
+                                src="{{urlImage}}get-images/{{tinnoibat.hinhanh[0].tenhinh}}"
                                 alt="{{tinnoibat.hinhanh[0].alt}}" title="CĂN HỘTOPAZ GARDEN-T&#194;N PH&#218; " /></a>
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
-                        <h2 class="name"><a href="tin-tuc/can-hotopaz-garden-tan-phu.html">{{tinnoibat.tentintuc}}</a>
+                        <h2 class="name"><a
+                                [routerLink]="['/tin-tuc-chi-tiet',tinnoibat.matintuc]">{{tinnoibat.tentintuc}}</a>
                         </h2>
 
                     </div>

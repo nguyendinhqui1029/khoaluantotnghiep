@@ -12,6 +12,7 @@ import { ConfigService } from 'src/app/service/config.service';
     styleUrls: ['./_noidungtintuc.component.scss']
 })
 export class NoiDungTinTucComponent implements OnInit {
+    urlImage: string = ConfigService.URL;
 
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = [];
@@ -36,7 +37,6 @@ export class NoiDungTinTucComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(tintuc.body);
-            console.log(this.ds_page)
         });
         this.loaitintucservice.currentMessage.subscribe(tintuc => {
             this.noidungtintuc = tintuc;
@@ -47,7 +47,6 @@ export class NoiDungTinTucComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(tintuc);
-            console.log(this.ds_page)
         })
     }
     createPhanTrang(currentPage) {

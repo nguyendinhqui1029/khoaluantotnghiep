@@ -45,11 +45,13 @@ export class DanhMucTinTucComponent implements OnInit {
     ds_tintucmoi: TINTUC[] = [];
     getDSTinTucMoi() {
         this.tintucservice.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintucmoi => {
-            tintucmoi.body.forEach(tin => {
-                if (tin.loaitintuc.tenloai === 'Tin Mới') {
-                    this.ds_tintucmoi.push(tin);
-                }
-            })
+            if (tintucmoi.body) {
+                tintucmoi.body.forEach(tin => {
+                    if (tin.loaitintuc.tenloai === 'Tin Mới') {
+                        this.ds_tintucmoi.push(tin);
+                    }
+                })
+            }
         })
     }
     ngOnInit(): void {
