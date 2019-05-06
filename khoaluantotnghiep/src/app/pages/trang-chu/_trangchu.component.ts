@@ -17,12 +17,8 @@ export class TrangChuComponent implements OnInit {
             this.ds_DuAn = e.body;
         });
 
-        this.tinTucService.getDSTinTuc().subscribe(tintuc => {
-            tintuc.body.forEach(tin => {
-                if (tin.trangthai === ConfigService.TRANG_THAI_TIN_TUC.NEW) {
-                    this.ds_tinTuc.push(tin);
-                }
-            })
+        this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.NEW).subscribe(tintuc => {
+            this.ds_tinTuc = tintuc.body;
         })
     }
     getDanhSachDuAn() {

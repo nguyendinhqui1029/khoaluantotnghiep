@@ -4,6 +4,7 @@ import { ds_tinhthanhpho } from '../model/mock_tinhthanhpho';
 import { TINTUC } from '../model/tintuc';
 import { Observable } from 'rxjs/internal/Observable';
 import { ConfigService } from './config.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
@@ -13,8 +14,8 @@ export class TinTucService {
 
     }
 
-    getDSTinTuc(): Observable<HttpResponse<TINTUC[]>> {
-        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc", { observe: 'response' });
+    getDSTinTucTheoTrangThai(trangthai): Observable<HttpResponse<TINTUC[]>> {
+        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc/" + trangthai, { observe: 'response' });
     }
 
     getTinTuctheoMaLoai(id): Observable<HttpResponse<TINTUC[]>> {
@@ -41,4 +42,10 @@ export class TinTucService {
         return this.http.put(ConfigService.URL + "update-tin-tuc", TinTuc);
     }
 
+    //Behivior thong tin du an
+    valueThongtin = new BehaviorSubject<any>({});
+    getThongTin = this.valueThongtin.asObservable();
+    setValueThongTin(value) {
+        this.valueThongtin.next(value);
+    }
 }

@@ -116,7 +116,14 @@ import { UpdateTinTucComponent } from './module/admin/tintuc/update-tintuc/_upda
 import { TaiKhoanService } from './service/taikhoan.service';
 import { UpdateTaiKhoanComponent } from './module/admin/taikhoan/update-taikhoan/_update-taikhoan.component';
 import { UpdateMenuComponent } from './module/admin/menu/update-menu/_update-menu.component';
-import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang.component';
+import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/duyetbaidang_duan/_duyetbaidang.component';
+import { DuyetBaiDangDoiTacComponent } from './module/admin/duyetbaidang/duyetbaidang_doitac/_duyetbaidang-doitac.component';
+import { DuyetBaiDangTinTucComponent } from './module/admin/duyetbaidang/duyetbaidang_tintuc/_duyetbaidang-tintuc.component';
+import { ThongKeComponent } from './module/admin/thongke/_thongke.component';
+import { ChartsModule } from 'ng2-charts';
+import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
+import { UploadImageComponent } from './module/upload-image/_upload-image.component';
+import { UploadImageService } from './service/upload-image.service';
 
 
 
@@ -139,7 +146,9 @@ import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
+    UploadImageComponent,
     //Admin
+    MenuAdminComponent,
     AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,
     ThemDuAnComponent, XoaDuAnComponent, UpdateDuAnComponent,
     ThemDoiTacComponent, XoaDoiTacComponent, UpdateDoiTacComponent,
@@ -149,19 +158,21 @@ import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/_duyetbaidang
     ThemGioiThieuComponent, XoaGioiThieuComponent, UpdateGioiThieuComponent,
     ThemTaiKhoanComponent, XoaTaiKhoanComponent, UpdateTaiKhoanComponent,
     ThemTinTucComponent, XoaTinTucComponent, UpdateTinTucComponent,
-    DuyetBaiDangComponent
+    DuyetBaiDangComponent, DuyetBaiDangDoiTacComponent, DuyetBaiDangTinTucComponent,
+    ThongKeComponent
     //ADmin khach hang
     , CustomerThemDuAnComponent
     //Admin employee
     , EmployeeThemDuAnComponent, MakeUpDataComponent, SafeHtmlPipe
   ],
   imports: [
-    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule
+    BrowserModule, routing, ReactiveFormsModule, FormsModule, HttpClientModule, CKEditorModule, ChartsModule
   ],
   providers: [DuAnService, GioiThieuService, SanGiaoDichService, DanhMucService, LoaiTinTucService,
     MenuService, FormBuilder, LoaiGiaoDichService, DangNhapDangKiService, TinTucService, CongTyService,
     SendMailService, ConfigService, SliderService, DoiTacService, TinhThanhPhoService, TaiKhoanService,
-    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService],
+    AdminAuthGuard, CustomerAuthGuard, EmployeeAuthGuard, KetQuaTimService, PhanTranService, MakeUpDateService,
+    UploadImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

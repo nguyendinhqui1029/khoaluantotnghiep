@@ -18,6 +18,8 @@ import { ds_loaiduan } from 'src/app/model/mock_loaiduan';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 import { HUONG } from 'src/app/model/huong';
 import { ds_huong } from 'src/app/model/mock_huong';
+import { HttpEventType } from '@angular/common/http';
+import { UploadImageService } from 'src/app/service/upload-image.service';
 
 @Component({
     selector: 'them-duan',
@@ -25,6 +27,17 @@ import { ds_huong } from 'src/app/model/mock_huong';
     styleUrls: ['./_them-duan.component.scss']
 })
 export class ThemDuAnComponent implements OnInit {
+
+    //submit upload
+    fileData: FileList = null;
+    //submit upload
+
+
+    //page upload
+    flag = false;
+    status = "them";
+    //
+
     formthemDuan: FormGroup;
     submitted = false;
     ds_mangHinh: HINHANH[] = [];
@@ -43,7 +56,8 @@ export class ThemDuAnComponent implements OnInit {
     statusAdd: any = { "status": false, "message": "" };
 
     constructor(private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
-        private doiTacservice: DoiTacService, private tinhThanhphoservice: TinhThanhPhoService) {
+        private doiTacservice: DoiTacService, private tinhThanhphoservice: TinhThanhPhoService,
+        private UploadHinhService: UploadImageService) {
         this.formthemDuan = this.fb.group({
             tenDuAn: ['', [Validators.required]],
             noiDungTomTat: ['', [Validators.required]],
@@ -62,14 +76,18 @@ export class ThemDuAnComponent implements OnInit {
     getDSDanhMuc() {
         this.loaiGiaodichservice.getAllLoaiGiaoDich(ConfigService.TRANG_THAI_DANHMUC.TATCA).subscribe(danhmuc => {
             this.ds_danhmuc = danhmuc.body;
-            this.formthemDuan.controls.danhMuc.setValue(this.ds_danhmuc[0].maDanhMuc);
+            if (danhmuc.body) {
+                this.formthemDuan.controls.danhMuc.setValue(this.ds_danhmuc[0].maDanhMuc);
+            }
         })
     }
 
     getDSDoiTac() {
-        this.doiTacservice.getListDoiTac().subscribe(doitac => {
+        this.doiTacservice.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.TATCA).subscribe(doitac => {
             this.ds_doitac = doitac.body;
-            this.formthemDuan.controls.doiTac.setValue(this.ds_doitac[0].maDoiTac);
+            if (doitac.body) {
+                this.formthemDuan.controls.doiTac.setValue(this.ds_doitac[0].maDoiTac);
+            }
         })
     }
 
@@ -79,7 +97,9 @@ export class ThemDuAnComponent implements OnInit {
     getDSLoaiGiaoDich() {
         this.loaiGiaodichservice.getDSTenLoaiDanhMuc(0).subscribe(loaigiaodich => {
             this.ds_loaigiaodich = loaigiaodich.body;
-            this.formthemDuan.controls.loaiGiaoDich.setValue(this.ds_loaigiaodich[0].maLoai);
+            if (loaigiaodich.body) {
+                this.formthemDuan.controls.loaiGiaoDich.setValue(this.ds_loaigiaodich[0].maLoai);
+            }
         })
     }
 
@@ -174,7 +194,7 @@ export class ThemDuAnComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-
+        this.flag = true;
         let d = new Date();
         let date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
@@ -202,6 +222,7 @@ export class ThemDuAnComponent implements OnInit {
 
     get f() { return this.formthemDuan.controls };
     add() {
+
         this.submitted = true;
         let tenDuAn = this.formthemDuan.controls.tenDuAn.value;
         let noiDungTomTat = this.formthemDuan.controls.noiDungTomTat.value;
@@ -220,44 +241,64 @@ export class ThemDuAnComponent implements OnInit {
         if (this.formthemDuan.invalid) {
             return;
         } else if (this.formthemDuan.valid) {
-            let duan;
             let maduan = "DA" + (new Date()).getTime().toString();
             let ObjectDoiTac = this.getDoiTacTheoMa(doiTac);
             let ObjectDanhMuc = this.getDanhMucTheoMa(danhMuc);
             let ObjectLoaiGiaoDich = this.getLoaiGiaoDichTheoMa(loaiGiaoDich);
             let tenhuong = this.getHuongTheoMa(huong);
             let tenloaiduan = this.getLoaiDuAnTheoMa(loaiDuAn);
-            if (this.ds_mangHinh.length > 0) {
-                duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang.value,
-                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, 1, tenloaiduan,
-                    tenhuong, dienTich);
-            } else if (this.ds_mangHinh.length === 0) {
-                let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
-                this.ds_mangHinh.push(hinhanh);
-                duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang.value,
-                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, 1, tenloaiduan,
-                    tenhuong, dienTich);
-            }
-            console.log(duan);
-
-            this.duAnService.themDuAn(duan).subscribe(res => {
-                this.statusAdd.status = true;
-                this.statusAdd.message = "Dự Án đã được thêm thành công!";
-                console.log(res);
-            });
+            this.Submit(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, ObjectDoiTac, giaTien,
+                ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, tenloaiduan,
+                tenhuong, dienTich, ngayDang.value);
         }
     }
 
-    changeImage(event) {
-        const $ = window["$"];
-        let files = $("#mangHinh")[0].files;
-        let mahinh;
-        $("#mangHinh").value
-        for (var i = 0; files.length > i; i++) {
-            setTimeout(function () {
-            }, 500);
-            mahinh = "HA" + (new Date()).getTime().toString();
-            this.ds_mangHinh.push(new HINHANH(mahinh, files[i].name, files[i].name));
-        }
+
+    duan: any = {};
+
+    Submit(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho,
+        tenloaiduan, tenhuong, dienTich, ngaydang) {
+        this.ds_mangHinh = [];
+        this.UploadHinhService.getHinhanh.subscribe(fileData => {
+            if (fileData.length > 0) {
+                for (let i = 0; i < fileData.length;i++) {
+                    const formData = new FormData();
+                    formData.append('file', fileData[i]);
+                    this.UploadHinhService.UploadImage(formData).subscribe(events => {
+                        if (events.type == HttpEventType.UploadProgress) {
+                            console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                        } else if (events.type === HttpEventType.Response) {
+                            let mahinh, tenhinh;
+                            mahinh = "HA" + (new Date()).getTime().toString();
+                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
+                            if (this.ds_mangHinh.length === fileData.length) {
+                                this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,
+                                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH, tenloaiduan,
+                                    tenhuong, dienTich);
+                                this.duAnService.themDuAn(this.duan).subscribe(res => {
+                                    this.statusAdd.status = true;
+                                    this.statusAdd.message = "Dự Án đã được thêm thành công!";
+                                    console.log(res);
+                                });
+                            }
+                            
+                        }
+                    })
+
+                }
+
+            } else {
+                let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
+                this.ds_mangHinh.push(hinhanh);
+                this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,
+                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH, tenloaiduan,
+                    tenhuong, dienTich);
+            }
+
+
+        })
+
+
     }
 }

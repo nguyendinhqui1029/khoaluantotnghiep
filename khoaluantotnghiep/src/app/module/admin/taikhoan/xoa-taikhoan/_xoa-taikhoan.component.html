@@ -8,37 +8,51 @@
             </div>
             <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7">
                 <form id="demo-2" style="margin-top: 3%; margin-left: 2%">
-                    <input type="search" placeholder="Search">
+                    <input class="khungsearch" type="search" placeholder="Search">
                 </form>
             </div>
 
-            <table class="rwd-table" style="width: 90%;margin-left: 4%">
-
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Mã Tài Khoản</th>
-                    <th scope="col">Tên Tài Khoản</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Số Điện Thoại</th>
-                    <th scope="col">Cài Đặt</th>
-                </tr>
-                <tr *ngFor="let item of ds_taikhoan; let i=index">
-                    <td data-th="#">{{i}}</td>
-                    <td data-th="Mã Tài Khoản">{{item.maTaiKhoan}}</td>
-                    <td data-th="Tên Tài Khoản">{{item.tenTaiKhoan}}</td>
-                    <td data-th="Email">{{item.email}}</td>
-                    <td data-th="Số Điện Thoại">{{item.soDienThoai}}</td>
-                    <td data-th="Cài Đặt"><a href="javaScript:void(0)" (click)="deletetaikhoan(item.maTaiKhoan)"
-                            class="tooltipquy"><i class="fa fa-trash"
-                                style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
-                                class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                            [routerLink]="['/admin/update-taikhoan', item.maTaiKhoan]" class="tooltipquy"><i
-                                class="fa fa-edit" style="font-size: 190%;color: white"></i><span
-                                class="tooltiptextquy">Sửa</span></a>
-                    </td>
-                </tr>
+            <table class="rwd-table results" style="width: 90%;margin-left: 4%"
+                *ngIf="ds_taikhoan.length > 0 else nguoclai">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mã Tài Khoản</th>
+                        <th scope="col">Tên Tài Khoản</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Số Điện Thoại</th>
+                        <th scope="col">Cài Đặt</th>
+                    </tr>
+                    <tr class="warning no-result">
+                        <td data-th="Kết quả" colspan="4"><i class="fa fa-warning"></i> Không tìm thấy kết quả.</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ds_taikhoan; let i=index">
+                        <td data-th="#">{{i}}</td>
+                        <td data-th="Mã Tài Khoản">{{item.maTaiKhoan}}</td>
+                        <td data-th="Tên Tài Khoản">{{item.tenTaiKhoan}}</td>
+                        <td data-th="Email">{{item.email}}</td>
+                        <td data-th="Số Điện Thoại">{{item.soDienThoai}}</td>
+                        <td data-th="Cài Đặt"><a href="javaScript:void(0)" (click)="deletetaikhoan(item.maTaiKhoan)"
+                                class="tooltipquy"><i class="fa fa-trash"
+                                    style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
+                                    class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                [routerLink]="['/admin/update-taikhoan', item.maTaiKhoan]" class="tooltipquy"><i
+                                    class="fa fa-edit" style="font-size: 190%;color: white"></i><span
+                                    class="tooltiptextquy">Sửa</span></a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-
+            <ng-template #nguoclai>
+                <div class="fa-3x">
+                    <div style="margin: auto; clear: both; text-align: center">
+                        <i style="font-size: 40px; color: rgb(116, 182, 236);margin: auto;"
+                            class="fa fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

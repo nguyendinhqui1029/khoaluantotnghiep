@@ -25,13 +25,10 @@ export class ThemDoiTacComponent implements OnInit {
             hoTen: ['', [Validators.required]],
             diaChi: ['', [Validators.required]],
             sdt: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
-            tinhThanhPho: ['', [Validators.required]],
-            quanHuyen: ['', [Validators.required]],
             ngaySinh: ['', [Validators.required]],
             moTa: ['',],
             user: ['', [Validators.required, Validators.pattern('^[-a-zA-Z0-9@\.+_]+$')]],
             pass: ['', [Validators.required]],
-            loaiTaiKhoan: [''],
             email: [''],
         });
     }
@@ -92,13 +89,10 @@ export class ThemDoiTacComponent implements OnInit {
         let sdt = this.formThemDoiTac.controls.sdt.value;
         let user = this.formThemDoiTac.controls.user.value;
         let pass = this.formThemDoiTac.controls.pass.value;
-        let loaiTaiKhoan = this.formThemDoiTac.controls.loaiTaiKhoan.value;
-        let email = this.formThemDoiTac.controls.loaiTaiKhoan.value;
-        let moTa = this.formThemDoiTac.controls.loaiTaiKhoan.value;
+        let email = this.formThemDoiTac.controls.email.value;
+        let moTa = this.formThemDoiTac.controls.moTa.value;
         let quanHuyen = this.quanhuyenduocchon;
         let tinhThanhPho = this.tinhthanhphocodau;
-
-        console.log(ngaySinh);
 
 
         if (this.formThemDoiTac.invalid) {
@@ -108,13 +102,15 @@ export class ThemDoiTacComponent implements OnInit {
             let madoitac = "DT" + (new Date()).getTime().toString();
             if (this.ds_mangHinh.length > 0) {
                 doitac = new DOITAC(madoitac, hoten, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh.value,
-                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email, 1);
+                    this.ds_mangHinh, moTa, user, pass, "", email, 1);
             } else if (this.ds_mangHinh.length === 0) {
                 let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
                 this.ds_mangHinh.push(hinhanh);
                 doitac = new DOITAC(madoitac, hoten, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh.value,
-                    this.ds_mangHinh, moTa, user, pass, loaiTaiKhoan, email, 1);
+                    this.ds_mangHinh, moTa, user, pass, "", email, 1);
             }
+            console.log(doitac);
+
             this.doiTacService.themDoiTac(doitac).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Đối Tác đã được thêm thành công!";

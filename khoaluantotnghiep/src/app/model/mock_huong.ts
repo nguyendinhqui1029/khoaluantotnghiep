@@ -8,6 +8,5 @@ export const ds_huong: HUONG[] = [
     { "mahuong": "TayBac", "tenhuong": "Tây - Bắc", "trangThai": 1 },
     { "mahuong": "DongBac", "tenhuong": "Đông - Bắc", "trangThai": 1 },
     { "mahuong": "TayNam", "tenhuong": "Tây - Nam", "trangThai": 1 },
-    { "mahuong": "DongNam", "tenhuong": "Đông - Nam", "trangThai": 1 },
-
+    { "mahuong": "DongNam", "tenhuong": "Đông - Nam", "trangThai": 1 }
 ]

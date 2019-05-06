@@ -1,0 +1,26 @@
+<div class="row" style="margin-top: 0px; background: rgba(255, 255, 255, 0.925)">
+    <div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 style="color: #34495E;margin-left: 4%">
+                    <i class="fa fa-cart-arrow-down"></i>Biểu Đồ Doanh Thu
+                </h1>
+            </div>
+            <div *ngIf="data else nguoclai" style="width: 90%; height: 700%;">
+                <canvas baseChart [chartType]="'bar'" [datasets]="chart_DATA" [labels]="chartLabels"
+                    [options]="chartOptions" [legend]="true" (chartClick)="onChartClick($event)">
+                </canvas>
+            </div>
+            <ng-template #nguoclai>
+                <div class="fa-3x">
+                    <div style="margin: auto; clear: both; text-align: center">
+                        <i style="font-size: 40px; color: rgb(116, 182, 236);margin: auto;"
+                            class="fa fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+</div>

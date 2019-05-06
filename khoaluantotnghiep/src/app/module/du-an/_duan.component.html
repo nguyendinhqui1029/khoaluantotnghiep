@@ -14,7 +14,7 @@
     </nav>
     <router-outlet></router-outlet>
     <!--phân trang-->
-    <div class="navigation" *ngIf="dsDuAn.length >=phanTrangService.soItemCuaPage">
+    <div class="navigation" *ngIf="ds_page.length > 1">
         <ul class="pagination">
             <li *ngFor="let page of ds_page" [ngClass]="{'active':currentPagePhanTrang===page.value?true:false}"><a
                     [routerLink]="[pageCurrent]" (click)="createPhanTrang(page.value)">{{page.name}}</a>

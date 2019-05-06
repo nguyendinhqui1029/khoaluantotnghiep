@@ -11,17 +11,12 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class DuAnNoiBatComponent implements OnInit {
     //Du liệu từ mock
+    urlImage: string = ConfigService.URL;
+
     dsDuAN: DUAN[] = [];
-    loai = "nổi bật";
     constructor(private serviceDuAn: DuAnService) {
-        this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            if (duan.body) {
-                duan.body.forEach(e => {
-                    if (e.loaiDuAn === this.loai) {
-                        this.dsDuAN.push(e);
-                    }
-                })
-            }
+        this.serviceDuAn.getDuAnLimitTheoTrangThai(0, 3, ConfigService.TRANG_THAI_DU_AN.DUANMOI).subscribe(duan => {
+            this.dsDuAN = duan.body;
         });
     }
 

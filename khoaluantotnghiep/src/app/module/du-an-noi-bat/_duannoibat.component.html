@@ -1,16 +1,15 @@
 <div class="box-project">
     <h3 class="title clearfix">
-        <span>Dự án nổi bật</span>
+        <span>Dự án mới</span>
     </h3>
 
     <div class="box-project-block" *ngFor="let duannoibat of dsDuAN">
         <div class="item">
             <div class="image image-resize">
                 <a href="du-an/opal-riverside.html" title="{{duannoibat.tenDuAn}}">
-                    <img src="../../../assets/images/product/{{duannoibat.mangHinh[0].tenhinh}}"
-                        class="img-responsive" />
+                    <img src="{{urlImage}}get-images/{{duannoibat.mangHinh[0].tenhinh}}" class="img-responsive" />
                 </a>
-                <span class="text">Nổi Bật</span>
+                <span class="text">Mới</span>
                 <div class="thumbnail">
                     <a href="du-an/opal-riverside.html" class="zoom">
                         <i class="glyphicon glyphicon-link"></i>

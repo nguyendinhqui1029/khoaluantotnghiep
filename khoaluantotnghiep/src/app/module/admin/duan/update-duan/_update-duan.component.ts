@@ -18,6 +18,7 @@ import { ds_loaiduan } from 'src/app/model/mock_loaiduan';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 import { HUONG } from 'src/app/model/huong';
 import { ds_huong } from 'src/app/model/mock_huong';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'update-duan',
@@ -25,6 +26,12 @@ import { ds_huong } from 'src/app/model/mock_huong';
     styleUrls: ['./_update-duan.component.scss']
 })
 export class UpdateDuAnComponent implements OnInit {
+
+    //page upload
+    flag = false;
+    status = "capnhat";
+    //
+
     duan: any = {};
     ds_mangHinh: HINHANH[] = [];
     ds_loaigiaodich: LOAIGIAODICH[] = [];
@@ -64,6 +71,9 @@ export class UpdateDuAnComponent implements OnInit {
             tinhThanhPho: ['', [Validators.required]],
             trangThai: ['', [Validators.required]],
             loaiDuAn: ['', [Validators.required]],
+            huong: ['', [Validators.required]],
+            dienTich: ['', [Validators.required]],
+
         });
         this.duAnService.getDuAnTheoMaDuAn(id).subscribe(da => {
             this.duan = da.body[0];
@@ -85,7 +95,7 @@ export class UpdateDuAnComponent implements OnInit {
             this.formupdateDuan.controls.trangThai.setValue(this.matrangthai);
             this.loaiduan = this.duan.loaiDuAn;
             this.formupdateDuan.controls.loaiDuAn.setValue(this.loaiduan);
-            this.mahuong = this.getMatuTenHuong(this.duan.huong);
+            this.getMatuTenHuong(this.duan.huong);
             this.formupdateDuan.controls.huong.setValue(this.mahuong);
             this.formupdateDuan.controls.dienTich.setValue(this.duan.dienTich);
             this.tinhthanhpho = this.duan.tinhThanhPho;
@@ -106,14 +116,14 @@ export class UpdateDuAnComponent implements OnInit {
         this.ds_huong = ds_huong;
         this.ds_huong.forEach(h => {
             if (h.tenhuong === ten) {
-                return h;
+                this.mahuong = h.mahuong;
+                console.log(this.mahuong);
             }
         })
     }
-    getDSHuong() {
-        this.ds_huong = ds_huong;
-    }
+
     ngOnInit(): void {
+        this.flag = true;
 
         this.getDSDanhMuc();
         this.getDSDoiTac();
@@ -129,7 +139,7 @@ export class UpdateDuAnComponent implements OnInit {
         })
     }
     getDSDoiTac() {
-        this.doiTacservice.getListDoiTac().subscribe(doitac => {
+        this.doiTacservice.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.TATCA).subscribe(doitac => {
             this.ds_doitac = doitac.body;
 
         })
@@ -181,6 +191,10 @@ export class UpdateDuAnComponent implements OnInit {
 
     getDSLoaiDuAn() {
         this.ds_loaiduan = ds_loaiduan; //lấy từ mock để show giá trị
+    }
+
+    getDSHuong() {
+        this.ds_huong = ds_huong; //lấy từ mock để show giá trị
     }
 
     //get Object theo id

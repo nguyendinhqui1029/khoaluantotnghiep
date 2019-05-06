@@ -11,8 +11,8 @@ export class DoiTacService {
     constructor(private http: HttpClient) {
 
     }
-    getListDoiTac(): Observable<HttpResponse<DOITAC[]>> {
-        return this.http.get<DOITAC[]>(ConfigService.URL + "get-all-doi-tac", { observe: 'response' });
+    getListDoiTac(trangThai): Observable<HttpResponse<DOITAC[]>> {
+        return this.http.get<DOITAC[]>(ConfigService.URL + "get-all-doi-tac/" + trangThai, { observe: 'response' });
     }
 
     getDoiTacTheoMaDoiTac(maDoiTac): Observable<HttpResponse<DOITAC>> {

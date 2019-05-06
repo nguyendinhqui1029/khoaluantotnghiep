@@ -36,8 +36,9 @@ export class FooterComponent implements OnInit {
     }
     getCongTy() {
         this.congTyService.getCongTy().subscribe(congty => {
-            this.thongtinCT = congty.body[0];
-            console.log(this.thongtinCT);
+            if (congty.body) {
+                this.thongtinCT = congty.body[0];
+            }
         })
     }
     ngOnInit(): void {

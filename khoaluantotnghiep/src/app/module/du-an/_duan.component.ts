@@ -40,7 +40,6 @@ export class DuAnComponent implements OnInit {
             this.ds_duan_theo_loai_giao_dich = e.dsDuantheoloaigiaodich;
             this.tieude = e.tieude;
             if (this.ds_duan_theo_loai_giao_dich !== undefined) {
-                console.log('aaa');
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.ds_duan_theo_loai_giao_dich);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
@@ -57,8 +56,7 @@ export class DuAnComponent implements OnInit {
     getListDuANtheoTrangThai() {
         this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             this.dsDuAn = duan.body;
-
-            if (this.ds_duan_theo_loai_giao_dich === undefined) {
+            if (!this.ds_duan_theo_loai_giao_dich) {
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.dsDuAn);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);

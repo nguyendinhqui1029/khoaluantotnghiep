@@ -22,7 +22,15 @@
         border-radius: 3px 3px; 
         width: 80%;
     }
-
+    .invalid-feedback2{
+        color: white !important;
+        border: 1px solid rgb(247, 176, 169);
+        background: salmon;
+        margin-top: 1px;
+        padding: 8px 5px;
+        border-radius: 3px 3px; 
+        width: 100%;
+    }
     .form-control-feedback{
         display: none;
       }

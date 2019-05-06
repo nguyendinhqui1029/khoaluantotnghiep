@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KetQuaTimService } from 'src/app/service/ketquatim.service';
 import { PhanTranService } from 'src/app/service/phantrang.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'noi-dung-tim-thay',
@@ -8,6 +9,8 @@ import { PhanTranService } from 'src/app/service/phantrang.service';
     styleUrls: ['./_noi-dung-tim-thay.component.scss']
 })
 export class NoiDungTimThayComponent implements OnInit {
+    urlImage: string = ConfigService.URL;
+
     ds_ketQua: any[] = [];
     ds_ForHTML: any[] = [];
     currentPage: number = 1;
@@ -22,6 +25,10 @@ export class NoiDungTimThayComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(ds);
+<<<<<<< HEAD
+=======
+            console.log(this.ds_ForHTML)
+>>>>>>> c47cf2bca0a884b9be612410c537005f0df35be0
         });
     }
 

@@ -11,19 +11,24 @@ export class PhanTranService {
 
     setValueDanhSach(dsSach) {
         this.ds_Data = dsSach;
-        this.chieuDaiDanhSach = this.ds_Data.length;
+        if (this.ds_Data) {
+            this.chieuDaiDanhSach = this.ds_Data.length;
+        }
     }
 
     ds_KetQuaPhanTrang(dsData) {
         let arr: any[] = [];
-        let lengthArr = dsData.length;
-        if (lengthArr > 0) {
-            let soItemHienTai = ((this.currentPage - 1) * this.soItemCuaPage) + this.soItemCuaPage;
-            let soItem = soItemHienTai > lengthArr ? lengthArr : soItemHienTai;
-            for (let i = (this.currentPage - 1) * this.soItemCuaPage; i < soItem; i++) {
-                arr.push(dsData[i]);
+        if (dsData) {
+            let lengthArr = dsData.length;
+            if (lengthArr > 0) {
+                let soItemHienTai = ((this.currentPage - 1) * this.soItemCuaPage) + this.soItemCuaPage;
+                let soItem = soItemHienTai > lengthArr ? lengthArr : soItemHienTai;
+                for (let i = (this.currentPage - 1) * this.soItemCuaPage; i < soItem; i++) {
+                    arr.push(dsData[i]);
+                }
             }
         }
+
         return arr;
     }
 

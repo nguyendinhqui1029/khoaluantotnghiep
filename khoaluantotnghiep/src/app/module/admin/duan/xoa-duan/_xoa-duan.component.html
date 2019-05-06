@@ -8,40 +8,54 @@
             </div>
             <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7">
                 <form id="demo-2" style="margin-top: 3%; margin-left: 2%">
-                    <input type="search" placeholder="Search">
+                    <input class="khungsearch" type="search" placeholder="Search">
                 </form>
             </div>
 
-            <table class="rwd-table" style="width: 90%;margin-left: 4%">
-
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Mã Dự Án</th>
-                    <th scope="col">Tên Dự Án</th>
-                    <th scope="col">Ngày Đăng</th>
-                    <th scope="col">Giá Tiền</th>
-                    <th scope="col">Loại Danh Mục</th>
-                    <th scope="col">Loại Giao Dịch</th>
-                    <th scope="col">Cài Đặt</th>
-                </tr>
-                <tr *ngFor="let item of ds_duan; let i=index">
-                    <td data-th="#">{{i}}</td>
-                    <td data-th="Mã Dự Án">{{item.maDuAn}}</td>
-                    <td data-th="Tên Dự Án">{{item.tenDuAn}}</td>
-                    <td data-th="Ngày Đăng">{{item.ngayDang | date:"dd-MM-yyyy"}}</td>
-                    <td data-th="Giá Tiền">{{item.giaTien | number}}</td>
-                    <td data-th="Loại Danh Mục">{{item.danhMuc.tenDanhMuc}}</td>
-                    <td data-th="Loại Giao Dịch">{{item.loaiGiaoDich.tenLoai}}</td>
-                    <td data-th="Cài Đặt">
-                        <a href="javaScript:void(0)" class="tooltipquy" (click)="deleteduan(item.maDuAn)"><i
-                                class="fa fa-trash" style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
-                                class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a [routerLink]="['/admin/update-duan', item.maDuAn]" class="tooltipquy"><i class="fa fa-edit"
-                                style="font-size: 190%;color: white"></i><span class="tooltiptextquy">Sửa</span></a>
-                    </td>
-                </tr>
+            <table class="rwd-table results" style="width: 90%;margin-left: 4%" *ngIf="lengthDuAn > 0 else nguoclai">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mã Dự Án</th>
+                        <th scope="col">Tên Dự Án</th>
+                        <th scope="col">Ngày Đăng</th>
+                        <th scope="col">Giá Tiền</th>
+                        <th scope="col">Loại Danh Mục</th>
+                        <th scope="col">Loại Giao Dịch</th>
+                        <th scope="col">Cài Đặt</th>
+                    </tr>
+                    <tr class="warning no-result">
+                        <td data-th="Kết quả" colspan="4"><i class="fa fa-warning"></i> Không tìm thấy kết quả.</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ds_duan; let i=index">
+                        <td data-th="#">{{i}}</td>
+                        <td data-th="Mã Dự Án">{{item.maDuAn}}</td>
+                        <td data-th="Tên Dự Án">{{item.tenDuAn}}</td>
+                        <td data-th="Ngày Đăng">{{item.ngayDang | date:"dd-MM-yyyy"}}</td>
+                        <td data-th="Giá Tiền">{{item.giaTien | number}}</td>
+                        <td data-th="Loại Danh Mục">{{item.danhMuc.tenDanhMuc}}</td>
+                        <td data-th="Loại Giao Dịch">{{item.loaiGiaoDich.tenLoai}}</td>
+                        <td data-th="Cài Đặt">
+                            <a href="javaScript:void(0)" class="tooltipquy" (click)="deleteduan(item.maDuAn)"><i
+                                    class="fa fa-trash" style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
+                                    class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a [routerLink]="['/admin/update-duan', item.maDuAn]" class="tooltipquy"><i
+                                    class="fa fa-edit" style="font-size: 190%;color: white"></i><span
+                                    class="tooltiptextquy">Sửa</span></a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-
+            <ng-template #nguoclai>
+                <div class="fa-3x">
+                    <div style="margin: auto; clear: both; text-align: center">
+                        <i style="font-size: 40px; color: rgb(116, 182, 236);margin: auto;"
+                            class="fa fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

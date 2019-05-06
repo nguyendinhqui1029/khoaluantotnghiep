@@ -4,6 +4,7 @@ import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { LoaiTinTucService } from 'src/app/service/loaitintuc.service';
 import { PhanTranService } from 'src/app/service/phantrang.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'noi-dung-tin-tuc',
@@ -11,6 +12,7 @@ import { PhanTranService } from 'src/app/service/phantrang.service';
     styleUrls: ['./_noidungtintuc.component.scss']
 })
 export class NoiDungTinTucComponent implements OnInit {
+    urlImage: string = ConfigService.URL;
 
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = [];
@@ -25,7 +27,7 @@ export class NoiDungTinTucComponent implements OnInit {
     ds_page: any[] = [];
     soItemCuaPage: number = 5;
     getDSTinTuc() {
-        this.tintucService.getDSTinTuc().subscribe(tintuc => {
+        this.tintucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintuc => {
             this.noidungtintuc = tintuc.body;
 
             this.ds_ketQua = tintuc.body;
@@ -35,7 +37,6 @@ export class NoiDungTinTucComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(tintuc.body);
-            console.log(this.ds_page)
         });
         this.loaitintucservice.currentMessage.subscribe(tintuc => {
             this.noidungtintuc = tintuc;
@@ -46,7 +47,6 @@ export class NoiDungTinTucComponent implements OnInit {
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
             this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(tintuc);
-            console.log(this.ds_page)
         })
     }
     createPhanTrang(currentPage) {

@@ -10,8 +10,8 @@
                     <div class="property-item clearfix" *ngFor="let itemkq of ds_ForHTML" style="margin-bottom: 2px;">
                         <div class="image image-resize col-md-3 col-xs-12 col-sm-4">
                             <a [routerLink]="['/chi-tiet-du-an',itemkq.maDuAn]">
-                                <img src="../assets/images/product/{{itemkq.mangHinh[0].tenhinh}}"
-                                    class="img-responsive" style="width: 100%;" />
+                                <img src="{{urlImage}}get-images/{{itemkq.mangHinh[0].tenhinh}}" class="img-responsive"
+                                    style="width: 100%;" />
                             </a>
                             <span class="rent">{{itemkq.danhMuc.tenDanhMuc}}</span>
                             <div class="thumbnail">
@@ -34,7 +34,7 @@
                                     {{itemkq.noiDungTomTat}}</p>
                             </div>
                             <ul class="detail clearfix">
-                                <li><i class="fa fa-map-marker"></i><span></span></li>
+                                <li><i class="fa fa-map-marker"></i><span>{{itemkq.quanHuyen}}</span></li>
 
                                 <li><i class="fa fa-dollar"></i><span> {{itemkq.giaTien}} <sup>đ</sup></span></li>
                             </ul>

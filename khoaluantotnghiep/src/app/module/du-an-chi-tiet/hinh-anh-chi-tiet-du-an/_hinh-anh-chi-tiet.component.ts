@@ -3,6 +3,7 @@ import { DUAN } from 'src/app/model/duan';
 import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 import { ThongTinCongTyComponent } from '../../thong-tin-cong-ty/_thongtincongty.component';
 import { Router } from '@angular/router';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'hinh-anh-chi-tiet',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./_hinh-anh-chi-tiet.component.scss']
 })
 export class HinhAnhChiTietComponent implements OnInit {
+    urlImage: string = ConfigService.URL;
 
     tenHinh: String = "";
     mota: String = "";

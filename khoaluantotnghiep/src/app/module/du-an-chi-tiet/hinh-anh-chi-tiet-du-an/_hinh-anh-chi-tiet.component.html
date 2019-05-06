@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 clearfix property-image" *ngIf="mangHinh.length">
                 <div class="col-md-12 col-sm-8 col-xs-12 image" style="margin-bottom: 20px;">
-                    <img src="../../../../assets/images/product/{{tenHinh}}" class="img-responsive" alt="{{mota}}"
+                    <img src="{{urlImage}}get-images/{{tenHinh}}" class="img-responsive" alt="{{mota}}"
                         style="width: 100%; height: 100%;" />
                 </div>
                 <!-- danh sach img lien quan chưa xử lí chọn hình hiện lên trên-->
@@ -14,7 +14,7 @@
                         <span *ngFor="let hinh of mangHinh;" style="width: 80px !important; height: 60px !important; display: inline-block; margin-left:
                         5px;">
                             <a [routerLink]=" [pathCurrent]" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh)">
-                                <img src="../../../../assets/images/product/{{hinh.tenhinh}}"
+                                <img src="{{urlImage}}get-images/{{hinh.tenhinh}}"
                                     style="width: 100% !important; height: 40px !important;" alt="{{hinh.alt}}">
                             </a>
                         </span>
@@ -23,7 +23,7 @@
                         <span *ngFor="let hinh of mangHinh;" style="width: 80px !important; height: 60px !important; display: inline-block; margin-left:
                             5px;">
                             <a [routerLink]=" [pathCurrent]" [ngClass]="{'thumbnail':true}" (click)="thayDoiHinh(hinh)">
-                                <img src="../../../../assets/images/product/{{hinh.tenhinh}}"
+                                <img src="{{urlImage}}get-images/{{hinh.tenhinh}}"
                                     style="width: 100% !important; height: 40px !important;" alt="{{hinh.alt}}">
                             </a>
                         </span>
