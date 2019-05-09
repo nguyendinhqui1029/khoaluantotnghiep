@@ -1,0 +1,33 @@
+<div class="page-wrapper">
+    <a class="btn trigger" href="javascript:;">Click Me!</a>
+</div>
+<div class="modal-wrapper">
+    <div class="modal">
+        <div class="head">
+            <a class="btn-close trigger" href="javascript:;"></a>
+        </div>
+        <div class="content">
+            <span>
+                <input type="text" style="width: 80%;" class="form-control">
+                <button type="submit" class="btn btn-info" (click)="add()"
+                    style="float: right; margin-top: -45px; border-radius: 5px 5px; height: 35px;">Hình
+                    Ảnh</button>
+            </span>
+            <div class="row" style="overflow: scroll; height: 260px;">
+                <!--du an 1-->
+                <div class="col-md-3 col-sm-3 col-xs-12 project-item-box" *ngFor="let duan of dsDuAn">
+                    <div class="project-item project-resize">
+                        <div class="image image-resize"
+                            style="max-height: 50px !important; min-height: 50px !important; margin: 2px; ">
+                            <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" title="{{duan.mangHinh[0].alt}}">
+                                <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
+                                    style="max-height: 50px; min-height: 50px; width: 100%;" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
