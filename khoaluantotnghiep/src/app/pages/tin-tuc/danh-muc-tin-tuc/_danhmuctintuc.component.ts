@@ -12,10 +12,9 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class DanhMucTinTucComponent implements OnInit {
     danhmuctin: LOAITINTUC[] = [];
+    dsTinTucTheoLoai: TINTUC[] = [];
     constructor(private loaitintucservice: LoaiTinTucService, private tintucservice: TinTucService) {
         this.getDSLoaiTinTuc();
-        this.getDSTinTucNoiBat();
-        this.getDSTinTucMoi();
     }
 
     getDSLoaiTinTuc() {
@@ -24,36 +23,20 @@ export class DanhMucTinTucComponent implements OnInit {
         })
     }
     setTinTuc(value) {
-        this.danhmuctin.forEach(e => {
-            if (e.maloai === value) {
-                this.loaitintucservice.changeValue(this.ds_tintucnoibat); //Danh sách tin nôi bật lúc nhấn nút
-            } else {
-                this.loaitintucservice.changeValue(this.ds_tintucmoi); //Danh sách tin mới lúc nhấn nút
-            }
-        });
-    }
-    ds_tintucnoibat: TINTUC[] = [];
-    getDSTinTucNoiBat() {
-        this.tintucservice.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintucmoi => {
-            tintucmoi.body.forEach(tin => {
-                if (tin.loaitintuc.tenloai === 'Nổi Bật') {
-                    this.ds_tintucnoibat.push(tin);
-                }
-            })
-        })
-    }
-    ds_tintucmoi: TINTUC[] = [];
-    getDSTinTucMoi() {
+        this.dsTinTucTheoLoai = [];
         this.tintucservice.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintucmoi => {
             if (tintucmoi.body) {
                 tintucmoi.body.forEach(tin => {
-                    if (tin.loaitintuc.tenloai === 'Tin Mới') {
-                        this.ds_tintucmoi.push(tin);
+                    if (tin.loaitintuc.maloai === value) {
+                        this.dsTinTucTheoLoai.push(tin);
                     }
                 })
+                this.loaitintucservice.changeValue(this.dsTinTucTheoLoai);
             }
+
         })
     }
+
     ngOnInit(): void {
 
     }

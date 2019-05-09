@@ -25,7 +25,7 @@
                             <span>Sàn giao dịch</span>
                         </h3>
                         <ul>
-                            <li *ngFor="let item of ds_loaigiaodich"><a [routerLink]="['/du-an']"
+                            <li *ngFor="let item of ds_loaigiaodich"><a [routerLink]="['/san-giao-dich']"
                                     (click)="clickSanGiaoDich(item.tenLoai)"><i
                                         class='fa fa-arrow-circle-o-right'></i>{{item.tenLoai}}</a></li>
                         </ul>

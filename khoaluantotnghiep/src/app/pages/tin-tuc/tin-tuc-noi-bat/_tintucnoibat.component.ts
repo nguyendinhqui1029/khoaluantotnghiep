@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TINTUC } from 'src/app/model/tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { ConfigService } from 'src/app/service/config.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'tin-tuc-noi-bat',
@@ -10,7 +11,6 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class TinTucNoiBatComponent implements OnInit {
     urlImage: string = ConfigService.URL;
-
     // noi dung mock tin tuc
     noidungtintuc: TINTUC[] = [];
     constructor(private tintucService: TinTucService) {
@@ -20,6 +20,10 @@ export class TinTucNoiBatComponent implements OnInit {
         this.tintucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.PHOBIEN).subscribe(tintuc => {
             this.noidungtintuc = tintuc.body;
         });
+    }
+
+    clickTinTucNoiBat() {
+        this.tintucService.ThongBaoThayDoi(true);
     }
     ngOnInit(): void {
     }

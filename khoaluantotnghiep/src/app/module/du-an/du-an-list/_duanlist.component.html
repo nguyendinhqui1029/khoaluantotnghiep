@@ -4,10 +4,16 @@
         <div *ngIf="length_dsDUAN > 0">
             <div *ngFor="let duan of dsDuAn">
                 <div class="news-item clearfix">
-                    <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
+
+                    <div class="col-md-3 col-sm-4 col-xs-12 image">
+                        <span class="text"
+                            style="font-weight:bold; position: absolute;z-index: 99999;padding-top: 5px; width: 70px; height: 30px; border-radius: 4px 4px 4px 4px; background-color: red; color: white;">{{duan.danhMuc.tenDanhMuc}}</span>
+                        <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
                             <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
                                 alt="{{duan.mangHinh[0].alt}}"
-                                style="max-height: 200px; min-height: 200px; width: 100%;" /></a></div>
+                                style="max-height: 200px; min-height: 200px; width: 100%;" /></a>
+                    </div>
+
                     <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
                         <h2 class="name"><a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">{{duan.tenDuAn}}</a></h2>
                         <p class="date">Ngày đăng:{{duan.ngayDang|date:'dd-MM-yyyy'}}</p>
@@ -17,7 +23,9 @@
                                     style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">Sở
                                     {{duan.noiDungTomTat}}</span></p>
                             <span><i class="fa fa-map-marker"></i>{{duan.tinhThanhPho}}</span> &nbsp;&nbsp; <span><i
-                                    class="fa fa-credit-card"></i>{{duan.giaTien | number}}</span>
+                                    class="fa fa-credit-card"></i>{{duan.giaTien}}</span> &nbsp;&nbsp; <span><i
+                                    class="fa fa-compass"></i>{{duan.huong}}</span>&nbsp;&nbsp; <span><i
+                                    class="fa fa-text-width"></i>{{duan.dienTich}}</span>
                         </div>
 
                     </div>

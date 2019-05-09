@@ -6,6 +6,7 @@
     </ul>
     <div class="tab-content">
         <h3 style="color: #1E90FF">{{thongTinTinTuc.tentintuc}}</h3>
+        <i>Ngày đăng:</i> {{thongTinTinTuc.ngaydang | date:'dd-MM-yyyy'}}
         <div [innerHTML]="noiDungChiTiet | safeHtml">
         </div>
     </div>

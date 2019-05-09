@@ -80,9 +80,13 @@
             <div class="form-group">
                 <label class="control-label" for="mangHinh">Hình Ảnh</label><span
                     style="color: red; margin-left: 3px">*</span>
-                <div class="form-inline">
-                    <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="mangHinh">
-                </div>
+                <!-- <div class="form-inline">
+                     <input type="file" (change)="changeImage($event)" style="width: 80%;" id="mangHinh"> 
+                  
+                </div> -->
+                <!-- hinh anh -->
+                <upload-image *ngIf="flag" [page]="status"></upload-image>
+                <!-- hinh anh -->
             </div>
             <div class="form-group">
                 <div *ngIf="statusUpdate.status" class="invalid-feedback">
@@ -91,7 +95,7 @@
             </div>
 
             <button type="submit" class="btn btn-info" (click)="update()">Update Tin Tức</button>&nbsp;&nbsp;
-            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+            <a class="btn btn-info" [routerLink]="['/admin/xoa-tintuc']">Danh sách tin tức</a>&nbsp;&nbsp;
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
         </div>

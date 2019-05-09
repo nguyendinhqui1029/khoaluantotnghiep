@@ -19,6 +19,12 @@ export class UploadImageService {
         })
     }
 
+    DeleteImage(mahinh) {
+        return this.http.delete(ConfigService.URL + 'delete-images/' + mahinh, {
+            reportProgress: true,
+            observe: 'events'
+        });
+    }
     //Behivior hinh
     valueHinhanh = new BehaviorSubject<any>({});
     getHinhanh = this.valueHinhanh.asObservable();

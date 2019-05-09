@@ -12,7 +12,7 @@
 </script>
 
 <div class="news-content">
-    <h1 class="title clearfix"><i class="fa fa-newspaper-o"></i><span>Tin tức</span></h1>
+    <h1 class="title clearfix"><i class="fa fa-newspaper-o"></i><span>{{tieude}}</span></h1>
     <div class="news-block clearfix">
         <!--Item 1-->
         <div *ngFor="let tin of ds_ForHTML">
@@ -26,7 +26,7 @@
                 <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
                     <h2 class="name"><a [routerLink]="['/tin-tuc-chi-tiet',tin.matintuc]">{{tin.tentintuc}}</a>
                     </h2>
-                    <p class="date">{{tin.ngaydang}}</p>
+                    <p class="date"><i>Ngày đăng: </i>{{tin.ngaydang | date: 'dd-MM-yyyy'}}</p>
                     <div class="desc">
                         <p>
                             <span

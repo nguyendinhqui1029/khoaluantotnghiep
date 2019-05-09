@@ -14,8 +14,8 @@ export class SanGiaoDichGridComponent implements OnInit {
     urlImage: string = ConfigService.URL;
 
     dsDuAN: DUAN[] = [];
-    constructor(private serviceDuAn: DuAnService, private serviceSanGiaoDich: SanGiaoDichService) {
-
+    constructor(private serviceSanGiaoDich: SanGiaoDichService) {
+        this.getDSDuAnTheoDanhMuc();
     }
     getDSDuAnTheoDanhMuc() {
         this.serviceSanGiaoDich.currentMessage.subscribe(duan => {
@@ -23,6 +23,6 @@ export class SanGiaoDichGridComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.getDSDuAnTheoDanhMuc();
+
     }
 }

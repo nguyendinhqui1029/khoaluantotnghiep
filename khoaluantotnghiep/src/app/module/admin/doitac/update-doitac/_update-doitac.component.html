@@ -117,9 +117,10 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="loGo">LoGo</label><span style="color: red; margin-left: 3px">*</span>
-                <div class="form-inline">
+                <!-- <div class="form-inline">
                     <input type="file" (change)="changeImage($event)" style="width: 80%;" id="loGo">
-                </div>
+                </div> -->
+                <upload-image *ngIf="flag" [page]="status"></upload-image>
             </div>
             <div class="form-group">
                 <div *ngIf="statusUpdate.status" class="invalid-feedback">

@@ -2,11 +2,20 @@
     <div class="col-md-12">
         <h5>Danh sách hình:</h5>
         <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center" *ngFor="let item of arrImageShow">
-            <label class="image-checkbox">
+            <label class="image-checkbox" *ngIf="item.url != null else nguoclai">
                 <img class="img-responsive" style="width: 185px; height: 123px;" [src]="item.url" />
-                <input type="checkbox" name="image[]" value="" />
+                <input type="checkbox" name="image[]" value="item.url" />
                 <i class="fa fa-check hidden"></i>
             </label>
+            <ng-template #nguoclai>
+                <label class="image-checkbox">
+                    <img class="img-responsive" style="width: 185px; height: 123px;"
+                        src="{{urlImage}}get-images/{{item.tenhinh}}" />
+                    <input type="checkbox" name="image[]" value="" />
+                    <i class="fa fa-check hidden"></i>
+                </label>
+            </ng-template>
+
         </div>
     </div>
     <div class="form-inline">

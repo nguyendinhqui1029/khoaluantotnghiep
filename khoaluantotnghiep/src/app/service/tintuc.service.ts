@@ -48,4 +48,10 @@ export class TinTucService {
     setValueThongTin(value) {
         this.valueThongtin.next(value);
     }
+    //Send sự kiện thay đổi tin tức nổi bật
+    thayThoiTinTuc = new BehaviorSubject<boolean>(true);
+    getThayThoiTinTuc = this.thayThoiTinTuc.asObservable();
+    ThongBaoThayDoi(value) {
+        this.thayThoiTinTuc.next(value);
+    }
 }

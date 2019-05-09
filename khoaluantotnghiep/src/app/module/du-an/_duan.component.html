@@ -5,10 +5,10 @@
     </h1>
     <nav class="navbar navbar-default project-filter">
         <ul class="display">
-            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus('/trang-chu')">
-                <a [routerLink]="['/trang-chu']"><i class="glyphicon glyphicon-th-list"></i></a></li>
-            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus('/trang-chu/grid')">
-                <a [routerLink]="['/trang-chu/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
+            <li id="grid" [ngClass]="{'active':status, 'grid':true}" (click)="changeStatus('/du-an')">
+                <a [routerLink]="['/du-an']"><i class="glyphicon glyphicon-th-list"></i></a></li>
+            <li id="list" [ngClass]="{'active':!status, 'list':true}" (click)="changeStatus('/du-an/grid')">
+                <a [routerLink]="['/du-an/grid']" title="List"><i class="glyphicon glyphicon-th"></i></a></li>
         </ul>
 
     </nav>

@@ -25,7 +25,8 @@ export class UpdateDoiTacComponent implements OnInit {
     tinhthanhphokhongdau: any = "";
     ds_quan: any[] = [];
     thanhphoduocchon: any[] = [];
-
+    flag = false;
+    status = "capnhatdoitac";
     statusUpdate: any = { "status": false, "message": "" };
 
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private doiTacService: DoiTacService,
@@ -47,7 +48,6 @@ export class UpdateDoiTacComponent implements OnInit {
         this.doiTacService.getDoiTacTheoMaDoiTac(id).subscribe(dt => {
             this.doitac = JSON.stringify(dt);
             let doit = JSON.parse(this.doitac);
-            console.log(doit.body.data[0]);
 
             this.madoitac = doit.body.data[0].maDoiTac;
             this.formUpdateDoiTac.controls.hoTen.setValue(doit.body.data[0].hoTen);
@@ -115,20 +115,10 @@ export class UpdateDoiTacComponent implements OnInit {
             });
         });
     }
-    changeImage(event) {
-        const $ = window["$"];
-        let files = $("#mangHinh")[0].files;
-        let mahinh;
-        $("#mangHinh").value
-        for (var i = 0; files.length > i; i++) {
-            setTimeout(function () {
-            }, 500);
-            mahinh = "HA" + (new Date()).getTime().toString();
-            this.loGo = new HINHANH(mahinh, files[i].name, files[i].name);
-        }
-    }
+
     ngOnInit(): void {
         this.getDSTinhThanhPho();
+        this.flag = true;
     }
     update() {
         //this.submitted = true;
@@ -167,7 +157,6 @@ export class UpdateDoiTacComponent implements OnInit {
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
                 user, pass, "", email, 1);
         }
-        console.log(doitacpdate);
         if (this.formUpdateDoiTac.invalid) {
             return;
         } else if (this.formUpdateDoiTac.valid) {

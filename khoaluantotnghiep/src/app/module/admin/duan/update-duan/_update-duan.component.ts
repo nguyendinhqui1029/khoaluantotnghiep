@@ -19,6 +19,8 @@ import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 import { HUONG } from 'src/app/model/huong';
 import { ds_huong } from 'src/app/model/mock_huong';
 import { ConfigService } from 'src/app/service/config.service';
+import { UploadImageService } from 'src/app/service/upload-image.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
     selector: 'update-duan',
@@ -29,7 +31,7 @@ export class UpdateDuAnComponent implements OnInit {
 
     //page upload
     flag = false;
-    status = "capnhat";
+    status = "capnhatduan";
     //
 
     duan: any = {};
@@ -56,7 +58,7 @@ export class UpdateDuAnComponent implements OnInit {
     ds_huong: HUONG[] = [];
     mahuong: any = "";
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private duAnService: DuAnService, private loaiGiaodichservice: LoaiGiaoDichService,
-        private doiTacservice: DoiTacService, private tinhThanhpho: TinhThanhPhoService) {
+        private doiTacservice: DoiTacService, private tinhThanhpho: TinhThanhPhoService, private UploadHinhService: UploadImageService) {
         let id = this.rout.snapshot.params.id;
         this.formupdateDuan = this.fb.group({
             tenDuAn: ['', [Validators.required]],
@@ -77,12 +79,11 @@ export class UpdateDuAnComponent implements OnInit {
         });
         this.duAnService.getDuAnTheoMaDuAn(id).subscribe(da => {
             this.duan = da.body[0];
-            console.log(this.duan);
             //hiển thị dữ liệu trả về từ list
             this.maduan = this.duan.maDuAn;
             this.formupdateDuan.controls.tenDuAn.setValue(this.duan.tenDuAn);
             this.formupdateDuan.controls.noiDungTomTat.setValue(this.duan.noiDungTomTat);
-            this.formupdateDuan.controls.noiDungChiTiet.setValue(this.duan.noiDungChiTiet);
+            this.formupdateDuan.controls.noiDungChiTiet.patchValue(this.duan.noiDungChiTiet);
             this.formupdateDuan.controls.giaTien.setValue(this.duan.giaTien);
             this.formupdateDuan.controls.ngayDang.setValue(this.duan.ngayDang.substr(0, 10));
             this.madoitac = this.duan.doiTac.maDoiTac;
@@ -307,47 +308,65 @@ export class UpdateDuAnComponent implements OnInit {
         let dienTich = this.formupdateDuan.controls.dienTich.value;
 
         //formControls
-        let duanupdate;
         let ObjectDoiTac = this.getDoiTacTheoMa(doiTac);
         let ObjectDanhMuc = this.getDanhMucTheoMa(danhMuc);
         let ObjectLoaiGiaoDich = this.getLoaiGiaoDichTheoMa(loaiGiaoDich);
         let tenloaiduan = this.getLoaiDuAnTheoMa(loaiDuAn);
         let tenhuong = this.getHuongTheoMa(mahuong);
+        this.Submit(this.maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, ngayDang,
+            ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+            tenhuong, dienTich)
 
-        if (this.ds_mangHinh.length > 0) {
-            duanupdate = new DUAN(this.maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
-                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
-                tenhuong, dienTich);
-        } else {
-            this.ds_mangHinh.push(new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an"));
-            duanupdate = new DUAN(this.maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
-                ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
-                tenhuong, dienTich);
-        }
-        console.log(duanupdate);
 
-        this.duAnService.updateDuAn(duanupdate).subscribe(res => {
-            console.log(res);
-            this.statusUpdate.status = true;
-            this.statusUpdate.message = "Dự Án đã được Cập Nhật";
-        });
-
-        if (this.formupdateDuan.invalid) {
-            return;
-        } else if (this.formupdateDuan.valid) {
-
-        }
     }
-    changeImage(event) {
-        const $ = window["$"];
-        let files = $("#mangHinh")[0].files;
-        let mahinh;
-        $("#mangHinh").value
-        for (var i = 0; files.length > i; i++) {
-            setTimeout(function () {
-            }, 500);
-            mahinh = "HA" + (new Date()).getTime().toString();
-            this.ds_mangHinh.push(new HINHANH(mahinh, files[i].name, files[i].name));
-        }
+
+    Submit(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, ngayDang,
+        ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+        tenhuong, dienTich) {
+        let duanupdate;
+        this.UploadHinhService.getHinhanh.subscribe(fileData => {
+            if (fileData.length > 0) {
+                let mangHinh: any[] = [];
+                for (let i = 0; i < fileData.length; i++) {
+                    const formData = new FormData();
+                    formData.append('file', fileData[i]);
+                    this.UploadHinhService.UploadImage(formData).subscribe(events => {
+                        if (events.type == HttpEventType.UploadProgress) {
+                            console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                        } else if (events.type === HttpEventType.Response) {
+                            let mahinh, tenhinh;
+                            mahinh = "HA" + (new Date()).getTime().toString();
+                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
+                            if (mangHinh.length > 0) {
+                                duanupdate = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, mangHinh, ngayDang,
+                                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+                                    tenhuong, dienTich);
+                                this.ds_mangHinh.forEach(ah => {
+                                    this.UploadHinhService.DeleteImage(ah.tenhinh).subscribe(events => {
+                                        if (events.type == HttpEventType.UploadProgress) {
+                                            console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                                        }
+                                    })
+                                })
+                            } else {
+                                duanupdate = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
+                                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+                                    tenhuong, dienTich);
+                            }
+                        }
+                        if (this.formupdateDuan.invalid) {
+                            return;
+                        } else if (this.formupdateDuan.valid) {
+                            this.duAnService.updateDuAn(duanupdate).subscribe(res => {
+                                console.log(res);
+                                this.statusUpdate.status = true;
+                                this.statusUpdate.message = "Dự Án đã được Cập Nhật";
+                            });
+                        }
+                    })
+                }
+            }
+        })
     }
 }

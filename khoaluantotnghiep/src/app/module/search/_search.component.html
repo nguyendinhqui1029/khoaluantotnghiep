@@ -96,7 +96,7 @@
                 <li>
                     <select class="form-control" (change)="changeMucGia($event)">
                         <option *ngFor="let obMucGia of dsMucGia" value="{{obMucGia.magiaTien}}">
-                            &lsaquo {{obMucGia.tengiaTien}}</option>
+                            {{obMucGia.tengiaTien}}</option>
                     </select>
                 </li>
                 <li><input type="button" class="btn btn-default" (click)="clickTimKiem()" value="TÌM KIẾM" /></li>

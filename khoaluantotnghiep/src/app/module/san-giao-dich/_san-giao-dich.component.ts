@@ -16,10 +16,9 @@ export type EditorType = true | false;
 })
 export class SanGiaoDichModuleComponent implements OnInit {
 
-    status: EditorType;
+    status: EditorType = true;
     pagethue: string = '';
     pageCurrent: string = '';
-    //modeView: any = { "grid": "grid", "list": "list" };
     modeView: any = { "grid": "/san-giao-dich/grid", "list": "/san-giao-dich" };
     //dữ liệu danh mục từ mock
     ds_danhmuc: DANHMUC[] = [];
@@ -30,6 +29,8 @@ export class SanGiaoDichModuleComponent implements OnInit {
     currentPagePhanTrang: number = 1;
     ds_page: any[] = [];
     soItemTrang: number = 5;
+    ds_DuAnMuaban: DUAN[] = [];
+    danhmuc: string = "DM001";
     getDSDanhMuc() {
         this.Danhmucservice.getDSDanhMuc(ConfigService.TRANG_THAI_DANHMUC.TATCA).subscribe(danhmuc => {
             this.ds_danhmuc = danhmuc.body;
@@ -47,7 +48,7 @@ export class SanGiaoDichModuleComponent implements OnInit {
             this.phanTrangService.soItemCuaPage = 5;
         }
         this.pagethue = this.router.routerState.snapshot.url;
-        if (this.pagethue === "/san-giao-dich") {
+        if (this.pagethue === "/san-giao-dich" || this.pagethue === "/") {
             this.status = true;
         } else {
             this.status = false;
@@ -57,9 +58,11 @@ export class SanGiaoDichModuleComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
     buttonChoThueClick(danhmuc) {
+        this.danhmuc = danhmuc;
         this.serviceSanGiaoDich.setMaGiaoDich(danhmuc.maDanhMuc);
         this.ds_danhmuc.forEach(e => {
             if (e.maDanhMuc === danhmuc.maDanhMuc) {
@@ -78,13 +81,15 @@ export class SanGiaoDichModuleComponent implements OnInit {
                         this.ds_DuAn.push(duanthuehoacban);
                     }
                 })
+                //Phan trang
+                this.phanTrangService.setValueDanhSach(this.ds_DuAn);
+                this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+                this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+                this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút         
+                //End phan trang
             }
 
-            //Phan trang
-            this.phanTrangService.setValueDanhSach(this.ds_DuAn);
-            this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
-            this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
-            this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút            //End phan trang
+
         })
 
     }
@@ -108,10 +113,11 @@ export class SanGiaoDichModuleComponent implements OnInit {
             this.soItemTrang = 5;
             this.currentPagePhanTrang = 1;
         }
+        this.buttonChoThueClick(this.danhmuc);
         this.pageCurrent = this.route.routerState.snapshot.url;
         this.createPhanTrang(this.currentPagePhanTrang);
     }
-    ds_DuAnMuaban: DUAN[] = [];
+
     getDSDuAnMuaBan() {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {

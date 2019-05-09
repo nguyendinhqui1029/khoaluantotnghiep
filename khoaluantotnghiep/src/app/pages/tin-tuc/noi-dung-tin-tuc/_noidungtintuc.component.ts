@@ -26,6 +26,7 @@ export class NoiDungTinTucComponent implements OnInit {
     currentPage: number = 1;
     ds_page: any[] = [];
     soItemCuaPage: number = 5;
+    tieude: string = "Tin tức";
     getDSTinTuc() {
         this.tintucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintuc => {
             this.noidungtintuc = tintuc.body;
@@ -41,6 +42,11 @@ export class NoiDungTinTucComponent implements OnInit {
         this.loaitintucservice.currentMessage.subscribe(tintuc => {
             this.noidungtintuc = tintuc;
             this.ds_ketQua = tintuc;
+
+            if (tintuc[0]) {
+                this.tieude = "Tin tức " + tintuc[0].loaitintuc.tenloai;
+            }
+
             //B1 tao phan trang
             this.phanTrangService.setValueDanhSach(tintuc);
             //B2 tao phan trang

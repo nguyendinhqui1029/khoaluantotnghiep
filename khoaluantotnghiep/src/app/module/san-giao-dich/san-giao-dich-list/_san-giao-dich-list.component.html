@@ -9,14 +9,16 @@
             </div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
                 <h2 class="name"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">{{duan.tenDuAn}}</a></h2>
-                <p class="date">Ngày đăng: {{duan.ngayDang}}</p>
+                <p class="date">Ngày đăng: {{duan.ngayDang  | date:'dd-MM-yyyy'}}</p>
                 <div class="desc">
                     <p>
                         <span
                             style="color: rgb(102, 102, 102); font-family: Arial, helvetica, sans-serif; font-size: 13px; line-height: 20px; text-align: justify;">{{duan.noiDungTomTat}}</span>
                     </p>
                     <span><i class="fa fa-map-marker"></i>{{duan.tinhThanhPho}}</span> &nbsp;&nbsp; <span><i
-                            class="fa fa-credit-card"></i>{{duan.giaTien}}</span>
+                            class="fa fa-credit-card"></i>{{duan.giaTien}}</span> &nbsp;&nbsp; <span><i
+                            class="fa fa-compass"></i>{{duan.huong}}</span>&nbsp;&nbsp; <span><i
+                            class="fa fa-text-width"></i>{{duan.dienTich}}</span>
                 </div>
 
             </div>

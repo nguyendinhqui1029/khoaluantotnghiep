@@ -14,8 +14,8 @@ export class SanGiaoDichListComponent implements OnInit {
     //Du liệu từ mock
     urlImage: string = ConfigService.URL;
     dsDuAN: DUAN[] = [];
-    constructor(private serviceDuAn: DuAnService, private serviceSanGiaoDich: SanGiaoDichService) {
-
+    constructor(private serviceSanGiaoDich: SanGiaoDichService) {
+        this.getDSDuAnTheoDanhMuc();
 
     }
     getDSDuAnTheoDanhMuc() {
@@ -24,6 +24,6 @@ export class SanGiaoDichListComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-        this.getDSDuAnTheoDanhMuc();
+
     }
 }

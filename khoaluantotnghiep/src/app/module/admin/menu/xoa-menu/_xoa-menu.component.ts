@@ -21,11 +21,13 @@ export class XoaMenuComponent implements OnInit {
         this.getDSMenu();
     }
     deletemenu(id) {
-        this.MenuService.xoaMenuTheoMa(id).subscribe(res => {
-            if (res.code === 200) {
-                this.getDSMenu();
-            }
-        })
+        if (confirm("Bạn có đồng ý xóa menu mã: " + id)) {
+            this.MenuService.xoaMenuTheoMa(id).subscribe(res => {
+                if (res.code === 200) {
+                    this.getDSMenu();
+                }
+            })
+        }
     }
 
     ngAfterViewInit() {

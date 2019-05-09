@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ConfigService } from 'src/app/service/config.service';
 
 @Component({
     selector: 'tin-tuc-noi-bat-trang-chu',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TinTucNoiBatTrangChuComponent implements OnInit {
     @Input() dsTinTuc: any[];
-
+    urlImage: String = ConfigService.URL;
     constructor() { }
 
 

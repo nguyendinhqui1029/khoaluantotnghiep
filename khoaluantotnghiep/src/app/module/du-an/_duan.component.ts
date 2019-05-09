@@ -13,7 +13,7 @@ export class DuAnComponent implements OnInit {
 
     status: EditorType = true;
     pageCurrent: string = '';
-    modeView: any = { "grid": "/trang-chu/grid", "list": "/trang-chu" };
+    modeView: any = { "grid": "/du-an/grid", "list": "/du-an" };
     dsDuAn: any[] = [];
     ds_HienThi: any[] = [];
     currentPagePhanTrang: number = 1;
@@ -39,7 +39,7 @@ export class DuAnComponent implements OnInit {
         this.serviceDuAn.getThongTin.subscribe(e => {
             this.ds_duan_theo_loai_giao_dich = e.dsDuantheoloaigiaodich;
             this.tieude = e.tieude;
-            if (this.ds_duan_theo_loai_giao_dich !== undefined) {
+            if (!this.ds_duan_theo_loai_giao_dich) {
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.ds_duan_theo_loai_giao_dich);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
@@ -55,8 +55,13 @@ export class DuAnComponent implements OnInit {
 
     getListDuANtheoTrangThai() {
         this.serviceDuAn.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            this.dsDuAn = duan.body;
-            if (!this.ds_duan_theo_loai_giao_dich) {
+
+            if (duan.body) {
+                duan.body.forEach(element => {
+                    if (element.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
+                        this.dsDuAn.push(element);
+                    }
+                });
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.dsDuAn);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);

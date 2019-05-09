@@ -37,14 +37,22 @@ export class MenuAdminComponent implements OnInit {
     }
     getListChoDuyet(): void {
         this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH).subscribe(duan => {
-            this.duan_trangthai_dangchoduyet = duan.body.length;
+            if (duan.body) {
+                this.duan_trangthai_dangchoduyet = duan.body.length;
+            }
 
         });
         this.doiTacService.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.CHODUYET).subscribe(doitac => {
-            this.doitac_trangthai_dangchoduyet = doitac.body.length;
+            if (doitac.body) {
+                this.doitac_trangthai_dangchoduyet = doitac.body.length;
+            }
+
         });
         this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.CHODUYET).subscribe(tintuc => {
-            this.tintuc_trangthai_dangchoduyet = tintuc.body.length;
+            if (tintuc.body) {
+                this.tintuc_trangthai_dangchoduyet = tintuc.body.length;
+            }
+
         })
     }
 }
