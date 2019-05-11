@@ -4,19 +4,20 @@
         <div class="col-md-3 col-sm-3 col-xs-12 project-item-box" *ngFor="let duan of dsDuAN">
             <div class="project-item project-resize">
                 <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
-                    <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" title="{{duan.tenDuAn}}">
+                    <a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]" title="{{duan.tenDuAn}}">
                         <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
                             style="max-height: 200px; min-height: 200px; width: 100%;" />
                     </a>
                     <div class="thumbnail">
-                        <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" class="zoom">
+                        <a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]" class="zoom">
                             <i class="glyphicon glyphicon-link"></i>
                         </a>
                     </div>
                 </div>
                 <div class="right-block">
                     <h2 class="name" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        <a href="du-an/opal-riverside.html" title="{{duan.tenDuAn}}">{{duan.tenDuAn}}</a>
+                        <a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]"
+                            title="{{duan.tenDuAn}}">{{duan.tenDuAn}}</a>
                     </h2>
                 </div>
             </div>
