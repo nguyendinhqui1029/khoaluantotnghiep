@@ -8,6 +8,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { TAIKHOAN } from 'src/app/model/taikhoan';
 import { HINHANH } from 'src/app/model/hinhanh';
 import { Router } from '@angular/router';
+import { TinhThanhPhoService } from 'src/app/service/tinhthanhpho.service';
 
 
 @Component({
@@ -23,33 +24,48 @@ export class FormDangKiComponent implements OnInit {
     buttonGuiMaXacNhan: any = { status: false, name: "Lấy xác nhận" };
     formvalid = false;
     flap = false;
-    dstinhthanhpho: TINHTHANHPHO[] = ds_tinhthanhpho;
-    dstinhtam: any[] = [];
-    dsquantam: any[] = [];
+    ds_quan: any[] = [];
     modeTaiKhoan: any = { "KHACHHANG": 1, "NHANVIEN": 2, "ADMIN": 3 };
     thongBaoDangKi: any = { "status": false, "message": "" };
     thongBaoMaXacNhan: any = { "status": false, "message": "" };
-    constructor(private router: Router, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
-    laydanhsachTinhThanhPho() {
-        this.dstinhthanhpho.forEach(element => {
-            if (this.dstinhtam.length <= 0) {
-                this.dstinhtam.push({ "tenkhongdau": element.tenTinhThanhPhoKhongdau, "tencodau": element.tenTinhThanhPhoCodau });
-            } else {
-                this.dstinhtam.forEach(data => {
-                    if (data.tenkhongdau !== element.tenTinhThanhPhoKhongdau) {
-                        this.dstinhtam.push({ "tenkhongdau": element.tenTinhThanhPhoKhongdau, "tencodau": element.tenTinhThanhPhoCodau });
-                    }
-                })
-            }
-        });
-    }
-    laydanhsachQuanHuyenTheoTinhThanhPho() {
-        this.dstinhtam.forEach(element => {
+    ds_tinhthanhpho: TINHTHANHPHO[] = [];
+    constructor(private router: Router, private tinhThanhphoservice: TinhThanhPhoService, private fb: FormBuilder, private DangKiDangNhapService: DangNhapDangKiService) { }
 
+    getDSTinhThanhPho() {
+        this.ds_tinhthanhpho = this.tinhThanhphoservice.LayDanhSachTP();
+    }
+
+    tatcatinhthanhpho: TINHTHANHPHO[] = ds_tinhthanhpho;
+    thanhphoduocchon: any[] = [];
+    tinhthanhphocungten: TINHTHANHPHO[] = [];
+    tinhthanhphocodau: any = "";
+    selectTinhThanhPho(e) {
+        this.thanhphoduocchon = e.target.value;
+        this.tinhthanhphocodau = "";
+        this.tinhthanhphocungten = [];
+        this.tatcatinhthanhpho.forEach(tinh => {
+            if (tinh.tenTinhThanhPhoKhongdau === e.target.value) {
+                this.tinhthanhphocungten.push(tinh);
+            }
+        })
+        this.tinhthanhphocodau = this.tinhthanhphocungten[0].tenTinhThanhPhoCodau;
+        this.ds_quan = this.tinhThanhphoservice.layQuanHuyen(e.target.value);
+        this.quanhuyenduocchon = this.ds_quan[0].tenquanhuyencodau;
+    }
+
+    quanhuyenduocchon: any = "";
+    selectQuanHuyen(e) {
+        this.quanhuyenduocchon = "";
+        this.tatcatinhthanhpho.forEach(quan => {
+            if (quan.quanKhongdau === e.target.value) {
+                this.quanhuyenduocchon = quan.quanCodau;
+            }
         })
     }
 
     ngOnInit(): void {
+        this.getDSTinhThanhPho();
+
         this.formDangKy = this.fb.group({
             taikhoan: ['', [Validators.required, Validators.pattern('^[-a-zA-Z0-9@\.+_]+$')]],
             email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,3}')]],
@@ -60,8 +76,6 @@ export class FormDangKiComponent implements OnInit {
             ngaysinh: [''],
             sdt: ['', Validators.pattern('^(0|[1-9][0-9]*)$')],
             diachi: [''],
-            tinhTP: [''],
-            quanHuyen: [''],
             maXacNhan: ['', [Validators.required]]
         }, {
                 validator: MustMatch('pass', 'confirmpass')
@@ -108,10 +122,10 @@ export class FormDangKiComponent implements OnInit {
         let ngaysinh = this.formDangKy.controls.ngaysinh.value;
         let sdt = this.formDangKy.controls.sdt.value;
         let diachi = this.formDangKy.controls.diachi.value;
-        let tinhTP = this.formDangKy.controls.tinhTP.value;
-        let quanHuyen = this.formDangKy.controls.quanHuyen.value;
+        let quanHuyen = this.quanhuyenduocchon;
+        let tinhThanhPho = this.tinhthanhphocodau;
         let maXacNhan = this.formDangKy.controls.maXacNhan.value;
-        let tk = new TAIKHOAN(maTaiKhoan, hoten, sdt, tinhTP, diachi, quanHuyen
+        let tk = new TAIKHOAN(maTaiKhoan, hoten, sdt, tinhThanhPho, diachi, quanHuyen
             , gioitinh, ngaysinh
             , new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo user"),
             "Tài khoản khách hàng",
