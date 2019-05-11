@@ -1,8 +1,8 @@
 <div class="col-md-9">
     <div class="breadcrumb clearfix">
         <ul>
-            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-                <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
+            <li itemscope="" class="home">
+                <a title="Đến trang chủ" [routerLink]="['/trang-chu']" itemprop="url"><span itemprop="title">Trang
                         chủ</span></a>
             </li>
             <li class="icon-li"><strong>Đăng ký tài khoản</strong> </li>
@@ -117,19 +117,24 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Tỉnh/TP</label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="ProvinceId"
-                            ng-options="item.Id as item.Name for item in Provinces"
-                            ng-change="getDistricts(ProvinceId)">
-                            <option *ngFor="let tinhthanhpho of dstinhtam" value="{{tinhthanhpho.tenkhongdau}}">
-                                {{tinhthanhpho.tencodau}}</option>
+                        <select class="form-control" (change)="selectTinhThanhPho($event)">
+                            <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Tỉnh/TP-----</option>
+                            <option *ngFor="let item of ds_tinhthanhpho" value="{{item.v}}">
+                                {{item.d}}</option>
                         </select>
+                        <div *ngIf="submitted && tinhthanhphocodau.length === 0" class="invalid-feedback">
+                            <div *ngIf="tinhthanhphocodau.length === 0">Vui lòng chọn Tỉnh/TP</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Quận/Huyện</label>
                     <div class="col-sm-9">
-                        <select class="form-control" ng-model="DistrictId"
-                            ng-options="item.Id as item.Name for item in Districts"></select>
+                        <select class="form-control" (change)="selectQuanHuyen($event)">
+                            <option *ngIf="thanhphoduocchon.length === 0">-----Chọn Quận/Huyện-----</option>
+                            <option *ngFor="let item of ds_quan" value="{{item.tenquanhuyenkhongdau}}">
+                                {{item.tenquanhuyencodau}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

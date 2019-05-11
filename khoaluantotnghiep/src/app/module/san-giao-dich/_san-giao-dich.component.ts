@@ -29,7 +29,6 @@ export class SanGiaoDichModuleComponent implements OnInit {
     currentPagePhanTrang: number = 1;
     ds_page: any[] = [];
     soItemTrang: number = 5;
-    ds_DuAnMuaban: DUAN[] = [];
     danhmuc: string = "DM001";
     getDSDanhMuc() {
         this.Danhmucservice.getDSDanhMuc(ConfigService.TRANG_THAI_DANHMUC.TATCA).subscribe(danhmuc => {
@@ -125,15 +124,21 @@ export class SanGiaoDichModuleComponent implements OnInit {
     }
 
     getDSDuAnMuaBan() {
+        this.ds_DuAn = [];
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanban => {
                     if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
-                        this.ds_DuAnMuaban.push(duanban);
+                        this.ds_DuAn.push(duanban);
                     }
                 })
+                //Phan trang
+                this.phanTrangService.setValueDanhSach(this.ds_DuAn);
+                this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+                this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+                this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút         
+                //End phan trang
             }
-            this.serviceSanGiaoDich.changeValue(this.ds_DuAnMuaban);
         })
     }
     createPhanTrang(value) {
