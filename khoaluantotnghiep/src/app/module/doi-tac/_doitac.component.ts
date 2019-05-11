@@ -19,12 +19,14 @@ export class DoiTacComponent implements OnInit {
 
     getDSSLider(trangthai) {
         this.sliderService.getListSliderTheoTrangThai(trangthai).subscribe(e => {
-            e.body.forEach(element => {
-                if (SliderService.mode.LOGO === element.loaiSlider) {
-                    this.ds_logoDoiTac = element;
-                    this.flag = true;
-                }
-            });
+            if (e.body) {
+                e.body.forEach(element => {
+                    if (SliderService.mode.LOGO === element.loaiSlider) {
+                        this.ds_logoDoiTac = element;
+                        this.flag = true;
+                    }
+                });
+            }
         });
     }
 
