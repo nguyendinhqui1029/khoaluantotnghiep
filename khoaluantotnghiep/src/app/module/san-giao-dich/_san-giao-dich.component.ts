@@ -63,6 +63,7 @@ export class SanGiaoDichModuleComponent implements OnInit {
 
     buttonChoThueClick(danhmuc) {
         this.danhmuc = danhmuc;
+        this.ds_DuAn = [];
         this.serviceSanGiaoDich.setMaGiaoDich(danhmuc.maDanhMuc);
         this.ds_danhmuc.forEach(e => {
             if (e.maDanhMuc === danhmuc.maDanhMuc) {
@@ -73,7 +74,6 @@ export class SanGiaoDichModuleComponent implements OnInit {
                 this.currentPagePhanTrang = 1;
             }
         });
-        this.ds_DuAn = [];
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanthuehoacban => {
@@ -85,37 +85,43 @@ export class SanGiaoDichModuleComponent implements OnInit {
                 this.phanTrangService.setValueDanhSach(this.ds_DuAn);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
                 this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+                console.log(this.ds_Gui)
                 this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút         
                 //End phan trang
             }
-
-
         })
-
     }
     changeStatus(e) {
         if (e === this.modeView.grid) {
             this.pagethue = "/san-giao-dich/grid";
             this.status = false;
-        } else if (e === this.modeView.list) {
-            this.pagethue = "/san-giao-dich";
-            this.status = true;
-        }
-
-        if (e === this.modeView.grid) {
-            this.status = false;
             this.phanTrangService.soItemCuaPage = 12;
             this.soItemTrang = 12;
             this.currentPagePhanTrang = 1;
         } else if (e === this.modeView.list) {
+            this.pagethue = "/san-giao-dich";
             this.status = true;
             this.phanTrangService.soItemCuaPage = 5;
             this.soItemTrang = 5;
             this.currentPagePhanTrang = 1;
         }
-        this.buttonChoThueClick(this.danhmuc);
         this.pageCurrent = this.route.routerState.snapshot.url;
-        this.createPhanTrang(this.currentPagePhanTrang);
+        this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
+            if (duan.body) {
+                duan.body.forEach(duanthuehoacban => {
+                    if (duanthuehoacban.danhMuc.maDanhMuc === this.danhmuc) {
+                        this.ds_DuAn.push(duanthuehoacban);
+                    }
+                })
+                //Phan trang
+                this.phanTrangService.setValueDanhSach(this.ds_DuAn);
+                this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
+                this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
+                this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút         
+                //End phan trang
+            }
+        })
+
     }
 
     getDSDuAnMuaBan() {
