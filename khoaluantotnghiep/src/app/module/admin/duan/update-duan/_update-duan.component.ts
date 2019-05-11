@@ -336,7 +336,12 @@ export class UpdateDuAnComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            if (events.body.file.lastIndexOf("/") > 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            } else {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            }
+
                             mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
                             if (mangHinh.length > 0) {
                                 duanupdate = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, mangHinh, ngayDang,
