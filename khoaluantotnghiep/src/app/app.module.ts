@@ -124,6 +124,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
 import { UploadImageComponent } from './module/upload-image/_upload-image.component';
 import { UploadImageService } from './service/upload-image.service';
+import { ImageModalComponent } from './module/image-modal/_image-modal.component';
 
 
 
@@ -146,7 +147,7 @@ import { UploadImageService } from './service/upload-image.service';
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
-    UploadImageComponent,
+    UploadImageComponent, ImageModalComponent,
     //Admin
     MenuAdminComponent,
     AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,

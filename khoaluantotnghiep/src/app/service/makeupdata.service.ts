@@ -53,10 +53,10 @@ export class MakeUpDateService {
     }
     //////////////////////////////////////////
     getListDoiTac(): Observable<HttpResponse<DOITAC[]>> {
-        return this.http.get<DOITAC[]>(ConfigService.URL + "get-all-doi-tac", { observe: 'response' });
+        return this.http.get<DOITAC[]>(ConfigService.URL + "get-all-doi-tac/0", { observe: 'response' });
     }
     getListDoiTacLocal(): Observable<HttpResponse<DOITAC[]>> {
-        return this.http.get<DOITAC[]>(this.URLLOCAL + "get-all-doi-tac", { observe: 'response' });
+        return this.http.get<DOITAC[]>(this.URLLOCAL + "get-all-doi-tac/0", { observe: 'response' });
 
     }
     themListDoiTacLoCal(dTac): Observable<any> {
@@ -120,10 +120,10 @@ export class MakeUpDateService {
     }
     ///////////////////////////////////////
     getDSTinTuc(): Observable<HttpResponse<TINTUC[]>> {
-        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc", { observe: 'response' });
+        return this.http.get<TINTUC[]>(ConfigService.URL + "get-all-tin-tuc/0", { observe: 'response' });
     }
     getTinTucLocal(): Observable<HttpResponse<TINTUC[]>> {
-        return this.http.get<TINTUC[]>(this.URLLOCAL + "get-all-tin-tuc", { observe: 'response' });
+        return this.http.get<TINTUC[]>(this.URLLOCAL + "get-all-tin-tuc/0", { observe: 'response' });
 
     }
     themTinTucLoCal(ttuc): Observable<any> {
