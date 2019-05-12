@@ -56,6 +56,7 @@ export class UploadImageComponent implements OnInit {
         fr.readAsDataURL(file);
     }
     ngAfterViewInit() {
+        var $ = window["$"];
         if (this.page === "capnhattintuc") {
             this.tinTucService.getTinTuctheoMaLoai(this.id).subscribe(tintuc => {
                 let tt = JSON.stringify(tintuc);

@@ -25,6 +25,11 @@ export class UploadImageService {
             observe: 'events'
         });
     }
+    getAllNameImages() {
+        return this.http.get(ConfigService.URL + 'get-all-name-images', {
+            observe: 'events'
+        });
+    }
     //Behivior hinh
     valueHinhanh = new BehaviorSubject<any>({});
     getHinhanh = this.valueHinhanh.asObservable();

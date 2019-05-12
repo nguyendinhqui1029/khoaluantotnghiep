@@ -38,7 +38,7 @@
         </div>
     </div>
     <!--Phân trang-->
-    <div class="navigation" *ngIf="ds_ketQua.length >=2">
+    <div class="navigation" *ngIf="ds_page.length >1">
         <ul class="pagination">
             <li *ngFor="let page of ds_page" [ngClass]="{'active':currentPage===page.value?true:false}"><a
                     [routerLink]="['/tin-tuc']" (click)="createPhanTrang(page.value)">{{page.name}}</a>
