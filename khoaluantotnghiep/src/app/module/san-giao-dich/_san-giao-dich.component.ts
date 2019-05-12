@@ -61,8 +61,9 @@ export class SanGiaoDichModuleComponent implements OnInit {
     }
 
     buttonChoThueClick(danhmuc) {
-        this.danhmuc = danhmuc;
         this.ds_DuAn = [];
+
+        this.danhmuc = danhmuc;
         this.serviceSanGiaoDich.setMaGiaoDich(danhmuc.maDanhMuc);
         this.ds_danhmuc.forEach(e => {
             if (e.maDanhMuc === danhmuc.maDanhMuc) {
