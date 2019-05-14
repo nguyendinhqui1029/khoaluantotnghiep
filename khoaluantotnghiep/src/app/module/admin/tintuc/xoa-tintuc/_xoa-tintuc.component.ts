@@ -3,6 +3,7 @@ import { TINTUC } from 'src/app/model/tintuc';
 import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { ConfigService } from 'src/app/service/config.service';
+import { UploadImageService } from 'src/app/service/upload-image.service';
 
 @Component({
     selector: 'xoa-tintuc',
@@ -11,25 +12,52 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class XoaTinTucComponent implements OnInit {
     ds_tintuc: TINTUC[] = [];
-    constructor(private tinTucService: TinTucService) {
+    tintuc: any = {};
+    lengthTinTuc: number = 0;
+    constructor(private tinTucService: TinTucService, private uploadhinhService: UploadImageService) {
 
     }
 
     getDSTinTuc() {
         this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tt => {
-            this.ds_tintuc = tt.body;
+            if (tt.body) {
+                tt.body.forEach(tin => {
+                    if (tin.trangthai !== ConfigService.TRANG_THAI_TIN_TUC.CHODUYET) {
+                        this.ds_tintuc.push(tin);
+                    }
+                })
+            }
+            this.lengthTinTuc = this.ds_tintuc.length;
         })
     }
     ngOnInit(): void {
         this.getDSTinTuc();
     }
     deletetintuc(maloai) {
-        console.log('a');
-        this.tinTucService.xoaTinTucTheomaLoai(maloai).subscribe(res => {
-            if (res.code === 200) {
-                this.getDSTinTuc();
-            }
-        });
+
+
+        if (confirm("Bạn có chắc xóa tin tức mã: " + maloai)) {
+            this.tinTucService.getTinTuctheoMaLoai(maloai).subscribe(tintuc => {
+                this.tintuc = JSON.stringify(tintuc);
+                let tin = JSON.parse(this.tintuc);
+
+                if (tin.body.data[0]) {
+                    if (tin.body.data[0].hinhanh) {
+                        tin.body.data[0].hinhanh.forEach(hinh => {
+                            console.log(hinh.tenhinh)
+                            this.uploadhinhService.DeleteImage(hinh.tenhinh).subscribe(res => {
+
+                            })
+                        })
+                        this.tinTucService.xoaTinTucTheomaLoai(maloai).subscribe(res => {
+                            if (res.code === 200) {
+                                this.getDSTinTuc();
+                            }
+                        });
+                    }
+                }
+            })
+        }
     }
 
     ngAfterViewInit() {

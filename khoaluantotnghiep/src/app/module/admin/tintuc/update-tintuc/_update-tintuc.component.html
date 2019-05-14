@@ -18,9 +18,9 @@
             <div class="form-group">
                 <label class="control-label">Trạng Thái</label><span style="color: red; margin-left: 3px">*</span>
                 <div class="form-inline">
-                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="trangthai"
-                        (change)="selectTrangThai($event)">
-                        <option *ngFor="let item of ds_trangthaitintuc" value="{{item.matrangthai}}">
+                    <select class="form-control custom-select mr-sm-2" style="width: 80%;" formControlName="trangthai">
+                        <option *ngFor="let item of ds_trangthaitintuc" value="{{item.matrangthai}}"
+                            [selected]="item.matrangthai == matrangthai ? true : false">
                             {{item.tentrangthai}}
                         </option>
                     </select>

@@ -17,7 +17,6 @@ export class DuyetBaiDangTinTucComponent implements OnInit {
 
     getDSTinTucChoDuyet() {
         this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.CHODUYET).subscribe(tintuc => {
-            console.log(tintuc.body);
             this.ds_tintucchoduyet = tintuc.body;
         })
     }
@@ -35,7 +34,6 @@ export class DuyetBaiDangTinTucComponent implements OnInit {
     }
     duyettintuc(matintuc) {
         this.getTinTucTheoMa(matintuc);
-        console.log(this.tintucduyet);
         let hinhanh = this.tintucduyet.hinhanh;
         let loaitintuc = this.tintucduyet.loaitintuc;
         let ngaydang = this.tintucduyet.ngaydang;
@@ -48,7 +46,6 @@ export class DuyetBaiDangTinTucComponent implements OnInit {
             hinhanh, loaitintuc);
 
         this.tinTucService.updateTinTuc(this.tintucchapnhan).subscribe(res => {
-            console.log(res);
             this.getDSTinTucChoDuyet();
         });
 

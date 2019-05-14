@@ -27,8 +27,10 @@ export class UpdateTinTucComponent implements OnInit {
     submitted = false;
     ds_mangHinh: HINHANH[] = [];
 
-    status = "sua";
+    status = "capnhattintuc";
     flag = false;
+
+    trangthai: any = {};
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private tintucService: TinTucService,
         private LoaiTinTucService: LoaiTinTucService, private UploadHinhService: UploadImageService) {
         let id = this.rout.snapshot.params.id;
@@ -46,6 +48,7 @@ export class UpdateTinTucComponent implements OnInit {
             let doit = JSON.parse(this.tintuc);
 
             if (doit.body.data[0]) {
+                console.log(doit.body.data[0])
                 this.matintuc = doit.body.data[0].matintuc;
                 this.formUpdateTinTuc.controls.tentintuc.setValue(doit.body.data[0].tentintuc);
                 this.formUpdateTinTuc.controls.trangthai.setValue(doit.body.data[0].trangthai);

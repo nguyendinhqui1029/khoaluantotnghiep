@@ -147,7 +147,11 @@ export class ThemTinTucComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            if (events.body.file.lastIndexOf("\\") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            } else if (events.body.file.lastIndexOf("/") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            }
                             this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
                             if (this.ds_mangHinh.length === fileData.length) {
                                 this.tintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh, ObjectLoaiTinTuc);

@@ -58,7 +58,8 @@ export class DuAnComponent implements OnInit {
 
             if (duan.body) {
                 duan.body.forEach(element => {
-                    if (element.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
+                    if (element.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH &&
+                        element.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
                         this.dsDuAn.push(element);
                     }
                 });
