@@ -27,6 +27,7 @@ export class UploadImageService {
     }
     getAllNameImages() {
         return this.http.get(ConfigService.URL + 'get-all-name-images', {
+            reportProgress: true,
             observe: 'events'
         });
     }

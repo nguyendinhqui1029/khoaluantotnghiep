@@ -13,7 +13,7 @@ export class ThongKeComponent implements OnInit {
   chart_DATA: any[] = [];
   data = false;
   constructor(private DuanService: DuAnService) {
-    this.DuanService.getListDuAn(3).subscribe(duan => {
+    this.DuanService.getListDuAn(4).subscribe(duan => {
       this.ds_duan = duan.body;
       this.ds_duan.forEach(duan => {
         this.chart_DuAn.push([{ label: duan.tenDuAn, data: [duan.giaTien] }]);
