@@ -338,9 +338,9 @@ export class UpdateDuAnComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            if (events.body.file.lastIndexOf("/") > 0) {
+                            if (events.body.file.lastIndexOf("/") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
-                            } else {
+                            } else if (events.body.file.lastIndexOf("\\") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
                             }
 

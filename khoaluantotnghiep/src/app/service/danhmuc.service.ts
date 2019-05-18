@@ -12,7 +12,7 @@ export class DanhMucService {
     }
 
     getDSDanhMuc(trangThai): Observable<HttpResponse<DANHMUC[]>> {
-        return this.http.get<DANHMUC[]>(ConfigService.URL + "get-all-danh-muc/" + trangThai + ConfigService.TRANG_THAI_DANHMUC.TATCA, { observe: 'response' });
+        return this.http.get<DANHMUC[]>(ConfigService.URL + "get-all-danh-muc/" + trangThai, { observe: 'response' });
     }
 
     getDanhMucTheoMaDanhMuc(maDanhMuc): Observable<HttpResponse<DANHMUC>> {
