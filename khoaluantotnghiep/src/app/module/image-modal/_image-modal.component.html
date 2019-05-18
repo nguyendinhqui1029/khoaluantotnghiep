@@ -6,24 +6,24 @@
             <a class="btn-close trigger" href="javascript:;"></a>
         </div>
         <div class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="text" style="width: 100%;" class="form-control" id="tags"
-                        (keyup)="changeTimKiem($event)" placeholder="Nhập tên hình cần tìm">
-                </div>
-                <div class="col-md-12">
-                    <div class="col-md-1"><label>URL:</label></div>
-                    <div class="col-md-9">
-                        <input type="text" style="width: 100%;" class="form-control" readonly
-                            placeholder="Đường dẫn hình. Hãy sao chép nó." value="{{duongdan}}">
-                    </div>
-                    <div class="col-md-1">
-                        <button class="btn btn-primary" (click)="xoaHinh()">Xóa hình</button>
-                    </div>
+            <div style="margin-top: -25px !important;">
+                <!-- hinh anh -->
+                <upload-image *ngIf="flagthem" [page]="statusthem"></upload-image>
+                <!-- hinh anh -->
+                <button style="float: right; margin-top: -44px;" type="submit" class="btn btn-info" (click)="add()"><i
+                        class="fa fa-plus-circle"></i><span>{{mess}}</span></button>
 
-                </div>
             </div>
-            <div class="row" style="overflow: scroll; height: 195px; width: 107%;">
+            <span>
+                <input type="text" style="width: 100%;" class="form-control" id="tags" (keyup)="changeTimKiem($event)"
+                    placeholder="Nhập tên hình cần tìm">
+            </span>
+            <span>
+                <label>URL:</label>
+                <input type="text" style="width: 100%;" class="form-control" readonly
+                    placeholder="Đường dẫn hình. Hãy sao chép nó." value="{{duongdan}}">
+            </span>
+            <div class="row" style="overflow: scroll; height: 267px; width: 107%;">
                 <!--du an 1-->
                 <h5 *ngIf="dsTenHinh.length === 0" style="text-align: center; color: red;">{{thongbao}}</h5>
                 <div class="col-xs-3 project-item-box" *ngFor="let image of dsTenHinh">

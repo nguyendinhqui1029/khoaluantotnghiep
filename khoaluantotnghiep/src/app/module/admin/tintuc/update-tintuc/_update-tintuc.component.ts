@@ -28,6 +28,8 @@ export class UpdateTinTucComponent implements OnInit {
 
     status = "capnhattintuc";
     flag = false;
+
+    trangthai: any = {};
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private tintucService: TinTucService,
         private LoaiTinTucService: LoaiTinTucService, private UploadHinhService: UploadImageService) {
         let id = this.rout.snapshot.params.id;
@@ -41,6 +43,7 @@ export class UpdateTinTucComponent implements OnInit {
             hinhanh: ['',]
         });
         this.tintucService.getTinTuctheoMaLoai(id).subscribe(tt => {
+            this.tintuc = {};
             this.tintuc = JSON.stringify(tt);
             let doit = JSON.parse(this.tintuc);
 
@@ -103,7 +106,6 @@ export class UpdateTinTucComponent implements OnInit {
 
     luudatabase(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang,
         ObjectLoaiTinTuc) {
-        alert(1)
         let tintucupdate = {};
         this.UploadHinhService.getHinhanh.subscribe(fileData => {
             if (fileData.length > 0) {
@@ -122,31 +124,41 @@ export class UpdateTinTucComponent implements OnInit {
                             } else if (events.body.file.lastIndexOf("\\") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
                             }
-
-                            console.log(tenhinh);
                             mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
+                            this.ds_mangHinh.forEach(ah => {
+                                this.UploadHinhService.DeleteImage(ah.tenhinh).subscribe(events => {
+                                    if (events.type == HttpEventType.UploadProgress) {
+                                        console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                                    }
+                                })
+                            })
+                            if (i === (fileData.length - 1)) {
 
-                            if (mangHinh.length > 0) {
                                 tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, mangHinh,
                                     ObjectLoaiTinTuc);
-                                this.ds_mangHinh.forEach(ah => {
-                                    this.UploadHinhService.DeleteImage(ah.tenhinh).subscribe(events => {
-                                        if (events.type == HttpEventType.UploadProgress) {
-                                            console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
-                                        }
-                                    })
-                                })
+
+                                this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
+                                    console.log(tintucupdate)
+                                    this.statusUpdate.status = true;
+                                    this.statusUpdate.message = "Cập nhật tin tức thành công";
+                                });
                             }
-                            this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
-                                this.statusUpdate.status = true;
-                                this.statusUpdate.message = "Cập nhật tin tức thành công";
-                            });
                         }
                     })
 
                 }
 
+
+            } else {
+                tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh,
+                    ObjectLoaiTinTuc);
+                this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
+                    this.statusUpdate.status = true;
+                    this.statusUpdate.message = "Cập nhật tin tức thành công";
+                });
             }
+
+
         })
     }
 }

@@ -6,19 +6,22 @@
     <div class="box-project-block" *ngFor="let duannoibat of dsDuAN">
         <div class="item">
             <div class="image image-resize">
-                <a href="du-an/opal-riverside.html" title="{{duannoibat.tenDuAn}}">
+                <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                    title="{{duannoibat.tenDuAn}}">
                     <img src="{{urlImage}}get-images/{{duannoibat.mangHinh[0].tenhinh}}" class="img-responsive" />
                 </a>
                 <span class="text">Mới</span>
                 <div class="thumbnail">
-                    <a href="du-an/opal-riverside.html" class="zoom">
+                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                        class="zoom">
                         <i class="glyphicon glyphicon-link"></i>
                     </a>
                 </div>
             </div>
             <div class="right-block">
                 <h2 class="name">
-                    <a href="du-an/opal-riverside.html" title="{{duannoibat.tenDuAn}}">{{duannoibat.tenDuAn}}</a>
+                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                        title="{{duannoibat.tenDuAn}}">{{duannoibat.tenDuAn}}</a>
                 </h2>
             </div>
         </div>

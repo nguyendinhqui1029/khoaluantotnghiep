@@ -129,9 +129,15 @@ export class SanGiaoDichModuleComponent implements OnInit {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanban => {
-                    if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
-                        this.ds_DuAn.push(duanban);
+                    console.log(duanban);
+                    if (duanban.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH &&
+                        duanban.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
+                        if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
+                            this.ds_DuAn.push(duanban);
+
+                        }
                     }
+
                 })
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.ds_DuAn);

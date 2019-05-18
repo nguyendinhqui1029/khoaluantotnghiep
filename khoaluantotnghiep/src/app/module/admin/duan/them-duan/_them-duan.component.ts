@@ -275,7 +275,6 @@ export class ThemDuAnComponent implements OnInit {
                             } else if (events.body.file.lastIndexOf("/") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
                             }
-
                             this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
                             if (this.ds_mangHinh.length === fileData.length) {
                                 this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,

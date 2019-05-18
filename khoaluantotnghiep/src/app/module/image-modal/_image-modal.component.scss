@@ -55,7 +55,7 @@ html, body{
   }
   
   .modal{
-    width:600px;
+    width:650px;
     height:400px;
     display:block;
     margin:50% 0 0 -300px;
@@ -70,8 +70,9 @@ html, body{
   }
   
   .modal-wrapper.open .modal{
-    margin-top:-200px;
+    margin-top:-280px;
     opacity:1;
+    min-height: 84.5%;
   }
   
   .head{

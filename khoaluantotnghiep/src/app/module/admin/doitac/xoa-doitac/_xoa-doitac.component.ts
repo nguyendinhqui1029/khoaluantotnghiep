@@ -3,6 +3,7 @@ import { DOITAC } from 'src/app/model/doitac';
 import { ds_DoiTac } from 'src/app/model/mock_doitac';
 import { DoiTacService } from 'src/app/service/doitac.service';
 import { ConfigService } from 'src/app/service/config.service';
+import { UploadImageService } from 'src/app/service/upload-image.service';
 
 @Component({
     selector: 'xoa-doitac',
@@ -11,7 +12,9 @@ import { ConfigService } from 'src/app/service/config.service';
 })
 export class XoaDoiTacComponent implements OnInit {
     ds_doitac: DOITAC[] = [];
-    constructor(private doiTacService: DoiTacService) {
+    doitac: any = {};
+
+    constructor(private doiTacService: DoiTacService, private uploadhinhService: UploadImageService) {
 
     }
 
@@ -26,11 +29,27 @@ export class XoaDoiTacComponent implements OnInit {
     }
 
     deletedoitac(maDoiTac) {
-        this.doiTacService.xoaDoiTacTheomaDoiTac(maDoiTac).subscribe(res => {
-            if (res.code === 200) {
-                this.getDSDoiTac();
-            }
-        });
+        if (confirm("Bạn có chắc xóa đối tác mã: " + maDoiTac)) {
+            this.doiTacService.getDoiTacTheoMaDoiTac(maDoiTac).subscribe(doitac => {
+                this.doitac = JSON.stringify(doitac);
+                let dt = JSON.parse(this.doitac);
+
+                if (dt.body.data[0]) {
+                    console.log(dt.body.data[0].loGo);
+                    if (dt.body.data[0].loGo) {
+                        this.uploadhinhService.DeleteImage(dt.body.data[0].loGo).subscribe(res => {
+
+                        })
+                        this.doiTacService.xoaDoiTacTheomaDoiTac(maDoiTac).subscribe(res => {
+                            if (res.code === 200) {
+                                this.getDSDoiTac();
+                            }
+                        });
+                    }
+                }
+            })
+        }
+
     }
 
     ngAfterViewInit() {

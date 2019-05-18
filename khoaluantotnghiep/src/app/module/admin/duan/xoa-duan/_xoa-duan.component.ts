@@ -4,6 +4,7 @@ import { ds_duan } from 'src/app/model/mock_duan';
 import { DuAnService } from 'src/app/service/duan.service';
 import { ConfigService } from 'src/app/service/config.service';
 import { Router } from '@angular/router';
+import { UploadImageService } from 'src/app/service/upload-image.service';
 
 @Component({
     selector: 'xoa-duan',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./_xoa-duan.component.scss']
 })
 export class XoaDuAnComponent implements OnInit {
-    constructor(private duAnService: DuAnService, private router: Router) { }
+    constructor(private duAnService: DuAnService, private router: Router, private uploadhinhService: UploadImageService) { }
 
     ds_duan: DUAN[] = [];
     lengthDuAn: number = 0;
@@ -37,11 +38,22 @@ export class XoaDuAnComponent implements OnInit {
 
     deleteduan(maDuAn) {
         if (confirm("Bạn có chắc xóa dự án mã: " + maDuAn)) {
-            this.duAnService.xoaDuAnTheomaDuAn(maDuAn).subscribe(res => {
-                if (res.code === 200) {
-                    this.getListDuAn();
+            this.duAnService.getDuAnTheoMaDuAn(maDuAn).subscribe(duan => {
+                if (duan.body) {
+                    if (duan.body[0].mangHinh) {
+                        duan.body[0].mangHinh.forEach(hinh => {
+                            this.uploadhinhService.DeleteImage(hinh.tenhinh).subscribe(res => {
+
+                            })
+                        })
+                        this.duAnService.xoaDuAnTheomaDuAn(maDuAn).subscribe(res => {
+                            if (res.code === 200) {
+                                this.getListDuAn();
+                            }
+                        });
+                    }
                 }
-            });
+            })
         }
     }
 

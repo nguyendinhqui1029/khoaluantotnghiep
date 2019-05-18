@@ -147,9 +147,9 @@ export class ThemTinTucComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            if (events.body.file.lastIndexOf("\\")) {
+                            if (events.body.file.lastIndexOf("\\") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
-                            } else if (events.body.file.lastIndexOf("/")) {
+                            } else if (events.body.file.lastIndexOf("/") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
                             }
                             this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
