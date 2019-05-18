@@ -261,7 +261,7 @@ export class ThemDuAnComponent implements OnInit {
         this.ds_mangHinh = [];
         this.UploadHinhService.getHinhanh.subscribe(fileData => {
             if (fileData.length > 0) {
-                for (let i = 0; i < fileData.length;i++) {
+                for (let i = 0; i < fileData.length; i++) {
                     const formData = new FormData();
                     formData.append('file', fileData[i]);
                     this.UploadHinhService.UploadImage(formData).subscribe(events => {
@@ -270,7 +270,12 @@ export class ThemDuAnComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            if (events.body.file.lastIndexOf("\\") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            } else if (events.body.file.lastIndexOf("/") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            }
+
                             this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
                             if (this.ds_mangHinh.length === fileData.length) {
                                 this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,
@@ -282,7 +287,7 @@ export class ThemDuAnComponent implements OnInit {
                                     console.log(res);
                                 });
                             }
-                            
+
                         }
                     })
 

@@ -18,7 +18,8 @@ export class ImageModalComponent implements OnInit {
     duongdan = "";
     thongbao = "Không tìm thấy tên hình cần tìm.";
     flag: boolean = false;
-    status: string = "";
+    status: string = "chonhinh";
+    tenhinh: string = "";
     constructor(private UploadImage: UploadImageService) {
         this.UploadImage.getAllNameImages().subscribe(images => {
             if (JSON.parse(JSON.stringify(images)).body) {
@@ -32,11 +33,43 @@ export class ImageModalComponent implements OnInit {
     }
     changeTimKiem(event) {
         this.dsTenHinh = [];
+        this.dsTenImage = [];
         this.dsHinhTam.forEach(hinh => {
             if (hinh.name.toLowerCase().search(event.target.value.toLowerCase()) >= 0) {
                 this.dsTenHinh.push(hinh);
+                this.dsHinhTam.forEach(e => {
+                    this.dsTenImage.push(e.name);
+                });
             }
         });
+
+    }
+    xoaHinh() {
+        if (this.duongdan != "") {
+            if (this.duongdan.lastIndexOf("\\") >= 0) {
+                this.tenhinh = this.duongdan.substring(this.duongdan.lastIndexOf("\\") + 1);
+            } else if (this.duongdan.lastIndexOf("/") >= 0) {
+                this.tenhinh = this.duongdan.substring(this.duongdan.lastIndexOf("/") + 1);
+            }
+            this.UploadImage.DeleteImage(this.tenhinh).subscribe(e => {
+                this.dsTenHinh = [];
+                this.dsTenImage = [];
+                this.UploadImage.getAllNameImages().subscribe(images => {
+                    if (JSON.parse(JSON.stringify(images)).body) {
+                        this.dsHinhTam = JSON.parse(JSON.stringify(images)).body;
+                        this.dsHinhTam.forEach(e => {
+                            this.dsTenImage.push(e.name);
+                        });
+                        this.dsTenHinh = this.dsHinhTam;
+                    }
+                });
+            });
+            this.duongdan = "";
+            alert("Xóa hình thành công hình ảnh tên: " + this.tenhinh);
+        } else {
+            alert("Vui lòng chọn hình cần xóa.")
+        }
+
 
     }
     layTenHinh(event) {

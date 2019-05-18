@@ -20,14 +20,13 @@ export class UpdateTinTucComponent implements OnInit {
     statusUpdate: any = { "status": false, "message": "" };
     formUpdateTinTuc: FormGroup;
     tintuc: any = {};
-    matintuc: any = "";
     ds_trangthaitintuc: TRANGTHAITINTUC[] = [];
     loaitintuc: any = "";
     ds_loaitintuc: LOAITINTUC[] = [];
     submitted = false;
     ds_mangHinh: HINHANH[] = [];
 
-    status = "sua";
+    status = "capnhattintuc";
     flag = false;
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private tintucService: TinTucService,
         private LoaiTinTucService: LoaiTinTucService, private UploadHinhService: UploadImageService) {
@@ -46,7 +45,6 @@ export class UpdateTinTucComponent implements OnInit {
             let doit = JSON.parse(this.tintuc);
 
             if (doit.body.data[0]) {
-                this.matintuc = doit.body.data[0].matintuc;
                 this.formUpdateTinTuc.controls.tentintuc.setValue(doit.body.data[0].tentintuc);
                 this.formUpdateTinTuc.controls.trangthai.setValue(doit.body.data[0].trangthai);
                 this.formUpdateTinTuc.controls.noidungtomtat.setValue(doit.body.data[0].noidungtomtat);
@@ -87,6 +85,7 @@ export class UpdateTinTucComponent implements OnInit {
     }
     update() {
         this.submitted = true;
+        let id = this.rout.snapshot.params.id;
         let tentintuc = this.formUpdateTinTuc.controls.tentintuc.value;
         let trangthai = this.formUpdateTinTuc.controls.trangthai.value;
         let noidungtomtat = this.formUpdateTinTuc.controls.noidungtomtat.value;
@@ -94,14 +93,18 @@ export class UpdateTinTucComponent implements OnInit {
         let ngayDang = this.formUpdateTinTuc.controls.ngayDang.value;
         let loaitintuc = this.formUpdateTinTuc.controls.loaitintuc.value;
         let ObjectLoaiTinTuc = this.getLoaiTinTucTheoMa(loaitintuc);
-        this.Submit(this.matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang,
-            ObjectLoaiTinTuc);
+        if (this.formUpdateTinTuc.valid) {
+            this.luudatabase(id, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang,
+                ObjectLoaiTinTuc);
+        }
+
     }
     get f() { return this.formUpdateTinTuc.controls };
 
-    Submit(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang,
+    luudatabase(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang,
         ObjectLoaiTinTuc) {
-        let tintucupdate;
+        alert(1)
+        let tintucupdate = {};
         this.UploadHinhService.getHinhanh.subscribe(fileData => {
             if (fileData.length > 0) {
                 let mangHinh: any[] = [];
@@ -114,7 +117,12 @@ export class UpdateTinTucComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            if (events.body.file.lastIndexOf("/") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                            } else if (events.body.file.lastIndexOf("\\") >= 0) {
+                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                            }
+
                             console.log(tenhinh);
                             mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
 
@@ -129,16 +137,10 @@ export class UpdateTinTucComponent implements OnInit {
                                     })
                                 })
                             }
-
-                            if (this.formUpdateTinTuc.invalid) {
-                                return;
-                            } else if (this.formUpdateTinTuc.valid) {
-                                this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
-                                    this.statusUpdate.status = true;
-                                    this.statusUpdate.message = "Cập nhật tin tức thành công";
-                                });
-                            }
-
+                            this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
+                                this.statusUpdate.status = true;
+                                this.statusUpdate.message = "Cập nhật tin tức thành công";
+                            });
                         }
                     })
 
@@ -146,19 +148,5 @@ export class UpdateTinTucComponent implements OnInit {
 
             }
         })
-
-
     }
-    // changeImage(event) {
-    //     const $ = window["$"];
-    //     let files = $("#mangHinh")[0].files;
-    //     let mahinh;
-    //     $("#mangHinh").value
-    //     for (var i = 0; files.length > i; i++) {
-    //         setTimeout(function () {
-    //         }, 500);
-    //         mahinh = "HA" + (new Date()).getTime().toString();
-    //         this.ds_mangHinh.push(new HINHANH(mahinh, files[i].name, files[i].name));
-    //     }
-    // }
 }

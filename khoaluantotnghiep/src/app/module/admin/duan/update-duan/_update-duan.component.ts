@@ -276,7 +276,7 @@ export class UpdateDuAnComponent implements OnInit {
 
 
     update() {
-        //this.submitted = true;
+        this.submitted = true;
 
         //formControls
         let tenDuAn = this.formupdateDuan.controls.tenDuAn.value;
@@ -336,9 +336,9 @@ export class UpdateDuAnComponent implements OnInit {
                         } else if (events.type === HttpEventType.Response) {
                             let mahinh, tenhinh;
                             mahinh = "HA" + (new Date()).getTime().toString();
-                            if (events.body.file.lastIndexOf("/") > 0) {
+                            if (events.body.file.lastIndexOf("/") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
-                            } else {
+                            } else if (events.body.file.lastIndexOf("\\") >= 0) {
                                 tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
                             }
 
@@ -354,23 +354,24 @@ export class UpdateDuAnComponent implements OnInit {
                                         }
                                     })
                                 })
-                            } else {
-                                duanupdate = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
-                                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
-                                    tenhuong, dienTich);
                             }
-                        }
-                        if (this.formupdateDuan.invalid) {
-                            return;
-                        } else if (this.formupdateDuan.valid) {
-                            this.duAnService.updateDuAn(duanupdate).subscribe(res => {
-                                console.log(res);
-                                this.statusUpdate.status = true;
-                                this.statusUpdate.message = "Dự Án đã được Cập Nhật";
-                            });
+
                         }
                     })
                 }
+            } else {
+                duanupdate = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngayDang,
+                    ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, trangThai, tenloaiduan,
+                    tenhuong, dienTich);
+            }
+            if (this.formupdateDuan.invalid) {
+                return;
+            } else if (this.formupdateDuan.valid) {
+                this.duAnService.updateDuAn(duanupdate).subscribe(res => {
+                    console.log(res);
+                    this.statusUpdate.status = true;
+                    this.statusUpdate.message = "Dự Án đã được Cập Nhật";
+                });
             }
         })
     }
