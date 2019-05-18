@@ -29,6 +29,7 @@ export class UpdateDoiTacComponent implements OnInit {
     status = "capnhatdoitac";
     statusUpdate: any = { "status": false, "message": "" };
 
+    submitted = false;
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private doiTacService: DoiTacService,
         private tinhThanhphoService: TinhThanhPhoService) {
         let id = this.rout.snapshot.params.id;
@@ -81,6 +82,9 @@ export class UpdateDoiTacComponent implements OnInit {
     tinhthanhphocungten: TINHTHANHPHO[] = [];
     tinhthanhphocodau: any = "";
 
+    get f() { return this.formUpdateDoiTac.controls };
+
+
     selectTinhThanhPho(e) {
         this.thanhphoduocchon = e.target.value;
         this.tinhthanhphocodau = "";
@@ -121,7 +125,7 @@ export class UpdateDoiTacComponent implements OnInit {
         this.flag = true;
     }
     update() {
-        //this.submitted = true;
+        this.submitted = true;
 
         //formControls
         let hoTen = this.formUpdateDoiTac.controls.hoTen.value;
@@ -147,6 +151,7 @@ export class UpdateDoiTacComponent implements OnInit {
         let email = this.formUpdateDoiTac.controls.email.value;
         let moTa = this.formUpdateDoiTac.controls.moTa.value;
 
+
         //formControls
         let doitacpdate;
         if (this.loGo) {
@@ -157,9 +162,8 @@ export class UpdateDoiTacComponent implements OnInit {
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
                 user, pass, "", email, 1);
         }
-        if (this.formUpdateDoiTac.invalid) {
-            return;
-        } else if (this.formUpdateDoiTac.valid) {
+        if (this.formUpdateDoiTac.valid) {
+            console.log(this.formUpdateDoiTac);
             this.doiTacService.updateDoiTac(doitacpdate).subscribe(res => {
                 console.log(res);
                 this.statusUpdate.status = true;
