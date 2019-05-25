@@ -75,7 +75,7 @@
                         formControlName="sdt" [ngClass]="{ 'is-invalid': submitted && f.sdt.errors }">
                     <div *ngIf="submitted && f.sdt.errors" class="invalid-feedback">
                         <div *ngIf="f.sdt.errors.required">Vui lòng nhập Số Điện Thoại</div>
-                        <div *ngIf="f.sdt.errors.pattern">Số Điện Thoại không là kí tự</div>
+                        <div *ngIf="f.sdt.errors.pattern">Số Điện Thoại không hợp lệ</div>
                     </div>
                 </div>
             </div>

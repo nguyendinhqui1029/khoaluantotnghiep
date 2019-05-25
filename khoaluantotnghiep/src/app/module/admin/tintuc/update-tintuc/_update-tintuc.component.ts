@@ -108,57 +108,58 @@ export class UpdateTinTucComponent implements OnInit {
         ObjectLoaiTinTuc) {
         let tintucupdate = {};
         this.UploadHinhService.getHinhanh.subscribe(fileData => {
-            if (fileData.length > 0) {
-                let mangHinh: any[] = [];
-                for (let i = 0; i < fileData.length; i++) {
-                    const formData = new FormData();
-                    formData.append('file', fileData[i]);
-                    this.UploadHinhService.UploadImage(formData).subscribe(events => {
-                        if (events.type == HttpEventType.UploadProgress) {
-                            console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
-                        } else if (events.type === HttpEventType.Response) {
-                            let mahinh, tenhinh;
-                            mahinh = "HA" + (new Date()).getTime().toString();
-                            if (events.body.file.lastIndexOf("/") >= 0) {
-                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
-                            } else if (events.body.file.lastIndexOf("\\") >= 0) {
-                                tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
-                            }
-                            mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
-                            this.ds_mangHinh.forEach(ah => {
-                                this.UploadHinhService.DeleteImage(ah.tenhinh).subscribe(events => {
-                                    if (events.type == HttpEventType.UploadProgress) {
-                                        console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
-                                    }
+            if (matintuc !== "") {
+                if (fileData.length > 0) {
+                    let mangHinh: any[] = [];
+                    for (let i = 0; i < fileData.length; i++) {
+                        const formData = new FormData();
+                        formData.append('file', fileData[i]);
+                        this.UploadHinhService.UploadImage(formData).subscribe(events => {
+                            if (events.type == HttpEventType.UploadProgress) {
+                                console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                            } else if (events.type === HttpEventType.Response) {
+                                let mahinh, tenhinh;
+                                mahinh = "HA" + (new Date()).getTime().toString();
+                                if (events.body.file.lastIndexOf("/") >= 0) {
+                                    tenhinh = events.body.file.substring(events.body.file.lastIndexOf("/") + 1);
+                                } else if (events.body.file.lastIndexOf("\\") >= 0) {
+                                    tenhinh = events.body.file.substring(events.body.file.lastIndexOf("\\") + 1);
+                                }
+                                mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
+                                this.ds_mangHinh.forEach(ah => {
+                                    this.UploadHinhService.DeleteImage(ah.tenhinh).subscribe(events => {
+                                        if (events.type == HttpEventType.UploadProgress) {
+                                            console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
+                                        }
+                                    })
                                 })
-                            })
-                            if (i === (fileData.length - 1)) {
+                                if (i === (fileData.length - 1)) {
 
-                                tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, mangHinh,
-                                    ObjectLoaiTinTuc);
+                                    tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, mangHinh,
+                                        ObjectLoaiTinTuc);
 
-                                this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
-                                    console.log(tintucupdate)
-                                    this.statusUpdate.status = true;
-                                    this.statusUpdate.message = "Cập nhật tin tức thành công";
-                                });
+                                    this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
+                                        this.statusUpdate.status = true;
+                                        this.statusUpdate.message = "Cập nhật tin tức thành công";
+                                        matintuc = "";
+                                    });
+                                }
                             }
-                        }
-                    })
+                        })
 
+                    }
+
+
+                } else {
+                    tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh,
+                        ObjectLoaiTinTuc);
+                    this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
+                        this.statusUpdate.status = true;
+                        this.statusUpdate.message = "Cập nhật tin tức thành công";
+                        matintuc = "";
+                    });
                 }
-
-
-            } else {
-                tintucupdate = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh,
-                    ObjectLoaiTinTuc);
-                this.tintucService.updateTinTuc(tintucupdate).subscribe(res => {
-                    this.statusUpdate.status = true;
-                    this.statusUpdate.message = "Cập nhật tin tức thành công";
-                });
             }
-
-
         })
     }
 }

@@ -27,17 +27,29 @@ export class NoiDungTinTucComponent implements OnInit {
     ds_page: any[] = [];
     soItemCuaPage: number = 5;
     tieude: string = "Tin tức";
+
+    ds_tin: any[] = [];
     getDSTinTuc() {
         this.tintucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tintuc => {
-            this.noidungtintuc = tintuc.body;
+            // this.noidungtintuc = tintuc.body;
 
-            this.ds_ketQua = tintuc.body;
+            // this.ds_ketQua = tintuc.body;
+            tintuc.body.forEach(tin => {
+                if (tin.trangthai !== ConfigService.TRANG_THAI_TIN_TUC.CHODUYET) {
+                    this.ds_tin.push(tin)
+                }
+            })
+
+            console.log(this.ds_tin)
+
+
+
             //B1 tao phan trang
-            this.phanTrangService.setValueDanhSach(tintuc.body);
+            this.phanTrangService.setValueDanhSach(this.ds_tin);
             //B2 tao phan trang
             this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
             //Lay ket qua phan trang
-            this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(tintuc.body);
+            this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_tin);
         });
         this.loaitintucservice.currentMessage.subscribe(tintuc => {
             this.noidungtintuc = tintuc;
@@ -59,7 +71,7 @@ export class NoiDungTinTucComponent implements OnInit {
         this.currentPage = currentPage;
         //B4 tao lai danh sach phan trang
         this.ds_page = this.phanTrangService.createPhanTrang(this.currentPage);
-        this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_ketQua);
+        this.ds_ForHTML = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_tin);
     }
     ngOnInit(): void {
     }

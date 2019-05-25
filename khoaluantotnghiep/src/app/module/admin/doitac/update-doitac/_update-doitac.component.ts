@@ -36,7 +36,7 @@ export class UpdateDoiTacComponent implements OnInit {
         this.formUpdateDoiTac = this.fb.group({
             hoTen: ['', [Validators.required]],
             diaChi: ['', [Validators.required]],
-            sdt: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
+            sdt: ['', [Validators.required, Validators.pattern('^[0-9\-\+]{10,11}$')]],
             tinhThanhPho: ['', [Validators.required]],
             quanHuyen: ['', [Validators.required]],
             ngaySinh: ['', [Validators.required]],
@@ -163,9 +163,7 @@ export class UpdateDoiTacComponent implements OnInit {
                 user, pass, "", email, 1);
         }
         if (this.formUpdateDoiTac.valid) {
-            console.log(this.formUpdateDoiTac);
             this.doiTacService.updateDoiTac(doitacpdate).subscribe(res => {
-                console.log(res);
                 this.statusUpdate.status = true;
                 this.statusUpdate.message = "Đối Tác đã được Cập Nhật";
             });

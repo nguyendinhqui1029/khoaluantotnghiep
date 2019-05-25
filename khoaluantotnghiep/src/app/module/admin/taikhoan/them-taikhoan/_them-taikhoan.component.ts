@@ -30,7 +30,7 @@ export class ThemTaiKhoanComponent implements OnInit {
         private taiKhoanService: TaiKhoanService) {
         this.formThemTaiKhoan = this.fb.group({
             hoTen: ['', [Validators.required]],
-            soDienThoai: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
+            soDienThoai: ['', [Validators.required, Validators.pattern('^[0-9\-\+]{10,11}$')]],
             diaChi: ['', [Validators.required]],
             gioiTinh: ['', [Validators.required]],
             ngaySinh: ['', [Validators.required]],
@@ -137,15 +137,12 @@ export class ThemTaiKhoanComponent implements OnInit {
                 gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, md5MatKhau, ObjectLoaiTaikhoan);
         }
 
-        console.log(taikhoan);
-        console.log(this.formThemTaiKhoan)
         if (this.formThemTaiKhoan.invalid) {
             return;
         } else if (this.formThemTaiKhoan.valid) {
             this.taiKhoanService.themTaiKhoan(taikhoan).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Tài Khoản đã được thêm thành công!";
-                console.log(res);
             });
         }
     }

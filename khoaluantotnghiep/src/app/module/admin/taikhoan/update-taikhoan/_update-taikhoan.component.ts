@@ -11,6 +11,7 @@ import { TinhThanhPhoService } from 'src/app/service/tinhthanhpho.service';
 import { ds_tinhthanhpho } from 'src/app/model/mock_tinhthanhpho';
 import { TaiKhoanService } from 'src/app/service/taikhoan.service';
 import { TAIKHOAN } from 'src/app/model/taikhoan';
+import { Md5 } from 'ts-md5';
 
 @Component({
     selector: 'update-taikhoan',
@@ -55,7 +56,6 @@ export class UpdateTaiKhoanComponent implements OnInit {
         this.taikhoanService.getTaiKhoantheoMa(id).subscribe(tk => {
             this.taikhoan = JSON.stringify(tk);
             let doit = JSON.parse(this.taikhoan);
-            console.log(doit.body.data[0]);
 
             this.mataikhoan = doit.body.data[0].maTaiKhoan;
             this.formUpdateTaiKhoan.controls.hoTen.setValue(doit.body.data[0].hoTen);
@@ -155,6 +155,8 @@ export class UpdateTaiKhoanComponent implements OnInit {
         let tenTaiKhoan = this.formUpdateTaiKhoan.controls.tenTaiKhoan.value;
         let email = this.formUpdateTaiKhoan.controls.email.value;
         let matKhau = this.formUpdateTaiKhoan.controls.matKhau.value;
+        const md5 = new Md5();
+        let md5MatKhau = md5.appendAsciiStr(matKhau).end();
         let gioiTinh = this.formUpdateTaiKhoan.controls.gioiTinh.value;
         let loaiTaiKhoan = this.formUpdateTaiKhoan.controls.loaiTaiKhoan.value;
 
@@ -172,23 +174,16 @@ export class UpdateTaiKhoanComponent implements OnInit {
         else {
             quanHuyen = this.formUpdateTaiKhoan.controls.quanHuyen.value;
         }
-        console.log(ngaySinh);
 
         let taikhoan;
         if (this.ds_mangHinh.length > 0) {
             taikhoan = new TAIKHOAN(this.mataikhoan, hoTen, soDienThoai, tinhThanhPho, diaChi, quanHuyen,
-                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, matKhau, loaiTaiKhoan);
+                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, md5MatKhau, loaiTaiKhoan);
         } else {
             this.ds_mangHinh.push(new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an"));
             taikhoan = new TAIKHOAN(this.mataikhoan, hoTen, soDienThoai, tinhThanhPho, diaChi, quanHuyen,
-                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, matKhau, loaiTaiKhoan);
+                gioiTinh, ngaySinh, this.ds_mangHinh, moTa, tenTaiKhoan, email, md5MatKhau, loaiTaiKhoan);
         }
-        console.log(taikhoan);
-        // this.taikhoanService.updateTaiKhoan(taikhoan).subscribe(res => {
-        //     console.log(res);
-        //     this.statusUpdate.status = true;
-        //     this.statusUpdate.message = "Tài khoản đã được Cập Nhật";
-        // });
         if (this.formUpdateTaiKhoan.invalid) {
             return;
         } else if (this.formUpdateTaiKhoan.valid) {

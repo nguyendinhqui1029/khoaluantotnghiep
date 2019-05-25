@@ -32,7 +32,6 @@ export class UpdateDanhMucComponent implements OnInit {
         this.danhMucService.getDanhMucTheoMaDanhMuc(id).subscribe(dm => {
             this.danhmuc = JSON.stringify(dm);
             let doit = JSON.parse(this.danhmuc);
-            console.log(doit.body.data[0]);
 
             this.madanhmuc = doit.body.data[0].maDanhMuc;
             this.formUpdateDanhMuc.controls.tenDanhMuc.setValue(doit.body.data[0].tenDanhMuc);
@@ -57,7 +56,6 @@ export class UpdateDanhMucComponent implements OnInit {
 
         danhmuc = new DANHMUC(this.madanhmuc, tenDanhMuc, trangThai, isActive);
         this.danhMucService.updateDanhMuc(danhmuc).subscribe(res => {
-            console.log(res);
             this.statusUpdate.status = true;
             this.statusUpdate.message = "Danh Mục đã được Cập Nhật";
         })

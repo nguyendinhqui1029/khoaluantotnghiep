@@ -50,4 +50,12 @@ export class DuyetBaiDangTinTucComponent implements OnInit {
         });
 
     }
+
+    boquatintuc(matintuc) {
+        this.tinTucService.xoaTinTucTheomaLoai(matintuc).subscribe(res => {
+            if (res.code === 200) {
+                this.getDSTinTucChoDuyet();
+            }
+        });
+    }
 }

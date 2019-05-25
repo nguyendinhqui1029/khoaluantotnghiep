@@ -52,7 +52,6 @@ export class ThemLoaiGiaoDichComponent implements OnInit {
             this.loaiGiaoDichService.themLoaiGiaoDich(loaigiaodich).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Loại Giao Dịch đã được thêm thành công!";
-                console.log(res);
             })
         }
     }

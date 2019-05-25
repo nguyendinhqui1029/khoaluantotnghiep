@@ -58,7 +58,6 @@ export class ThemDanhMucComponent implements OnInit {
             this.danhMucService.themDanhMuc(danhmuc).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Danh Mục đã được thêm thành công!";
-                console.log(res);
             })
         }
     }

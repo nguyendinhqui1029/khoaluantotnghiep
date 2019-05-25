@@ -43,9 +43,7 @@ export class XoaTinTucComponent implements OnInit {
                 if (tin.body.data[0]) {
                     if (tin.body.data[0].hinhanh) {
                         tin.body.data[0].hinhanh.forEach(hinh => {
-                            console.log(hinh.tenhinh)
                             this.uploadhinhService.DeleteImage(hinh.tenhinh).subscribe(res => {
-
                             })
                         })
                         this.tinTucService.xoaTinTucTheomaLoai(maloai).subscribe(res => {

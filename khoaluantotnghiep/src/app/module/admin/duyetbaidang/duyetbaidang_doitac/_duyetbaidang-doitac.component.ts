@@ -33,7 +33,6 @@ export class DuyetBaiDangDoiTacComponent implements OnInit {
 
     duyetdoitac(maDoiTac) {
         this.getDoiTacTheoMa(maDoiTac);
-        console.log(this.doitacduyet);
         let diaChi = this.doitacduyet.diaChi;
         let email = this.doitacduyet.email;
         let hoTen = this.doitacduyet.hoTen;
@@ -57,7 +56,6 @@ export class DuyetBaiDangDoiTacComponent implements OnInit {
         });
     }
     boquadoitac(maDoiTac) {
-        console.log(maDoiTac);
         this.doiTacService.xoaDoiTacTheomaDoiTac(maDoiTac).subscribe(res => {
             if (res.code === 200) {
                 this.getDSDoiTacChoDuyet();

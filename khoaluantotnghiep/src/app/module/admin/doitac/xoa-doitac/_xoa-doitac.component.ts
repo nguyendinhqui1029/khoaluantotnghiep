@@ -20,7 +20,9 @@ export class XoaDoiTacComponent implements OnInit {
 
     getDSDoiTac() {
         this.doiTacService.getListDoiTac(ConfigService.TRANG_THAI_DOITAC.TATCA).subscribe(doitac => {
-            this.ds_doitac = doitac.body;
+            if (doitac.body) {
+                this.ds_doitac = doitac.body;
+            }
         })
     }
 
@@ -35,7 +37,6 @@ export class XoaDoiTacComponent implements OnInit {
                 let dt = JSON.parse(this.doitac);
 
                 if (dt.body.data[0]) {
-                    console.log(dt.body.data[0].loGo);
                     if (dt.body.data[0].loGo) {
                         this.uploadhinhService.DeleteImage(dt.body.data[0].loGo).subscribe(res => {
 

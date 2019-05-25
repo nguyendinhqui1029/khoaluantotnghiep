@@ -35,7 +35,6 @@ export class UpdateMenuComponent implements OnInit {
         this.MenuService.getMeNUMaMenu(id).subscribe(menu => {
             this.menu = JSON.stringify(menu);
             let doit = JSON.parse(this.menu);
-            console.log(doit.body.data[0]);
 
             this.mamenu = doit.body.data[0].idMenu;
             this.formUpdateMenu.controls.namemenu.setValue(doit.body.data[0].nameMenu);
@@ -74,7 +73,6 @@ export class UpdateMenuComponent implements OnInit {
 
         } else if (this.formUpdateMenu.valid) {
             this.MenuService.updateMenu(menu).subscribe(res => {
-                console.log(res);
                 this.statusUpdate.status = true;
                 this.statusUpdate.message = "Menu đã được Cập Nhật";
             })

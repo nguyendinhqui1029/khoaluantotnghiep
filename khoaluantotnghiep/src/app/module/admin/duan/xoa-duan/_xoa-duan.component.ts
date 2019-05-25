@@ -5,6 +5,7 @@ import { DuAnService } from 'src/app/service/duan.service';
 import { ConfigService } from 'src/app/service/config.service';
 import { Router } from '@angular/router';
 import { UploadImageService } from 'src/app/service/upload-image.service';
+import { ds_trangthaiduan } from 'src/app/model/mock_trangthaiduan';
 
 @Component({
     selector: 'xoa-duan',
@@ -18,21 +19,32 @@ export class XoaDuAnComponent implements OnInit {
     lengthDuAn: number = 0;
     ngOnInit(): void {
         this.getListDuAn();
+        this.isMenuAdminforAdmin();
+    }
+
+    role: any = 0;
+    isMenuAdminforAdmin() {
+        let roleadmin = sessionStorage.getItem("role");
+        if (Number(roleadmin) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+            this.role = 3;
+        } else if (Number(roleadmin) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
+            this.role = 2;
+        } else if (Number(roleadmin) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+            this.role = 1;
+        }
     }
 
     getListDuAn(): void {
-        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.DANGGIAODICH).subscribe(duan => {
+        this.ds_duan = [];
+        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
-                this.ds_duan = duan.body;
+                duan.body.forEach(duan => {
+                    if (duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
+                        this.ds_duan.push(duan);
+                    }
+                });
+                this.lengthDuAn = this.ds_duan.length;
             }
-            this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.DUANMOI).subscribe(duanmoi => {
-                if (duanmoi.body) {
-                    duanmoi.body.forEach(duannew => {
-                        this.ds_duan.push(duannew);
-                    });
-                    this.lengthDuAn = this.ds_duan.length;
-                }
-            })
         });
     }
 

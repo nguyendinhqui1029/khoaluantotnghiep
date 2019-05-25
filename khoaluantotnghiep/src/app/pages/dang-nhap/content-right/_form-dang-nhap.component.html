@@ -1,7 +1,7 @@
 <div class="breadcrumb clearfix">
     <ul>
-        <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
-            <a title="Đến trang chủ" href="index.html" itemprop="url"><span itemprop="title">Trang
+        <li>
+            <a title="Đến trang chủ" [routerLink]="['/trang-chu']" itemprop="url"><span itemprop="title">Trang
                     chủ</span></a>
         </li>
         <li class="icon-li"><strong>Đăng nhập</strong> </li>
@@ -18,7 +18,7 @@
     <div *ngIf="submitted && !f.email.errors && !f.pass.errors" class="alert alert-success fade in">
         <button data-dismiss="alert" class="close"></button>
         <i class="fa-fw fa fa-check"></i>
-        <strong>Thành công!</strong> Email và Password hợp lệ.
+        <strong>Email và Password hợp lệ.</strong>
     </div>
     <div *ngIf="submitted && f.email.errors" class="alert alert-danger fade in">
         <button data-dismiss="alert" class="close"></button>
@@ -46,7 +46,6 @@
                 <label for="Email" class="col-sm-4 control-label">Email:</label>
                 <div class="col-sm-8">
                     <input type="email" class="form-control" formControlName="email" (change)="changedata()" />
-
                 </div>
             </div>
             <div class="form-group">
@@ -59,7 +58,6 @@
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
                     <button type="button" class="btn btn-default" (click)="dangNhap()">Đăng nhập</button>
-                    <a [routerLink]="['/quen-mat-khau']">Quên mật khẩu</a>
                 </div>
 
             </div>

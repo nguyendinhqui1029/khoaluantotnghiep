@@ -13,7 +13,7 @@ export class DuAnComponent implements OnInit {
 
     status: EditorType = true;
     pageCurrent: string = '';
-    modeView: any = { "grid": "/du-an/grid", "list": "/du-an" };
+    modeView: any = {};
     dsDuAn: any[] = [];
     ds_HienThi: any[] = [];
     currentPagePhanTrang: number = 1;
@@ -22,10 +22,22 @@ export class DuAnComponent implements OnInit {
 
     ds_duan_theo_loai_giao_dich: any[] = [];
     tieude: any = "";
+    pageList: string = "";
+    pageGrid: string = "";
     constructor(private route: Router,
         private phanTrangService: PhanTranService,
         private serviceDuAn: DuAnService) {
         this.pageCurrent = this.route.routerState.snapshot.url;
+        if (this.pageCurrent.indexOf("/grid") >= 0) {
+            this.modeView = { "grid": this.pageCurrent, "list": this.pageCurrent.substr(0, this.pageCurrent.lastIndexOf("/")) };
+            this.pageGrid = this.modeView.grid;
+            this.pageList = this.modeView.list;
+        } else {
+            this.modeView = { "grid": this.pageCurrent + "/grid", "list": this.pageCurrent };
+            this.pageGrid = this.modeView.grid;
+            this.pageList = this.modeView.list;
+        }
+
         if (this.pageCurrent === this.modeView.grid) {
             this.status = false;
             this.phanTrangService.soItemCuaPage = 12;
@@ -81,11 +93,21 @@ export class DuAnComponent implements OnInit {
             this.phanTrangService.soItemCuaPage = 12;
             this.soItemTrang = 12;
             this.currentPagePhanTrang = 1;
+            /////////// list - grid
+            if (this.pageCurrent.indexOf('/grid') >= 0) {
+                this.pageCurrent = this.pageCurrent;
+            }
+            else {
+                this.pageCurrent = this.pageCurrent + '/grid';
+            }
+
+            /////////// list - grid
         } else if (e === this.modeView.list) {
             this.status = true;
             this.phanTrangService.soItemCuaPage = 5;
             this.soItemTrang = 5;
             this.currentPagePhanTrang = 1;
+            this.pageCurrent = "/trang-chu";
         }
         this.pageCurrent = this.route.routerState.snapshot.url;
         this.createPhanTrang(this.currentPagePhanTrang);

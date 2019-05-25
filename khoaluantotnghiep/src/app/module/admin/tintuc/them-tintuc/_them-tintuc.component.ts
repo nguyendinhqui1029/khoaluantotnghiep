@@ -98,8 +98,6 @@ export class ThemTinTucComponent implements OnInit {
         let noidungchitiet = this.formthemTinTuc.controls.noidungchitiet.value;
         let noidungtomtat = this.formthemTinTuc.controls.noidungtomtat.value;
 
-        console.log(ngayDang.value);
-
         let loaitintuc;
         let maloai = "TT" + (new Date()).getTime().toString();
         let ObjectLoaiTinTuc = this.getLoaiTinTucTheoMa(maloaitintuc);
@@ -120,11 +118,6 @@ export class ThemTinTucComponent implements OnInit {
         if (this.formthemTinTuc.invalid) {
             return;
         } else if (this.formthemTinTuc.valid) {
-            // this.tinTucService.themTinTuc(loaitintuc).subscribe(res => {
-            //     this.statusAdd.status = true;
-            //     this.statusAdd.message = "Tin Tức đã được thêm thành công!";
-            //     console.log(res);
-            // });
             this.Submit(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang.value,
                 ObjectLoaiTinTuc);
         }
@@ -158,7 +151,6 @@ export class ThemTinTucComponent implements OnInit {
                                 this.tinTucService.themTinTuc(this.tintuc).subscribe(res => {
                                     this.statusAdd.status = true;
                                     this.statusAdd.message = "Tin Tức đã được thêm thành công!";
-                                    console.log(res);
                                 });
                             }
 

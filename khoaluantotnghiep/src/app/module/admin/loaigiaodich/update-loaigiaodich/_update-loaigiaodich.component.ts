@@ -27,7 +27,6 @@ export class UpdateLoaiGiaoDichComponent implements OnInit {
         this.loaigiaoDichService.getLoaiGiaoDichtheoMaLoai(id).subscribe(lgd => {
             this.loaigiaodich = JSON.stringify(lgd);
             let doit = JSON.parse(this.loaigiaodich);
-            console.log(doit.body.data[0]);
 
             this.maLoai = doit.body.data[0].maLoai;
             this.formUpdateLoaiGiaoDich.controls.tenLoai.setValue(doit.body.data[0].tenLoai);
@@ -48,7 +47,6 @@ export class UpdateLoaiGiaoDichComponent implements OnInit {
 
         loaigiaodich = new LOAIGIAODICH(this.maLoai, tenLoai, trangThai);
         this.loaigiaoDichService.updateLoaiGiaoDich(loaigiaodich).subscribe(res => {
-            console.log(res);
             this.statusUpdate.status = true;
             this.statusUpdate.message = "Loại Giao Dịch đã được Cập Nhật";
         })

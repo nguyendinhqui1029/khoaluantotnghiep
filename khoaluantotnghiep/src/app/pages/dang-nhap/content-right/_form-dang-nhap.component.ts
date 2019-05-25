@@ -34,40 +34,35 @@ export class FormDangNhapComponent implements OnInit {
         this.error.status = false;
     }
     dangNhap() {
-        this.DangKiDangNhapService.layTaiKhoanTheoEmail(this.formDangNhap.controls.email.value).subscribe(e => {
-            if (e.body[0]) {
-                if (Md5.hashAsciiStr(this.formDangNhap.controls.pass.value) === e.body[0].matKhau) {
+        this.submitted = true;
 
-                    sessionStorage.setItem("username", e.body[0].email);
-                    sessionStorage.setItem("name", e.body[0].hoTen);
-                    sessionStorage.setItem("role", e.body[0].loaiTaiKhoan);
-                    if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
+        if (this.formDangNhap.valid) {
+            this.DangKiDangNhapService.layTaiKhoanTheoEmail(this.formDangNhap.controls.email.value).subscribe(e => {
+                if (e.body[0]) {
+                    if (Md5.hashAsciiStr(this.formDangNhap.controls.pass.value) === e.body[0].matKhau) {
 
-                        this.router.navigate(['/admin']);
-                    } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
+                        sessionStorage.setItem("username", e.body[0].email);
+                        sessionStorage.setItem("name", e.body[0].hoTen);
+                        sessionStorage.setItem("role", e.body[0].loaiTaiKhoan);
+                        if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.ADMIN) {
 
-                        this.router.navigate(['/employee']);
-                    } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+                            this.router.navigate(['/admin']);
+                        } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.EMPLOYEE) {
 
-                        this.router.navigate(['/customer']);
+                            this.router.navigate(['/employee']);
+                        } else if (Number(e.body[0].loaiTaiKhoan) === ConfigService.LOAI_TAI_KHOAN.CUSTOMER) {
+
+                            this.router.navigate(['/customer']);
+                        }
+                    } else {
+                        this.error.status = true;
+                        this.error.message = "Mật khẩu không đúng.Vui lòng nhập lại!";
                     }
                 } else {
                     this.error.status = true;
-                    this.error.message = "Mật khẩu không đúng.Vui lòng nhập lại!";
+                    this.error.message = "Địa chỉ email không đúng.Vui lòng nhập lại!";
                 }
-            } else {
-                this.error.status = true;
-                this.error.message = "Địa chỉ email không đúng.Vui lòng nhập lại!";
-            }
-        });
-
+            });
+        }
     }
-
-
-
-
-    //xử lí đăng nhập
-    // dangnhap() {
-    //     this.router.navigate(['/admin']);
-    // }
 }
