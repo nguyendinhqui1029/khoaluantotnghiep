@@ -14,10 +14,15 @@
                 <div *ngFor="let ds of dsduan" class="project-item-box fixheight">
                     <div class="project-item project-slide-resize">
                         <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
-                            <a [routerLink]="['/chi-tiet-du-an',ds.maDuAn]">
+                            <a [routerLink]="['/chi-tiet-du-an',ds.maDuAn]" *ngIf="!ds.mangHinh else nguoclai">
                                 <img src="{{urlImage}}get-images/{{ds.mangHinh[0].tenhinh}}" class="img-responsive"
                                     style="max-height: 200px; min-height: 200px; width: 100%;" />
                             </a>
+                            <ng-template #nguoclai>
+                                <a [routerLink]="['/chi-tiet-du-an',ds.maDuAn]">
+                                    <img src="{{urlImage}}get-images/logo.png" class="img-responsive" alt="logo.png"
+                                        style="max-height: 200px; min-height: 200px; width: 100%;" /></a>
+                            </ng-template>
                             <span class="new">Mới</span>
                             <div class="thumbnail">
                                 <a class="zoom" [routerLink]="['/chi-tiet-du-an',ds.maDuAn]">

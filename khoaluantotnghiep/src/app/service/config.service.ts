@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { UploadImageService } from './upload-image.service';
+import { FLAGS } from '@angular/core/src/render3/interfaces/view';
 
 @Injectable()
 export class ConfigService {

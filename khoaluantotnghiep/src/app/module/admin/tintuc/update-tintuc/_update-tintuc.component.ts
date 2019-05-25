@@ -131,6 +131,7 @@ export class UpdateTinTucComponent implements OnInit {
                                         console.log('delete progress: ', Math.round(events.loaded / events.total * 100) + '%');
                                     }
                                 })
+
                             })
                             if (i === (fileData.length - 1)) {
 

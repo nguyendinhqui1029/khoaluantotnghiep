@@ -23,7 +23,6 @@ export class DuAnMoiComponent implements OnInit {
 
     ngAfterViewInit() {
 
-
         const $ = window["$"];
         var owlproductslide2 = $("#project-slide");
         owlproductslide2.owlCarousel({

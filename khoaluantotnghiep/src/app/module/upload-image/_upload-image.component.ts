@@ -27,14 +27,14 @@ export class UploadImageComponent implements OnInit {
     }
 
     fileProgress(fileInput: any) {
-        if (sessionStorage.getItem("slimage")) {
-            let sluong: any = sessionStorage.getItem("slimage");
-            for (let i = 0; i < sluong; i++) {
-                sessionStorage.removeItem("image" + i)
+        setTimeout(() => {
+            if (sessionStorage.getItem("slimage")) {
+                let sluong: any = sessionStorage.getItem("slimage");
+                for (let i = 0; i < sluong; i++) {
+                    sessionStorage.removeItem("image" + i)
+                }
             }
-        }
-
-
+        }, 550);
         this.arrImageShow = [];
         this.fileData = <FileList>fileInput.target.files;
         for (let i = 0; i < this.fileData.length; i++) {

@@ -14,11 +14,11 @@ import { KetQuaTimService } from 'src/app/service/ketquatim.service';
 export class SearchComponent implements OnInit {
     search: string = 'search-center';
     modeSearch: any = { "SEARCH_CENTER": "search-center", "SEARCH_RIGHT": "search-right" };
-    dsLoaiGiaoDich: any[] = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "--Chọn loại danh mục--" }, { "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "Tất cả danh mục" }];
+    dsLoaiGiaoDich: any[] = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "Tất cả danh mục" }];
     dsDanhMuc: any[] = [{ "maDanhMuc": "0", "tenDanhMuc": "--Chọn loại bất động sản--" }];
-    dsQuanHuyen: any[] = [{ "maquanhuyen": "0", "tenquanhuyen": "--Chọn Quận/Huyện--" }, { "maquanhuyen": "0", "tenquanhuyen": "Tất cả Quận/Huyện" }];
-    dsTinhThanhPho: any[] = [{ "matinhThanhPho": "0", "tentinhThanhPho": "--Chọn Tỉnh/Thành Phố--" }, { "matinhThanhPho": "0", "tentinhThanhPho": "Tất cả Tỉnh/Thành Phố" }];
-    dsMucGia: any[] = [{ "magiaTien": "0", "tengiaTien": "--Chọn Mức giá--" }, { "magiaTien": "0", "tengiaTien": "Tất cả mức giá" }];
+    dsQuanHuyen: any[] = [{ "maquanhuyen": "0", "tenquanhuyen": "Tất cả Quận/Huyện" }];
+    dsTinhThanhPho: any[] = [{ "matinhThanhPho": "0", "tentinhThanhPho": "Tất cả Tỉnh/Thành Phố" }];
+    dsMucGia: any[] = [{ "magiaTien": "0", "tengiaTien": "Tất cả mức giá" }];
     dsDuAn: DUAN[] = [];
     dsKetQuaTim: DUAN[] = [];
     danhmuc: string = "0";
@@ -62,7 +62,7 @@ export class SearchComponent implements OnInit {
 
     getListLoaiGiaoDichTheoDanhMuc(maDanhMuc) {
         const dsTam: string[] = [];
-        this.dsLoaiGiaoDich = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "--Chọn loại danh mục--" }, { "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "Tất cả danh mục" }];
+        this.dsLoaiGiaoDich = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "Tất cả danh mục" }];
         if (maDanhMuc !== "0") {
             this.dsDuAn.forEach(duan => {
                 if (dsTam.indexOf(duan.danhMuc.maDanhMuc) === -1 && duan.loaiGiaoDich.maLoai === maDanhMuc) {
@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit {
     }
 
     getThanhPhoTheoLoaiGiaoDich(maLoai, maDanhMuc) {
-        this.dsTinhThanhPho = [{ "matinhThanhPho": "0", "tentinhThanhPho": "--Chọn Tỉnh/Thành Phố--" }, { "matinhThanhPho": "0", "tentinhThanhPho": "Tất cả Tỉnh/Thành Phố" }];
+        this.dsTinhThanhPho = [{ "matinhThanhPho": "0", "tentinhThanhPho": "Tất cả Tỉnh/Thành Phố" }];
         const dsTam: string[] = [];
         if (maLoai !== "0" && maDanhMuc !== "0") {
             this.dsDuAn.forEach(duan => {
@@ -91,7 +91,7 @@ export class SearchComponent implements OnInit {
         }
     }
     getQuanHuyenTheoThanhPho(maLoai, maDanhMuc, thanhPho) {
-        this.dsQuanHuyen = [{ "maquanhuyen": "0", "tenquanhuyen": "--Chọn Quận/Huyện--" }, { "maquanhuyen": "0", "tenquanhuyen": "Tất cả Quận/Huyện" }];
+        this.dsQuanHuyen = [{ "maquanhuyen": "0", "tenquanhuyen": "Tất cả Quận/Huyện" }];
         const dsTam: string[] = [];
         if (maLoai !== "0" && maDanhMuc !== "0" && thanhPho !== "0") {
             this.dsDuAn.forEach(duan => {
@@ -109,7 +109,7 @@ export class SearchComponent implements OnInit {
     }
     getGiaTheoQuanHuyen(maLoai, maDanhMuc, thanhPho, quanhuyen) {
         const dsTam: Number[] = [];
-        this.dsMucGia = [{ "magiaTien": "0", "tengiaTien": "--Chọn Mức giá--" }, { "magiaTien": "0", "tengiaTien": "Tất cả mức giá" }];
+        this.dsMucGia = [{ "magiaTien": "0", "tengiaTien": "Tất cả mức giá" }];
         if (maLoai !== "0" && maDanhMuc !== "0" && thanhPho !== "0" && quanhuyen !== "0"
         ) {
             this.dsDuAn.forEach(duan => {
