@@ -4,7 +4,7 @@
         <div class="news-item clearfix" *ngFor="let duan of dsDuAN">
             <div class="col-md-3 col-sm-4 col-xs-12 image"><a [routerLink]="['/san-giao-dich-chi-tiet',duan.maDuAn]">
                     <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
-                        alt="{{duan.tenDuAn}}" /></a>
+                        alt="{{duan.tenDuAn}}" style="max-height: 200px; min-height: 140px; width: 100%;" /></a>
                 <span class="text">{{duan.danhMuc.tenDanhMuc}}</span>
             </div>
             <div class="col-md-9 col-sm-8 col-xs-12 news-info ">

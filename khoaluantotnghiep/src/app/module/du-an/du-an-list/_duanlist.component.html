@@ -8,10 +8,10 @@
                     <div class="col-md-3 col-sm-4 col-xs-12 image">
                         <span class="text"
                             style="font-weight:bold; position: absolute;z-index: 99999;padding-top: 5px; width: 70px; height: 30px; border-radius: 4px 4px 4px 4px; background-color: red; color: white; right: 5px">{{duan.danhMuc.tenDanhMuc}}</span>
-                        <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" *ngIf="!duan.mangHinh else nguoclai">
+                        <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]" *ngIf="duan.mangHinh else nguoclai">
                             <img src="{{urlImage}}get-images/{{duan.mangHinh[0].tenhinh}}" class="img-responsive"
                                 alt="{{duan.mangHinh[0].alt}}"
-                                style="max-height: 200px; min-height: 200px; width: 100%;" /></a>
+                                style="max-height: 200px; min-height: 140px; width: 100%;" /></a>
                         <ng-template #nguoclai>
                             <a [routerLink]="['/chi-tiet-du-an',duan.maDuAn]">
                                 <img src="{{urlImage}}get-images/logo.png" class="img-responsive" alt="logo.png"

@@ -14,7 +14,7 @@
                 <div *ngFor="let ds of dsduan" class="project-item-box fixheight">
                     <div class="project-item project-slide-resize">
                         <div class="image image-resize" style="max-height: 200px; min-height: 200px;">
-                            <a [routerLink]="['/chi-tiet-du-an',ds.maDuAn]" *ngIf="!ds.mangHinh else nguoclai">
+                            <a [routerLink]="['/chi-tiet-du-an',ds.maDuAn]" *ngIf="ds.mangHinh else nguoclai">
                                 <img src="{{urlImage}}get-images/{{ds.mangHinh[0].tenhinh}}" class="img-responsive"
                                     style="max-height: 200px; min-height: 200px; width: 100%;" />
                             </a>
