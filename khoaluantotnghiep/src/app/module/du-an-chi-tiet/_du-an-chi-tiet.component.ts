@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DUAN } from 'src/app/model/duan';
-import { ds_duan } from 'src/app/model/mock_duan';
+//import { ds_duan } from 'src/app/model/mock_duan';
 import { DuAnService } from 'src/app/service/duan.service';
 import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 
@@ -18,6 +18,7 @@ export class DuAnChiTietModuleComponent implements OnInit {
     thongTinDuAn: any = {};
     noiDungChiTiet: any = "";
     thongTinNguoiDang: any = {};
+    thongTinTaiKhoan: any = {};
     constructor(private router: ActivatedRoute, private duAnService: DuAnService, private sanGiaoDichService: SanGiaoDichService) {
         this.id = this.router.snapshot.params["id"];
         this.duAnService.getDuAnTheoMaDuAn(this.id).subscribe(duan => {
@@ -35,16 +36,25 @@ export class DuAnChiTietModuleComponent implements OnInit {
             this.thongTinNguoiDang = {
                 hoTen: duan.body[0].doiTac.hoTen,
                 diaChi: duan.body[0].doiTac.diaChi,
-                soDienThoai: duan.body[0].doiTac.soDienThoai,
-                email: duan.body[0].doiTac.email
+                moTa: duan.body[0].doiTac.moTa
             }
+            if (duan.body[0].taiKhoan) {
+                this.thongTinTaiKhoan = {
+                    hoTen: duan.body[0].taiKhoan.hoTen,
+                    soDienThoai: duan.body[0].taiKhoan.soDienThoai,
+                    gioiTinh: duan.body[0].taiKhoan.gioiTinh,
+                    email: duan.body[0].taiKhoan.email
+                }
+            }
+
             this.mangHinh = duan.body[0].mangHinh;
             this.noiDungChiTiet = duan.body[0].noiDungChiTiet;
             this.sanGiaoDichService.setValueThongTin({
                 mangHinh: this.mangHinh,
                 noidungchitiet: this.noiDungChiTiet,
                 thongtinduan: this.thongTinDuAn,
-                thongtinnguoidang: this.thongTinNguoiDang
+                thongtinnguoidang: this.thongTinNguoiDang,
+                thongTinTaiKhoan: this.thongTinTaiKhoan
             });
         });
 

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DuAnService } from 'src/app/service/duan.service';
 import { DUAN } from 'src/app/model/duan';
 import { KetQuaTimService } from 'src/app/service/ketquatim.service';
+import { ConfigService } from 'src/app/service/config.service';
 
 //import { FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -52,7 +53,9 @@ export class SearchComponent implements OnInit {
         const dsTam: string[] = [];
         if (this.dsDuAn) {
             this.dsDuAn.forEach(duan => {
-                if (dsTam.indexOf(duan.loaiGiaoDich.maLoai) <= -1) {
+                if (dsTam.indexOf(duan.loaiGiaoDich.maLoai) <= -1
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     this.dsDanhMuc.push({ "maDanhMuc": duan.loaiGiaoDich.maLoai, "tenDanhMuc": duan.loaiGiaoDich.tenLoai });
                     dsTam.push(duan.loaiGiaoDich.maLoai);
                 }
@@ -65,7 +68,10 @@ export class SearchComponent implements OnInit {
         this.dsLoaiGiaoDich = [{ "maLoaiGiaoDich": "0", "tenLoaiGiaoDich": "Tất cả danh mục" }];
         if (maDanhMuc !== "0") {
             this.dsDuAn.forEach(duan => {
-                if (dsTam.indexOf(duan.danhMuc.maDanhMuc) === -1 && duan.loaiGiaoDich.maLoai === maDanhMuc) {
+                if (dsTam.indexOf(duan.danhMuc.maDanhMuc) === -1
+                    && duan.loaiGiaoDich.maLoai === maDanhMuc
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     this.dsLoaiGiaoDich.push({ "maLoaiGiaoDich": duan.danhMuc.maDanhMuc, "tenLoaiGiaoDich": duan.danhMuc.tenDanhMuc });
                     dsTam.push(duan.danhMuc.maDanhMuc);
                 }
@@ -83,6 +89,8 @@ export class SearchComponent implements OnInit {
                 if (dsTam.indexOf(duan.tinhThanhPho) === -1
                     && duan.danhMuc.maDanhMuc === maLoai
                     && duan.loaiGiaoDich.maLoai === maDanhMuc
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH
                 ) {
                     this.dsTinhThanhPho.push({ "matinhThanhPho": duan.tinhThanhPho, "tentinhThanhPho": duan.tinhThanhPho });
                     dsTam.push(duan.tinhThanhPho);
@@ -98,7 +106,9 @@ export class SearchComponent implements OnInit {
                 if (dsTam.indexOf(duan.quanHuyen) === -1
                     && duan.danhMuc.maDanhMuc === maLoai
                     && duan.loaiGiaoDich.maLoai === maDanhMuc
-                    && duan.tinhThanhPho === thanhPho) {
+                    && duan.tinhThanhPho === thanhPho
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     this.dsQuanHuyen.push({ "maquanhuyen": duan.quanHuyen, "tenquanhuyen": duan.quanHuyen });
                     dsTam.push(duan.quanHuyen);
 
@@ -117,17 +127,46 @@ export class SearchComponent implements OnInit {
                     && duan.danhMuc.maDanhMuc === maLoai
                     && duan.loaiGiaoDich.maLoai === maDanhMuc
                     && duan.quanHuyen === quanhuyen
-                    && duan.tinhThanhPho === thanhPho) {
-                    this.dsMucGia.push({ "magiaTien": duan.giaTien, "tengiaTien": duan.giaTien });
-                    dsTam.push(duan.giaTien);
+                    && duan.tinhThanhPho === thanhPho
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
+                    if (this.dsMucGia) {
+                        this.dsMucGia.forEach(element => {
+                            if (element.tengiaTien !== duan.giaTien) {
+                                dsTam.push(duan.giaTien);
+                            }
+                        });
+                    } else {
+
+                        dsTam.push(duan.giaTien);
+                    }
                 }
             });
-
             this.dsMucGia.sort();
+            if (dsTam) {
+                if (dsTam.length >= 2) {
+                    for (let i = 1; i < (dsTam.length - 1); i++) {
+                        this.dsMucGia.push({ "magiaTien": this.findAvgOfPrice(dsTam[i], dsTam[i + 1]), "tengiaTien": this.findAvgOfPrice(dsTam[i], dsTam[i + 1]) });
+                    }
+                    if (this.dsMucGia.length > 10) {
+                        let tam: any[] = [{ "magiaTien": "0", "tengiaTien": "Tất cả mức giá" }];
+                        for (let i = 0; i <= (this.dsMucGia.length - 4); i = i + 2) {
+                            tam.push({ "magiaTien": this.findAvgOfPrice(this.dsMucGia[i + 1].magiaTien, this.dsMucGia[i + 4].magiaTien), "tengiaTien": this.findAvgOfPrice(this.dsMucGia[i + 1].magiaTien, this.dsMucGia[i + 4].magiaTien) });
+                        }
+                        this.dsMucGia = tam;
+                    }
+                } else {
+                    this.dsMucGia.push({ "magiaTien": dsTam[0], "tengiaTien": dsTam[0] });
+                }
+
+            }
         }
 
     }
 
+    findAvgOfPrice(priceOne, priceTwo): Number {
+        return Math.round((priceOne + priceTwo) / 2);
+    }
 
 
 
@@ -201,21 +240,29 @@ export class SearchComponent implements OnInit {
         const dstam: any[] = [];
         this.dsDuAn.forEach(duan => {
             if (this.tinhthanhpho === "0" && this.loaigiaodich === "0" && this.danhmuc === "0" && this.quanhuyen === "0" && Number(this.giatien) === 0) {
-                if (duan.giaTien > this.giatien) {
+                if (duan.giaTien > this.giatien && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     dstam.push(duan);
                 }
             } else if (this.danhmuc !== "0" && this.loaigiaodich === "0" && this.quanhuyen === "0" && this.tinhthanhpho === "0" && Number(this.giatien) === 0) {
-                if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai) {
+                if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     dstam.push(duan);
                 }
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho === "0" && this.quanhuyen === "0" && Number(this.giatien) === 0) {
-                if (duan.giaTien > this.giatien && this.danhmuc === duan.loaiGiaoDich.maLoai && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
+                if (duan.giaTien > this.giatien
+                    && this.danhmuc === duan.loaiGiaoDich.maLoai
+                    && this.loaigiaodich === duan.danhMuc.maDanhMuc
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     dstam.push(duan);
                 }
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho !== "0" && this.quanhuyen === "0" && Number(this.giatien) === 0) {
                 if (duan.giaTien > this.giatien && this.tinhthanhpho === duan.tinhThanhPho
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
-                    && this.loaigiaodich === duan.danhMuc.maDanhMuc) {
+                    && this.loaigiaodich === duan.danhMuc.maDanhMuc
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH) {
                     dstam.push(duan);
                 }
             } else if (this.danhmuc !== "0" && this.loaigiaodich !== "0" && this.tinhthanhpho !== "0" && this.quanhuyen !== "0" && Number(this.giatien) === 0) {
@@ -223,14 +270,18 @@ export class SearchComponent implements OnInit {
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc
                     && this.tinhthanhpho === duan.tinhThanhPho
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH
                 ) {
                     dstam.push(duan);
                 }
             } else {
-                if (duan.giaTien === Number(this.giatien) && this.quanhuyen === duan.quanHuyen
+                if (duan.giaTien <= Number(this.giatien) && this.quanhuyen === duan.quanHuyen
                     && this.danhmuc === duan.loaiGiaoDich.maLoai
                     && this.loaigiaodich === duan.danhMuc.maDanhMuc
                     && this.tinhthanhpho === duan.tinhThanhPho
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH
+                    && duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH
                 ) {
                     dstam.push(duan);
                 }

@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
                 <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                    <div [innerHTML]="statusAdd.message | safeHtml"></div>
                 </div>
             </div>
 

@@ -31,6 +31,9 @@ export class ImageModalComponent implements OnInit {
     status: string = "chonhinh";
     tenhinh: string = "";
     constructor(private UploadImage: UploadImageService) {
+
+    }
+    loadhinh() {
         this.UploadImage.getAllNameImages().subscribe(images => {
             if (JSON.parse(JSON.stringify(images)).body) {
                 this.dsHinhTam = JSON.parse(JSON.stringify(images)).body;
@@ -41,7 +44,6 @@ export class ImageModalComponent implements OnInit {
             }
         });
     }
-
 
 
     changeTimKiem(event) {

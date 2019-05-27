@@ -56,6 +56,8 @@ import { DuyetBaiDangComponent } from './module/admin/duyetbaidang/duyetbaidang_
 import { DuyetBaiDangDoiTacComponent } from './module/admin/duyetbaidang/duyetbaidang_doitac/_duyetbaidang-doitac.component';
 import { DuyetBaiDangTinTucComponent } from './module/admin/duyetbaidang/duyetbaidang_tintuc/_duyetbaidang-tintuc.component';
 import { ThongKeComponent } from './module/admin/thongke/_thongke.component';
+import { DuAnLoaiGiaoDichComponent } from './module/du-an-loai-giao-dich/loai-giao-dich/_du-an-loai-giao-dich.component';
+import { DuAnTheoLoaiGiaoDichComponent } from './module/du-an-loai-giao-dich/_du-an-theo-loai.component';
 
 
 const routes: Routes = [
@@ -92,7 +94,12 @@ const routes: Routes = [
             path: 'san-giao-dich', component: SanGiaoDichComponent,
             children: [
                 { path: '', component: SanGiaoDichListComponent },
-                { path: 'grid', component: SanGiaoDichGridComponent }]
+                { path: 'grid', component: SanGiaoDichGridComponent }
+            ]
+        }, {
+            path: 'san-giao-dich-theo-loai', component: DuAnTheoLoaiGiaoDichComponent,
+            children: [{ path: '', component: DuAnLoaiGiaoDichComponent },
+            { path: 'loai-giao-dich', component: DuAnLoaiGiaoDichComponent }]
         },
         { path: 'san-giao-dich-chi-tiet/:id', component: SanGiaoDichChiTietComponent },
         { path: 'thu-vien-anh', component: ThuVienAnhPageComponent },

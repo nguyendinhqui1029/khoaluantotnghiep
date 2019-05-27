@@ -12,11 +12,11 @@ import { TinTucService } from 'src/app/service/tintuc.service';
 })
 export class AdminComponent implements OnInit {
 
-
+    tenadmin = "";
     constructor() { }
 
     ngOnInit(): void {
-
+        this.tenadmin = sessionStorage.getItem("name");
     }
 
 

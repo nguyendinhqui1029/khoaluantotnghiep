@@ -77,7 +77,6 @@ export class UploadImageComponent implements OnInit {
             this.doitacService.getDoiTacTheoMaDoiTac(this.id).subscribe(doitac => {
                 let doitac1 = JSON.stringify(doitac);
                 let doit = JSON.parse(doitac1);
-                alert(doit.body.data[0].loGo)
                 if (doit.body) {
                     this.arrImageShow.push({ "maHinh": "", "tenhinh": doit.body.data[0].loGo, "alt": doit.body.data[0].loGo });
                 }

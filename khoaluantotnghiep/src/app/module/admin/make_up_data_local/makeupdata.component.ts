@@ -42,7 +42,6 @@ export class MakeUpDataComponent implements OnInit {
                             if (flag) {
                                 ds.arr.forEach(element => {
                                     this.makeUpDateService.themListDoiTacLoCal(element).subscribe(e => {
-                                        console.log(e);
                                     });
                                 });
                                 ob.itemnew = ds.itemnew;
@@ -65,7 +64,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themCongTyLoCal(element).subscribe(e => {
-                                    console.log(e);
+
 
                                 });
                             });
@@ -87,7 +86,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themDanhMucLoCal(element).subscribe(e => {
-                                    console.log(e);
+
 
                                 });
                             });
@@ -96,7 +95,6 @@ export class MakeUpDataComponent implements OnInit {
 
                         ob.itemnew = ds.itemnew;
                         ob.tongitem = ds.tongitem;
-                        console.log(ob.itemnew);
 
                     });
                 });
@@ -113,7 +111,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themListDuAnLoCal(element).subscribe(e => {
-                                    console.log(e);
+
 
                                 });
                             });
@@ -137,7 +135,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themGioiThieuLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                             ob.itemnew = ds.itemnew;
@@ -162,7 +160,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themLoaiTinTucLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                             ob.itemnew = ds.itemnew;
@@ -185,7 +183,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themLoaiGiaoDichLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                         }
@@ -203,11 +201,10 @@ export class MakeUpDataComponent implements OnInit {
                     this.makeUpDateService.getMeNUTheoTypeLocal().subscribe(elocal => {
                         let ds = this.makeUpDateService.isMakeUpData(e.body, elocal.body);
 
-                        console.log(e.body)
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themMeNUTheoTypeLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                         }
@@ -229,7 +226,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themSliderTrangThaiLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                         }
@@ -251,7 +248,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themTaiKhoanLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                         }
@@ -272,7 +269,7 @@ export class MakeUpDataComponent implements OnInit {
                         if (flag) {
                             ds.arr.forEach(element => {
                                 this.makeUpDateService.themTinTucLoCal(element).subscribe(e => {
-                                    console.log(e);
+
                                 });
                             });
                         }

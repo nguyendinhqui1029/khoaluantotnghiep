@@ -27,7 +27,6 @@ export class UpdateLoaiTinTucComponent implements OnInit {
         this.loaitinTucService.getLoaiTinTuctheoMaLoai(id).subscribe(ltt => {
             this.loaitintuc = JSON.stringify(ltt);
             let doit = JSON.parse(this.loaitintuc);
-            console.log(doit.body.data[0]);
 
             this.maLoai = doit.body.data[0].maloai;
             this.formUpdateLoaiTinTuc.controls.tenloai.setValue(doit.body.data[0].tenloai);
@@ -48,7 +47,6 @@ export class UpdateLoaiTinTucComponent implements OnInit {
 
         loaitintuc = new LOAITINTUC(this.maLoai, tenloai, trangThai);
         this.loaitinTucService.updateLoaiTinTuc(loaitintuc).subscribe(res => {
-            console.log(res);
             this.statusUpdate.status = true;
             this.statusUpdate.message = "Loại Tin Tức đã được Cập Nhật";
         })

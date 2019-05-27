@@ -10,7 +10,8 @@ export class TINTUC {
     ngaydang: any;
     hinhanh: HINHANH[] = [];
     loaitintuc: LOAITINTUC;
-    constructor(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngaydang, hinhanh, loaitintuc) {
+    taiKhoan: any;
+    constructor(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngaydang, hinhanh, loaitintuc, taiKhoan) {
         this.matintuc = matintuc;
         this.tentintuc = tentintuc;
         this.trangthai = trangthai;
@@ -19,5 +20,6 @@ export class TINTUC {
         this.ngaydang = ngaydang;
         this.hinhanh = hinhanh;
         this.loaitintuc = loaitintuc;
+        this.taiKhoan = taiKhoan;
     }
 }

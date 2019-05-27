@@ -44,7 +44,14 @@
                                             <select class="form-control" (change)="changeMucGia($event)">
                                                 <option *ngFor="let obMucGia of dsMucGia"
                                                     value="{{obMucGia.magiaTien}}">
-                                                    {{obMucGia.tengiaTien}}</option>
+                                                    <ng-container *ngIf="obMucGia.magiaTien === '0' else laso">
+                                                        {{obMucGia.tengiaTien}}
+                                                    </ng-container>
+                                                    <ng-template #laso>
+                                                        Dưới {{obMucGia.tengiaTien|number}}
+                                                    </ng-template>
+
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
@@ -96,7 +103,14 @@
                 <li>
                     <select class="form-control" (change)="changeMucGia($event)">
                         <option *ngFor="let obMucGia of dsMucGia" value="{{obMucGia.magiaTien}}">
-                            {{obMucGia.tengiaTien}}</option>
+                            <ng-container *ngIf="obMucGia.magiaTien === '0' else laso">
+                                {{obMucGia.tengiaTien}}
+                            </ng-container>
+                            <ng-template #laso>
+                                Dưới {{obMucGia.tengiaTien|number}}
+                            </ng-template>
+
+                        </option>
                     </select>
                 </li>
                 <li><input type="button" class="btn btn-default" (click)="clickTimKiem()" value="TÌM KIẾM" /></li>

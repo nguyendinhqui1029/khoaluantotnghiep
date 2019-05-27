@@ -41,13 +41,21 @@ export class DuyetBaiDangTinTucComponent implements OnInit {
         let noidungtomtat = this.tintucduyet.noidungtomtat;
         let tentintuc = this.tintucduyet.tentintuc;
         let trangthai = ConfigService.TRANG_THAI_TIN_TUC.NEW;
-
+        let taiKhoan = this.tintucduyet.taiKhoan;
         this.tintucchapnhan = new TINTUC(matintuc, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngaydang,
-            hinhanh, loaitintuc);
+            hinhanh, loaitintuc, taiKhoan);
 
         this.tinTucService.updateTinTuc(this.tintucchapnhan).subscribe(res => {
             this.getDSTinTucChoDuyet();
         });
 
+    }
+
+    boquatintuc(matintuc) {
+        this.tinTucService.xoaTinTucTheomaLoai(matintuc).subscribe(res => {
+            if (res.code === 200) {
+                this.getDSTinTucChoDuyet();
+            }
+        });
     }
 }

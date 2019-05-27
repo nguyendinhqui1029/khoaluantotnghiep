@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'Bất động sản';
   constructor(private DuanService: DuAnService) {
     // this.ChuyenTrangThaiDuAn();
+
   }
 
   // ChuyenTrangThaiDuAn() {

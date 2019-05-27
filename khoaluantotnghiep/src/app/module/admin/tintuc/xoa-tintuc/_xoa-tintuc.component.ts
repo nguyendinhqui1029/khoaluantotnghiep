@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TINTUC } from 'src/app/model/tintuc';
-import { ds_tintuc } from 'src/app/model/mock_tintuc';
+//import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { TinTucService } from 'src/app/service/tintuc.service';
 import { ConfigService } from 'src/app/service/config.service';
 import { UploadImageService } from 'src/app/service/upload-image.service';
@@ -19,6 +19,7 @@ export class XoaTinTucComponent implements OnInit {
     }
 
     getDSTinTuc() {
+        this.ds_tintuc = [];
         this.tinTucService.getDSTinTucTheoTrangThai(ConfigService.TRANG_THAI_TIN_TUC.TATCATINTUC).subscribe(tt => {
             if (tt.body) {
                 tt.body.forEach(tin => {
@@ -34,8 +35,6 @@ export class XoaTinTucComponent implements OnInit {
         this.getDSTinTuc();
     }
     deletetintuc(maloai) {
-
-
         if (confirm("Bạn có chắc xóa tin tức mã: " + maloai)) {
             this.tinTucService.getTinTuctheoMaLoai(maloai).subscribe(tintuc => {
                 this.tintuc = JSON.stringify(tintuc);
@@ -44,9 +43,7 @@ export class XoaTinTucComponent implements OnInit {
                 if (tin.body.data[0]) {
                     if (tin.body.data[0].hinhanh) {
                         tin.body.data[0].hinhanh.forEach(hinh => {
-                            console.log(hinh.tenhinh)
                             this.uploadhinhService.DeleteImage(hinh.tenhinh).subscribe(res => {
-
                             })
                         })
                         this.tinTucService.xoaTinTucTheomaLoai(maloai).subscribe(res => {

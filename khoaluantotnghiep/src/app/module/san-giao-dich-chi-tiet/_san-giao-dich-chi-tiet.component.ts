@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DUAN } from 'src/app/model/duan';
-import { ds_duan } from 'src/app/model/mock_duan';
+//import { ds_duan } from 'src/app/model/mock_duan';
 import { ActivatedRoute } from '@angular/router';
 import { SanGiaoDichService } from 'src/app/service/sangiaodich.service';
 import { DuAnService } from 'src/app/service/duan.service';
@@ -18,6 +18,7 @@ export class SanGiaoDichChiTietModuleComponent implements OnInit {
     thongTinDuAn: any = {};
     noiDungChiTiet: any = "";
     thongTinNguoiDang: any = {};
+    thongTinTaiKhoan: any = {};
     constructor(private router: ActivatedRoute, private duAnSerVice: DuAnService, private sanGiaoDichService: SanGiaoDichService) {
         let id = this.router.snapshot.params["id"];
         this.duAnSerVice.getDuAnTheoMaDuAn(id).subscribe(duan => {
@@ -35,8 +36,17 @@ export class SanGiaoDichChiTietModuleComponent implements OnInit {
             this.thongTinNguoiDang = {
                 hoTen: duan.body[0].doiTac.hoTen,
                 diaChi: duan.body[0].doiTac.diaChi,
-                soDienThoai: duan.body[0].doiTac.soDienThoai,
-                email: duan.body[0].doiTac.email
+                moTa: duan.body[0].doiTac.moTa
+            }
+
+            if (duan.body[0].taiKhoan) {
+                this.thongTinTaiKhoan = {
+                    maTaiKhoan: duan.body[0].taiKhoan.maTaiKhoan,
+                    hoTen: duan.body[0].taiKhoan.hoTen,
+                    soDienThoai: duan.body[0].taiKhoan.soDienThoai,
+                    gioiTinh: duan.body[0].taiKhoan.gioiTinh,
+                    email: duan.body[0].taiKhoan.email
+                }
             }
             this.mangHinh = duan.body[0].mangHinh;
             this.noiDungChiTiet = duan.body[0].noiDungChiTiet;
@@ -44,7 +54,8 @@ export class SanGiaoDichChiTietModuleComponent implements OnInit {
                 mangHinh: this.mangHinh,
                 noidungchitiet: this.noiDungChiTiet,
                 thongtinduan: this.thongTinDuAn,
-                thongtinnguoidang: this.thongTinNguoiDang
+                thongtinnguoidang: this.thongTinNguoiDang,
+                thongTinTaiKhoan: this.thongTinTaiKhoan
             });
         });
 

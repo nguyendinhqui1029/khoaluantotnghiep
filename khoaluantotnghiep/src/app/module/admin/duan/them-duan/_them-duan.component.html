@@ -115,6 +115,9 @@
                             {{item.tenhuong}}
                         </option>
                     </select>
+                    <div *ngIf="submitted && f.huong.errors" class="invalid-feedback">
+                        <div *ngIf="f.huong.errors.required">Vui lòng chọn Hướng</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -125,6 +128,9 @@
                         <option *ngFor="let item of ds_loaiduan" value="{{item.maLoai}}">
                             {{item.tenLoai}}</option>
                     </select>
+                    <div *ngIf="submitted && f.loaiDuAn.errors" class="invalid-feedback">
+                        <div *ngIf="f.loaiDuAn.errors.required">Vui lòng chọn Loại Dự Án</div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -178,11 +184,11 @@
             </div>
             <div class="form-group">
                 <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                    <div [innerHTML]="statusAdd.message | safeHtml"></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info" (click)="add()">Submit Dự Án</button>&nbsp;&nbsp;
-            <button type="reset" class="btn btn-info">Reset Tất Cả</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-info" (click)="reset()">Reset Tất Cả</button>&nbsp;&nbsp;
         </div>
         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
         </div>

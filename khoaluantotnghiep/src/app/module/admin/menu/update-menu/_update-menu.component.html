@@ -66,7 +66,7 @@
 
             <div class="form-group">
                 <div *ngIf="statusUpdate.status" class="invalid-feedback">
-                    <div [innerHTML]="statusUpdate.message"></div>
+                    <div [innerHTML]="statusUpdate.message | safeHtml"></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info" (click)="update()">Submit Menu</button>&nbsp;&nbsp;

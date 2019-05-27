@@ -5,7 +5,7 @@
                 <div class="col-md-9">
                     <div class="breadcrumb clearfix">
                         <ul>
-                            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
+                            <li class="home">
                                 <a title="Đến trang chủ" [routerLink]="['/trang-chu']" itemprop="url"><span
                                         itemprop="title">Trang
                                         chủ</span></a>
@@ -22,7 +22,8 @@
                             <span>Sàn giao dịch</span>
                         </h3>
                         <ul>
-                            <li *ngFor="let item of ds_loaigiaodich"><a [routerLink]="['/san-giao-dich']"
+                            <li *ngFor="let item of ds_loaigiaodich"><a
+                                    [routerLink]="['/san-giao-dich-theo-loai/loai-giao-dich']"
                                     (click)="clickSanGiaoDich(item.tenLoai)"><i
                                         class='fa fa-arrow-circle-o-right'></i>{{item.tenLoai}}</a></li>
                         </ul>

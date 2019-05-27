@@ -77,15 +77,17 @@ export class SanGiaoDichModuleComponent implements OnInit {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanthuehoacban => {
-                    if (duanthuehoacban.danhMuc.maDanhMuc === danhmuc.maDanhMuc) {
-                        this.ds_DuAn.push(duanthuehoacban);
+                    if (duanthuehoacban.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH &&
+                        duanthuehoacban.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
+                        if (duanthuehoacban.danhMuc.maDanhMuc === danhmuc.maDanhMuc) {
+                            this.ds_DuAn.push(duanthuehoacban);
+                        }
                     }
                 })
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.ds_DuAn);
                 this.ds_page = this.phanTrangService.createPhanTrang(this.currentPagePhanTrang);
                 this.ds_Gui = this.phanTrangService.ds_KetQuaPhanTrang(this.ds_DuAn);
-                console.log(this.ds_Gui)
                 this.serviceSanGiaoDich.changeValue(this.ds_Gui); //Danh sách dự án loại Cho thuê lúc nhấn nút         
                 //End phan trang
             }
@@ -109,8 +111,11 @@ export class SanGiaoDichModuleComponent implements OnInit {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanthuehoacban => {
-                    if (duanthuehoacban.danhMuc.maDanhMuc === this.danhmuc) {
-                        this.ds_DuAn.push(duanthuehoacban);
+                    if (duanthuehoacban.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH &&
+                        duanthuehoacban.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
+                        if (duanthuehoacban.danhMuc.maDanhMuc === this.danhmuc) {
+                            this.ds_DuAn.push(duanthuehoacban);
+                        }
                     }
                 })
                 //Phan trang
@@ -129,15 +134,12 @@ export class SanGiaoDichModuleComponent implements OnInit {
         this.Duanservice.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
             if (duan.body) {
                 duan.body.forEach(duanban => {
-                    console.log(duanban);
                     if (duanban.trangThai !== ConfigService.TRANG_THAI_DU_AN.DAGIAODICH &&
                         duanban.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
                         if (duanban.danhMuc.tenDanhMuc === 'Mua bán') {
                             this.ds_DuAn.push(duanban);
-
                         }
                     }
-
                 })
                 //Phan trang
                 this.phanTrangService.setValueDanhSach(this.ds_DuAn);

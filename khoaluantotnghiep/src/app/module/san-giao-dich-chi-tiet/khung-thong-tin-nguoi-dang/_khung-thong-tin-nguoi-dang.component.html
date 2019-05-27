@@ -1,11 +1,27 @@
 <div class="property-info-detail clearfix" *ngIf="thongtinnguoidang">
-    <h3>
-        Thông tin người đăng
-    </h3>
-    <ul>
-        <li>Đăng bởi :<label>{{thongtinnguoidang.hoTen}}</label></li>
-        <li>Địa chỉ:<label>{{thongtinnguoidang.diaChi}}</label></li>
-        <li>Điện thoại:<label>{{thongtinnguoidang.soDienThoai}}</label></li>
-        <li>Email:<label>{{thongtinnguoidang.email}}</label></li>
-    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>
+                Thông tin người đăng
+            </h3>
+            <ul>
+                <li>Mã nhân viên:&ensp; <label>{{thongtinnguoidang.maTaiKhoan}}</label></li>
+                <li>Đăng bởi: &ensp;<label>{{thongtinnguoidang.hoTen}}</label></li>
+                <li>Địa chỉ:&ensp;<label>{{thongtinnguoidang.soDienThoai}}</label></li>
+                <li>Giới tính:&ensp;<label>{{thongtinnguoidang.gioiTinh}}</label></li>
+                <li>Email: &ensp;<label>{{thongtinnguoidang.email}}</label></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>
+                Thông tin đối tác
+            </h3>
+            <ul>
+                <li>Đối tác:&ensp; <label>{{thongtindoitac.hoTen}}</label></li>
+                <li>Địa chỉ:&ensp; <label>{{thongtindoitac.diaChi}}</label></li>
+                <li>Giới thiệu:&ensp; <label>{{thongtindoitac.moTa}}</label></li>
+            </ul>
+        </div>
+    </div>
+
 </div>

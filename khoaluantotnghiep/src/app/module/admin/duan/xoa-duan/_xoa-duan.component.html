@@ -11,7 +11,6 @@
                     <input class="khungsearch" type="search" placeholder="Search">
                 </form>
             </div>
-
             <table class="rwd-table results" style="width: 90%;margin-left: 4%" *ngIf="lengthDuAn > 0 else nguoclai">
                 <thead>
                     <tr>
@@ -22,7 +21,7 @@
                         <th scope="col">Giá Tiền</th>
                         <th scope="col">Loại Danh Mục</th>
                         <th scope="col">Loại Giao Dịch</th>
-                        <th scope="col">Cài Đặt</th>
+                        <th *ngIf="role === 3" scope="col">Cài Đặt</th>
                     </tr>
                     <tr class="warning no-result">
                         <td data-th="Kết quả" colspan="4"><i class="fa fa-warning"></i> Không tìm thấy kết quả.</td>
@@ -37,7 +36,7 @@
                         <td data-th="Giá Tiền">{{item.giaTien | number}}</td>
                         <td data-th="Loại Danh Mục">{{item.danhMuc.tenDanhMuc}}</td>
                         <td data-th="Loại Giao Dịch">{{item.loaiGiaoDich.tenLoai}}</td>
-                        <td data-th="Cài Đặt">
+                        <td *ngIf="role === 3" data-th="Cài Đặt">
                             <a href="javaScript:void(0)" class="tooltipquy" (click)="deleteduan(item.maDuAn)"><i
                                     class="fa fa-trash" style="font-size: 200%; color: rgb(255, 51, 0)"></i><span
                                     class="tooltiptextquy">Xóa</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

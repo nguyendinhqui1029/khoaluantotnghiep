@@ -14,7 +14,6 @@ export class XoaGioiThieuComponent implements OnInit {
     ds_gioithieu: GIOITHIEU[] = [];
     getDSGioiThieu() {
         this.gioiThieuService.getDanhSachGioiThieu().subscribe(gt => {
-            console.log(gt);
             this.ds_gioithieu = gt.body;
         })
     }

@@ -20,7 +20,7 @@ export class DuyetBaiDangComponent implements OnInit {
     getDSDuAnChoDuyet() {
         this.duAnService.getDuAnTheoTrangThai(ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH).subscribe(duan => {
             if (duan.body) {
-                this.ds_baidangchoduyet = duan.body;
+                this.ds_baidangchoduyet = duan.body.reverse();
                 this.duAnService.setSoLuongChuaDuyet(duan.body.length);
             }
         })
@@ -57,10 +57,10 @@ export class DuyetBaiDangComponent implements OnInit {
         let huong = this.duanduyet.huong;
         let dienTich = this.duanduyet.dienTich;
         let trangThai = ConfigService.TRANG_THAI_DU_AN.DUANMOI;
-
+        let taiKhoan = this.duanduyet.taiKhoan;
         this.duanchapnhan = new DUAN(maDuAn, tenDuAn, noiDungTomTat, noiDungChiTiet, mangHinh, ngayDang,
             doiTac, giaTien, loaiGiaoDich, danhMuc, quanHuyen, tinhThanhPho, trangThai, loaiDuAn,
-            huong, dienTich);
+            huong, dienTich, taiKhoan);
 
         this.duAnService.updateDuAn(this.duanchapnhan).subscribe(res => {
             this.getDSDuAnChoDuyet();

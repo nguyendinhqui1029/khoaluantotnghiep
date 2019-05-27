@@ -25,7 +25,6 @@ export class UpdateGioiThieuComponent implements OnInit {
         this.gioithieuService.getGioiThieutheoMaGioiThieu(id).subscribe(gt => {
             this.gioithieu = JSON.stringify(gt);
             let doit = JSON.parse(this.gioithieu);
-            console.log(doit.body.data[0]);
 
             this.magioithieu = doit.body.data[0].magioithieu;
             this.formUpdateGioiThieu.controls.tieude.setValue(doit.body.data[0].tieude);
@@ -50,7 +49,6 @@ export class UpdateGioiThieuComponent implements OnInit {
             return;
         } else if (this.formUpdateGioiThieu.valid) {
             this.gioithieuService.updateGioiThieu(gioithieu).subscribe(res => {
-                console.log(res);
                 this.statusUpdate.status = true;
                 this.statusUpdate.message = "Giới Thiệu đã được Cập Nhật";
             });

@@ -6,13 +6,13 @@
     <div class="box-project-block" *ngFor="let duannoibat of dsDuAN">
         <div class="item">
             <div class="image image-resize">
-                <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat.maDuAn)"
                     title="{{duannoibat.tenDuAn}}">
                     <img src="{{urlImage}}get-images/{{duannoibat.mangHinh[0].tenhinh}}" class="img-responsive" />
                 </a>
                 <span class="text">Mới</span>
                 <div class="thumbnail">
-                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat.maDuAn)"
                         class="zoom">
                         <i class="glyphicon glyphicon-link"></i>
                     </a>
@@ -20,7 +20,7 @@
             </div>
             <div class="right-block">
                 <h2 class="name">
-                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat)"
+                    <a [routerLink]="['/chi-tiet-du-an',duannoibat.maDuAn]" (click)="guiduanmoi(duannoibat.maDuAn)"
                         title="{{duannoibat.tenDuAn}}">{{duannoibat.tenDuAn}}</a>
                 </h2>
             </div>

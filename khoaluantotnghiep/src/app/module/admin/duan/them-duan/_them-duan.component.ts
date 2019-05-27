@@ -222,7 +222,6 @@ export class ThemDuAnComponent implements OnInit {
 
     get f() { return this.formthemDuan.controls };
     add() {
-
         this.submitted = true;
         let tenDuAn = this.formthemDuan.controls.tenDuAn.value;
         let noiDungTomTat = this.formthemDuan.controls.noiDungTomTat.value;
@@ -279,11 +278,13 @@ export class ThemDuAnComponent implements OnInit {
                             if (this.ds_mangHinh.length === fileData.length) {
                                 this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,
                                     ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH, tenloaiduan,
-                                    tenhuong, dienTich);
+                                    tenhuong, dienTich, JSON.parse(sessionStorage.getItem("TaiKhoan")));
                                 this.duAnService.themDuAn(this.duan).subscribe(res => {
                                     this.statusAdd.status = true;
                                     this.statusAdd.message = "Dự Án đã được thêm thành công!";
-                                    console.log(res);
+                                    setTimeout(() => {
+                                        this.statusAdd.status = false;
+                                    }, 2000);
                                 });
                             }
 
@@ -297,12 +298,33 @@ export class ThemDuAnComponent implements OnInit {
                 this.ds_mangHinh.push(hinhanh);
                 this.duan = new DUAN(maduan, tenDuAn, noiDungTomTat, noiDungChiTiet, this.ds_mangHinh, ngaydang,
                     ObjectDoiTac, giaTien, ObjectLoaiGiaoDich, ObjectDanhMuc, quanHuyen, tinhThanhPho, ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH, tenloaiduan,
-                    tenhuong, dienTich);
+                    tenhuong, dienTich, JSON.parse(sessionStorage.getItem("TaiKhoan")));
+
+                this.duAnService.themDuAn(this.duan).subscribe(res => {
+                    this.statusAdd.status = true;
+                    this.statusAdd.message = "Dự Án đã được thêm thành công!";
+                    setTimeout(() => {
+                        this.statusAdd.status = false;
+                    }, 2000);
+
+                });
             }
 
 
         })
 
+
+
+    }
+
+    reset() {
+        this.statusAdd.status = false;
+        this.submitted = false;
+        this.formthemDuan.controls.tenDuAn.setValue("");
+        this.formthemDuan.controls.giaTien.setValue("");
+        this.formthemDuan.controls.dienTich.setValue("");
+        this.formthemDuan.controls.noiDungTomTat.setValue("");
+        this.formthemDuan.controls.noiDungChiTiet.setValue("");
 
     }
 }

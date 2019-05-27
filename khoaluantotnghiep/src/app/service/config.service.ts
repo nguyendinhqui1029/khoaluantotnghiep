@@ -17,5 +17,6 @@ export class ConfigService {
     static TRANG_THAI_LOAIGIAODICH = { "TATCA": 0 };
     static LOAI_TIN_TUC: any = { "TATCA": 0 };
     static TRANG_THAI_DOITAC: any = { "TATCA": 0, "CHODUYET": 1, "DADUYET": 2 };
+    static PHI_DANG_BAI:number = 20000;
 
 }

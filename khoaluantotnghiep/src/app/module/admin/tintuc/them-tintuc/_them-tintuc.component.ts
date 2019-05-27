@@ -98,8 +98,6 @@ export class ThemTinTucComponent implements OnInit {
         let noidungchitiet = this.formthemTinTuc.controls.noidungchitiet.value;
         let noidungtomtat = this.formthemTinTuc.controls.noidungtomtat.value;
 
-        console.log(ngayDang.value);
-
         let loaitintuc;
         let maloai = "TT" + (new Date()).getTime().toString();
         let ObjectLoaiTinTuc = this.getLoaiTinTucTheoMa(maloaitintuc);
@@ -120,11 +118,6 @@ export class ThemTinTucComponent implements OnInit {
         if (this.formthemTinTuc.invalid) {
             return;
         } else if (this.formthemTinTuc.valid) {
-            // this.tinTucService.themTinTuc(loaitintuc).subscribe(res => {
-            //     this.statusAdd.status = true;
-            //     this.statusAdd.message = "Tin Tức đã được thêm thành công!";
-            //     console.log(res);
-            // });
             this.Submit(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang.value,
                 ObjectLoaiTinTuc);
         }
@@ -154,11 +147,13 @@ export class ThemTinTucComponent implements OnInit {
                             }
                             this.ds_mangHinh.push(new HINHANH(mahinh, tenhinh, tenhinh));
                             if (this.ds_mangHinh.length === fileData.length) {
-                                this.tintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh, ObjectLoaiTinTuc);
+                                this.tintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh, ObjectLoaiTinTuc, JSON.parse(sessionStorage.getItem("TaiKhoan")));
                                 this.tinTucService.themTinTuc(this.tintuc).subscribe(res => {
                                     this.statusAdd.status = true;
                                     this.statusAdd.message = "Tin Tức đã được thêm thành công!";
-                                    console.log(res);
+                                    setTimeout(() => {
+                                        this.statusAdd.status = false;
+                                    }, 2000);
                                 });
                             }
 
@@ -170,7 +165,14 @@ export class ThemTinTucComponent implements OnInit {
             } else {
                 let hinhanh = new HINHANH("HA" + (new Date()).getTime().toString(), "logo.png", "logo du an");
                 this.ds_mangHinh.push(hinhanh);
-                this.tintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh, ObjectLoaiTinTuc);
+                this.tintuc = new TINTUC(maloai, tentintuc, trangthai, noidungchitiet, noidungtomtat, ngayDang, this.ds_mangHinh, ObjectLoaiTinTuc, JSON.parse(sessionStorage.getItem("TaiKhoan")));
+                this.tinTucService.themTinTuc(this.tintuc).subscribe(res => {
+                    this.statusAdd.status = true;
+                    this.statusAdd.message = "Tin Tức đã được thêm thành công!";
+                    setTimeout(() => {
+                        this.statusAdd.status = false;
+                    }, 2000);
+                });
             }
 
 

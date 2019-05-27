@@ -2,7 +2,7 @@
 
     <div class="breadcrumb clearfix">
         <ul>
-            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="home">
+            <li class="home">
                 <a title="Đến trang chủ" [routerLink]="['/']" itemprop="url"><span itemprop="title">Trang
                         chủ</span></a>
             </li>
@@ -17,7 +17,7 @@
             <span>{{noidunghuongdan.tieude}}</span>
         </h1>
         <div class="about-block">
-            <div class="content" [innerHTML]="noidunghuongdan.noidung">
+            <div class="content" [innerHTML]="noidunghuongdan.noidung | safeHtml">
             </div>
             <div class="social-group">
             </div>

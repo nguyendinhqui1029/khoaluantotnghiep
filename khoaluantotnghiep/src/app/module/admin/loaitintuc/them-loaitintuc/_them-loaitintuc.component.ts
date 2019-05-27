@@ -51,7 +51,6 @@ export class ThemLoaiTinTucComponent implements OnInit {
             this.loaiTinTuc.themLoaiTinTuc(loaitintuc).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Loại Tin Tức đã được thêm thành công!";
-                console.log(res);
             })
         }
     }

@@ -157,14 +157,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label" for="loGo">LoGo</label><span style="color: red; margin-left: 3px">*</span>
-                <div class="form-inline">
-                    <input type="file" multiple (change)="changeImage($event)" style="width: 80%;" id="loGo">
-                </div>
-            </div>
-            <div class="form-group">
                 <div *ngIf="statusAdd.status" class="invalid-feedback">
-                    <div [innerHTML]="statusAdd.message"></div>
+                    <div [innerHTML]="statusAdd.message | safeHtml"></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info" (click)="add()">Submit Tài Khoản</button>&nbsp;&nbsp;

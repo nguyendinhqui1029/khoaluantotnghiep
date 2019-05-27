@@ -1,0 +1,43 @@
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-9">
+                    <div class="breadcrumb clearfix">
+                        <ul>
+                            <li class="home">
+                                <a title="Đến trang chủ" [routerLink]="['/trang-chu']" itemprop="url"><span
+                                        itemprop="title">Trang
+                                        chủ</span></a>
+                            </li>
+                            <li class="icon-li"><strong>Sàn giao dịch theo loại</strong> </li>
+                        </ul>
+                    </div>
+                    <h1 class="title clearfix">
+                        <i class="fa fa-list"></i>
+                        <span>{{tieude}}</span>
+                    </h1>
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="col-md-3">
+                    <!-- Chen san giao dich -->
+                    <div class="menu-property">
+                        <h3 class="title clearfix">
+                            <span>Sàn giao dịch</span>
+                        </h3>
+                        <ul>
+                            <li *ngFor="let item of ds_loaigiaodich"><a
+                                    [routerLink]="['/san-giao-dich-theo-loai/loai-giao-dich']"
+                                    (click)="clickSanGiaoDich(item.tenLoai)"><i
+                                        class='fa fa-arrow-circle-o-right'></i>{{item.tenLoai}}</a></li>
+                        </ul>
+                    </div>
+                    <!--Chen khung search ben phai -->
+                    <!--component search-->
+                    <search-component></search-component>
+                    <!--component search-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -47,7 +47,6 @@ export class ThemGioiThieuComponent implements OnInit {
             this.gioiThieuService.themGioiThieu(gioithieu).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Giới Thiệu đã được thêm thành công!";
-                console.log(res);
             });
         }
     }

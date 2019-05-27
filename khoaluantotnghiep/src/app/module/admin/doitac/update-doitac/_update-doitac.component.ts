@@ -29,13 +29,14 @@ export class UpdateDoiTacComponent implements OnInit {
     status = "capnhatdoitac";
     statusUpdate: any = { "status": false, "message": "" };
 
+    submitted = false;
     constructor(private rout: ActivatedRoute, private fb: FormBuilder, private doiTacService: DoiTacService,
         private tinhThanhphoService: TinhThanhPhoService) {
         let id = this.rout.snapshot.params.id;
         this.formUpdateDoiTac = this.fb.group({
             hoTen: ['', [Validators.required]],
             diaChi: ['', [Validators.required]],
-            sdt: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
+            sdt: ['', [Validators.required, Validators.pattern('^[0-9\-\+]{10,11}$')]],
             tinhThanhPho: ['', [Validators.required]],
             quanHuyen: ['', [Validators.required]],
             ngaySinh: ['', [Validators.required]],
@@ -81,6 +82,9 @@ export class UpdateDoiTacComponent implements OnInit {
     tinhthanhphocungten: TINHTHANHPHO[] = [];
     tinhthanhphocodau: any = "";
 
+    get f() { return this.formUpdateDoiTac.controls };
+
+
     selectTinhThanhPho(e) {
         this.thanhphoduocchon = e.target.value;
         this.tinhthanhphocodau = "";
@@ -121,7 +125,7 @@ export class UpdateDoiTacComponent implements OnInit {
         this.flag = true;
     }
     update() {
-        //this.submitted = true;
+        this.submitted = true;
 
         //formControls
         let hoTen = this.formUpdateDoiTac.controls.hoTen.value;
@@ -147,6 +151,7 @@ export class UpdateDoiTacComponent implements OnInit {
         let email = this.formUpdateDoiTac.controls.email.value;
         let moTa = this.formUpdateDoiTac.controls.moTa.value;
 
+
         //formControls
         let doitacpdate;
         if (this.loGo) {
@@ -157,11 +162,8 @@ export class UpdateDoiTacComponent implements OnInit {
             doitacpdate = new DOITAC(this.madoitac, hoTen, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh, this.loGo, moTa,
                 user, pass, "", email, 1);
         }
-        if (this.formUpdateDoiTac.invalid) {
-            return;
-        } else if (this.formUpdateDoiTac.valid) {
+        if (this.formUpdateDoiTac.valid) {
             this.doiTacService.updateDoiTac(doitacpdate).subscribe(res => {
-                console.log(res);
                 this.statusUpdate.status = true;
                 this.statusUpdate.message = "Đối Tác đã được Cập Nhật";
             });

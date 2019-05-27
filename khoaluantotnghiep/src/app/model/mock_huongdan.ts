@@ -47,8 +47,44 @@ export const ds_huongdan: HUONGDAN[] = [
         "icon": "fa fa-newspaper-o"
     },
     {
-        "mahuongdan": "HD002", "tieude": "Hướng Dẫn Đăng Tin",
-        "noidung": "<div>Nhập thông tin dự án</div>",
+        "mahuongdan": "HD002", "tieude": "Hướng Dẫn Tìm Kiếm",
+        "noidung":
+            "<div>" +
+            "<table>" +
+            "<tr>" +
+            "<th>Bước đầu tiên:</td>" +
+            "<td>Chọn các thông tin bất động sản cần tìm:</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc1.JPG' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc2.jpg' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc3.jpg' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc4.jpg' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc5.jpg' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td></td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc6.jpg' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<th>Kết quả tìm kiếm:</td>" +
+            "<td>" + "<image src='../assets/images/huongdan/Timkiem-buoc7.JPG' alt='hướng dẫn bước 1' />" + "</td>" +
+            "</tr>" +
+            "</table>" +
+            "</div>",
         "icon": "fa fa-newspaper-o"
     },
 ]

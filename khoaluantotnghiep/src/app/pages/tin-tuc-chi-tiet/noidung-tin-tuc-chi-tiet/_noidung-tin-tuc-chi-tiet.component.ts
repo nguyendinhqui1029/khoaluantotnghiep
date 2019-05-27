@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TINTUC } from 'src/app/model/tintuc';
-import { ds_tintuc } from 'src/app/model/mock_tintuc';
+//import { ds_tintuc } from 'src/app/model/mock_tintuc';
 import { ActivatedRoute } from '@angular/router';
 import { element } from '@angular/core/src/render3';
 import { TinTucService } from 'src/app/service/tintuc.service';
@@ -13,7 +13,7 @@ import { TinTucService } from 'src/app/service/tintuc.service';
 export class NoiDungTinTucChiTietComponent implements OnInit {
 
     // noi dung mock tin tuc
-    noidungtintuc: TINTUC[] = ds_tintuc;
+    // noidungtintuc: TINTUC[] = ds_tintuc;
     tintuc: any = {};
     id: any = "";
     thongTinTinTuc: any = {};
@@ -36,7 +36,7 @@ export class NoiDungTinTucChiTietComponent implements OnInit {
             this.tintucService.setValueThongTin({
                 mangHinh: this.mangHinh,
                 noidungchitiet: this.noiDungChiTiet,
-                thongtintintuc: this.thongTinTinTuc
+                thongtintintuc: this.thongTinTinTuc,
             });
 
         })

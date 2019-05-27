@@ -72,7 +72,7 @@
                         formControlName="sdt" [ngClass]="{ 'is-invalid': submitted && f.sdt.errors }">
                     <div *ngIf="submitted && f.sdt.errors" class="invalid-feedback">
                         <div *ngIf="f.sdt.errors.required">Vui lòng nhập Số Điện Thoại</div>
-                        <div *ngIf="f.sdt.errors.pattern">Số Điện Thoại không là kí tự</div>
+                        <div *ngIf="f.sdt.errors.pattern">Số Điện Thoại không hợp lệ</div>
                     </div>
                 </div>
             </div>
@@ -115,16 +115,13 @@
                         formControlName="moTa"></textarea>
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="control-label" for="loGo">LoGo</label><span style="color: red; margin-left: 3px">*</span>
-                <!-- <div class="form-inline">
-                    <input type="file" (change)="changeImage($event)" style="width: 80%;" id="loGo">
-                </div> -->
                 <upload-image *ngIf="flag" [page]="status"></upload-image>
-            </div>
+            </div> -->
             <div class="form-group">
                 <div *ngIf="statusUpdate.status" class="invalid-feedback">
-                    <div [innerHTML]="statusUpdate.message"></div>
+                    <div [innerHTML]="statusUpdate.message | safeHtml"></div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info" (click)="update()">Cập Nhật Đối Tác</button>&nbsp;&nbsp;

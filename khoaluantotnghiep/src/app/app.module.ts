@@ -125,6 +125,8 @@ import { MenuAdminComponent } from './module/menu-admin/_menu-admin.component';
 import { UploadImageComponent } from './module/upload-image/_upload-image.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ImageModalComponent } from './module/image-modal/_image-modal.component';
+import { DuAnLoaiGiaoDichComponent } from './module/du-an-loai-giao-dich/loai-giao-dich/_du-an-loai-giao-dich.component';
+import { DuAnTheoLoaiGiaoDichComponent } from './module/du-an-loai-giao-dich/_du-an-theo-loai.component';
 
 
 
@@ -147,7 +149,7 @@ import { ImageModalComponent } from './module/image-modal/_image-modal.component
     NoiDungTimThayComponent, KetQuaTimKiemComponent, NoiDungTinTucChiTietComponent, TinTucChiTietComponent, DuAnChiTietComponent,
     DuAnChiTietModuleComponent, TinTucNoiBatTrangChuComponent, SubPageComponent,
     HinhAnhChiTietComponent, DanhMucHuongDanComponent, NoiDungHuongDanComponent,
-    UploadImageComponent, ImageModalComponent,
+    UploadImageComponent, ImageModalComponent, DuAnLoaiGiaoDichComponent, DuAnTheoLoaiGiaoDichComponent,
     //Admin
     MenuAdminComponent,
     AdminComponent, ThemMenuComponent, XoaMenuComponent, UpdateMenuComponent,

@@ -24,7 +24,7 @@ export class ThemDoiTacComponent implements OnInit {
         this.formThemDoiTac = this.fb.group({
             hoTen: ['', [Validators.required]],
             diaChi: ['', [Validators.required]],
-            sdt: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]],
+            sdt: ['', [Validators.required, Validators.pattern('^[0-9\-\+]{10,11}$')]],
             ngaySinh: ['', [Validators.required]],
             moTa: ['',],
             user: ['', [Validators.required, Validators.pattern('^[-a-zA-Z0-9@\.+_]+$')]],
@@ -109,12 +109,10 @@ export class ThemDoiTacComponent implements OnInit {
                 doitac = new DOITAC(madoitac, hoten, diaChi, sdt, tinhThanhPho, quanHuyen, ngaySinh.value,
                     this.ds_mangHinh, moTa, user, pass, "", email, 1);
             }
-            console.log(doitac);
 
             this.doiTacService.themDoiTac(doitac).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Đối Tác đã được thêm thành công!";
-                console.log(res);
             });
         }
     }

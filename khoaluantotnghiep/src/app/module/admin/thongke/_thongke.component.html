@@ -1,26 +1,42 @@
 <div class="row" style="margin-top: 0px; background: rgba(255, 255, 255, 0.925)">
-    <div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="nav nav-tabs ">
+            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('home')">Biểu đồ doanh thu</a>
+            </li>
+            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('menu1')">Số bài đăng theo tháng</a>
+            </li>
+            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('menu2')">Số bài đăng của nhân
+                    viên</a></li>
+        </ul>
 
-            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1 style="color: #34495E;margin-left: 4%">
-                    <i class="fa fa-cart-arrow-down"></i>Biểu Đồ Doanh Thu
-                </h1>
-            </div>
-            <div *ngIf="data else nguoclai" style="width: 90%; height: 700%;">
-                <canvas baseChart [chartType]="'bar'" [datasets]="chart_DATA" [labels]="chartLabels"
-                    [options]="chartOptions" [legend]="true" (chartClick)="onChartClick($event)">
-                </canvas>
-            </div>
-            <ng-template #nguoclai>
-                <div class="fa-3x">
-                    <div style="margin: auto; clear: both; text-align: center">
-                        <i style="font-size: 40px; color: rgb(116, 182, 236);margin: auto;"
-                            class="fa fa-spinner fa-pulse"></i>
-                    </div>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1 style="color: #34495E;margin-left: 4%">
+                        <i class="fa fa-cart-arrow-down"></i>Biểu Đồ Doanh Thu
+                    </h1>
                 </div>
-            </ng-template>
-
+                <div *ngIf="data else nguoclai" style="width: 90%; height: 700%;">
+                    <canvas baseChart [chartType]="'bar'" [datasets]="chart_DATA" [labels]="chartLabels"
+                        [options]="chartOptions" [legend]="true" (chartClick)="onChartClick($event)">
+                    </canvas>
+                </div>
+                <ng-template #nguoclai>
+                    <div class="fa-3x">
+                        <div style="margin: auto; clear: both; text-align: center">
+                            <h3 style="color: red">Chưa có dự án nào đã giao dịch!</h3>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+            <div id="menu1" class="tab-pane fade ">
+                <h3>Menu 1</h3>
+                <p>Some content in menu 1.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Some content in menu 2.</p>
+            </div>
         </div>
     </div>
 </div>

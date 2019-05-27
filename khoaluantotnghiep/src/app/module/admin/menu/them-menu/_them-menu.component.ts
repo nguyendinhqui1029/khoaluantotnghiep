@@ -57,17 +57,13 @@ export class ThemMenuComponent implements OnInit {
 
         menu = new MENU(mamenu, namemenu, codemenu, statusmenu, iconmenu, "", typemenu);
 
-        console.log(this.formthemMenu);
 
         if (this.formthemMenu.invalid) {
-            console.log('invalid');
-
             return;
         } else if (this.formthemMenu.valid) {
             this.MenuService.themMenu(menu).subscribe(res => {
                 this.statusAdd.status = true;
                 this.statusAdd.message = "Menu đã được thêm thành công!";
-                console.log(res);
             })
         }
     }

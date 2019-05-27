@@ -156,10 +156,10 @@
                             <div *ngIf="f.maXacNhan.errors.required">Vui lòng nhập mã xác nhận</div>
                         </div>
                         <div *ngIf="thongBaoMaXacNhan.status" class="invalid-feedback">
-                            <div [innerHTML]="thongBaoMaXacNhan.message"></div>
+                            <div [innerHTML]="thongBaoMaXacNhan.message | safeHtml"></div>
                         </div>
                         <div *ngIf="thongBaoDangKi.status" class="invalid-feedback">
-                            <div [innerHTML]="thongBaoDangKi.message"></div>
+                            <div [innerHTML]="thongBaoDangKi.message | safeHtml"></div>
                         </div>
 
                     </div>
