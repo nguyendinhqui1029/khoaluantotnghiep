@@ -3,10 +3,8 @@
         <ul class="nav nav-tabs ">
             <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('home')">Biểu đồ doanh thu</a>
             </li>
-            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('menu1')">Số bài đăng theo tháng</a>
+            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('menu1')">Thống kê bài đăng</a>
             </li>
-            <li><a data-toggle="tab" href="javascript:void(0)" (click)="changeTab('menu2')">Số bài đăng của nhân
-                    viên</a></li>
         </ul>
 
         <div class="tab-content">
@@ -30,12 +28,27 @@
                 </ng-template>
             </div>
             <div id="menu1" class="tab-pane fade ">
-                <h3>Menu 1</h3>
-                <p>Some content in menu 1.</p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Some content in menu 2.</p>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <table class="rwd-table results" style="width: 90%;margin-left: 4%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Tên Loại Giao Dịch</th>
+                                    <th scope="col">Tổng Số Dự Án</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of arrTongSo; let i=index">
+                                    <td data-th="#">{{i}}</td>
+                                    <td data-th="Mã nhân viên">{{item.tenloai}}</td>
+                                    <td data-th="Tên Nhân Viên">{{item.tongso}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

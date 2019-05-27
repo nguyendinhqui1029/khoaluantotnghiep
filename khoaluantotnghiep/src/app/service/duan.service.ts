@@ -95,7 +95,7 @@ export class DuAnService {
     layDanhSachDuAnTheoLoaiGiaoDich(maLoaiGiaoDich): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(e => {
-            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.loaiGiaoDich.maLoai === maLoaiGiaoDich) {
+            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.DANGGIAODICH && e.loaiGiaoDich.maLoai === maLoaiGiaoDich) {
                 arr.push(e);
             }
         });
@@ -105,7 +105,7 @@ export class DuAnService {
     layDanhSachDuAnTheoTenDanhMuc(tenDanhMuc): DUAN[] {
         let arr = Array();
         this.dsDuAn.forEach(e => {
-            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH && e.danhMuc.tenDanhMuc.indexOf(tenDanhMuc) >= 0) {
+            if (e.trangThai == ConfigService.TRANG_THAI_DU_AN.DANGGIAODICH && e.danhMuc.tenDanhMuc.indexOf(tenDanhMuc) >= 0) {
                 arr.push(e);
             }
         });

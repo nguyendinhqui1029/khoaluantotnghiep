@@ -17,6 +17,8 @@ export class XoaDuAnComponent implements OnInit {
 
     ds_duan: DUAN[] = [];
     lengthDuAn: number = 0;
+    status: boolean = true;
+    thongbao: string = "";
     ngOnInit(): void {
         this.getListDuAn();
         this.isMenuAdminforAdmin();
@@ -35,18 +37,31 @@ export class XoaDuAnComponent implements OnInit {
     }
 
     getListDuAn(): void {
-        this.ds_duan = [];
-        this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
-            if (duan.body) {
-                duan.body.forEach(duan => {
-                    if (duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
-                        this.ds_duan.push(duan);
+        let timeout = setTimeout(() => {
+            this.ds_duan = [];
+            this.duAnService.getListDuAn(ConfigService.TRANG_THAI_DU_AN.TATCADUAN).subscribe(duan => {
+                if (duan.body) {
+                    duan.body.forEach(duan => {
+                        if (duan.trangThai !== ConfigService.TRANG_THAI_DU_AN.CHUAGIAODICH) {
+                            this.ds_duan.push(duan);
+                        }
+                    });
+                    this.ds_duan;
+                    this.lengthDuAn = this.ds_duan.length;
+                    if (this.ds_duan.length <= 0) {
+                        this.status = false;
+                        this.thongbao = "Không có danh sách";
+                    } else {
+                        clearTimeout(timeout);
+                        this.thongbao = "";
+                        this.status = false;
+
                     }
-                });
-                this.ds_duan;
-                this.lengthDuAn = this.ds_duan.length;
-            }
-        });
+
+
+                }
+            });
+        }, 3000);
     }
 
     deleteduan(maDuAn) {
